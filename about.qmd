@@ -1,0 +1,42 @@
+---
+title: "About"
+date: today
+date-format: "MMMM YYYY"
+---
+
+## Why this site exists
+
+The Goldbach conjecture is over 280 years old and still open. The community working on it is small enough to enumerate and large enough to be hard to know completely. This site is a starting point for anyone wanting to know who is working on Goldbach today, where they are, and what they have been writing recently.
+
+## Who built it
+
+Steve Hubbard built this as a final project for Math 17 (Data Analysis with R) at Irvine Valley College, Spring 2026, taught by Professor Lan Pham. The pipeline is open and the methodology is documented. Suggestions, corrections, and additions are welcome.
+
+## Sources of error
+
+This is an algorithmic ranking with human review on top. Specific things to know:
+
+* **Surname matching is fragile.** Mathematicians named "Liu", "Wang", or "Pan" may be conflated. The pipeline handles the worst cases via the [name aliases](methodology.qmd) file but misses are possible.
+* **Citation counts are influenced by adjacent fields.** A researcher whose Goldbach work overlaps with cryptography or computer science may rank higher purely because those fields cite more.
+* **Coverage is biased toward digital publishing.** Some senior mathematicians, especially from the Russian and Chinese schools, are underrepresented because their pre-internet papers aren't well-indexed.
+* **The Top 100 is not a verdict.** It's a starting point. Use it alongside MathSciNet, your advisor, and your own reading.
+
+## Acknowledgments
+
+Data sources: [arXiv](https://arxiv.org), [OpenAlex](https://openalex.org), [Mathematics Genealogy Project](https://www.mathgenealogy.org), [Google Maps](https://maps.googleapis.com).
+
+R packages: aRxiv, openalexR (paths use direct httr instead), dplyr, ggplot2, ggmap, ggrepel, igraph, maths.genealogy, patchwork, ragg, ggplot2.
+
+## Citation
+
+If you reference this site in published work:
+
+> Hubbard, S. (2026). *Who's Who in Goldbach Research*. https://wwigr.org
+
+## Contact
+
+Questions, corrections, or additions: [admin@wwigr.org](mailto:admin@wwigr.org).
+
+## License and reuse
+
+The data on this site is built from public sources (arXiv, OpenAlex, MGP) under their respective license terms. The compiled list and methodology are released under CC-BY 4.0: feel free to reuse with attri

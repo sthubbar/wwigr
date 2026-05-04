@@ -1,0 +1,76 @@
+---
+title: "Methodology"
+subtitle: "How the rankings are built"
+date: today
+date-format: "MMMM YYYY"
+---
+
+This page documents how the Top 100 list is constructed, what's in the data, and what's deliberately out.
+
+## Data sources
+
+| Source | What it gives | Limitations |
+|---|---|---|
+| **arXiv** (math.NT, math.CO) | Preprint-level data: titles, abstracts, authors, dates, co-author graph | Biased toward people who post preprints. Senior figures who publish only in journals are undercounted. |
+| **OpenAlex** | Author-level data: paper count, citations, affiliations, country | Concept tagging is noisy in math; surname-only matching can misidentify. |
+| **Mathematics Genealogy Project** | Advisor-student trees | Dissertation-era affiliations only; gaps for some non-Western mathematicians. |
+
+## Pipeline
+
+1. **arXiv pull**: 17 search terms (Goldbach, prime gap, twin prime, Vinogradov, Hardy-Littlewood, sum of two primes, etc.) restricted to `math.NT` and `math.CO` categories. Author co-authorship graph computed; eigenvector centrality used as the second factor in an arXiv composite of `0.60 * percent_rank(papers) + 0.40 * percent_rank(eigen)`. Authors with at least 3 topical papers qualify. Result: 155 names.
+
+2. **OpenAlex pull**: same 17 search terms, then trimmed to the 13 Tier-2-and-up terms after a per-term audit. The standalone term "Goldbach" was replaced with three phrase variants ("Goldbach conjecture", "Goldbach problem", "Goldbach's conjecture") to remove surname-collision noise (a Wageningen virologist named Rob Goldbach was dragging his entire collaboration cluster into the list). Author cap of 10 applied to remove physics megapapers. Composite: `0.60 * percent_rank(topical_papers) + 0.40 * percent_rank(topical_citations)`. Result: 1,113 ranked OA authors.
+
+3. **Merge**: surname-deduplicated arXiv 155 plus OpenAlex top 200, joined by surname. Each surname has a `sum_rank = arx_rank + oa_rank`. Names not in arXiv get `arx_rank = 156` (one past max); names not in OA get `oa_rank = 1114`. Sort by `sum_rank` ascending and take the top 100.
+
+4. **Hand-curated edits**: an exclusions file removes two known false positives (Smarandache the paper-mill, Carbó-Dorca the chemist, Vega the crank). A name-aliases file forces correct MGP id lookups for Robert Vaughan and Harald Helfgott, whose abbreviated names led to the wrong MGP records.
+
+5. **Genealogy reseeded**: the Top 100 becomes the canonical seed list for the MGP graph. Five close-relations surface from the network analysis.
+
+## Composite formula
+
+For a researcher to score in the Top 100, they need to do well in either pipeline. The penalty for not being in arXiv is +156 to the sum; the penalty for not being in OA is +1114. The asymmetry reflects that being absent from OpenAlex is a much stronger signal of "not a real Goldbach researcher" than being absent from arXiv (which just means "doesn't post preprints").
+
+A researcher with arXiv rank 50 and not in OA: sum = 50 + 1114 = 1164 → won't make Top 100.
+
+A researcher not in arXiv with OA rank 50: sum = 156 + 50 = 206 → likely makes Top 100.
+
+The Top 100 cutoff is `sum_rank` around 226.
+
+## Provenance tagging
+
+Each Top 100 entry carries a `provenance` tag:
+
+* **`both`** (74 of 100): the unanimous core. In both pipelines.
+* **`oa_only`** (26 of 100): senior journal-era researchers (Vaughan, Helfgott, Brüdern, Hugh Montgomery, Glyn Harman, Jianya Liu, Pieter Moree, etc.) who don't post arXiv preprints.
+* **`arxiv_only`** (0 of 100): the sum penalty for missing OA puts these out of contention by construction.
+* **`manual_add`** (0 of 100, currently empty): reserved for future manual additions when the algorithm misses someone the auditor knows belongs.
+
+## Audit decisions
+
+These are the explicit overrides applied when running the merge:
+
+### Excluded (`gb_exclusions.csv`)
+
+| Name | Reason |
+|---|---|
+| Florentín Smarandache | Self-published paper mill, not real research. |
+| Ramon Carbó-Dorca | Chemistry (quantum similarity), not number theory. |
+| Frank Vega | Crank: 113 OA works at 0.17 cites per paper. Known false positive. |
+
+### Name aliases (`gb_name_aliases.csv`)
+
+| Display name | MGP search / id |
+|---|---|
+| R. C. Vaughan | Robert Charles Vaughan, MGP id 27012 (forced; surname-only search ambiguates with Charles Vaughan id 225220). |
+| H. A. Helfgott | Harald Andres Helfgott (MGP id 69999). Search worked once full name was supplied. |
+
+## What's not in this list
+
+* **Researchers without an OpenAlex profile.** OA missed several Russian and Chinese number theorists from the 1960s-90s era. The genealogy supplement partially covers this gap but the list as built is biased toward digitally-indexed publication output.
+* **Subjective importance.** A theorist whose entire body of Goldbach work is one influential paper may rank lower than a productive researcher with many adjacent papers. We rank by output, not by depth.
+* **Goldbach-specific topical filtering.** OA's concept tagging is too noisy for math, so we filter by phrase match. Some of the 100 work mostly on adjacent topics (twin primes, prime gaps, sieve theory) rather than directly on Goldbach.
+
+## Versioning
+
+Every component of this pipeline is versioned. The Top 100 source data is `gb_top100_v02.csv`. The genealogy outputs are `mgp_explorer_v17_*` and `mgp_close_relations_v04.*`. The reading list is `gb_short_papers_v04.csv`. Re-running the pipeline produces the next version with a diff report.

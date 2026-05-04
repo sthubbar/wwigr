@@ -1,0 +1,175 @@
+/* Who's Who in Goldbach Research - custom styling
+   Design: simple, clear, academic. White background, dark text, blue links.
+   Typography: serif body, sans headings. Tier colors imported from the
+   master pipeline so map dots and table accents stay consistent.
+*/
+
+:root {
+  --wwigr-bg:        #ffffff;
+  --wwigr-text:      #1a1a1a;
+  --wwigr-muted:     #555555;
+  --wwigr-link:      #0b5ed7;
+  --wwigr-link-hover:#0a3d80;
+  --wwigr-accent:    #003366;
+  --wwigr-rule:      #d8d8d8;
+
+  /* Tier colors (match build_names_panel) */
+  --tier-top:      #b22222;  /* firebrick */
+  --tier-mid:      #cd9b1d;  /* goldenrod3 */
+  --tier-lower:    #5d2e8c;  /* purple4 */
+  --tier-isolated: #4682b4;  /* steelblue */
+}
+
+body {
+  background: var(--wwigr-bg);
+  color: var(--wwigr-text);
+  font-family: "Source Serif Pro", "Times New Roman", Georgia, serif;
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  color: var(--wwigr-accent);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.0rem; margin-top: 1.5rem; }
+h2 { font-size: 1.5rem; margin-top: 2.0rem; border-bottom: 1px solid var(--wwigr-rule); padding-bottom: 0.3rem; }
+h3 { font-size: 1.2rem; margin-top: 1.5rem; }
+
+a {
+  color: var(--wwigr-link);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--wwigr-link-hover);
+  text-decoration: underline;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--wwigr-rule);
+}
+.navbar-brand {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: var(--wwigr-accent) !important;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+table th {
+  background: #f5f5f5;
+  border-bottom: 2px solid var(--wwigr-accent);
+  padding: 0.4rem 0.8rem;
+  text-align: left;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+}
+table td {
+  padding: 0.3rem 0.8rem;
+  border-bottom: 1px solid #eeeeee;
+}
+table tr:hover td {
+  background: #f9f9f9;
+}
+
+.tier-top      { color: var(--tier-top);      font-weight: 600; }
+.tier-mid      { color: var(--tier-mid);      font-weight: 500; }
+.tier-lower    { color: var(--tier-lower); }
+.tier-isolated { color: var(--tier-isolated); }
+
+.muted { color: var(--wwigr-muted); }
+
+img.figure { display: block; max-width: 100%; margin: 1rem auto; }
+
+blockquote {
+  border-left: 3px solid var(--wwigr-accent);
+  margin-left: 0;
+  padding-left: 1rem;
+  color: var(--wwigr-muted);
+  font-style: italic;
+}
+
+.content-block {
+  background: #fafafa;
+  border-left: 3px solid var(--wwigr-accent);
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+}
+
+footer.page-footer {
+  border-top: 1px solid var(--wwigr-rule);
+  color: var(--wwigr-muted);
+  font-size: 0.85rem;
+  padding: 1rem 0;
+}
+
+
+/* Static site header/nav additions */
+.site-header {
+  border-bottom: 1px solid var(--wwigr-rule);
+  padding: 1rem 0 0.5rem 0;
+  margin-bottom: 1.5rem;
+}
+.site-header .brand a {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--wwigr-accent);
+  text-decoration: none;
+}
+.site-header nav {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+}
+.site-header nav a {
+  color: var(--wwigr-text);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-header nav a:hover {
+  color: var(--wwigr-link);
+  border-bottom-color: var(--wwigr-link);
+}
+.site-header nav a.nav-active {
+  color: var(--wwigr-accent);
+  border-bottom-color: var(--wwigr-accent);
+  font-weight: 600;
+}
+main {
+  padding: 0 1rem 2rem 1rem;
+}
+.subtitle {
+  color: var(--wwigr-muted);
+  font-size: 1.1rem;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}
+footer {
+  border-top: 1px solid var(--wwigr-rule);
+  margin-top: 3rem;
+  padding: 1rem;
+  color: var(--wwigr-muted);
+  font-size: 0.85rem;
+}
+.figure-page {
+  margin: 1.5rem -1rem;
+}
+.figure-page img {
+  width: 100%;
+  height: auto;
+}
+.dataTables_wrapper {
+  margin-top: 1rem;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who&#x27;s Who in Goldbach Research - Who's Who in Goldbach Research</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="./index.html">Who's Who in Goldbach Research</a></div>
+  <nav><a href="./index.html" class="nav-active">Home</a>
+<a href="./top100.html" class="">Top 100</a>
+<a href="./regions/north-america.html" class="">North America</a>
+<a href="./regions/europe.html" class="">Europe</a>
+<a href="./regions/asia.html" class="">Asia</a>
+<a href="./genealogy.html" class="">Genealogy</a>
+<a href="./reading-list.html" class="">Reading List</a>
+<a href="./methodology.html" class="">Methodology</a>
+<a href="./about.html" class="">About</a>
+</nav>
+</header>
+<main>
+<h1>Who&#x27;s Who in Goldbach Research</h1>
+<p class="subtitle">A directory of researchers working on the Goldbach conjecture</p>
+
+<div class="content-block">
+<p><strong>Christian Goldbach (1690-1764)</strong> wrote a letter to Leonhard Euler in 1742 conjecturing that every even integer greater than 2 is the sum of two primes. <strong>The conjecture is still open.</strong> Nearly three centuries later, mathematicians around the world continue to chip away at it.</p>
+<p>This site is a reference directory of those people. It catalogs the <strong>Top 100</strong> researchers most active on Goldbach and adjacent problems in additive prime number theory, gives their institutions, and provides a <a href="reading-list.html">curated reading list</a> of recent short papers for newcomers.</p>
+</div>
+
+<h2>How the list is built</h2>
+<p>Three independent signals are combined:</p>
+<ol>
+<li><strong>arXiv preprint output</strong> since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.</li>
+<li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
+<li><strong>The Mathematics Genealogy Project</strong>, which provides advisor-student trees for the people identified in the first two steps.</li>
+</ol>
+<p>The final ranking is a sum of arXiv-rank and OpenAlex-rank. People who score well in both pipelines rise. Two known false positives are explicitly excluded; full audit trail is in <a href="methodology.html">methodology</a>.</p>
+
+<h2>Top 100 at a glance</h2>
+<p>100 researchers, drawn from 24 countries.</p>
+
+<table><thead><tr><th>Country</th><th>Top 100 researchers</th></tr></thead><tbody><tr><td>US</td><td style='text-align:right'>27</td></tr><tr><td>GB</td><td style='text-align:right'>12</td></tr><tr><td>CN</td><td style='text-align:right'>12</td></tr><tr><td>FR</td><td style='text-align:right'>7</td></tr><tr><td>DE</td><td style='text-align:right'>6</td></tr><tr><td>CA</td><td style='text-align:right'>5</td></tr><tr><td>HU</td><td style='text-align:right'>3</td></tr><tr><td>AT</td><td style='text-align:right'>3</td></tr></tbody></table>
+
+<div class="figure-page">
+<img src="img/10_top100_overview.png" alt="World overview map of Top 100 Goldbach researchers">
+</div>
+
+<h2>Where to start</h2>
+<ul>
+<li><a href="top100.html"><strong>The Top 100</strong></a> is the canonical ranked list, sortable in your browser.</li>
+<li>Regional listings: <a href="regions/north-america.html">North America</a>, <a href="regions/europe.html">Europe</a>, <a href="regions/asia.html">Asia</a>.</li>
+<li><a href="reading-list.html"><strong>Reading list</strong></a>: 2,000+ short Goldbach papers from 2018 onward, with clickable links.</li>
+<li><a href="methodology.html"><strong>Methodology</strong></a>: how the data is built, audit decisions, and limitations.</li>
+</ul>
+
+<h2>Citing this site</h2>
+<blockquote>Hubbard, S. (2026). <em>Who's Who in Goldbach Research</em>. https://wwigr.org</blockquote>
+
+</main>
+<footer>
+<p>Maintained by Steve Hubbard. Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Last built May 2026.</p>
+</footer>
+</body>
+</html>

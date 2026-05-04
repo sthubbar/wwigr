@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematical Genealogy - Who's Who in Goldbach Research</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="./index.html">Who's Who in Goldbach Research</a></div>
+  <nav><a href="./index.html" class="">Home</a>
+<a href="./top100.html" class="">Top 100</a>
+<a href="./regions/north-america.html" class="">North America</a>
+<a href="./regions/europe.html" class="">Europe</a>
+<a href="./regions/asia.html" class="">Asia</a>
+<a href="./genealogy.html" class="nav-active">Genealogy</a>
+<a href="./reading-list.html" class="">Reading List</a>
+<a href="./methodology.html" class="">Methodology</a>
+<a href="./about.html" class="">About</a>
+</nav>
+</header>
+<main>
+<h1>Mathematical Genealogy</h1>
+<p class="subtitle">Advisor-student lineage of the Top 100</p>
+
+<p>Every PhD mathematician has an advisor, and every advisor has an advisor. The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> catalogs this lineage globally. We use it to identify researchers who are not in the algorithmic Top 100 by publication count but who are tightly connected to the Top 100 through advisor-student relationships.</p>
+
+<h2>How the genealogy graph is built</h2>
+<p>For each Top 100 researcher we look up their MGP record and pull their full advisor and descendant tree. The union of these trees forms a single graph where:</p>
+<ul>
+<li><strong>Nodes</strong> are individual mathematicians (each with a unique MGP id).</li>
+<li><strong>Edges</strong> are advisor-student relationships.</li>
+<li>The Top 100 are the <strong>canonical seeds</strong>.</li>
+<li>Everyone else in the graph is an <strong>outsider</strong>.</li>
+</ul>
+<p>Outsiders are then ranked by their network proximity to the canonical set. Five outsiders qualify as <strong>close relations</strong> under our cutoff (Personalized PageRank above the canonical-seed median).</p>
+
+<h2>Close relations</h2>
+<p>These five researchers are not in the Top 100 by publication signal, but the genealogy network puts them in the immediate orbit of multiple canonical Top 100 figures.</p>
+
+<table id="crtbl" class="display compact stripe hover" style="width:100%">
+<thead><tr><th>Rank</th><th>Quartile</th><th>PPR score</th><th>Continent</th><th>Name</th><th>Year</th><th>University</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Q1</td><td>0.00562</td><td>E</td><td>Olli Järviniemi</td><td>2023</td><td>Turun yliopisto</td></tr>
+<tr><td>2</td><td>Q1</td><td>0.00537</td><td>N</td><td>Russell Sherman Lehman</td><td>1954</td><td>Stanford University</td></tr>
+<tr><td>3</td><td>Q2</td><td>0.00469</td><td>A</td><td>Chengdong Pan (潘承洞)</td><td>1961</td><td>Peking University</td></tr>
+<tr><td>4</td><td>Q3</td><td>0.00463</td><td>E</td><td>Anatoly Alekseevich Karatsuba</td><td>1962</td><td>Lomonosov Moscow State University</td></tr>
+<tr><td>5</td><td>Q4</td><td>0.00433</td><td>A</td><td>Wenguang Zhai (翟文广)</td><td>1996</td><td>Shandong University</td></tr>
+
+</tbody>
+</table>
+<script>
+$(document).ready(function() {
+  $('#crtbl').DataTable({ paging: false, ordering: true, order: [[0, 'asc']], info: false, searching: false });
+});
+</script>
+
+
+<h2>Notes on these five</h2>
+<ul>
+<li><strong>Olli Järviniemi</strong> (Turku, 2023): young Finnish number theorist with a recent PhD; the genealogy graph picks him up via close ties to Matomäki and Tao.</li>
+<li><strong>Pan Chengdong (潘承洞)</strong> (Peking, 1961): one of the founders of the Chinese Goldbach school. Student of Hua Luogeng. Did major work on Goldbach in the 1960s-70s.</li>
+<li><strong>Anatoly Karatsuba</strong> (Moscow, 1962): foundational Russian number theorist (exponential sums, zeta function zeros). Deceased 2008.</li>
+<li><strong>Wenguang Zhai</strong> (Shandong, 1996): active Chinese number theorist.</li>
+<li><strong>Russell Sherman Lehman</strong> (Stanford, 1954): older generation, computed early class number tables.</li>
+</ul>
+
+</main>
+<footer>
+<p>Maintained by Steve Hubbard. Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Last built May 2026.</p>
+</footer>
+</body>
+</html>

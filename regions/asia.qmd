@@ -1,0 +1,47 @@
+---
+title: "Asia and Oceania"
+subtitle: "Top 100 researchers based in Asia, the Middle East, and Oceania"
+date: today
+date-format: "MMMM YYYY"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(DT)
+top100 <- read.csv("../../out/gb_top100_v02.csv",
+                   stringsAsFactors = FALSE,
+                   fileEncoding = "UTF-8")
+A_COUNTRIES <- c("CN","JP","KR","IN","PK","BD","ID","TH","VN","PH","MY","SG",
+                 "TW","HK","MN","KZ","UZ","KG","AF","LK","MM","KH","LA","BT",
+                 "NP","MV","AE","SA","QA","OM","YE","IQ","IR","AU","NZ","FJ",
+                 "PG","NC","WS","TO")
+as_pts <- top100 %>%
+  filter(country %in% A_COUNTRIES) %>%
+  arrange(merged_rank)
+```
+
+`r nrow(as_pts)` Top 100 researchers are based in Asia, the Middle East, or Oceania.
+
+::: {.column-page}
+![](../../out/13_top100_asia.png){fig-alt="Map of Asian Top 100 researchers"}
+:::
+
+## Listing
+
+```{r as-table}
+display <- as_pts %>%
+  transmute(
+    Rank        = merged_rank,
+    Name        = name,
+    Institution = institution,
+    Country     = country
+  )
+DT::datatable(
+  display,
+  rownames = FALSE,
+  options = list(pageLength = 25, dom = 'fltip',
+                 order = list(list(0, 'asc'))),
+  class = 'compact stripe hover'
+)
+```

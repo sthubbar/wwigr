@@ -1,0 +1,48 @@
+---
+title: "Europe"
+subtitle: "Top 100 researchers based in Europe"
+date: today
+date-format: "MMMM YYYY"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(DT)
+top100 <- read.csv("../../out/gb_top100_v02.csv",
+                   stringsAsFactors = FALSE,
+                   fileEncoding = "UTF-8")
+EU_COUNTRIES <- c("GB","FR","DE","IT","ES","NL","CH","AT","BE","DK","FI","GR",
+                  "HU","IE","IS","LU","MT","NO","PL","PT","RO","SE","SI","SK",
+                  "BG","CZ","EE","LT","LV","HR","RS","MK","BA","AL","ME","BY",
+                  "RU","UA","MD","GE","AM","AZ","TJ","TR","CY","IL","PS","JO",
+                  "LB","SY")
+eu_pts <- top100 %>%
+  filter(country %in% EU_COUNTRIES) %>%
+  arrange(merged_rank)
+```
+
+`r nrow(eu_pts)` Top 100 researchers are based in Europe.
+
+::: {.column-page}
+![](../../out/12_top100_europe.png){fig-alt="Map of European Top 100 researchers"}
+:::
+
+## Listing
+
+```{r eu-table}
+display <- eu_pts %>%
+  transmute(
+    Rank        = merged_rank,
+    Name        = name,
+    Institution = institution,
+    Country     = country
+  )
+DT::datatable(
+  display,
+  rownames = FALSE,
+  options = list(pageLength = 25, dom = 'fltip',
+                 order = list(list(0, 'asc'))),
+  class = 'compact stripe hover'
+)
+```

@@ -1,0 +1,63 @@
+---
+title: "Who's Who in Goldbach Research"
+subtitle: "A directory of researchers working on the Goldbach conjecture"
+date: today
+date-format: "MMMM YYYY"
+toc: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+top100 <- read.csv("../out/gb_top100_v02.csv",
+                   stringsAsFactors = FALSE,
+                   fileEncoding = "UTF-8")
+```
+
+::: {.content-block}
+**Christian Goldbach** (1690-1764) wrote a letter to Leonhard Euler in 1742 conjecturing that every even integer greater than 2 is the sum of two primes. **The conjecture is still open.** Nearly three centuries later, mathematicians around the world continue to chip away at it.
+
+This site is a reference directory of those people. It catalogs the **Top 100** researchers most active on Goldbach and adjacent problems in additive prime number theory, gives their institutions, and provides a curated reading list of recent short papers for newcomers.
+:::
+
+## How the list is built
+
+Three independent signals are combined:
+
+1. **arXiv preprint output** since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.
+2. **OpenAlex topical citations** for the Goldbach phrases (`Goldbach conjecture`, `Goldbach problem`, `Goldbach's conjecture`).
+3. **The Mathematics Genealogy Project**, which provides advisor-student trees for the people identified in steps 1 and 2.
+
+The final ranking is a sum of arXiv-rank and OpenAlex-rank. People who score well in both pipelines rise; people only in one are still included if their combined position is competitive. Two researchers (a paper-mill and an off-topic chemist) are explicitly excluded; full audit trail is in [methodology](methodology.qmd).
+
+## Top 100 at a glance
+
+`r nrow(top100)` researchers, drawn from `r length(unique(top100$country[top100$country != ""]))` countries.
+
+```{r country-summary}
+country_summary <- top100 %>%
+  filter(!is.na(country), country != "") %>%
+  count(country, name = "researchers") %>%
+  arrange(desc(researchers)) %>%
+  head(8)
+knitr::kable(country_summary,
+             col.names = c("Country", "Top 100 researchers"),
+             align = c("l", "r"))
+```
+
+::: {.column-page}
+![](../out/10_top100_overview.png){fig-alt="World overview map of Top 100 Goldbach researchers"}
+:::
+
+## Where to start
+
+* **[The Top 100](top100.qmd)** is the canonical ranked list, sortable in your browser.
+* **Regional listings** are linked from the navigation: [North America](regions/north-america.qmd), [Europe](regions/europe.qmd), [Asia](regions/asia.qmd).
+* **[Reading list](reading-list.qmd)** has 2,000+ short Goldbach papers from 2018 onward, sorted shortest first, each with a clickable link to the full paper.
+* **[Methodology](methodology.qmd)** documents how the data is built, the audit decisions, and the limitations.
+
+## Citing this site
+
+> Hubbard, S. (2026). *Who's Who in Goldbach Research*. https://wwigr.org
+
+Underlying data sources: [arXiv](https://arxiv.org), [OpenAlex](https://openalex.org), [Mathematics Genealogy Project](https://www.mathgenealogy.org).

@@ -1,0 +1,58 @@
+---
+title: "Reading List"
+subtitle: "Short, recent Goldbach papers (2018-2026)"
+date: today
+date-format: "MMMM YYYY"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(DT)
+papers <- read.csv("../out-oa/gb_short_papers_v04.csv",
+                   stringsAsFactors = FALSE,
+                   fileEncoding = "UTF-8")
+```
+
+A curated list of short Goldbach-relevant papers, sorted shortest first. The intended audience is a strong undergraduate or motivated high school student who wants to read recent research without committing to a 60-page monograph.
+
+::: {.content-block}
+**How the list was built.** OpenAlex was queried for all papers matching `Goldbach conjecture`, `Goldbach problem`, or `Goldbach's conjecture` published since 2018. Filters applied: at most 10 authors (no physics megapapers), at most 15 pages when page count is known. Sort: shortest first, then most recent, then most cited.
+:::
+
+`r nrow(papers)` papers in total. Click any title to open the full paper.
+
+```{r reading-table}
+display <- papers %>%
+  mutate(
+    title_link = ifelse(nzchar(best_url),
+                        sprintf('<a href="%s" target="_blank">%s</a>',
+                                best_url, title),
+                        title),
+    pages_disp = ifelse(is.na(pages) | pages == "", "?", as.character(pages))
+  ) %>%
+  transmute(
+    `#`     = rank_placeholder,
+    Pages   = pages_disp,
+    Year    = year,
+    Cites   = cites,
+    Title   = title_link,
+    Authors = substr(authors, 1, 80)
+  )
+
+DT::datatable(
+  display,
+  rownames = FALSE,
+  escape = FALSE,
+  options = list(
+    pageLength = 50,
+    lengthMenu = c(25, 50, 100, 200),
+    order = list(list(1, 'asc')),
+    dom = 'fltip',
+    columnDefs = list(
+      list(className = 'text-right', targets = c(0, 1, 2, 3))
+    )
+  ),
+  class = 'compact stripe hover'
+)
+```

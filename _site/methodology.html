@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology - Who's Who in Goldbach Research</title>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="./index.html">Who's Who in Goldbach Research</a></div>
+  <nav><a href="./index.html" class="">Home</a>
+<a href="./top100.html" class="">Top 100</a>
+<a href="./regions/north-america.html" class="">North America</a>
+<a href="./regions/europe.html" class="">Europe</a>
+<a href="./regions/asia.html" class="">Asia</a>
+<a href="./genealogy.html" class="">Genealogy</a>
+<a href="./reading-list.html" class="">Reading List</a>
+<a href="./methodology.html" class="nav-active">Methodology</a>
+<a href="./about.html" class="">About</a>
+</nav>
+</header>
+<main>
+<h1>Methodology</h1>
+<p class="subtitle">How the rankings are built</p>
+
+<p>This page documents how the Top 100 list is constructed, what's in the data, and what's deliberately out.</p>
+
+<h2>Data sources</h2>
+
+<table>
+<thead><tr><th>Source</th><th>What it gives</th><th>Limitations</th></tr></thead>
+<tbody>
+<tr><td><strong>arXiv</strong> (math.NT, math.CO)</td><td>Preprint-level: titles, abstracts, authors, dates, co-author graph</td><td>Biased toward people who post preprints. Senior figures who publish only in journals are undercounted.</td></tr>
+<tr><td><strong>OpenAlex</strong></td><td>Author-level: paper count, citations, affiliations, country</td><td>Concept tagging is noisy in math; surname-only matching can misidentify.</td></tr>
+<tr><td><strong>Math Genealogy Project</strong></td><td>Advisor-student trees</td><td>Dissertation-era affiliations only; gaps for some non-Western mathematicians.</td></tr>
+</tbody>
+</table>
+
+<h2>Pipeline</h2>
+<ol>
+<li><strong>arXiv pull</strong>: 17 search terms (Goldbach, prime gap, twin prime, Vinogradov, Hardy-Littlewood, sum of two primes, etc.) restricted to math.NT and math.CO categories. Co-authorship graph computed; eigenvector centrality is the second factor in an arXiv composite of <code>0.60 * pr(papers) + 0.40 * pr(eigen)</code>. Authors with at least 3 topical papers qualify. Result: 155 names.</li>
+
+<li><strong>OpenAlex pull</strong>: same 17 terms, then trimmed to the 13 Tier 2-and-up terms after a per-term audit. The standalone term <code>Goldbach</code> was replaced with three phrase variants (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>) to remove surname-collision noise (a Wageningen virologist named Rob Goldbach was dragging his collaboration cluster into the list). Author cap of 10 to remove physics megapapers. Composite: <code>0.60 * pr(topical_papers) + 0.40 * pr(topical_citations)</code>. Result: 1,113 ranked authors.</li>
+
+<li><strong>Merge</strong>: surname-deduplicated arXiv 155 plus OpenAlex top 200, joined by surname. Each surname has a <code>sum_rank = arx_rank + oa_rank</code>. Names not in arXiv get arx_rank = 156; names not in OA get oa_rank = 1114. Sort by sum_rank ascending and take the top 100.</li>
+
+<li><strong>Hand-curated edits</strong>: an exclusions file removes three known false positives (Smarandache, Carbó-Dorca, Vega). A name-aliases file forces correct MGP id lookups for Robert Vaughan and Harald Helfgott.</li>
+
+<li><strong>Genealogy reseeded</strong>: the Top 100 becomes the canonical seed list for the MGP graph. Five close-relations surface from the network analysis.</li>
+</ol>
+
+<h2>Audit decisions</h2>
+
+<h3>Excluded</h3>
+<table>
+<thead><tr><th>Name</th><th>Reason</th></tr></thead>
+<tbody>
+<tr><td>Florentín Smarandache</td><td>Self-published paper mill, not real research.</td></tr>
+<tr><td>Ramon Carbó-Dorca</td><td>Chemistry (quantum similarity), not number theory.</td></tr>
+<tr><td>Frank Vega</td><td>Crank: 113 OA works at 0.17 cites per paper. Known false positive.</td></tr>
+</tbody>
+</table>
+
+<h3>Name aliases (forced MGP ids)</h3>
+<table>
+<thead><tr><th>Display name</th><th>Forced MGP record</th></tr></thead>
+<tbody>
+<tr><td>R. C. Vaughan</td><td>Robert Charles Vaughan, MGP id 27012 (surname-only ambiguates with Charles Vaughan id 225220)</td></tr>
+<tr><td>H. A. Helfgott</td><td>Harald Andres Helfgott, MGP id 69999</td></tr>
+</tbody>
+</table>
+
+<h2>What's not in this list</h2>
+<ul>
+<li><strong>Researchers without an OpenAlex profile.</strong> OA missed several Russian and Chinese number theorists from the 1960s-90s era. The genealogy supplement partially covers this gap but the list is biased toward digitally-indexed publication output.</li>
+<li><strong>Subjective importance.</strong> A theorist whose entire body of Goldbach work is one influential paper may rank lower than a productive researcher with many adjacent papers. We rank by output, not by depth.</li>
+<li><strong>Goldbach-specific topical filtering.</strong> OA's concept tagging is too noisy for math, so we filter by phrase match. Some of the 100 work mostly on adjacent topics (twin primes, prime gaps, sieve theory) rather than directly on Goldbach.</li>
+</ul>
+
+</main>
+<footer>
+<p>Maintained by Steve Hubbard. Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Last built May 2026.</p>
+</footer>
+</body>
+</html>

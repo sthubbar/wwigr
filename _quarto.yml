@@ -1,0 +1,60 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Who's Who in Goldbach Research"
+  description: |
+    A reference directory of researchers working on the Goldbach conjecture
+    and adjacent problems in additive prime number theory. Built from arXiv
+    preprints, OpenAlex publication data, and the Mathematics Genealogy
+    Project.
+  site-url: "https://wwigr.org"
+  reader-mode: false
+  page-navigation: true
+  navbar:
+    background: light
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: top100.qmd
+        text: Top 100
+      - text: Regions
+        menu:
+          - href: regions/north-america.qmd
+            text: North America
+          - href: regions/europe.qmd
+            text: Europe
+          - href: regions/asia.qmd
+            text: Asia
+      - href: genealogy.qmd
+        text: Genealogy
+      - href: reading-list.qmd
+        text: Reading List
+      - href: methodology.qmd
+        text: Methodology
+      - href: about.qmd
+        text: About
+  page-footer:
+    left: |
+      Maintained by Steve Hubbard. Data current as of {{< meta date >}}.
+    right: |
+      [Source data and methodology](methodology.qmd)
+
+format:
+  html:
+    theme:
+      light: cosmo
+    css: styles.css
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    code-fold: true
+    code-tools: false
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    df-print: paged
+
+execute:
+  freeze: auto

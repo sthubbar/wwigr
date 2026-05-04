@@ -1,0 +1,64 @@
+---
+title: "Mathematical Genealogy"
+subtitle: "Advisor-student lineage of the Top 100"
+date: today
+date-format: "MMMM YYYY"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(DT)
+close_rel <- read.csv("../out-mg/mgp_close_relations_v04.csv",
+                      stringsAsFactors = FALSE,
+                      fileEncoding = "UTF-8")
+```
+
+Every PhD mathematician has an advisor, and every advisor has an advisor. The Mathematics Genealogy Project (MGP) catalogs this lineage globally. We use it to identify researchers who are not in the algorithmic Top 100 by publication count but who are tightly connected to the Top 100 through advisor-student relationships.
+
+## How the genealogy graph is built
+
+For each Top 100 researcher we look up their MGP record and pull their full advisor and descendant tree. The union of these trees forms a single graph where:
+
+* **Nodes** are individual mathematicians (each with a unique MGP id).
+* **Edges** are advisor-student relationships.
+* The Top 100 are the **canonical seeds**.
+* Everyone else in the graph is an **outsider**.
+
+Outsiders are then ranked by their network proximity to the canonical set. Five outsiders qualify as **close relations** under our cutoff (Personalized PageRank above the canonical-seed median).
+
+## Close relations
+
+These five researchers are not in the Top 100 by publication signal, but the genealogy network puts them in the immediate orbit of multiple canonical Top 100 figures.
+
+```{r close-table}
+display <- close_rel %>%
+  transmute(
+    Rank      = close_rank,
+    Quartile  = quartile,
+    `PPR score` = sprintf("%.5f", pprank),
+    Continent = continent,
+    Name      = name,
+    Year      = year,
+    University = university
+  )
+DT::datatable(
+  display,
+  rownames = FALSE,
+  options = list(pageLength = 25, dom = 't',
+                 order = list(list(0, 'asc'))),
+  class = 'compact stripe hover'
+)
+```
+
+Worth noting in this list:
+
+* **Olli Järviniemi** (Turku, 2023): young Finnish number theorist with a recent PhD; the genealogy graph picks him up via close ties to Matomäki and Tao.
+* **Pan Chengdong** (Peking, 1961): one of the founders of the Chinese Goldbach school. Student of Hua Luogeng. Did major work on Goldbach in the 1960s-70s.
+* **Anatoly Karatsuba** (Moscow, 1962): foundational Russian number theorist (exponential sums, zeta function zeros). Deceased 2008.
+* **Wenguang Zhai** (Shandong, 1996): active Chinese number theorist.
+* **Russell Sherman Lehman** (Stanford, 1954): older generation, computed early class number tables.
+
+## Why this list isn't longer
+
+The 50th-percentile-of-canonical PPR cutoff is deliberately strict. Loosening it to the 25th percentile produces a list of ~89 names that includes both more legitimate senior figures and more graph artifacts (advisors of canonical seeds whose own work is in unrelated fields). The five-name cutoff is conservative.

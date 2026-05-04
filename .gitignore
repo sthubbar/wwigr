@@ -1,0 +1,6 @@
+.quarto/
+about_files/
+node_modules/
+.wrangler/
+*.zip
+zi*

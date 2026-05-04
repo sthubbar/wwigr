@@ -1,0 +1,6 @@
+name = "wwigr"
+compatibility_date = "2026-05-04"
+
+[assets]
+directory = "./_site"
+not_found_handling = "404-page"

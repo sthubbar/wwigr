@@ -1,0 +1,60 @@
+---
+title: "The Top 100"
+subtitle: "Researchers active on Goldbach and adjacent problems"
+date: today
+date-format: "MMMM YYYY"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(DT)
+top100 <- read.csv("../out/gb_top100_v02.csv",
+                   stringsAsFactors = FALSE,
+                   fileEncoding = "UTF-8")
+```
+
+The list is sortable on any column. Type in the search box to filter by name, institution, or country.
+
+```{r top100-table}
+display <- top100 %>%
+  transmute(
+    Rank        = merged_rank,
+    Name        = name,
+    Institution = institution,
+    Country     = country,
+    `arXiv rank` = ifelse(arx_rank == 156, "-", as.character(arx_rank)),
+    `OA rank`   = ifelse(oa_rank == 1114,  "-", as.character(oa_rank)),
+    Source      = provenance,
+    `First year` = first_year,
+    `Last year`  = last_year
+  )
+
+DT::datatable(
+  display,
+  rownames = FALSE,
+  options = list(
+    pageLength = 25,
+    lengthMenu = c(25, 50, 100),
+    order = list(list(0, 'asc')),
+    dom = 'fltip'
+  ),
+  class = 'compact stripe hover'
+)
+```
+
+## Provenance breakdown
+
+* **`both`**: in arXiv 155 AND OpenAlex top pool. The unanimous core.
+* **`oa_only`**: discovered by OpenAlex but not arXiv-active. These are the senior figures who publish in journals and don't post preprints.
+* **`arxiv_only`**: present only if at least one arXiv-only entry made the sum_rank cutoff (currently 0 of 100; sum penalty for not appearing in OA is large).
+* **`manual_add`**: manually inserted via `gb_manual_additions.csv` after auditor review.
+
+```{r provenance}
+prov <- top100 %>% count(provenance, name = "n") %>% arrange(desc(n))
+knitr::kable(prov, col.names = c("Source", "Count"), align = c("l", "r"))
+```
+
+## Limitations
+
+This list reflects publication output and citation network density, not subjective importance. A working theorist whose entire body of Goldbach work is one influential paper may rank lower than a productive researcher with many adjacent papers. For historical perspective and active-research-front, this list is a starting point, not a verdict.
