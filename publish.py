@@ -368,19 +368,24 @@ def render_profiles(people, oa_ids, homepages):
         if orcid:
             add("ORCID", f'<a href="https://orcid.org/{orcid}" target="_blank" rel="noopener">{orcid}</a>')
 
-        links = []
         hp = homepages.get(r["name"])
+        host = ""
         if hp:
-            links.append(f'<a href="{esc(hp)}" target="_blank" rel="noopener">Homepage</a>')
+            host = hp.split("//", 1)[-1].split("/", 1)[0]
+            if host.startswith("www."):
+                host = host[4:]
+        hp_block = (f'<p class="profile-homepage"><strong>Homepage</strong> &middot; '
+                    f'<a href="{esc(hp)}" target="_blank" rel="noopener">{esc(host)}</a></p>'
+                    if hp else "")
         oaid = oa_ids.get(r["name"])
-        if oaid:
-            links.append(f'<a href="https://openalex.org/{oaid}" target="_blank" rel="noopener">Publication record on OpenAlex</a>')
-        links_html = ("<p>" + " &middot; ".join(links) + "</p>") if links else ""
+        links_html = (f'<p><a href="https://openalex.org/{oaid}" target="_blank" '
+                      f'rel="noopener">Publication record on OpenAlex</a></p>'
+                      if oaid else "")
 
         body = f"""<p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
 <h1>{esc(r['name'])}</h1>
 <p class="subtitle">{esc(r['institution'])} ({esc(r['country'])})</p>
-
+{hp_block}
 <p>Number {r['display_rank']} on the wwigr.org Top 100 of researchers active on the Goldbach conjecture and adjacent problems in additive prime number theory.</p>
 
 <table class="profile-table">

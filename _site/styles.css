@@ -186,3 +186,13 @@ footer {
 /* Researcher profile pages */
 .profile-table { max-width: 560px; }
 .profile-table td:first-child { color: var(--wwigr-muted); width: 42%; }
+
+/* Homepage callout at the top of a researcher profile */
+.profile-homepage {
+  background: #eef3f9;
+  border-left: 3px solid var(--wwigr-accent);
+  padding: 0.55rem 1rem;
+  margin: 0.7rem 0 1.3rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.05rem;
+}
