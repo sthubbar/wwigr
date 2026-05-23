@@ -7,5 +7,7 @@ authors:
     given-names: "Steve"
 url: "https://wwigr.org"
 repository-code: "https://github.com/sthubbar/wwigr"
+doi: "10.5281/zenodo.20355375"
+version: "v1.0"
 license: CC-BY-4.0
 date-released: "2026-05-23"
