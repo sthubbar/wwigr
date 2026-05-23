@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Who's Who in Goldbach Research"
+message: "If you use this directory or its dataset, please cite it as below."
+type: dataset
+authors:
+  - family-names: "Hubbard"
+    given-names: "Steve"
+url: "https://wwigr.org"
+repository-code: "https://github.com/sthubbar/wwigr"
+license: CC-BY-4.0
+date-released: "2026-05-23"
