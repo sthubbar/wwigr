@@ -355,9 +355,13 @@ def render_profiles(people, oa_ids, homepages):
             if val not in (None, "", "NA"):
                 meta.append(f"<tr><td>{label}</td><td>{val}</td></tr>")
 
-        add("Rank on the Top 100", f"#{r['display_rank']}")
-        add("Institution", esc(r["institution"]))
-        add("Country", esc(r["country"]))
+        hp = homepages.get(r["name"])
+        if hp:
+            host = hp.split("//", 1)[-1].split("/", 1)[0]
+            if host.startswith("www."):
+                host = host[4:]
+            add("Homepage", f'<a href="{esc(hp)}" target="_blank" '
+                f'rel="noopener">{esc(host)}</a>')
         add("Born", (r.get("birth_date") or "")[:4])
         add("Doctoral advisor", esc(e.get("advisor") or ""))
         add("arXiv Goldbach-topical papers", r.get("arx_papers"))
@@ -366,27 +370,17 @@ def render_profiles(people, oa_ids, homepages):
         add("Active years", f"{r['first_year']} to {r['last_year']}")
         orcid = e.get("orcid") or ""
         if orcid:
-            add("ORCID", f'<a href="https://orcid.org/{orcid}" target="_blank" rel="noopener">{orcid}</a>')
+            add("ORCID", f'<a href="https://orcid.org/{orcid}" '
+                f'target="_blank" rel="noopener">{orcid}</a>')
 
-        hp = homepages.get(r["name"])
-        host = ""
-        if hp:
-            host = hp.split("//", 1)[-1].split("/", 1)[0]
-            if host.startswith("www."):
-                host = host[4:]
-        hp_block = (f'<p class="profile-homepage"><strong>Homepage</strong> &middot; '
-                    f'<a href="{esc(hp)}" target="_blank" rel="noopener">{esc(host)}</a></p>'
-                    if hp else "")
         oaid = oa_ids.get(r["name"])
         links_html = (f'<p><a href="https://openalex.org/{oaid}" target="_blank" '
                       f'rel="noopener">Publication record on OpenAlex</a></p>'
                       if oaid else "")
 
         body = f"""<p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
-<h1>{esc(r['name'])}</h1>
+<h1>{esc(r['name'])} (#{r['display_rank']})</h1>
 <p class="subtitle">{esc(r['institution'])} ({esc(r['country'])})</p>
-{hp_block}
-<p>Number {r['display_rank']} on the wwigr.org Top 100 of researchers active on the Goldbach conjecture and adjacent problems in additive prime number theory.</p>
 
 <table class="profile-table">
 <tbody>
