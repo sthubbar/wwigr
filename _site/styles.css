@@ -173,3 +173,12 @@ footer {
 .dataTables_wrapper {
   margin-top: 1rem;
 }
+
+/* Callout box: explanatory asides on Top 100 and In Memoriam */
+.callout {
+  background: #f0f5fb;
+  border-left: 3px solid var(--wwigr-link);
+  padding: 0.8rem 1rem;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+}

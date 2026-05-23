@@ -39,4 +39,4 @@ Questions, corrections, or additions: [admin@wwigr.org](mailto:admin@wwigr.org).
 
 ## License and reuse
 
-The data on this site is built from public sources (arXiv, OpenAlex, MGP) under their respective license terms. The compiled list and methodology are released under CC-BY 4.0: feel free to reuse with attri
+The data on this site is built from public sources (arXiv, OpenAlex, MGP) under their respective license terms. The compiled list and methodology are released under CC-BY 4.0: feel free to reuse with attribution.
