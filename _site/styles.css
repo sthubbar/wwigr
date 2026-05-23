@@ -182,3 +182,7 @@ footer {
   margin: 1.2rem 0;
   font-size: 0.95rem;
 }
+
+/* Researcher profile pages */
+.profile-table { max-width: 560px; }
+.profile-table td:first-child { color: var(--wwigr-muted); width: 42%; }
