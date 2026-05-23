@@ -530,16 +530,6 @@ def render_data(living, enr):
     _write("data.html", _page("Data and citation", body, "data.html"))
 
 
-def copy_pngs():
-    img_dir = SITE / "img"
-    img_dir.mkdir(parents=True, exist_ok=True)
-    for name in ["10_top100_overview.png", "11_top100_north_america.png",
-                 "12_top100_europe.png", "13_top100_asia.png"]:
-        src = UP / "out" / name
-        if src.exists() and not DRY:
-            shutil.copy2(src, img_dir / name)
-
-
 def write_sitemap_robots():
     if DRY:
         return
@@ -592,7 +582,6 @@ def main():
     render_reading_list()
     render_data(top100, enr)
     render_profiles(top100, oa_ids, homepages)
-    copy_pngs()
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
 
