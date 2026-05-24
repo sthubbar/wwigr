@@ -30,6 +30,7 @@ import shutil
 import sys
 import unicodedata
 import datetime
+import urllib.parse
 from collections import Counter
 from pathlib import Path
 
@@ -206,6 +207,32 @@ def load_homepages():
     return hp
 
 
+def load_scholar():
+    sc = {}
+    path = ROOT / "scholar.csv"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                if (r.get("url") or "").strip():
+                    sc[r["name"]] = r["url"].strip()
+    return sc
+
+
+def load_genealogy():
+    path = ROOT / "genealogy.csv"
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def scholar_search_url(name):
+    import re
+    base = re.sub(r"\s*\([^)]*\)", "", name or "").strip()
+    q = urllib.parse.quote_plus(base + " number theory")
+    return "https://scholar.google.com/scholar?q=" + q
+
+
 def load_pool():
     rows = []
     for pat in ("out/gb_top100_*.csv", "out/gb_next100_*.csv"):
@@ -346,7 +373,7 @@ def render_inmemoriam(deceased):
     _write("in-memoriam.html", _page("In Memoriam", body, "in-memoriam.html"))
 
 
-def render_profiles(people, oa_ids, homepages):
+def render_profiles(people, oa_ids, homepages, scholar):
     for r in people:
         e = r.get("_enr", {})
         meta = []
@@ -362,6 +389,15 @@ def render_profiles(people, oa_ids, homepages):
                 host = host[4:]
             add("Homepage", f'<a href="{esc(hp)}" target="_blank" '
                 f'rel="noopener">{esc(host)}</a>')
+        else:
+            add("Homepage", "N/A")
+        sch = scholar.get(r["name"])
+        if sch:
+            add("Google Scholar", f'<a href="{esc(sch)}" target="_blank" '
+                f'rel="noopener">View profile</a>')
+        else:
+            add("Google Scholar", f'<a href="{esc(scholar_search_url(r["name"]))}" '
+                f'target="_blank" rel="noopener">Search results</a>')
         add("Born", (r.get("birth_date") or "")[:4])
         add("Doctoral advisor", esc(e.get("advisor") or ""))
         add("arXiv Goldbach-topical papers", r.get("arx_papers"))
@@ -392,8 +428,54 @@ def render_profiles(people, oa_ids, homepages):
 """
         rel = f"people/{r['slug']}.html"
         _write(rel, _page(r["name"], body, rel, depth=1))
+    n_hp = sum(1 for r in people if homepages.get(r['name']))
+    n_sc = sum(1 for r in people if scholar.get(r['name']))
     print(f"  {len(people)} profile pages "
-          f"({sum(1 for r in people if homepages.get(r['name']))} with a homepage link)")
+          f"({n_hp} with a homepage, {n_sc} with a Scholar profile)")
+
+
+def render_genealogy_profiles(people):
+    if not people:
+        return
+    for r in people:
+        meta = []
+
+        def add(label, val):
+            if val not in (None, "", "NA"):
+                meta.append(f"<tr><td>{label}</td><td>{val}</td></tr>")
+
+        sch = (r.get("scholar_url") or "").strip()
+        if sch:
+            add("Google Scholar", f'<a href="{esc(sch)}" target="_blank" '
+                f'rel="noopener">View profile</a>')
+        else:
+            add("Google Scholar", f'<a href="{esc(scholar_search_url(r["name"]))}" '
+                f'target="_blank" rel="noopener">Search results</a>')
+        add("Close-relation rank", f'{r.get("rank", "")} of 5')
+        add("PhD year", r.get("phd_year"))
+        add("University", esc(r.get("university") or ""))
+        add("Lifespan", r.get("lifespan"))
+        add("Network proximity (PPR score)", r.get("ppr"))
+
+        note = esc(r.get("note") or "")
+        body = f"""<p class="subtitle"><a href="../genealogy.html">&larr; Back to Genealogy</a></p>
+<h1>{esc(r['name'])}</h1>
+<p class="subtitle">{esc(r.get('university') or '')}</p>
+
+<p>A <strong>close relation</strong> of the Top 100: not in the algorithmic ranking by publication count, but placed in the immediate orbit of canonical Goldbach researchers by the Mathematics Genealogy Project's advisor-student network.</p>
+
+<table class="profile-table">
+<tbody>
+{chr(10).join(meta)}
+</tbody>
+</table>
+
+<p>{note}</p>
+<p class="callout">Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
+"""
+        rel = f"people/{r['slug']}.html"
+        _write(rel, _page(r["name"], body, rel, depth=1))
+    print(f"  {len(people)} genealogy close-relation profile pages")
 
 
 def render_reading_list():
@@ -554,6 +636,8 @@ def main():
     pool = load_pool()
     oa_ids = load_oa_ids()
     homepages = load_homepages()
+    scholar = load_scholar()
+    gen_people = load_genealogy()
     enr = load_enrichment()
     pool.sort(key=lambda r: int(r["merged_rank"]))
     living = [r for r in pool if r["status"] != "deceased"]
@@ -580,7 +664,8 @@ def main():
     render_inmemoriam(deceased)
     render_reading_list()
     render_data(top100, enr)
-    render_profiles(top100, oa_ids, homepages)
+    render_profiles(top100, oa_ids, homepages, scholar)
+    render_genealogy_profiles(gen_people)
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
 
