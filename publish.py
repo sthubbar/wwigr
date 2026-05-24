@@ -387,17 +387,15 @@ def render_profiles(people, oa_ids, homepages, scholar):
             host = hp.split("//", 1)[-1].split("/", 1)[0]
             if host.startswith("www."):
                 host = host[4:]
-            add("Homepage", f'<a href="{esc(hp)}" target="_blank" '
-                f'rel="noopener">{esc(host)}</a>')
+            add("Homepage", f'<a href="{esc(hp)}">{esc(host)}</a>')
         else:
             add("Homepage", "N/A")
         sch = scholar.get(r["name"])
         if sch:
-            add("Google Scholar", f'<a href="{esc(sch)}" target="_blank" '
-                f'rel="noopener">View profile</a>')
+            add("Google Scholar", f'<a href="{esc(sch)}">View profile</a>')
         else:
-            add("Google Scholar", f'<a href="{esc(scholar_search_url(r["name"]))}" '
-                f'target="_blank" rel="noopener">Search results</a>')
+            add("Google Scholar",
+                f'<a href="{esc(scholar_search_url(r["name"]))}">Search results</a>')
         add("Born", (r.get("birth_date") or "")[:4])
         add("Doctoral advisor", esc(e.get("advisor") or ""))
         add("arXiv Goldbach-topical papers", r.get("arx_papers"))
@@ -406,12 +404,11 @@ def render_profiles(people, oa_ids, homepages, scholar):
         add("Active years", f"{r['first_year']} to {r['last_year']}")
         orcid = e.get("orcid") or ""
         if orcid:
-            add("ORCID", f'<a href="https://orcid.org/{orcid}" '
-                f'target="_blank" rel="noopener">{orcid}</a>')
+            add("ORCID", f'<a href="https://orcid.org/{orcid}">{orcid}</a>')
 
         oaid = oa_ids.get(r["name"])
-        links_html = (f'<p><a href="https://openalex.org/{oaid}" target="_blank" '
-                      f'rel="noopener">Publication record on OpenAlex</a></p>'
+        links_html = (f'<p><a href="https://openalex.org/{oaid}">'
+                      f'Publication record on OpenAlex</a></p>'
                       if oaid else "")
 
         body = f"""<p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
@@ -446,11 +443,10 @@ def render_genealogy_profiles(people):
 
         sch = (r.get("scholar_url") or "").strip()
         if sch:
-            add("Google Scholar", f'<a href="{esc(sch)}" target="_blank" '
-                f'rel="noopener">View profile</a>')
+            add("Google Scholar", f'<a href="{esc(sch)}">View profile</a>')
         else:
-            add("Google Scholar", f'<a href="{esc(scholar_search_url(r["name"]))}" '
-                f'target="_blank" rel="noopener">Search results</a>')
+            add("Google Scholar",
+                f'<a href="{esc(scholar_search_url(r["name"]))}">Search results</a>')
         add("Close-relation rank", f'{r.get("rank", "")} of 5')
         add("PhD year", r.get("phd_year"))
         add("University", esc(r.get("university") or ""))
@@ -490,7 +486,7 @@ def render_reading_list():
     def cell(r):
         title = esc(r.get("title", ""))
         url = r.get("best_url", "")
-        title_link = f'<a href="{esc(url)}" target="_blank" rel="noopener">{title}</a>' if url else title
+        title_link = f'<a href="{esc(url)}">{title}</a>' if url else title
         return (f"<tr><td>{r.get('rank_placeholder', '')}</td>"
                 f"<td>{esc(r.get('pages') or '?')}</td>"
                 f"<td>{esc(r.get('year', ''))}</td>"
