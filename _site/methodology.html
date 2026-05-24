@@ -57,7 +57,7 @@
 
 <li><strong>Merge</strong>: surname-deduplicated arXiv 155 plus OpenAlex top 200, joined by surname. Each researcher has a <code>sum_rank = arx_rank + oa_rank</code>, and the list is sorted by sum_rank ascending. A researcher who appears in only one pipeline has no rank in the other. Rather than assign a flat penalty, we interpolate: for someone ranked by OpenAlex but absent from arXiv, we order the pool by OpenAlex rank, walk outward to the nearest two researchers above and the nearest two below who do carry a real arXiv rank, and take the rounded mean of those values as a pseudo arXiv rank. The same logic, with the pipelines swapped, fills a missing OpenAlex rank. A researcher past the bottom end, with no real neighbour below, keeps the bottom sentinel. Interpolated ranks appear in [square brackets] on the Top 100 table; measured ranks appear plain.</li>
 
-<li><strong>Hand-curated edits</strong>: an exclusions file removes eight researchers who are false positives or topic mismatches (see the Excluded table below). A name-aliases file forces correct MGP id lookups for Robert Vaughan and Harald Helfgott.</li>
+<li><strong>Hand-curated edits</strong>: an exclusions file removes ten researchers who are false positives or topic mismatches (see the Excluded table below). A name-aliases file forces correct MGP id lookups for Robert Vaughan and Harald Helfgott.</li>
 
 <li><strong>Genealogy reseeded</strong>: the Top 100 becomes the canonical seed list for the MGP graph. Five close-relations surface from the network analysis.</li>
 </ol>
@@ -76,6 +76,8 @@
 <tr><td>I Gede Adhitya Wisnu Wardhana</td><td>Ring and graph theory, not additive number theory.</td></tr>
 <tr><td>Hong-Yeop Song</td><td>Coding theory and sequences, not Goldbach number theory.</td></tr>
 <tr><td>T. P. Peneva</td><td>Topic and affiliation mismatch surfaced by the OpenAlex data.</td></tr>
+<tr><td>Jan Feliksiak</td><td>Independent, self-published work on prime gaps, not part of mainstream research.</td></tr>
+<tr><td>Joel E. Cohen</td><td>Mathematical demography and population biology, not number theory.</td></tr>
 </tbody>
 </table>
 
