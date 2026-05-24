@@ -55,9 +55,9 @@
 
 <li><strong>OpenAlex pull</strong>: same 17 terms, then trimmed to the 13 Tier 2-and-up terms after a per-term audit. The standalone term <code>Goldbach</code> was replaced with three phrase variants (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>) to remove surname-collision noise (a Wageningen virologist named Rob Goldbach was dragging his collaboration cluster into the list). Author cap of 10 to remove physics megapapers. Composite: <code>0.60 * pr(topical_papers) + 0.40 * pr(topical_citations)</code>. Result: 1,113 ranked authors.</li>
 
-<li><strong>Merge</strong>: surname-deduplicated arXiv 155 plus OpenAlex top 200, joined by surname. Each surname has a <code>sum_rank = arx_rank + oa_rank</code>. Names not in arXiv get arx_rank = 156; names not in OA get oa_rank = 1114. Sort by sum_rank ascending and take the top 100.</li>
+<li><strong>Merge</strong>: surname-deduplicated arXiv 155 plus OpenAlex top 200, joined by surname. Each researcher has a <code>sum_rank = arx_rank + oa_rank</code>, and the list is sorted by sum_rank ascending. A researcher who appears in only one pipeline has no rank in the other. Rather than assign a flat penalty, we interpolate: for someone ranked by OpenAlex but absent from arXiv, we order the pool by OpenAlex rank, walk outward to the nearest two researchers above and the nearest two below who do carry a real arXiv rank, and take the rounded mean of those values as a pseudo arXiv rank. The same logic, with the pipelines swapped, fills a missing OpenAlex rank. A researcher past the bottom end, with no real neighbour below, keeps the bottom sentinel. Interpolated ranks appear in [square brackets] on the Top 100 table; measured ranks appear plain.</li>
 
-<li><strong>Hand-curated edits</strong>: an exclusions file removes three known false positives (Smarandache, Carbó-Dorca, Vega). A name-aliases file forces correct MGP id lookups for Robert Vaughan and Harald Helfgott.</li>
+<li><strong>Hand-curated edits</strong>: an exclusions file removes eight researchers who are false positives or topic mismatches (see the Excluded table below). A name-aliases file forces correct MGP id lookups for Robert Vaughan and Harald Helfgott.</li>
 
 <li><strong>Genealogy reseeded</strong>: the Top 100 becomes the canonical seed list for the MGP graph. Five close-relations surface from the network analysis.</li>
 </ol>
@@ -71,6 +71,11 @@
 <tr><td>Florentín Smarandache</td><td>Self-published paper mill, not real research.</td></tr>
 <tr><td>Ramon Carbó-Dorca</td><td>Chemistry (quantum similarity), not number theory.</td></tr>
 <tr><td>Frank Vega</td><td>Crank: 113 OA works at 0.17 cites per paper. Known false positive.</td></tr>
+<tr><td>E. E. Escultura</td><td>Fringe figure (disputed Fermat's Last Theorem counterexample), not credible Goldbach research.</td></tr>
+<tr><td>Budee U Zaman</td><td>Low-quality preprint pattern: 24 OpenAlex works at roughly 0.4 citations per work.</td></tr>
+<tr><td>I Gede Adhitya Wisnu Wardhana</td><td>Ring and graph theory, not additive number theory.</td></tr>
+<tr><td>Hong-Yeop Song</td><td>Coding theory and sequences, not Goldbach number theory.</td></tr>
+<tr><td>T. P. Peneva</td><td>Topic and affiliation mismatch surfaced by the OpenAlex data.</td></tr>
 </tbody>
 </table>
 

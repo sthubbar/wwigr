@@ -6,96 +6,96 @@ rank,name,institution,country,arxiv_rank,openalex_rank,arxiv_papers,openalex_wor
 5,William D. Banks,University of Missouri,US,13,8,9,37,303,2007,2025,,,0000-0002-3595-6331,
 6,Joni Teräväinen,University of Cambridge,GB,2,23,15,31,112,2015,2025,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
 7,James Maynard,University of Oxford,GB,9,20,10,16,385,2012,2020,1987,Roger Heath-Brown,0000-0001-5782-7082,Q19655060
-8,Andrew Granville,Université de Montréal,CA,15,16,7,20,321,2001,2026,1962,Paulo Ribenboim,0000-0001-8088-1247,Q504907
-9,Xuancheng Shao,University of Kentucky,US,3,30,14,18,124,2012,2024,,,0009-0006-2950-8387,
-10,Janos Pintz,Alfréd Rényi Institute of Mathematics,HU,40,4,15,44,634,2006,2025,,,,
-11,Ben Green,Mathematical Institute of the Slovak Academy of Sciences,SK,4,43,12,12,426,2003,2014,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
-12,D. A. Goldston,San Jose State University,US,43,6,14,39,509,2004,2021,,,0000-0002-6319-2367,
-13,Tim Browning,Institute of Science and Technology Austria,AT,34,17,6,28,154,2012,2022,,,,
-14,Carl Pomerance,Dartmouth College,US,17,39,6,13,260,2009,2020,1944,John Tate,0000-0002-0960-1692,Q761544
-15,Alessandro Languasco,University of Padua,IT,48,26,10,21,120,2010,2018,,,0000-0003-2723-554X,
-16,Chantal David,Concordia University,CA,31,44,6,16,112,2007,2025,1964,M. Ram Murty,,Q41215763
-17,D. R. Heath-Brown,University of Oxford,GB,69,11,6,19,1198,2002,2016,,,,
-18,Alexandru Zaharescu,University of Illinois Urbana-Champaign,US,12,72,8,19,28,2018,2024,1961,Nicolae Popescu; Peter Sarnak,0000-0001-5587-9938,Q53704105
-19,Roger Baker,Brigham Young University,US,57,29,4,18,127,2015,2019,,,,
-20,Olivier Ramaré,Château Gombert,FR,56,32,4,24,98,2016,2022,1965,Jean-Marc Deshouillers,0000-0002-8765-0465,Q3292746
-21,Doychin Tolev,"Sofia University ""St. Kliment Ohridski""",BG,66,22,4,22,144,2009,2016,,,,
-22,Paul Pollack,University of Georgia,US,37,53,5,16,82,2009,2017,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
-23,Alessandro Zaccagnini,University of Parma,IT,44,48,12,19,70,2010,2026,,Alberto Perelli,0000-0001-6092-2355,Q102299670
-24,Jinjiang Li,Shanghai Jiao Tong University,CN,41,54,15,15,91,2016,2026,,,0000-0002-3204-4046,
-25,Florian Luca,Stellenbosch University,ZA,85,13,3,31,219,2009,2019,1969,Robert John Piacenza,0000-0003-1321-4422,Q20885652
-26,Min Zhang,Beijing Information Science & Technology University,CN,42,57,15,32,38,2016,2026,,,0000-0002-2203-7088,
-27,Gautami Bhowmik,Université de Lille,FR,18,83,10,11,52,2008,2025,,,,
-28,Emmanuel Kowalski,ETH Zurich,CH,62,40,4,13,260,2005,2025,1969,Henryk Iwaniec,0009-0009-8487-8729,Q15453820
-29,Angel Kumchev,Towson University,US,89,14,3,23,328,2017,2018,,,0000-0001-8543-1659,
-30,Steven J. Miller,Williams College,US,74,33,5,16,174,2012,2023,1974,Peter Sarnak; Henryk Iwaniec,0000-0003-4904-4605,Q20657339
-31,Jared Duker Lichtman,Stanford University,US,5,109,13,12,23,2018,2023,1996,Joni Teräväinen; James Maynard,0000-0002-8303-5051,Q123240478
-32,Will Sawin,Princeton University,US,25,89,7,11,45,2018,2025,1993,Nick Katz,0000-0003-0344-5438,Q61677722
-33,Henryk Iwaniec,"Rutgers, The State University of New Jersey",US,106,9,4,26,374,2016,2022,1947,Andrzej Schinzel,,Q370944
-34,Greg Martin,University of British Columbia,CA,24,97,6,9,64,1998,2018,,,0000-0002-8476-9495,
-35,H. A. Helfgott,ParisTech,FR,104,18,4,19,335,2012,2013,1977,Henryk Iwaniec; Peter Sarnak,0000-0002-5686-804X,Q5653809
-36,Stephan Baier,Ramakrishna Mission Vidyamandira,IN,39,84,17,19,22,2006,2025,,,0000-0001-9159-3152,
-37,K. Soundararajan,Stanford University,US,86,37,3,13,342,2005,2015,,,0000-0002-7595-0700,
-38,S. I. Dimitrov,"Sofia University ""St. Kliment Ohridski""",BG,45,79,11,15,34,2016,2026,,,0009-0009-8773-6910,
-39,Stephan Ramon Garcia,Pomona College,US,51,77,4,12,53,2017,2020,1974,Donald Sarason,0000-0001-8971-5448,Q85851977
-40,Ping Xi,Xi'an Jiaotong University,CN,59,78,7,13,43,2011,2025,,,,
-41,Alex Kontorovich,"Rutgers, The State University of New Jersey",US,88,50,3,15,114,2010,2014,1980,Dorian M. Goldfeld; Peter Sarnak,0000-0001-7626-8319,Q18616099
-42,Étienne Fouvry,Université Paris-Saclay,FR,94,47,3,12,308,2012,2025,2000,Jean-Marc Deshouillers; Henryk Iwaniec,0000-0002-1840-9467,Q289615
-43,Karin Halupczok,Heinrich Heine University Düsseldorf,DE,20,127,9,9,25,2007,2021,,,,
-44,Helmut Maier,Helmholtz-Institute Ulm,DE,105,45,4,14,138,2016,2023,1953,J. Ian (Jonathan) Richards,,Q5709706
-45,Ph. Michel,Université Paris-Sud,FR,91,62,3,9,207,2013,2015,,,,
-46,Jie Wu,Centre National de la Recherche Scientifique,FR,95,59,3,10,209,2007,2008,,,0000-0002-6893-7938,
-47,John Friedlander,University of Toronto,CA,142,12,3,28,237,2018,2022,1941,Sarvadaman Chowla,0000-0001-9011-0972,Q470462
-48,Victor Z. Guo,Xi'an Jiaotong University,CN,55,106,4,15,18,2015,2025,,,0000-0002-5624-5870,
-49,Tianxin Cai,Tongji University,CN,136,25,3,27,114,2014,2015,,,,
-50,Jörg Brüdern,University of Göttingen,DE,,5,NA,44,465,1991,2024,,,,
-51,Julia Brandes,Chalmers University of Technology,SE,52,111,4,13,18,2012,2021,,,0000-0002-1602-1768,
-52,Robert J. Lemke Oliver,Tufts University,US,83,82,3,9,96,2014,2021,,,0000-0002-7170-051X,
-53,Liangyi Zhao,Shandong University,CN,101,64,4,10,116,2006,2008,,,0000-0002-4407-9238,
-54,Tsz Ho Chan,University of Memphis,US,23,143,6,9,19,2002,2020,,,0000-0001-8553-1633,
-55,Jianya Liu,Shandong University,CN,,10,NA,28,337,1996,2025,,,,
-56,Nicolas Robles,University of Illinois Urbana-Champaign,US,21,147,6,9,18,2017,2025,,,0000-0002-8369-4516,
-57,Hao Pan,Nanjing University of Finance and Economics,CN,53,116,8,14,15,2007,2019,,,0000-0003-4307-5953,
-58,Zhi-Wei Sun,Nanjing University,CN,130,41,3,16,120,2008,2012,,,,
-59,Maksym Radziwiłł,Northwestern University,US,,15,NA,21,341,2015,2024,,,,
-60,Clifford Keeble,University of Southampton,GB,,19,NA,39,113,2025,2026,,,,
-61,Alexander P. Mangerel,Durham University,GB,10,166,10,7,20,2017,2025,,,0000-0003-4055-4078,
-62,Pieter Moree,Max Planck Institute for Mathematics,DE,,21,NA,17,220,1998,2024,,,,
-63,Lior Bary-Soroker,Tel Aviv University,IL,103,75,4,15,37,2010,2017,,Dan Haran,,Q102347717
-64,Glyn Harman,Royal Holloway University of London,GB,,24,NA,17,201,1981,2024,,,,
-65,Theresa C. Anderson,Carnegie Mellon University,US,82,100,3,10,46,2017,2021,,,,
-66,Richard P. Brent,University of Oxford,GB,,28,NA,16,198,1969,2012,,,,
-67,R. C. Vaughan,Pennsylvania State University,US,,31,NA,16,182,1973,2022,,,,
-68,Alberto Perelli,University of Genoa,IT,,34,NA,16,167,1985,2019,,,,
-69,J. P. Keating,University of Oxford,GB,125,66,3,12,71,2006,2019,,,,
-70,Yoichi Motohashi,Nihon University,JP,,35,NA,16,158,1974,2014,,,,
-71,Antal Balog,Franz Liszt Academy of Music,HU,,36,NA,14,230,1985,2013,,,,
-72,Jan-Christoph Schlage-Puchta,University of Rostock,DE,97,96,3,9,64,2008,2011,1973,Dieter Wolke,,Q102218182
-73,Koichi Kawada,Iwate University,JP,,38,NA,15,164,1993,2019,,,,
-74,Efthymios Sofos,University of Glasgow,GB,67,128,4,9,25,2017,2025,,,0000-0001-9962-0733,
-75,Shuntaro Yamagishi,Institute of Science and Technology Austria,AT,30,168,7,7,20,2015,2024,,,0000-0002-2953-1468,
-76,M. Ram Murty,Queen's University,CA,,42,NA,15,150,1987,2025,,,,
-77,H. J. Weber,University of Virginia,US,58,142,7,10,16,2011,2012,,,,
-78,Lasse Grimmelt,University of Oxford,GB,16,186,6,9,8,2018,2025,,,0009-0007-5963-1324,
-79,C. Y. Yıldırım,"National Research, Development and Innovation Office",HU,,46,NA,12,360,1998,2020,,,,
-80,Joël Rivat,Institut de Mathématiques de Marseille,FR,,49,NA,11,420,1995,2025,,,,
-81,Amos Nevo,Technion – Israel Institute of Technology,IL,90,118,3,7,84,2009,2017,,,,
-82,Hugh L. Montgomery,University of Michigan,US,,52,NA,10,806,1971,2026,,,,
-83,Michael Th. Rassias,Hellenic Military Academy,GR,107,103,4,15,20,2016,2023,,,0000-0001-8395-8748,
-84,Ofir Gorodetsky,Technion – Israel Institute of Technology,IL,29,184,5,9,8,2018,2023,,,0000-0002-1435-9650,
-85,Kevin Hughes,University of Bristol,GB,36,178,5,6,37,2015,2022,,,0000-0002-8621-8259,Q92730097
-86,Damaris Schindler,Utrecht University,NL,65,151,4,7,35,2013,2022,,,,
-87,Peter Sarnak,Princeton University,US,,60,NA,9,470,1986,2013,,,,
-88,Malik Bataineh,Jordan University of Science and Technology,JO,,61,NA,10,129,2008,2022,,,,
-89,Ade Irma Suriajaya,Kyushu University,JP,60,158,7,11,9,2020,2024,,Kohji Matsumoto,0000-0003-3386-0990,Q103091670
+8,Jörg Brüdern,University of Göttingen,DE,,5,NA,44,465,1991,2024,,,,
+9,Andrew Granville,Université de Montréal,CA,15,16,7,20,321,2001,2026,1962,Paulo Ribenboim,0000-0001-8088-1247,Q504907
+10,Xuancheng Shao,University of Kentucky,US,3,30,14,18,124,2012,2024,,,0009-0006-2950-8387,
+11,Janos Pintz,Alfréd Rényi Institute of Mathematics,HU,40,4,15,44,634,2006,2025,,,,
+12,Ben Green,Mathematical Institute of the Slovak Academy of Sciences,SK,4,43,12,12,426,2003,2014,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
+13,D. A. Goldston,San Jose State University,US,43,6,14,39,509,2004,2021,,,0000-0002-6319-2367,
+14,Tim Browning,Institute of Science and Technology Austria,AT,34,17,6,28,154,2012,2022,,,,
+15,Carl Pomerance,Dartmouth College,US,17,39,6,13,260,2009,2020,1944,John Tate,0000-0002-0960-1692,Q761544
+16,Richard P. Brent,University of Oxford,GB,,28,NA,16,198,1969,2012,,,,
+17,Pieter Moree,Max Planck Institute for Mathematics,DE,,21,NA,17,220,1998,2024,,,,
+18,Maksym Radziwiłł,Northwestern University,US,,15,NA,21,341,2015,2024,,,,
+19,Clifford Keeble,University of Southampton,GB,,19,NA,39,113,2025,2026,,,,
+20,Alessandro Languasco,University of Padua,IT,48,26,10,21,120,2010,2018,,,0000-0003-2723-554X,
+21,Chantal David,Concordia University,CA,31,44,6,16,112,2007,2025,1964,M. Ram Murty,,Q41215763
+22,R. C. Vaughan,Pennsylvania State University,US,,31,NA,16,182,1973,2022,,,,
+23,D. R. Heath-Brown,University of Oxford,GB,69,11,6,19,1198,2002,2016,,,,
+24,Alexandru Zaharescu,University of Illinois Urbana-Champaign,US,12,72,8,19,28,2018,2024,1961,Nicolae Popescu; Peter Sarnak,0000-0001-5587-9938,Q53704105
+25,Kevin Ford,High Point University,US,14,,7,NA,NA,2009,2019,1967,Heini Halberstam,,Q48969701
+26,Roger Baker,Brigham Young University,US,57,29,4,18,127,2015,2019,,,,
+27,Glyn Harman,Royal Holloway University of London,GB,,24,NA,17,201,1981,2024,,,,
+28,Olivier Ramaré,Château Gombert,FR,56,32,4,24,98,2016,2022,1965,Jean-Marc Deshouillers,0000-0002-8765-0465,Q3292746
+29,Doychin Tolev,"Sofia University ""St. Kliment Ohridski""",BG,66,22,4,22,144,2009,2016,,,,
+30,Paul Pollack,University of Georgia,US,37,53,5,16,82,2009,2017,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
+31,Alessandro Zaccagnini,University of Parma,IT,44,48,12,19,70,2010,2026,,Alberto Perelli,0000-0001-6092-2355,Q102299670
+32,Alberto Perelli,University of Genoa,IT,,34,NA,16,167,1985,2019,,,,
+33,Jianya Liu,Shandong University,CN,,10,NA,28,337,1996,2025,,,,
+34,Yoichi Motohashi,Nihon University,JP,,35,NA,16,158,1974,2014,,,,
+35,Antal Balog,Franz Liszt Academy of Music,HU,,36,NA,14,230,1985,2013,,,,
+36,Jinjiang Li,Shanghai Jiao Tong University,CN,41,54,15,15,91,2016,2026,,,0000-0002-3204-4046,
+37,Koichi Kawada,Iwate University,JP,,38,NA,15,164,1993,2019,,,,
+38,Florian Luca,Stellenbosch University,ZA,85,13,3,31,219,2009,2019,1969,Robert John Piacenza,0000-0003-1321-4422,Q20885652
+39,Min Zhang,Beijing Information Science & Technology University,CN,42,57,15,32,38,2016,2026,,,0000-0002-2203-7088,
+40,M. Ram Murty,Queen's University,CA,,42,NA,15,150,1987,2025,,,,
+41,Gautami Bhowmik,Université de Lille,FR,18,83,10,11,52,2008,2025,,,,
+42,Emmanuel Kowalski,ETH Zurich,CH,62,40,4,13,260,2005,2025,1969,Henryk Iwaniec,0009-0009-8487-8729,Q15453820
+43,Angel Kumchev,Towson University,US,89,14,3,23,328,2017,2018,,,0000-0001-8543-1659,
+44,Hugh L. Montgomery,University of Michigan,US,,52,NA,10,806,1971,2026,,,,
+45,Steven J. Miller,Williams College,US,74,33,5,16,174,2012,2023,1974,Peter Sarnak; Henryk Iwaniec,0000-0003-4904-4605,Q20657339
+46,Jared Duker Lichtman,Stanford University,US,5,109,13,12,23,2018,2023,1996,Joni Teräväinen; James Maynard,0000-0002-8303-5051,Q123240478
+47,Will Sawin,Princeton University,US,25,89,7,11,45,2018,2025,1993,Nick Katz,0000-0003-0344-5438,Q61677722
+48,C. Y. Yıldırım,"National Research, Development and Innovation Office",HU,,46,NA,12,360,1998,2020,,,,
+49,Joël Rivat,Institut de Mathématiques de Marseille,FR,,49,NA,11,420,1995,2025,,,,
+50,Henryk Iwaniec,"Rutgers, The State University of New Jersey",US,106,9,4,26,374,2016,2022,1947,Andrzej Schinzel,,Q370944
+51,Greg Martin,University of British Columbia,CA,24,97,6,9,64,1998,2018,,,0000-0002-8476-9495,
+52,H. A. Helfgott,ParisTech,FR,104,18,4,19,335,2012,2013,1977,Henryk Iwaniec; Peter Sarnak,0000-0002-5686-804X,Q5653809
+53,Stephan Baier,Ramakrishna Mission Vidyamandira,IN,39,84,17,19,22,2006,2025,,,0000-0001-9159-3152,
+54,K. Soundararajan,Stanford University,US,86,37,3,13,342,2005,2015,,,0000-0002-7595-0700,
+55,S. I. Dimitrov,"Sofia University ""St. Kliment Ohridski""",BG,45,79,11,15,34,2016,2026,,,0009-0009-8773-6910,
+56,Stephan Ramon Garcia,Pomona College,US,51,77,4,12,53,2017,2020,1974,Donald Sarason,0000-0001-8971-5448,Q85851977
+57,S. W. Graham,"National Research, Development and Innovation Office",HU,,85,NA,7,577,1984,2020,,,,
+58,Hung M. Bui,University of Manchester,GB,,86,NA,12,42,2006,2024,,,,
+59,Alina Carmen Cojocaru,University of Illinois Chicago,US,,80,NA,8,151,2004,2023,,,,
+60,Maxim Aleksandrovich Korolev,Russian Academy of Sciences,RU,,81,NA,11,53,2017,2022,,,,
+61,Kevin Broughan,University of Waikato,NZ,,76,NA,13,44,2007,2021,,,,
+62,Wenguang Zhai,Beihang University,CN,,88,NA,10,54,1999,2025,,,,
+63,Kyle Pratt,Brigham Young University,US,,90,NA,12,39,2019,2024,,,,
+64,Ping Xi,Xi'an Jiaotong University,CN,59,78,7,13,43,2011,2025,,,,
+65,Jean‐Marc Deshouillers,Centre National de la Recherche Scientifique,FR,,92,NA,8,110,1993,2025,,,,
+66,Alex Kontorovich,"Rutgers, The State University of New Jersey",US,88,50,3,15,114,2010,2014,1980,Dorian M. Goldfeld; Peter Sarnak,0000-0001-7626-8319,Q18616099
+67,Ahmet M. Güloğlu,Bilkent University,TR,,93,NA,12,37,2005,2023,,,,
+68,Pär Kurlberg,KTH Royal Institute of Technology,SE,,94,NA,12,36,2008,2025,,,,
+69,Étienne Fouvry,Université Paris-Saclay,FR,94,47,3,12,308,2012,2025,2000,Jean-Marc Deshouillers; Henryk Iwaniec,0000-0002-1840-9467,Q289615
+70,Peter Sarnak,Princeton University,US,,60,NA,9,470,1986,2013,,,,
+71,Malik Bataineh,Jordan University of Science and Technology,JO,,61,NA,10,129,2008,2022,,,,
+72,Akshat Mudgal,University of Bristol,GB,54,,4,NA,NA,2020,2023,,,,
+73,З. Х. Рахмонов,Academy of Sciences of the Republic of Tajikistan,TJ,,73,NA,16,35,2003,2025,,,,
+74,Karin Halupczok,Heinrich Heine University Düsseldorf,DE,20,127,9,9,25,2007,2021,,,,
+75,Guangshi Lü,Shandong University,CN,,74,NA,9,123,2004,2011,,,,
+76,Tao Zhan,Shandong University,CN,,65,NA,9,185,1993,2006,,,,
+77,Helmut Maier,Helmholtz-Institute Ulm,DE,105,45,4,14,138,2016,2023,1953,J. Ian (Jonathan) Richards,,Q5709706
+78,Hiroshi Mikawa,NA,NA,,68,NA,11,84,1987,2007,,,,
+79,Ph. Michel,Université Paris-Sud,FR,91,62,3,9,207,2013,2015,,,,
+80,Tianze Wang,North China University of Water Resources and Electric Power,CN,,69,NA,10,110,1991,2019,,,,
+81,Jie Wu,Centre National de la Recherche Scientifique,FR,95,59,3,10,209,2007,2008,,,0000-0002-6893-7938,
+82,John Friedlander,University of Toronto,CA,142,12,3,28,237,2018,2022,1941,Sarvadaman Chowla,0000-0001-9011-0972,Q470462
+83,Valentin Blomer,University of Bonn,DE,,70,NA,12,63,2005,2024,,,,
+84,Victor Z. Guo,Xi'an Jiaotong University,CN,55,106,4,15,18,2015,2025,,,0000-0002-5624-5870,
+85,Tianxin Cai,Tongji University,CN,136,25,3,27,114,2014,2015,,,,
+86,Julia Brandes,Chalmers University of Technology,SE,52,111,4,13,18,2012,2021,,,0000-0002-1602-1768,
+87,Robert J. Lemke Oliver,Tufts University,US,83,82,3,9,96,2014,2021,,,0000-0002-7170-051X,
+88,Liangyi Zhao,Shandong University,CN,101,64,4,10,116,2006,2008,,,0000-0002-4407-9238,
+89,Tsz Ho Chan,University of Memphis,US,23,143,6,9,19,2002,2020,,,0000-0001-8553-1633,
 90,Christian Elsholtz,Graz University of Technology,AT,,63,NA,11,96,2001,2026,,,,
-91,Tao Zhan,Shandong University,CN,,65,NA,9,185,1993,2006,,,,
-92,Vivian Kuperberg,ETH Zurich,CH,78,146,5,14,9,2020,2023,,,0000-0002-6713-0809,
-93,Hiroshi Mikawa,NA,NA,,68,NA,11,84,1987,2007,,,,
-94,Tianze Wang,North China University of Water Resources and Electric Power,CN,,69,NA,10,110,1991,2019,,,,
-95,Bryce Kerr,University of Canberra,AU,22,204,7,8,7,2012,2019,,,0000-0002-8829-372X,
-96,Valentin Blomer,University of Bonn,DE,,70,NA,12,63,2005,2024,,,,
-97,З. Х. Рахмонов,Academy of Sciences of the Republic of Tajikistan,TJ,,73,NA,16,35,2003,2025,,,,
-98,Guangshi Lü,Shandong University,CN,,74,NA,9,123,2004,2011,,,,
-99,Matt Visser,Victoria University of Wellington,NZ,76,155,5,11,10,2018,2025,1950,Mary K. Gaillard,0000-0003-1088-6485,Q6789473
-100,Kevin Broughan,University of Waikato,NZ,,76,NA,13,44,2007,2021,,,,
+91,Владимир Николаевич Чубариков,Lomonosov Moscow State University,RU,,105,NA,15,18,1978,2025,,,,
+92,Nicolas Robles,University of Illinois Urbana-Champaign,US,21,147,6,9,18,2017,2025,,,0000-0002-8369-4516,
+93,Bruce C. Berndt,University of Illinois Urbana-Champaign,US,,101,NA,7,229,1981,2024,,,,
+94,Hao Pan,Nanjing University of Finance and Economics,CN,53,116,8,14,15,2007,2019,,,0000-0003-4307-5953,
+95,Claus Bauer,Dolby (Netherlands),NL,,102,NA,9,60,1998,2020,,,,
+96,Zhi-Wei Sun,Nanjing Universi,,130,41,3,16,120,,,,,,
+97,Alexander P. Mangerel,Durham University,GB,10,166,10,7,20,2017,2025,,,0000-0003-4055-4078,
+98,Jan Feliksiak,Kinetic Resolve (United States),US,,98,NA,13,27,2020,2026,,,,
+99,Joel E. Cohen,Earth Island Institute,US,,99,NA,8,89,2016,2025,,,,
+100,Lior Bary-Soroker,Tel Aviv University,IL,103,75,4,15,37,2010,2017,,Dan Haran,,Q102347717

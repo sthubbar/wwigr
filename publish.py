@@ -91,6 +91,23 @@ def slugify(name):
     return s or "researcher"
 
 
+def rank_cell(rank, kind):
+    # A sortable <td> for a rank column. The data-order attribute carries
+    # the bare number so DataTables sorts numerically even when the
+    # display value is bracketed ("[24]") or a dash.
+    try:
+        n = int(rank)
+    except (TypeError, ValueError):
+        n = 9999
+    if kind == "interp":
+        disp = f"[{n}]"
+    elif kind == "none":
+        disp = "-"
+    else:
+        disp = str(n)
+    return f'<td data-order="{n}">{disp}</td>'
+
+
 def _latest(pattern):
     matches = sorted(glob.glob(str(UP / pattern)))
     if not matches:
@@ -261,13 +278,13 @@ def load_pool():
 def render_top100(rows):
     body_rows = []
     for r in sorted(rows, key=lambda r: r["display_rank"]):
-        ax = "-" if r["arx_rank"] == "156" else r["arx_rank"]
-        ox = "-" if r["oa_rank"] == "1114" else r["oa_rank"]
+        arx_c = rank_cell(r.get("arx_rank"), r.get("arx_kind", "real"))
+        oa_c = rank_cell(r.get("oa_rank"), r.get("oa_kind", "real"))
         name = f'<a href="people/{r["slug"]}.html">{esc(r["name"])}</a>'
         body_rows.append(
             f"<tr><td>{r['display_rank']}</td><td>{name}</td>"
             f"<td>{esc(r['institution'])}</td><td>{esc(r['country'])}</td>"
-            f"<td>{ax}</td><td>{ox}</td><td>{esc(r['provenance'])}</td>"
+            f"{arx_c}{oa_c}<td>{esc(r['provenance'])}</td>"
             f"<td>{r['first_year']}</td><td>{r['last_year']}</td></tr>")
     prov = Counter(r["provenance"] for r in rows)
     prov_rows = "".join(
@@ -280,7 +297,7 @@ def render_top100(rows):
 
 <p>This page shows the 100 highest-ranked living researchers, renumbered 1 to 100. Researchers in the ranked pool who have passed away are remembered on the <a href="in-memoriam.html">In Memoriam</a> page.</p>
 
-<p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em> and <em>OA rank</em> are the researcher's position in the full composite score for each pipeline (arXiv composite = 60% papers + 40% eigenvector centrality, out of 155 qualifying authors; OA composite = 60% topical papers + 40% topical citations, out of 1,113 OA authors). Lower is better. A dash means the researcher did not qualify in that pipeline.</p>
+<p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em> and <em>OA rank</em> are the researcher's position in the full composite score for each pipeline (arXiv composite = 60% papers + 40% eigenvector centrality, out of 155 qualifying authors; OA composite = 60% topical papers + 40% topical citations, out of 1,113 OA authors). Lower is better. A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from the nearest-ranked researchers in the other pipeline. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
 
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
 <thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
@@ -293,6 +310,8 @@ $(document).ready(function() {{
   $('#top100tbl').DataTable({{ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']] }});
 }});
 </script>
+
+<p class="muted">Ranks shown in [square brackets] are interpolated estimates, not measured values. <a href="methodology.html">How interpolation works</a>.</p>
 
 <h2>Provenance breakdown</h2>
 <ul>
@@ -431,10 +450,13 @@ def render_profiles(people, oa_ids, homepages, scholar):
           f"({n_hp} with a homepage, {n_sc} with a Scholar profile)")
 
 
-def render_genealogy_profiles(people):
+def render_genealogy_profiles(people, top_slugs):
     if not people:
         return
+    made = 0
     for r in people:
+        if r["slug"] in top_slugs:
+            continue  # now a Top 100 member; their profile owns the slug
         meta = []
 
         def add(label, val):
@@ -471,7 +493,10 @@ def render_genealogy_profiles(people):
 """
         rel = f"people/{r['slug']}.html"
         _write(rel, _page(r["name"], body, rel, depth=1))
-    print(f"  {len(people)} genealogy close-relation profile pages")
+        made += 1
+    skipped = len(people) - made
+    print(f"  {made} genealogy close-relation profile pages"
+          + (f" ({skipped} now in the Top 100, skipped)" if skipped else ""))
 
 
 def render_reading_list():
@@ -541,7 +566,7 @@ def render_index(rows):
 <li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
 <li><strong>The Mathematics Genealogy Project</strong>, which provides advisor-student trees for the people identified in the first two steps.</li>
 </ol>
-<p>The final ranking is a sum of arXiv-rank and OpenAlex-rank. People who score well in both pipelines rise. Two known false positives are explicitly excluded; full audit trail is in <a href="methodology.html">methodology</a>.</p>
+<p>The final ranking is the sum of a researcher's arXiv rank and OpenAlex rank, sorted low to high. People who score well in both pipelines rise. A researcher who appears in only one pipeline gets an interpolated estimate for the other, drawn from their nearest-ranked neighbours, rather than a flat penalty. False positives and off-topic authors are explicitly excluded; the full audit trail is in <a href="methodology.html">methodology</a>.</p>
 
 <h2>Top 100 at a glance</h2>
 <p>100 researchers, drawn from {len(by_country)} countries.</p>
@@ -579,8 +604,8 @@ def render_data(living, enr):
             w.writerow(cols)
             for r in living:
                 e = r["_enr"]
-                ax = "" if r["arx_rank"] == "156" else r["arx_rank"]
-                ox = "" if r["oa_rank"] == "1114" else r["oa_rank"]
+                ax = r["arx_rank"] if r.get("arx_kind") == "real" else ""
+                ox = r["oa_rank"] if r.get("oa_kind") == "real" else ""
                 w.writerow([r["display_rank"], r["name"], r["institution"], r["country"],
                             ax, ox, r.get("arx_papers", ""), r.get("oa_works", ""),
                             r.get("oa_cites", ""), r["first_year"], r["last_year"],
@@ -595,7 +620,7 @@ def render_data(living, enr):
 <p class="callout"><a href="data/wwigr_top100.csv"><strong>Download wwigr_top100.csv</strong></a> &nbsp; {len(living)} researchers, {n_wd} of them matched to Wikidata.</p>
 
 <h2>What is in the file</h2>
-<p>One row per researcher, in rank order. The columns are: rank, name, institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier.</p>
+<p>One row per researcher, in rank order. The columns are: rank, name, institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
 
 <h2>How to cite</h2>
 <blockquote>Hubbard, S. (2026). Who's Who in Goldbach Research. Zenodo. <a href="{DOI_URL}">{DOI_URL}</a></blockquote>
@@ -661,7 +686,7 @@ def main():
     render_reading_list()
     render_data(top100, enr)
     render_profiles(top100, oa_ids, homepages, scholar)
-    render_genealogy_profiles(gen_people)
+    render_genealogy_profiles(gen_people, {r["slug"] for r in top100})
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
 
