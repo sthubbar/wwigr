@@ -469,7 +469,7 @@ def render_genealogy_profiles(people, top_slugs):
         else:
             add("Google Scholar",
                 f'<a href="{esc(scholar_search_url(r["name"]))}">Search results</a>')
-        add("Close-relation rank", f'{r.get("rank", "")} of 5')
+        add("Close-relation rank", f'{r.get("rank", "")} of {len(people)}')
         add("PhD year", r.get("phd_year"))
         add("University", esc(r.get("university") or ""))
         add("Lifespan", r.get("lifespan"))
