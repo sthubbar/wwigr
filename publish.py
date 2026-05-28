@@ -204,14 +204,38 @@ def load_overrides():
     return ov
 
 
+def _oa_last_token(name):
+    import re
+    if not name or not name.strip(): return ""
+    s = re.sub(r"[‐–—]", "-", name.strip())
+    parts = s.split()
+    return parts[-1].lower() if parts else ""
+
+
 def load_oa_ids():
-    ids = {}
+    """Return (by_name, by_surname). The by_surname entry per surname is the
+    OA author_id of the OA author with that surname who has the most
+    topical works (mirrors the merge step's selection). Lets profile-page
+    rendering find the right OA author_id even when the canonical display
+    name (e.g. "Tim Browning") doesn't equal the OA name ("T. D. Browning")."""
+    by_name = {}
+    by_surname = {}
+    by_surname_works = {}
     matches = sorted(glob.glob(str(UP / "out-oa/gb_oa_master_*.csv")))
     if matches:
         with open(matches[-1], encoding="utf-8") as f:
             for r in csv.DictReader(f):
-                ids[r["author_name"]] = r["author_id"].rsplit("/", 1)[-1]
-    return ids
+                aid = r["author_id"].rsplit("/", 1)[-1]
+                by_name[r["author_name"]] = aid
+                lt = _oa_last_token(r["author_name"])
+                try:
+                    nw = int(r["n_topical_works"])
+                except (TypeError, ValueError):
+                    nw = 0
+                if lt and (lt not in by_surname or nw > by_surname_works[lt]):
+                    by_surname[lt] = aid
+                    by_surname_works[lt] = nw
+    return by_name, by_surname
 
 
 def load_homepages():
@@ -277,6 +301,7 @@ def load_pool():
     ov = load_overrides()
     for r in rows:
         o = ov.get(r["name"], {})
+        r["_orig_name"] = r["name"]
         if "display_name" in o:
             r["name"] = o["display_name"]
         if "institution" in o:
@@ -413,7 +438,7 @@ def render_inmemoriam(deceased):
     _write("in-memoriam.html", _page("In Memoriam", body, "in-memoriam.html"))
 
 
-def render_profiles(people, oa_ids, homepages, scholar, hindex):
+def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hindex):
     for r in people:
         e = r.get("_enr", {})
         meta = []
@@ -450,7 +475,11 @@ def render_profiles(people, oa_ids, homepages, scholar, hindex):
         if orcid:
             add("ORCID", f'<a href="https://orcid.org/{orcid}">{orcid}</a>')
 
-        oaid = oa_ids.get(r["name"])
+        # Look up OA author id: try the canonical display name first, then
+        # the original (pre-override) name, then the surname.
+        oaid = (oa_by_name.get(r["name"])
+                or oa_by_name.get(r.get("_orig_name", ""))
+                or oa_by_surname.get(_oa_last_token(r.get("_orig_name") or r["name"])))
         links_html = (f'<p><a href="https://openalex.org/{oaid}">'
                       f'Publication record on OpenAlex</a></p>'
                       if oaid else "")
@@ -684,7 +713,7 @@ def write_sitemap_robots():
 def main():
     print("publish.py" + (" (dry run)" if DRY else ""))
     pool = load_pool()
-    oa_ids = load_oa_ids()
+    oa_by_name, oa_by_surname = load_oa_ids()
     homepages = load_homepages()
     scholar = load_scholar()
     hindex = load_hindex()
@@ -715,7 +744,7 @@ def main():
     render_inmemoriam(deceased)
     render_reading_list()
     render_data(top100, enr, hindex)
-    render_profiles(top100, oa_ids, homepages, scholar, hindex)
+    render_profiles(top100, oa_by_name, oa_by_surname, homepages, scholar, hindex)
     render_genealogy_profiles(gen_people, {r["slug"] for r in top100})
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
