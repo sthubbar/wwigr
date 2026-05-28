@@ -1,0 +1,14 @@
+name,institution,country,birth,death,note
+Ivan Matveyevich Vinogradov,Steklov Institute of Mathematics,RU,1891,1983,Proved the ternary Goldbach conjecture for sufficiently large odd integers (1937)
+J. G. van der Corput,University of Amsterdam,NL,1890,1975,Van der Corput's method for exponential sums; foundational for the circle method
+Theodor Estermann,University College London,GB,1902,1991,Goldbach-Estermann theorem; early progress on the ternary problem
+Arnold Walfisz,Tbilisi State University,GE,1892,1962,Siegel-Walfisz theorem on primes in arithmetic progressions
+Hua Loo-Keng,Chinese Academy of Sciences,CN,1910,1985,Hua's lemma; founded the Chinese school of analytic number theory
+Yu. V. Linnik,Steklov Institute (Leningrad),RU,1915,1972,"Linnik's theorem, the dispersion method, and the Linnik constant"
+Karl Prachar,University of Vienna,AT,1925,1994,"Primzahlverteilung (1957), the standard reference on prime distribution for two generations"
+Heini Halberstam,University of Illinois Urbana-Champaign,US,1926,2014,"Sieve Methods (with Richert), the standard reference for the modern sieve toolkit"
+Askold Ivanovich Vinogradov,Steklov Institute (Leningrad),RU,1929,1986,Bombieri-Vinogradov theorem on average prime distribution
+Wang Yuan,Chinese Academy of Sciences,CN,1930,2021,Wang (1+4) result; key contributor to the Chinese school of additive prime number theory
+Chen Jingrun,Chinese Academy of Sciences,CN,1933,1996,"Chen's theorem (1+2): every sufficiently large even integer is the sum of a prime and a number with at most two prime factors. The closest result to Goldbach"
+Anatoly A. Karatsuba,Steklov Institute of Mathematics,RU,1937,2008,"Analytic number theory, exponential sums, and the Karatsuba multiplication algorithm; advisor to a major Russian school"
+Hans-Egon Richert,University of Ulm,DE,1924,1993,Sieve Methods (with Halberstam); the standard reference

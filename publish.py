@@ -503,10 +503,42 @@ def render_inmemoriam(deceased):
         f"<tr><td>{esc(r['name'])}</td><td>{esc(r['institution'])}</td>"
         f"<td>{esc(r['country'])}</td><td>{years(r)}</td></tr>"
         for r in rows)
+
+    # Foundational figures from before our pipeline coverage. Read from
+    # inmemoriam_extras.csv. These are mathematicians whose contributions
+    # are central to Goldbach research but whose careers predate the
+    # arXiv / OpenAlex digital trail.
+    extras = []
+    ex_path = ROOT / "inmemoriam_extras.csv"
+    if ex_path.exists():
+        with open(ex_path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                extras.append(r)
+    extras.sort(key=lambda r: int(r.get("birth") or 0))
+    extras_rows = "\n".join(
+        f"<tr><td>{esc(r['name'])}</td><td>{esc(r['institution'])}</td>"
+        f"<td>{esc(r['country'])}</td><td>{esc(r.get('birth',''))}-{esc(r.get('death',''))}</td>"
+        f"<td>{esc(r.get('note',''))}</td></tr>"
+        for r in extras)
+    extras_section = (f"""
+<h2>Foundational figures</h2>
+
+<p>The pipeline behind this site ranks researchers whose work appears on arXiv or in OpenAlex, which mostly means careers active from the mid-1990s onward. The names below predate that coverage. Their work is the bedrock on which modern Goldbach research is built; every modern paper in this directory ultimately rests on the circle method (Hardy-Littlewood, Vinogradov, van der Corput), the sieve toolkit (Halberstam-Richert, Linnik), and the breakthroughs of Chen Jingrun, Wang Yuan, and Hua Loo-Keng. They are listed in birth order.</p>
+
+<table class="display compact stripe" style="width:100%">
+<thead><tr><th>Name</th><th>Institution</th><th>Country</th><th>Years</th><th>Contribution</th></tr></thead>
+<tbody>
+{extras_rows}
+</tbody>
+</table>
+""") if extras else ""
+
     body = f"""<h1>In Memoriam</h1>
 <p class="subtitle">Researchers in this directory who are no longer with us</p>
 
-<p>The Top 100 and the regional pages list living researchers only, so the directory stays accurate for anyone using it to make contact. This page remembers the {len(rows)} researchers in the ranked pool who have passed away. Several of them, including G. H. Hardy and J. E. Littlewood, are foundational figures whose methods modern Goldbach research still builds on.</p>
+<p>The Top 100 and the regional pages list living researchers only, so the directory stays accurate for anyone using it to make contact. This page remembers the {len(rows)} researchers from the ranked pool who have passed away, plus a separate listing of foundational figures whose careers predate the digital publication record our pipeline reads from.</p>
+
+<h2>From the ranked pool</h2>
 
 <table class="display compact stripe" style="width:100%">
 <thead><tr><th>Name</th><th>Institution</th><th>Country</th><th>Years</th></tr></thead>
@@ -514,7 +546,7 @@ def render_inmemoriam(deceased):
 {body_rows}
 </tbody>
 </table>
-
+{extras_section}
 <p class="callout">A researcher missing here, or listed here in error? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a> and it will be corrected.</p>
 """
     _write("in-memoriam.html", _page("In Memoriam", body, "in-memoriam.html"))
