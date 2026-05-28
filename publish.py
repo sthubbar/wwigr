@@ -298,6 +298,27 @@ def scholar_search_url(name):
     return "https://scholar.google.com/scholar?q=" + q
 
 
+def arxiv_search_url(name):
+    import re
+    base = re.sub(r"\s*\([^)]*\)", "", name or "").strip()
+    q = urllib.parse.quote_plus(base)
+    return f"https://arxiv.org/search/?searchtype=author&query={q}"
+
+
+def zbmath_search_url(name):
+    """Build a zbMATH author-search URL.
+
+    zbMATH has canonical author pages at /authors/surname.firstname but its
+    API is gated behind a Terms-of-Use prompt that blocks automated lookup.
+    A name search reliably lands on the canonical page when there is a
+    unique match and on a short list of candidates otherwise.
+    """
+    import re
+    base = re.sub(r"\s*\([^)]*\)", "", name or "").strip()
+    q = urllib.parse.quote_plus(base)
+    return f"https://zbmath.org/authors/?q={q}"
+
+
 def load_pool():
     rows = []
     for pat in ("out/gb_top100_*.csv", "out/gb_next100_*.csv"):
@@ -455,6 +476,7 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
             if val not in (None, "", "NA"):
                 meta.append(f"<tr><td>{label}</td><td>{val}</td></tr>")
 
+        # Homepage row (always first)
         hp = homepages.get(r["name"])
         if hp:
             host = hp.split("//", 1)[-1].split("/", 1)[0]
@@ -463,12 +485,36 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
             add("Homepage", f'<a href="{esc(hp)}">{esc(host)}</a>')
         else:
             add("Homepage", "N/A")
+
+        # Reference links in alphabetic order: arXiv, Google Scholar,
+        # OpenAlex, zbMATH. Each gives a canonical author page when we
+        # have one, otherwise a search-results link.
+        add("arXiv",
+            f'<a href="{esc(arxiv_search_url(r.get("_orig_name") or r["name"]))}">'
+            f'Author search</a>')
         sch = scholar.get(r["name"])
         if sch:
             add("Google Scholar", f'<a href="{esc(sch)}">View profile</a>')
         else:
             add("Google Scholar",
                 f'<a href="{esc(scholar_search_url(r["name"]))}">Search results</a>')
+        # Look up OA author id: try the canonical display name first, then
+        # the original (pre-override) name, then the surname.
+        oaid = (oa_by_name.get(r["name"])
+                or oa_by_name.get(r.get("_orig_name", ""))
+                or oa_by_surname.get(_oa_last_token(r.get("_orig_name") or r["name"])))
+        if oaid:
+            add("OpenAlex",
+                f'<a href="https://openalex.org/{oaid}">Author page</a>')
+        else:
+            add("OpenAlex",
+                f'<a href="https://openalex.org/works?search={urllib.parse.quote_plus(r["name"])}">'
+                f'Search works</a>')
+        add("zbMATH",
+            f'<a href="{esc(zbmath_search_url(r.get("_orig_name") or r["name"]))}">'
+            f'Author search</a>')
+
+        # Bio + metrics rows
         add("Born", (r.get("birth_date") or "")[:4])
         add("Doctoral advisor", esc(e.get("advisor") or ""))
         add("arXiv Goldbach-topical papers", r.get("arx_papers"))
@@ -483,14 +529,7 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
         if orcid:
             add("ORCID", f'<a href="https://orcid.org/{orcid}">{orcid}</a>')
 
-        # Look up OA author id: try the canonical display name first, then
-        # the original (pre-override) name, then the surname.
-        oaid = (oa_by_name.get(r["name"])
-                or oa_by_name.get(r.get("_orig_name", ""))
-                or oa_by_surname.get(_oa_last_token(r.get("_orig_name") or r["name"])))
-        links_html = (f'<p><a href="https://openalex.org/{oaid}">'
-                      f'Publication record on OpenAlex</a></p>'
-                      if oaid else "")
+        links_html = ""  # OpenAlex link moved into the table
 
         body = f"""<p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
 <h1>{esc(r['name'])} (#{r['display_rank']})</h1>
