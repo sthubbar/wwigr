@@ -36,7 +36,7 @@ rank,name,institution,country,arxiv_rank,openalex_rank,arxiv_papers,openalex_wor
 35,Jinjiang Li,China University of Mining and Technology (Beijing),CN,41,54,15,15,91,7,scholar,2016,2026,,,0000-0002-3204-4046,
 36,Koichi Kawada,Iwate University,JP,,38,NA,15,164,9,openalex,1993,2019,,,,
 37,Florian Luca,Stellenbosch University,ZA,85,13,3,31,219,42,scholar,2009,2019,1969,Robert John Piacenza,0000-0003-1321-4422,Q20885652
-38,Min Zhang,Beijing Information Science & Technology University,CN,42,57,15,32,38,7,scholar,2016,2026,,,0000-0002-2203-7088,
+38,Min Zhang,Beijing Information Science & Technology University,CN,42,57,15,32,38,8,openalex,2016,2026,,,0000-0002-2203-7088,
 39,M. Ram Murty,Queen's University,CA,,42,NA,15,150,43,scholar,1987,2025,,,,
 40,Gautami Bhowmik,Université de Lille,FR,18,83,10,11,52,9,openalex,2008,2025,,,,
 41,Emmanuel Kowalski,ETH Zurich,CH,62,40,4,13,260,29,openalex,2005,2025,1969,Henryk Iwaniec,0009-0009-8487-8729,Q15453820
@@ -58,7 +58,7 @@ rank,name,institution,country,arxiv_rank,openalex_rank,arxiv_papers,openalex_wor
 57,Hung M. Bui,University of Manchester,GB,,86,NA,12,42,16,scholar,2006,2024,,,,
 58,Alina Carmen Cojocaru,University of Illinois Chicago,US,,80,NA,8,151,14,openalex,2004,2023,,,,
 59,Maxim Aleksandrovich Korolev,Russian Academy of Sciences,RU,,81,NA,11,53,15,openalex,2017,2022,,,,
-60,Kevin Broughan,University of Waikato,NZ,,76,NA,13,44,1,scholar,2007,2021,,,,
+60,Kevin Broughan,University of Waikato,NZ,,76,NA,13,44,12,openalex,2007,2021,,,,
 61,Wenguang Zhai,Beihang University,CN,,88,NA,10,54,13,openalex,1999,2025,,,,
 62,Kyle Pratt,Brigham Young University,US,,90,NA,12,39,11,scholar,2019,2024,,,,
 63,Ping Xi,Xi'an Jiaotong University,CN,59,78,7,13,43,9,openalex,2011,2025,,,,
@@ -76,7 +76,7 @@ rank,name,institution,country,arxiv_rank,openalex_rank,arxiv_papers,openalex_wor
 75,Tao Zhan,Shandong University,CN,,65,NA,9,185,17,openalex,1993,2006,,,,
 76,Helmut Maier,Helmholtz-Institute Ulm,DE,105,45,4,14,138,18,openalex,2016,2023,1953,J. Ian (Jonathan) Richards,,Q5709706
 77,Hiroshi Mikawa,University of Tsukuba,JP,,68,NA,11,84,7,openalex,1987,2007,,,,
-78,Ph. Michel,Université Paris-Sud,FR,91,62,3,9,207,37,scholar,2013,2015,,,,
+78,Ph. Michel,Université Paris-Sud,FR,91,62,3,9,207,45,openalex,2013,2015,,,,
 79,Tianze Wang,"Institute of Mathematics, Henan Academy of Sciences",CN,,69,NA,10,110,11,openalex,1991,2019,,,,
 80,Jie Wu,Centre National de la Recherche Scientifique,FR,95,59,3,10,209,19,openalex,2007,2008,,,0000-0002-6893-7938,
 81,John Friedlander,University of Toronto,CA,142,12,3,28,237,34,openalex,2018,2022,1941,Sarvadaman Chowla,0000-0001-9011-0972,Q470462
