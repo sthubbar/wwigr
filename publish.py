@@ -235,6 +235,21 @@ def load_scholar():
     return sc
 
 
+def load_hindex():
+    h = {}
+    path = ROOT / "hindex.csv"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                v = (r.get("h_index") or "").strip()
+                if v.isdigit():
+                    h[r["name"]] = {
+                        "h": int(v),
+                        "source": (r.get("source") or "").strip(),
+                    }
+    return h
+
+
 def load_genealogy():
     path = ROOT / "genealogy.csv"
     if not path.exists():
@@ -275,16 +290,19 @@ def load_pool():
     return rows
 
 
-def render_top100(rows):
+def render_top100(rows, hindex):
     body_rows = []
     for r in sorted(rows, key=lambda r: r["display_rank"]):
         arx_c = rank_cell(r.get("arx_rank"), r.get("arx_kind", "real"))
         oa_c = rank_cell(r.get("oa_rank"), r.get("oa_kind", "real"))
+        h = hindex.get(r["name"])
+        h_val = h["h"] if h else ""
+        h_cell = f'<td data-order="{h_val if h_val != "" else -1}">{h_val}</td>'
         name = f'<a href="people/{r["slug"]}.html">{esc(r["name"])}</a>'
         body_rows.append(
             f"<tr><td>{r['display_rank']}</td><td>{name}</td>"
             f"<td>{esc(r['institution'])}</td><td>{esc(r['country'])}</td>"
-            f"{arx_c}{oa_c}<td>{esc(r['provenance'])}</td>"
+            f"{arx_c}{oa_c}{h_cell}<td>{esc(r['provenance'])}</td>"
             f"<td>{r['first_year']}</td><td>{r['last_year']}</td></tr>")
     prov = Counter(r["provenance"] for r in rows)
     prov_rows = "".join(
@@ -300,7 +318,7 @@ def render_top100(rows):
 <p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em> and <em>OA rank</em> are the researcher's position in the full composite score for each pipeline (arXiv composite = 60% papers + 40% eigenvector centrality, out of 155 qualifying authors; OA composite = 60% topical papers + 40% topical citations, out of 1,113 OA authors). Lower is better. A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from the nearest-ranked researchers in the other pipeline. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
 
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
+<thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>h-index</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
 <tbody>
 {chr(10).join(body_rows)}
 </tbody>
@@ -392,7 +410,7 @@ def render_inmemoriam(deceased):
     _write("in-memoriam.html", _page("In Memoriam", body, "in-memoriam.html"))
 
 
-def render_profiles(people, oa_ids, homepages, scholar):
+def render_profiles(people, oa_ids, homepages, scholar, hindex):
     for r in people:
         e = r.get("_enr", {})
         meta = []
@@ -421,6 +439,10 @@ def render_profiles(people, oa_ids, homepages, scholar):
         add("OpenAlex topical works", r.get("oa_works"))
         add("OpenAlex topical citations", r.get("oa_cites"))
         add("Active years", f"{r['first_year']} to {r['last_year']}")
+        h = hindex.get(r["name"])
+        if h:
+            src_label = "OpenAlex" if h["source"] == "openalex" else "Google Scholar"
+            add("Overall h-index", f'{h["h"]} <span class="muted">({src_label})</span>')
         orcid = e.get("orcid") or ""
         if orcid:
             add("ORCID", f'<a href="https://orcid.org/{orcid}">{orcid}</a>')
@@ -592,11 +614,11 @@ def render_index(rows):
     _write("index.html", _page(SITE_NAME, body, "index.html", extra_head=VERIFY_TAG))
 
 
-def render_data(living, enr):
+def render_data(living, enr, hindex):
     SITE.joinpath("data").mkdir(parents=True, exist_ok=True)
     cols = ["rank", "name", "institution", "country", "arxiv_rank", "openalex_rank",
-            "arxiv_papers", "openalex_works", "openalex_citations",
-            "first_active_year", "last_active_year", "birth_year",
+            "arxiv_papers", "openalex_works", "openalex_citations", "overall_h_index",
+            "h_index_source", "first_active_year", "last_active_year", "birth_year",
             "doctoral_advisor", "orcid", "wikidata_id"]
     if not DRY:
         with open(SITE / "data/wwigr_top100.csv", "w", newline="", encoding="utf-8") as f:
@@ -606,9 +628,13 @@ def render_data(living, enr):
                 e = r["_enr"]
                 ax = r["arx_rank"] if r.get("arx_kind") == "real" else ""
                 ox = r["oa_rank"] if r.get("oa_kind") == "real" else ""
+                h = hindex.get(r["name"])
+                h_val = h["h"] if h else ""
+                h_src = h["source"] if h else ""
                 w.writerow([r["display_rank"], r["name"], r["institution"], r["country"],
                             ax, ox, r.get("arx_papers", ""), r.get("oa_works", ""),
-                            r.get("oa_cites", ""), r["first_year"], r["last_year"],
+                            r.get("oa_cites", ""), h_val, h_src,
+                            r["first_year"], r["last_year"],
                             e.get("birth_year", ""), e.get("advisor", ""),
                             e.get("orcid", ""), e.get("qid", "")])
     n_wd = sum(1 for r in living if r["_enr"].get("qid"))
@@ -620,7 +646,7 @@ def render_data(living, enr):
 <p class="callout"><a href="data/wwigr_top100.csv"><strong>Download wwigr_top100.csv</strong></a> &nbsp; {len(living)} researchers, {n_wd} of them matched to Wikidata.</p>
 
 <h2>What is in the file</h2>
-<p>One row per researcher, in rank order. The columns are: rank, name, institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
+<p>One row per researcher, in rank order. The columns are: rank, name, institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (from OpenAlex when available, otherwise Google Scholar), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
 
 <h2>How to cite</h2>
 <blockquote>Hubbard, S. (2026). Who's Who in Goldbach Research. Zenodo. <a href="{DOI_URL}">{DOI_URL}</a></blockquote>
@@ -658,6 +684,7 @@ def main():
     oa_ids = load_oa_ids()
     homepages = load_homepages()
     scholar = load_scholar()
+    hindex = load_hindex()
     gen_people = load_genealogy()
     enr = load_enrichment()
     pool.sort(key=lambda r: int(r["merged_rank"]))
@@ -672,7 +699,7 @@ def main():
         r["slug"] = s if seen[s] == 1 else f"{s}-{seen[s]}"
     print(f"  pool {len(pool)}, living {len(living)}, deceased {len(deceased)}")
     render_index(top100)
-    render_top100(top100)
+    render_top100(top100, hindex)
     render_region(top100, "north-america", "North America", NA_COUNTRIES,
                   "11_top100_north_america.png",
                   "Top 100 researchers are based in North America.")
@@ -684,8 +711,8 @@ def main():
                   "Top 100 researchers are based in Asia and Oceania.")
     render_inmemoriam(deceased)
     render_reading_list()
-    render_data(top100, enr)
-    render_profiles(top100, oa_ids, homepages, scholar)
+    render_data(top100, enr, hindex)
+    render_profiles(top100, oa_ids, homepages, scholar, hindex)
     render_genealogy_profiles(gen_people, {r["slug"] for r in top100})
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
