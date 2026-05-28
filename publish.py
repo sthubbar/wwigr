@@ -48,17 +48,21 @@ VERIFY_TAG = ('<meta name="google-site-verification" '
               'content="nTo_CIJXODwXPNsVkC0oT7IYWnRXP3F8U4344Z_ylMs" />')
 
 NA_COUNTRIES = {"US", "CA", "MX"}
+# Europe set: traditional Europe only. Turkey and Israel moved to the
+# Asia / Middle East / Pacific bucket so each researcher lands in
+# exactly one region.
 EU_COUNTRIES = {
     "AD","AL","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES",
     "FI","FO","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV",
     "MC","MD","ME","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI",
-    "SK","SM","UA","VA","XK","TR","IL",
+    "SK","SM","UA","VA","XK",
 }
+# Asia + Pacific + Middle East. TR and IL live here.
 AS_COUNTRIES = {
-    "AE","AF","AM","AU","AZ","BD","BH","BN","BT","CN","GE","HK","ID","IN",
-    "IQ","IR","JO","JP","KG","KH","KP","KR","KW","KZ","LA","LB","LK","MM",
-    "MN","MO","MV","MY","NP","NZ","OM","PG","PH","PK","PS","QA","SA","SG",
-    "SY","TH","TJ","TL","TM","TW","UZ","VN","YE","FJ",
+    "AE","AF","AM","AU","AZ","BD","BH","BN","BT","CN","GE","HK","ID","IL",
+    "IN","IQ","IR","JO","JP","KG","KH","KP","KR","KW","KZ","LA","LB","LK",
+    "MM","MN","MO","MV","MY","NP","NZ","OM","PG","PH","PK","PS","QA","SA",
+    "SG","SY","TH","TJ","TL","TM","TR","TW","UZ","VN","YE","FJ",
 }
 
 DRY = "--check" in sys.argv
@@ -68,7 +72,8 @@ NAV_ITEMS = [
     ("top100.html",                 "Top 100"),
     ("regions/north-america.html",  "North America"),
     ("regions/europe.html",         "Europe"),
-    ("regions/asia.html",           "Asia"),
+    ("regions/asia.html",           "Asia & Pacific"),
+    ("regions/other.html",          "Other regions"),
     ("in-memoriam.html",            "In Memoriam"),
     ("genealogy.html",              "Genealogy"),
     ("reading-list.html",           "Reading List"),
@@ -634,7 +639,7 @@ def render_index(rows):
 <h2>Where to start</h2>
 <ul>
 <li><a href="top100.html"><strong>The Top 100</strong></a> is the canonical ranked list, sortable in your browser.</li>
-<li>Regional listings: <a href="regions/north-america.html">North America</a>, <a href="regions/europe.html">Europe</a>, <a href="regions/asia.html">Asia</a>.</li>
+<li>Regional listings: <a href="regions/north-america.html">North America</a>, <a href="regions/europe.html">Europe</a>, <a href="regions/asia.html">Asia &amp; Pacific</a>, <a href="regions/other.html">Other regions</a>.</li>
 <li><a href="reading-list.html"><strong>Reading list</strong></a>: 2,000+ short Goldbach papers from 2018 onward, with clickable links.</li>
 <li><a href="data.html"><strong>Data</strong></a>: the ranked list as an open CC-BY dataset, with a citable DOI.</li>
 <li><a href="methodology.html"><strong>Methodology</strong></a>: how the data is built, audit decisions, and limitations.</li>
@@ -738,9 +743,18 @@ def main():
     render_region(top100, "europe", "Europe", EU_COUNTRIES,
                   "12_top100_europe.png",
                   "Top 100 researchers are based in Europe.")
-    render_region(top100, "asia", "Asia", AS_COUNTRIES,
-                  "13_top100_asia.png",
-                  "Top 100 researchers are based in Asia and Oceania.")
+    render_region(top100, "asia", "Asia, the Middle East, and the Pacific",
+                  AS_COUNTRIES, "13_top100_asia.png",
+                  "Top 100 researchers are based in Asia, the Middle East, "
+                  "or the Pacific.")
+    # Catch-all: everyone not in the three named regions (Africa, South
+    # America, anything else). Computed from the rows themselves so we
+    # never accidentally orphan a country.
+    other_set = {r["country"] for r in top100} - NA_COUNTRIES - EU_COUNTRIES - AS_COUNTRIES
+    render_region(top100, "other", "Other regions", other_set,
+                  "14_top100_other.png",
+                  "Top 100 researchers are based outside the three named "
+                  "regions.")
     render_inmemoriam(deceased)
     render_reading_list()
     render_data(top100, enr, hindex)

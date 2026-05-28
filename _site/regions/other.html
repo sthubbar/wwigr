@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gautami Bhowmik - Who&#x27;s Who in Goldbach Research</title>
+<title>Other regions - Who&#x27;s Who in Goldbach Research</title>
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-<meta property="og:title" content="Gautami Bhowmik - Who&#x27;s Who in Goldbach Research">
+<meta property="og:title" content="Other regions - Who&#x27;s Who in Goldbach Research">
 <meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output and OpenAlex citation data.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://wwigr.org/people/gautami-bhowmik">
+<meta property="og:url" content="https://wwigr.org/regions/other">
 <meta property="og:site_name" content="Who&#x27;s Who in Goldbach Research">
 <meta name="twitter:card" content="summary">
 <meta name="description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output and OpenAlex citation data.">
@@ -24,7 +24,7 @@
 <a href="../regions/north-america.html" class="">North America</a>
 <a href="../regions/europe.html" class="">Europe</a>
 <a href="../regions/asia.html" class="">Asia & Pacific</a>
-<a href="../regions/other.html" class="">Other regions</a>
+<a href="../regions/other.html" class="nav-active">Other regions</a>
 <a href="../in-memoriam.html" class="">In Memoriam</a>
 <a href="../genealogy.html" class="">Genealogy</a>
 <a href="../reading-list.html" class="">Reading List</a>
@@ -33,23 +33,28 @@
 <a href="../about.html" class="">About</a></nav>
 </header>
 <main>
-<p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
-<h1>Gautami Bhowmik (#40)</h1>
-<p class="subtitle">Université de Lille (FR)</p>
+<h1>Other regions</h1>
+<p class="subtitle">Top 100 researchers based in Other regions</p>
 
-<table class="profile-table">
+<p>2 Top 100 researchers are based outside the three named regions.</p>
+
+<div class="figure-page">
+<img src="../img/14_top100_other.png" alt="Map of Other regions Top 100 researchers">
+</div>
+
+<h2>Listing</h2>
+<table id="rtbl" class="display compact stripe hover" style="width:100%">
+<thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th></tr></thead>
 <tbody>
-<tr><td>Homepage</td><td><a href="https://pro.univ-lille.fr/gautami-bhowmik">pro.univ-lille.fr</a></td></tr>
-<tr><td>Google Scholar</td><td><a href="https://scholar.google.com/scholar?q=Gautami+Bhowmik+number+theory">Search results</a></td></tr>
-<tr><td>arXiv Goldbach-topical papers</td><td>10</td></tr>
-<tr><td>OpenAlex topical works</td><td>11</td></tr>
-<tr><td>OpenAlex topical citations</td><td>52</td></tr>
-<tr><td>Active years</td><td>2008 to 2025</td></tr>
-<tr><td>Overall h-index</td><td>9 <span class="muted">(OpenAlex)</span></td></tr>
+<tr><td>37</td><td><a href="../people/florian-luca.html">Florian Luca</a></td><td>Stellenbosch University</td><td>ZA</td></tr>
+<tr><td>99</td><td><a href="../people/emanuel-carneiro.html">Emanuel Carneiro</a></td><td>Instituto Nacional de Matemática Pura e Aplicada</td><td>BR</td></tr>
 </tbody>
 </table>
-<p><a href="https://openalex.org/A5112004275">Publication record on OpenAlex</a></p>
-<p class="callout">Profile data is compiled from arXiv, OpenAlex, and Wikidata, and the homepage link from a web search. Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
+<script>
+$(document).ready(function() {
+  $('#rtbl').DataTable({ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']] });
+});
+</script>
 
 </main>
 <footer>

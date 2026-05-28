@@ -62,6 +62,8 @@ def load_living():
         o = ov.get(r["name"], {})
         if "institution" in o:
             r["institution"] = o["institution"]
+        if "country" in o:
+            r["country"] = o["country"]
         r["_dead"] = bool(o.get("death_date") or enr.get(r["name"], ""))
     rows.sort(key=lambda r: int(r["merged_rank"]))
     return [r for r in rows if not r["_dead"]][:100]
@@ -140,15 +142,32 @@ def draw(pts, extent, title, outpath, figsize, zoom):
     print(f"  wrote {outpath.name}  ({len(inside)} numbered dots)")
 
 
+NA_COUNTRIES = {"US", "CA", "MX"}
+EU_COUNTRIES = {
+    "AD","AL","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES",
+    "FI","FO","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV",
+    "MC","MD","ME","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI",
+    "SK","SM","UA","VA","XK",
+}
+AS_COUNTRIES = {
+    "AE","AF","AM","AU","AZ","BD","BH","BN","BT","CN","GE","HK","ID","IL",
+    "IN","IQ","IR","JO","JP","KG","KH","KP","KR","KW","KZ","LA","LB","LK",
+    "MM","MN","MO","MV","MY","NP","NZ","OM","PG","PH","PK","PS","QA","SA",
+    "SG","SY","TH","TJ","TL","TM","TR","TW","UZ","VN","YE","FJ",
+}
+# 5th tuple slot is the country filter set (None = no filter / world view).
 MAPS = [
     ((-165, 185, -50, 74), "Top 100 Goldbach researchers worldwide",
-     "10_top100_overview.png", (13, 6.6), 2),
+     "10_top100_overview.png", (13, 6.6), 2, None),
     ((-126, -62, 25, 52), "Top 100 researchers in North America",
-     "11_top100_north_america.png", (11, 5.6), 4),
+     "11_top100_north_america.png", (11, 5.6), 4, NA_COUNTRIES),
     ((-11, 38, 31, 63), "Top 100 researchers in Europe",
-     "12_top100_europe.png", (10, 7.0), 4),
-    ((33, 182, -48, 47), "Top 100 researchers in Asia and Oceania",
-     "13_top100_asia.png", (13, 6.6), 3),
+     "12_top100_europe.png", (10, 7.0), 4, EU_COUNTRIES),
+    ((25, 182, -48, 47),
+     "Top 100 researchers in Asia, the Middle East, and the Pacific",
+     "13_top100_asia.png", (13, 6.6), 3, AS_COUNTRIES),
+    ((-165, 185, -50, 74), "Top 100 researchers in other regions",
+     "14_top100_other.png", (13, 6.6), 2, "OTHER"),
 ]
 
 
@@ -160,15 +179,23 @@ def main():
         key = norm(r["institution"])
         ll = geo.get(key) or MANUAL_GEO.get(key)
         if ll:
-            pts.append((i, ll[0], ll[1]))
+            pts.append((i, ll[0], ll[1], (r.get("country") or "").strip()))
         else:
             missed.append(f"#{i} {r['name']}")
     print(f"living {len(living)}; geocoded {len(pts)}; missing {missed}")
     (SITE / "img").mkdir(parents=True, exist_ok=True)
-    which = [int(sys.argv[1])] if len(sys.argv) > 1 else range(4)
+    which = ([int(sys.argv[1])] if len(sys.argv) > 1
+             else range(len(MAPS)))
+    named = NA_COUNTRIES | EU_COUNTRIES | AS_COUNTRIES
     for idx in which:
-        extent, title, fn, figsize, zoom = MAPS[idx]
-        draw(pts, extent, title, SITE / "img" / fn, figsize, zoom)
+        extent, title, fn, figsize, zoom, cset = MAPS[idx]
+        if cset is None:
+            sub = [(r, lat, lon) for r, lat, lon, c in pts]
+        elif cset == "OTHER":
+            sub = [(r, lat, lon) for r, lat, lon, c in pts if c not in named]
+        else:
+            sub = [(r, lat, lon) for r, lat, lon, c in pts if c in cset]
+        draw(sub, extent, title, SITE / "img" / fn, figsize, zoom)
     print("done")
 
 
