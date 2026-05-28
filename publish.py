@@ -99,6 +99,28 @@ def slugify(name):
     return s or "researcher"
 
 
+def ascii_name(name):
+    """Plain-ASCII version of the name. Strips diacritics and any
+    non-ASCII characters. Used for the dataset CSV's name_ascii column
+    so Excel users on default Windows code pages can read it cleanly."""
+    # Letters that NFKD does not decompose (they are distinct letters,
+    # not base + combining mark) need an explicit substitution.
+    swaps = {
+        "ł": "l", "Ł": "L",   # Polish stroked L (ł, Ł)
+        "ı": "i", "İ": "I",   # Turkish dotless/dotted I (ı, İ)
+        "ø": "o", "Ø": "O",   # Scandinavian O-slash (ø, Ø)
+        "æ": "ae", "Æ": "Ae", # ae digraph (æ, Æ)
+        "ß": "ss",                  # German sharp s (ß)
+        "ð": "d", "Ð": "D",   # Icelandic/old English eth (ð, Ð)
+        "þ": "th", "Þ": "Th", # thorn (þ, Þ)
+    }
+    s = "".join(swaps.get(c, c) for c in (name or ""))
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = s.encode("ascii", "ignore").decode("ascii")
+    return s.strip()
+
+
 def rank_cell(rank, kind):
     # A sortable <td> for a rank column. The data-order attribute carries
     # the bare number so DataTables sorts numerically even when the
@@ -196,6 +218,21 @@ def load_enrichment():
             for r in csv.DictReader(f):
                 enr[r["name"]] = {k: _clean(r.get(k)) for k in
                                   ("death_date", "birth_year", "image", "advisor", "orcid", "qid")}
+    # Overlay missing qid/orcid from zbmath.csv (zbMATH harvests these
+    # external_ids reliably and tends to have them when Wikidata search
+    # missed). Only fills empty fields; existing values are kept.
+    zpath = ROOT / "zbmath.csv"
+    if zpath.exists():
+        with open(zpath, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                e = enr.setdefault(r["name"], {})
+                if not e.get("qid") and (r.get("wikidata") or "").strip():
+                    e["qid"] = r["wikidata"].strip()
+                if not e.get("orcid") and (r.get("orcid") or "").strip():
+                    e["orcid"] = r["orcid"].strip()
+                # Ensure all expected keys exist
+                for k in ("death_date","birth_year","image","advisor","orcid","qid"):
+                    e.setdefault(k, "")
     return enr
 
 
@@ -715,10 +752,11 @@ def render_index(rows):
 
 def render_data(living, enr, hindex):
     SITE.joinpath("data").mkdir(parents=True, exist_ok=True)
-    cols = ["rank", "name", "institution", "country", "arxiv_rank", "openalex_rank",
-            "arxiv_papers", "openalex_works", "openalex_citations", "overall_h_index",
-            "h_index_source", "first_active_year", "last_active_year", "birth_year",
-            "doctoral_advisor", "orcid", "wikidata_id"]
+    cols = ["rank", "name", "name_ascii", "institution", "country", "arxiv_rank",
+            "openalex_rank", "arxiv_papers", "openalex_works", "openalex_citations",
+            "overall_h_index", "h_index_source", "first_active_year",
+            "last_active_year", "birth_year", "doctoral_advisor", "orcid",
+            "wikidata_id"]
     if not DRY:
         with open(SITE / "data/wwigr_top100.csv", "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)
@@ -730,8 +768,9 @@ def render_data(living, enr, hindex):
                 h = hindex.get(r["name"])
                 h_val = h["h"] if h else ""
                 h_src = h["source"] if h else ""
-                w.writerow([r["display_rank"], r["name"], r["institution"], r["country"],
-                            ax, ox, r.get("arx_papers", ""), r.get("oa_works", ""),
+                w.writerow([r["display_rank"], r["name"], ascii_name(r["name"]),
+                            r["institution"], r["country"], ax, ox,
+                            r.get("arx_papers", ""), r.get("oa_works", ""),
                             r.get("oa_cites", ""), h_val, h_src,
                             r["first_year"], r["last_year"],
                             e.get("birth_year", ""), e.get("advisor", ""),
@@ -745,7 +784,7 @@ def render_data(living, enr, hindex):
 <p class="callout"><a href="data/wwigr_top100.csv"><strong>Download wwigr_top100.csv</strong></a> &nbsp; {len(living)} researchers, {n_wd} of them matched to Wikidata.</p>
 
 <h2>What is in the file</h2>
-<p>One row per researcher, in rank order. The columns are: rank, name, institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (from OpenAlex when available, otherwise Google Scholar), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
+<p>One row per researcher, in rank order. The columns are: rank, name (with diacritics), name_ascii (plain ASCII for spreadsheet compatibility), institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (Scholar or OpenAlex, whichever is higher), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
 
 <h2>How to cite</h2>
 <blockquote>Hubbard, S. (2026). Who's Who in Goldbach Research. Zenodo. <a href="{DOI_URL}">{DOI_URL}</a></blockquote>
