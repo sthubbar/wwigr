@@ -1,101 +1,116 @@
 name,h_index,source,source_id
-Terence Tao,101,openalex,A5066728260
-Trevor D. Wooley,28,openalex,A5074922873
-Igor E. Shparlinski,42,openalex,A5030033231
-Kaisa Matomäki,16,openalex,A5072247763
-William D. Banks,21,openalex,A5021877667
-Joni Teräväinen,9,openalex,A5005308017
-James Maynard,11,openalex,A5074725717
+Terence Tao,121,scholar,TFx_gLQAAAAJ
+Trevor D. Wooley,35,scholar,PC3eS9wAAAAJ
+Igor E. Shparlinski,53,scholar,9WgmUesAAAAJ
+Kaisa Matomäki,21,scholar,qInWbTIAAAAJ
+William D. Banks,26,scholar,xGrGwPAAAAAJ
+Joni Teräväinen,13,scholar,tRjKH2sAAAAJ
+James Maynard,16,scholar,gGJm5OIAAAAJ
 Jörg Brüdern,19,openalex,A5065745043
-Andrew Granville,32,openalex,A5019320081
+Andrew Granville,44,scholar,veBMlY8AAAAJ
 Xuancheng Shao,10,openalex,A5034391839
 Jean Bourgain,92,openalex,A5029411281
 Janos Pintz,26,openalex,A5011098253
-Ben Green,32,openalex,A5100610718
+Ben Green,47,scholar,8G6QoyMAAAAJ
 D. A. Goldston,21,openalex,A5026677636
-Tim Browning,19,openalex,A5071312320
-Carl Pomerance,39,openalex,A5065324760
-Richard P. Brent,45,openalex,A5078366249
-Pieter Moree,20,openalex,A5009645792
+Tim Browning,28,scholar,Wgw4eNsAAAAJ
+Carl Pomerance,53,scholar,91BJV2YAAAAJ
+Richard P. Brent,59,scholar,TRcAF4cAAAAJ
+Pieter Moree,5,scholar,KAda6AUAAAAJ
 Maksym Radziwiłł,17,openalex,A5027276960
-Alessandro Languasco,12,openalex,A5085255300
+Alessandro Languasco,18,scholar,s4tmT7cAAAAJ
 Chantal David,14,openalex,A5047375275
 R. C. Vaughan,35,openalex,A5110641967
 D. R. Heath-Brown,45,openalex,A5086566271
-Alexandru Zaharescu,24,openalex,A5044281552
+Alexandru Zaharescu,31,scholar,u5kmnggAAAAJ
 Kevin Ford,27,scholar,kif1LIcAAAAJ
 Roger Baker,34,openalex,A5055397484
 Glyn Harman,19,openalex,A5104366123
-Olivier Ramaré,15,openalex,A5090497983
+Olivier Ramaré,20,scholar,NtRvIOUAAAAJ
 Doychin Tolev,10,openalex,A5110619142
 Paul Pollack,13,openalex,A5089571181
-Alessandro Zaccagnini,14,openalex,A5007629714
+Alessandro Zaccagnini,18,scholar,E2QZowsAAAAJ
 Alberto Perelli,20,openalex,A5047972938
 Jianya Liu,21,openalex,A5033916746
 Yoichi Motohashi,19,openalex,A5010471114
 Antal Balog,18,openalex,A5051928221
-Jinjiang Li,6,openalex,A5101594881
+Jinjiang Li,7,scholar,obTyaOcAAAAJ
 Koichi Kawada,9,openalex,A5112704829
-Florian Luca,28,openalex,A5007752336
-Min Zhang,8,openalex,A5100402891
-M. Ram Murty,25,openalex,A5029980962
+Florian Luca,42,scholar,g-eDxl0AAAAJ
+Min Zhang,7,scholar,BcJLHp4AAAAJ
+M. Ram Murty,43,scholar,U5m5FegAAAAJ
 Gautami Bhowmik,9,openalex,A5112004275
 Emmanuel Kowalski,29,openalex,A5072422353
 Daniel Shanks,24,openalex,A5064820709
-Angel Kumchev,12,openalex,A5030564025
+Angel Kumchev,16,scholar,LKtnC3sAAAAJ
 Hugh L. Montgomery,32,openalex,A5112093112
-Steven J. Miller,26,openalex,A5049983178
-Jared Duker Lichtman,4,openalex,A5076302028
-Will Sawin,10,openalex,A5066955363
-C. Y. Yıldırım,11,openalex,A5110654390
+Steven J. Miller,52,scholar,5B8RWrkAAAAJ
+Jared Duker Lichtman,11,scholar,SI0IDlgAAAAJ
+Will Sawin,23,scholar,RnVPcI0AAAAJ
+C. Y. Yıldırım,15,scholar,bz8gHQIAAAAJ
 Joël Rivat,19,openalex,A5053124379
 Henryk Iwaniec,50,openalex,A5038498345
-Greg Martin,16,openalex,A5087476929
-H. A. Helfgott,19,openalex,A5027885087
+Greg Martin,17,scholar,wAtebRAAAAAJ
+H. A. Helfgott,25,scholar,zvGGY4wAAAAJ
 Stephan Baier,14,openalex,A5008642173
-K. Soundararajan,33,openalex,A5031078757
-S. I. Dimitrov,6,openalex,A5103187348
-Stephan Ramon Garcia,27,openalex,A5086016562
+K. Soundararajan,46,scholar,yo22rUIAAAAJ
+S. I. Dimitrov,9,scholar,qzeUwr0AAAAJ
+Stephan Ramon Garcia,29,scholar,LlK9Cu4AAAAJ
 S. W. Graham,15,openalex,A5068536507
-Hung M. Bui,11,openalex,A5038304782
+Hung M. Bui,16,scholar,AmQXG_UAAAAJ
 Alina Carmen Cojocaru,14,openalex,A5101574517
 Maxim Aleksandrovich Korolev,15,openalex,A5049750275
-Kevin Broughan,12,openalex,A5014422330
+Kevin Broughan,1,scholar,8JvjMw8AAAAJ
 Wenguang Zhai,13,openalex,A5101100347
-Kyle Pratt,6,openalex,A5005422405
+Kyle Pratt,11,scholar,0H5mAo4AAAAJ
 Ping Xi,9,openalex,A5105937570
 Jean‐Marc Deshouillers,16,openalex,A5005163295
-Alex Kontorovich,13,openalex,A5016383096
-Ahmet M. Güloğlu,6,openalex,A5078566212
-Pär Kurlberg,16,openalex,A5053501812
+Alex Kontorovich,20,scholar,HQQAWV8AAAAJ
+Ahmet M. Güloğlu,9,scholar,ID8K6vUAAAAJ
+Pär Kurlberg,20,scholar,CDPygqEAAAAJ
 Étienne Fouvry,28,openalex,A5000094767
 Peter Sarnak,57,openalex,A5109077139
-Malik Bataineh,8,openalex,A5103003993
+Malik Bataineh,11,scholar,GlN3_fcAAAAJ
 Akshat Mudgal,6,scholar,-KiTF74AAAAJ
-З. Х. Рахмонов,5,openalex,A5067226501
+Z. Kh. Rakhmonov,8,scholar,P_LGxMAAAAAJ
 Karin Halupczok,5,openalex,A5007423236
 Guangshi Lü,17,openalex,A5108378478
 Tao Zhan,17,openalex,A5064890065
 Helmut Maier,18,openalex,A5061909757
 C. Hooley,33,openalex,A5041920407
 Hiroshi Mikawa,7,openalex,A5082416692
-Ph. Michel,45,openalex,A5051368744
+Ph. Michel,37,scholar,CxnbsMIAAAAJ
 Tianze Wang,11,openalex,A5103281554
 Jie Wu,19,openalex,A5066542036
 John Friedlander,34,openalex,A5066799294
-Valentin Blomer,25,openalex,A5048865416
+Valentin Blomer,34,scholar,64Yj4OUAAAAJ
 Victor Z. Guo,4,openalex,A5103246201
 Tianxin Cai,27,openalex,A5008878615
-Julia Brandes,4,openalex,A5087944062
+Julia Brandes,7,scholar,h631f0wAAAAJ
 G. H. Hardy,56,openalex,A5110397833
-Robert J. Lemke Oliver,11,openalex,A5102849268
-Liangyi Zhao,10,openalex,A5101138797
+Robert J. Lemke Oliver,14,scholar,yKGD9ggAAAAJ
+Liangyi Zhao,13,scholar,EA0Z3-8AAAAJ
 Tsz Ho Chan,8,openalex,A5018591556
-Christian Elsholtz,13,openalex,A5031035960
-Владимир Николаевич Чубариков,5,openalex,A5041707951
-Nicolas Robles,7,openalex,A5018171449
+Christian Elsholtz,18,scholar,khFr0nQAAAAJ
+V. N. Chubarikov,5,openalex,A5041707951
+Nicolas Robles,12,scholar,IjZJ6WYAAAAJ
 Bruce C. Berndt,41,openalex,A5078409229
 Hao Pan,17,openalex,A5103128504
-Claus Bauer,7,openalex,A5016739792
-Zhi-Wei Sun,31,openalex,A5103182312
+Claus Bauer,22,scholar,49GMOAkAAAAJ
+Zhi-Wei Sun,42,scholar,gL3jeH4AAAAJ
 Alexander P. Mangerel,6,openalex,A5007200290
+Lior Bary-Soroker,13,scholar,DLlx5MEAAAAJ
+Theresa C. Anderson,9,openalex,A5079190763
+Emanuel Carneiro,23,scholar,xAdnXykAAAAJ
+Xiumin Ren,11,openalex,A5110131643
+J. P. Keating,51,scholar,sQghW6EAAAAJ
+Jan-Christoph Schlage-Puchta,16,scholar,uu0WF-EAAAAJ
+Efthymios Sofos,10,scholar,HJZgu6sAAAAJ
+Amos Nevo,25,scholar,Tsttgw4AAAAJ
+Michael Th. Rassias,28,scholar,Bfdy0JYAAAAJ
+Ofir Gorodetsky,10,scholar,uZ8fQI8AAAAJ
+Kevin Hughes,10,scholar,bdso5a8AAAAJ
+Ade Irma Suriajaya,7,scholar,Iupw7soAAAAJ
+Vivian Kuperberg,4,scholar,aL14PckAAAAJ
+Bryce Kerr,10,scholar,ssGYWOQAAAAJ
+Matt Visser,102,scholar,uYKUPTwAAAAJ

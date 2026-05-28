@@ -1,17 +1,19 @@
-name,institution,country,birth_date,death_date,note
-Jared Duker Lichtman,Stanford University,US,,,Moved from Oxford to Stanford; OA cache is stale. Override 2026-05.
-Jean Bourgain,,,,,Death already supplied by the Wikidata enrichment stage; row kept as documentation.
-Daniel Shanks,University of Maryland,,1917,1996-09-06,Deceased; OpenAlex institution wrong. AMS Notices obituary 1997. 2026-05-23.
-Vladimir Shevelev,,,1945-03-09,2018-05-03,Deceased; no Wikidata entry. OEIS memorial page. 2026-05-23.
-G. H. Hardy,University of Cambridge,,1877,1947-12-01,Deceased; classical figure surfaced by citations. MacTutor. 2026-05-23.
-J. E. Littlewood,University of Cambridge,,1885,1977-09-06,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
-L. Carlitz,Duke University,,1907,1999-09-17,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
-C. Hooley,,,1928,2018-12-13,Deceased. Royal Society biographical memoir. 2026-05-23.
-Paul T. Bateman,,,1919,2012-12-26,Deceased. University of Illinois faculty memoriam. 2026-05-23.
-Solomon W. Golomb,University of Southern California,,1932,2016-05-01,Deceased; OpenAlex institution wrong. USC In Memoriam. 2026-05-23.
-Christian Mauduit,Aix-Marseille University,,1954,2019-08-13,Deceased; OpenAlex listed CNRS. Aix-Marseille tribute. 2026-05-23.
-Albert A. Mullin,U.S. Army,,1933,2017-05-16,Deceased; career U.S. Army mathematician. 2026-05-23.
-Lawrence S. Levy,,,1934,2014-03-22,Deceased. Obituary 2014. 2026-05-23.
-Hiroshi Mikawa,University of Tsukuba,JP,,,Institution and country missing from OpenAlex; University of Tsukuba per his page. 2026-05-24.
-Jinjiang Li,China University of Mining and Technology (Beijing),,,,Affiliation correction; OpenAlex listed Shanghai Jiao Tong University. 2026-05-24.
-Akshat Mudgal,University of Warwick,,,,Affiliation correction; moved from University of Bristol. 2026-05-24.
+name,display_name,institution,country,birth_date,death_date,note
+Jared Duker Lichtman,,Stanford University,US,,,Moved from Oxford to Stanford; OA cache is stale. Override 2026-05.
+Jean Bourgain,,,,,,Death already supplied by the Wikidata enrichment stage; row kept as documentation.
+Daniel Shanks,,University of Maryland,,1917,1996-09-06,Deceased; OpenAlex institution wrong. AMS Notices obituary 1997. 2026-05-23.
+Vladimir Shevelev,,,,1945-03-09,2018-05-03,Deceased; no Wikidata entry. OEIS memorial page. 2026-05-23.
+G. H. Hardy,,University of Cambridge,,1877,1947-12-01,Deceased; classical figure surfaced by citations. MacTutor. 2026-05-23.
+J. E. Littlewood,,University of Cambridge,,1885,1977-09-06,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
+L. Carlitz,,Duke University,,1907,1999-09-17,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
+C. Hooley,,,,1928,2018-12-13,Deceased. Royal Society biographical memoir. 2026-05-23.
+Paul T. Bateman,,,,1919,2012-12-26,Deceased. University of Illinois faculty memoriam. 2026-05-23.
+Solomon W. Golomb,,University of Southern California,,1932,2016-05-01,Deceased; OpenAlex institution wrong. USC In Memoriam. 2026-05-23.
+Christian Mauduit,,Aix-Marseille University,,1954,2019-08-13,Deceased; OpenAlex listed CNRS. Aix-Marseille tribute. 2026-05-23.
+Albert A. Mullin,,U.S. Army,,1933,2017-05-16,Deceased; career U.S. Army mathematician. 2026-05-23.
+Lawrence S. Levy,,,,1934,2014-03-22,Deceased. Obituary 2014. 2026-05-23.
+Hiroshi Mikawa,,University of Tsukuba,JP,,,Institution and country missing from OpenAlex; University of Tsukuba per his page. 2026-05-24.
+Jinjiang Li,,China University of Mining and Technology (Beijing),,,,Affiliation correction; OpenAlex listed Shanghai Jiao Tong University. 2026-05-24.
+Akshat Mudgal,,University of Warwick,,,,Affiliation correction; moved from University of Bristol. 2026-05-24.
+З. Х. Рахмонов,Z. Kh. Rakhmonov,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)
+Владимир Николаевич Чубариков,V. N. Chubarikov,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)

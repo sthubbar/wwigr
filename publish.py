@@ -198,7 +198,8 @@ def load_overrides():
         with open(path, encoding="utf-8") as f:
             for o in csv.DictReader(f):
                 ov[o["name"]] = {k: o[k].strip() for k in
-                                 ("institution", "country", "birth_date", "death_date")
+                                 ("display_name", "institution", "country",
+                                  "birth_date", "death_date")
                                  if (o.get(k) or "").strip()}
     return ov
 
@@ -276,6 +277,8 @@ def load_pool():
     ov = load_overrides()
     for r in rows:
         o = ov.get(r["name"], {})
+        if "display_name" in o:
+            r["name"] = o["display_name"]
         if "institution" in o:
             r["institution"] = o["institution"]
         if "country" in o:
