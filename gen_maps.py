@@ -147,13 +147,12 @@ EU_COUNTRIES = {
     "AD","AL","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES",
     "FI","FO","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV",
     "MC","MD","ME","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI",
-    "SK","SM","UA","VA","XK",
+    "SK","SM","TR","UA","VA","XK",
 }
 AS_COUNTRIES = {
-    "AE","AF","AM","AU","AZ","BD","BH","BN","BT","CN","GE","HK","ID","IL",
-    "IN","IQ","IR","JO","JP","KG","KH","KP","KR","KW","KZ","LA","LB","LK",
-    "MM","MN","MO","MV","MY","NP","NZ","OM","PG","PH","PK","PS","QA","SA",
-    "SG","SY","TH","TJ","TL","TM","TR","TW","UZ","VN","YE","FJ",
+    "AF","AM","AU","AZ","BD","BN","BT","CN","GE","HK","ID","IN","JP","KG",
+    "KH","KP","KR","KZ","LA","LK","MM","MN","MO","MV","MY","NP","NZ","PG",
+    "PH","PK","SG","TH","TJ","TL","TM","TW","UZ","VN","FJ",
 }
 # 5th tuple slot is the country filter set (None = no filter / world view).
 MAPS = [
@@ -163,8 +162,8 @@ MAPS = [
      "11_top100_north_america.png", (11, 5.6), 4, NA_COUNTRIES),
     ((-11, 38, 31, 63), "Top 100 researchers in Europe",
      "12_top100_europe.png", (10, 7.0), 4, EU_COUNTRIES),
-    ((25, 182, -48, 47),
-     "Top 100 researchers in Asia, the Middle East, and the Pacific",
+    ((60, 182, -48, 47),
+     "Top 100 researchers in Asia and the Pacific",
      "13_top100_asia.png", (13, 6.6), 3, AS_COUNTRIES),
     ((-165, 185, -50, 74), "Top 100 researchers in other regions",
      "14_top100_other.png", (13, 6.6), 2, "OTHER"),
