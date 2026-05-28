@@ -268,6 +268,22 @@ def load_scholar():
     return sc
 
 
+def load_zbmath():
+    """Return name -> canonical zbMATH URL (and code) for any author we
+    were able to resolve via the REST API."""
+    zb = {}
+    path = ROOT / "zbmath.csv"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                if (r.get("zbmath_url") or "").strip():
+                    zb[r["name"]] = {
+                        "url": r["zbmath_url"].strip(),
+                        "code": (r.get("code") or "").strip(),
+                    }
+    return zb
+
+
 def load_hindex():
     h = {}
     path = ROOT / "hindex.csv"
@@ -467,7 +483,7 @@ def render_inmemoriam(deceased):
     _write("in-memoriam.html", _page("In Memoriam", body, "in-memoriam.html"))
 
 
-def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hindex):
+def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath):
     for r in people:
         e = r.get("_enr", {})
         meta = []
@@ -510,9 +526,13 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
             add("OpenAlex",
                 f'<a href="https://openalex.org/works?search={urllib.parse.quote_plus(r["name"])}">'
                 f'Search works</a>')
-        add("zbMATH",
-            f'<a href="{esc(zbmath_search_url(r.get("_orig_name") or r["name"]))}">'
-            f'Author search</a>')
+        zb = zbmath.get(r["name"]) or zbmath.get(r.get("_orig_name", ""))
+        if zb:
+            add("zbMATH", f'<a href="{esc(zb["url"])}">Author page</a>')
+        else:
+            add("zbMATH",
+                f'<a href="{esc(zbmath_search_url(r.get("_orig_name") or r["name"]))}">'
+                f'Author search</a>')
 
         # Bio + metrics rows
         add("Born", (r.get("birth_date") or "")[:4])
@@ -764,6 +784,7 @@ def main():
     homepages = load_homepages()
     scholar = load_scholar()
     hindex = load_hindex()
+    zbmath = load_zbmath()
     gen_people = load_genealogy()
     enr = load_enrichment()
     pool.sort(key=lambda r: int(r["merged_rank"]))
@@ -799,7 +820,7 @@ def main():
     render_inmemoriam(deceased)
     render_reading_list()
     render_data(top100, enr, hindex)
-    render_profiles(top100, oa_by_name, oa_by_surname, homepages, scholar, hindex)
+    render_profiles(top100, oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath)
     render_genealogy_profiles(gen_people, {r["slug"] for r in top100})
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
