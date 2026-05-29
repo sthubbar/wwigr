@@ -262,7 +262,10 @@ def load_oa_ids():
     OA author_id of the OA author with that surname who has the most
     topical works (mirrors the merge step's selection). Lets profile-page
     rendering find the right OA author_id even when the canonical display
-    name (e.g. "Tim Browning") doesn't equal the OA name ("T. D. Browning")."""
+    name (e.g. "Tim Browning") doesn't equal the OA name ("T. D. Browning").
+    Reads oa_overrides.csv after the master to fill names where we already
+    looked up the correct OA author_id by hand (typically zb_only or
+    arxiv_only entries that didn't appear in the OA top 200 master)."""
     by_name = {}
     by_surname = {}
     by_surname_works = {}
@@ -280,6 +283,13 @@ def load_oa_ids():
                 if lt and (lt not in by_surname or nw > by_surname_works[lt]):
                     by_surname[lt] = aid
                     by_surname_works[lt] = nw
+    # Overlay manual overrides (these win over the master)
+    ov_path = ROOT / "oa_overrides.csv"
+    if ov_path.exists():
+        with open(ov_path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                if r.get("name") and r.get("oa_author_id"):
+                    by_name[r["name"]] = r["oa_author_id"].strip()
     return by_name, by_surname
 
 
