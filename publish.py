@@ -40,8 +40,8 @@ UP = ROOT.parent
 BASE = "https://wwigr.org"
 SITE_NAME = "Who's Who in Goldbach Research"
 SITE_DESC = ("A directory of the researchers most active on the Goldbach "
-             "conjecture, ranked from arXiv preprint output and OpenAlex "
-             "citation data.")
+             "conjecture, ranked from arXiv preprint output, OpenAlex "
+             "citation data, and zbMATH MSC classifications.")
 DOI_CONCEPT = "10.5281/zenodo.20355375"
 DOI_URL = "https://doi.org/" + DOI_CONCEPT
 VERIFY_TAG = ('<meta name="google-site-verification" '
@@ -186,7 +186,7 @@ def _page(title, body, active, depth=0, extra_head=""):
 {body}
 </main>
 <footer>
-<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigr.org">admin@wwigr.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigr.org">admin@wwigr.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
 <p>Last built May 2026.</p>
 </footer>
 </body>
@@ -405,6 +405,7 @@ def render_top100(rows, hindex):
     for r in sorted(rows, key=lambda r: r["display_rank"]):
         arx_c = rank_cell(r.get("arx_rank"), r.get("arx_kind", "real"))
         oa_c = rank_cell(r.get("oa_rank"), r.get("oa_kind", "real"))
+        zb_c = rank_cell(r.get("zb_rank"), r.get("zb_kind", "real"))
         h = hindex.get(r["name"])
         h_val = h["h"] if h else ""
         h_cell = f'<td data-order="{h_val if h_val != "" else -1}">{h_val}</td>'
@@ -412,7 +413,7 @@ def render_top100(rows, hindex):
         body_rows.append(
             f"<tr><td>{r['display_rank']}</td><td>{name}</td>"
             f"<td>{esc(r['institution'])}</td><td>{esc(r['country'])}</td>"
-            f"{arx_c}{oa_c}{h_cell}<td>{esc(r['provenance'])}</td>"
+            f"{arx_c}{oa_c}{zb_c}{h_cell}<td>{esc(r['provenance'])}</td>"
             f"<td>{r['first_year']}</td><td>{r['last_year']}</td></tr>")
     prov = Counter(r["provenance"] for r in rows)
     prov_rows = "".join(
@@ -425,10 +426,10 @@ def render_top100(rows, hindex):
 
 <p>This page shows the 100 highest-ranked living researchers, renumbered 1 to 100. Researchers in the ranked pool who have passed away are remembered on the <a href="in-memoriam.html">In Memoriam</a> page.</p>
 
-<p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em> and <em>OA rank</em> are the researcher's position in the full composite score for each pipeline (arXiv composite = 60% papers + 40% eigenvector centrality, out of 155 qualifying authors; OA composite = 60% topical papers + 40% topical citations, out of 1,113 OA authors). Lower is better. A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from the nearest-ranked researchers in the other pipeline. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
+<p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em>, <em>OA rank</em>, and <em>zbMATH rank</em> are the researcher's position in the full composite score for each of three pipelines. Each composite is 60% paper count + 40% eigenvector centrality on the co-authorship graph, computed over: arXiv (155 qualifying authors across 17 search terms), OpenAlex (1,113 authors across 13 phrase queries), and zbMATH (790 authors across MSC classes 11P32, 11N05, 11N13, 11N36, 11P55, the additive-prime-number-theory subfield). The overall rank is the sum of the three (sum_rank), so lower is better in every column. A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from their position in the others. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
 
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>h-index</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
+<thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>zbMATH rank</th><th>h-index</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
 <tbody>
 {chr(10).join(body_rows)}
 </tbody>
@@ -630,7 +631,7 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
 </tbody>
 </table>
 {links_html}
-<p class="callout">Profile data is compiled from arXiv, OpenAlex, and Wikidata, and the homepage link from a web search. Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
+<p class="callout">Profile data is compiled from arXiv, OpenAlex, zbMATH, Wikidata, and Google Scholar, with the homepage link from a web search. Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
 """
         rel = f"people/{r['slug']}.html"
         _write(rel, _page(r["name"], body, rel, depth=1))
@@ -784,8 +785,9 @@ def render_index(rows):
 
 def render_data(living, enr, hindex):
     SITE.joinpath("data").mkdir(parents=True, exist_ok=True)
-    cols = ["rank", "name", "name_ascii", "institution", "country", "arxiv_rank",
-            "openalex_rank", "arxiv_papers", "openalex_works", "openalex_citations",
+    cols = ["rank", "name", "name_ascii", "institution", "country",
+            "arxiv_rank", "openalex_rank", "zbmath_rank",
+            "arxiv_papers", "openalex_works", "openalex_citations", "zbmath_papers",
             "overall_h_index", "h_index_source", "first_active_year",
             "last_active_year", "birth_year", "doctoral_advisor", "orcid",
             "wikidata_id"]
@@ -797,13 +799,15 @@ def render_data(living, enr, hindex):
                 e = r["_enr"]
                 ax = r["arx_rank"] if r.get("arx_kind") == "real" else ""
                 ox = r["oa_rank"] if r.get("oa_kind") == "real" else ""
+                zx = r["zb_rank"] if r.get("zb_kind") == "real" else ""
                 h = hindex.get(r["name"])
                 h_val = h["h"] if h else ""
                 h_src = h["source"] if h else ""
                 w.writerow([r["display_rank"], r["name"], ascii_name(r["name"]),
-                            r["institution"], r["country"], ax, ox,
+                            r["institution"], r["country"], ax, ox, zx,
                             r.get("arx_papers", ""), r.get("oa_works", ""),
-                            r.get("oa_cites", ""), h_val, h_src,
+                            r.get("oa_cites", ""), r.get("zb_papers", ""),
+                            h_val, h_src,
                             r["first_year"], r["last_year"],
                             e.get("birth_year", ""), e.get("advisor", ""),
                             e.get("orcid", ""), e.get("qid", "")])
@@ -816,14 +820,14 @@ def render_data(living, enr, hindex):
 <p class="callout"><a href="data/wwigr_top100.csv"><strong>Download wwigr_top100.csv</strong></a> &nbsp; {len(living)} researchers, {n_wd} of them matched to Wikidata.</p>
 
 <h2>What is in the file</h2>
-<p>One row per researcher, in rank order. The columns are: rank, name (with diacritics), name_ascii (plain ASCII for spreadsheet compatibility), institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (Scholar or OpenAlex, whichever is higher), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
+<p>One row per researcher, in rank order. The columns are: rank, name (with diacritics), name_ascii (plain ASCII for spreadsheet compatibility), institution, country, the arXiv, OpenAlex, and zbMATH composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (Scholar or OpenAlex, whichever is higher), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. A pipeline rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
 
 <h2>How to cite</h2>
 <blockquote>Hubbard, S. (2026). Who's Who in Goldbach Research. Zenodo. <a href="{DOI_URL}">{DOI_URL}</a></blockquote>
 <p>The DOI <a href="{DOI_URL}">{DOI_CONCEPT}</a> always resolves to the current version. Every release is also archived on <a href="https://zenodo.org/records/20355376">Zenodo</a> with its own version DOI.</p>
 
 <h2>How the ranking is built</h2>
-<p>The full pipeline, arXiv preprint output, OpenAlex topical citations, and the Mathematics Genealogy Project combined into a composite score, is documented on the <a href="methodology.html">Methodology</a> page.</p>
+<p>The full pipeline, arXiv preprint output, OpenAlex topical citations, zbMATH MSC classifications, and the Mathematics Genealogy Project combined into a composite score, is documented on the <a href="methodology.html">Methodology</a> page.</p>
 """
     _write("data.html", _page("Data and citation", body, "data.html"))
 

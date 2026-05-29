@@ -9,12 +9,12 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 <meta property="og:title" content="Data and citation - Who&#x27;s Who in Goldbach Research">
-<meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output and OpenAlex citation data.">
+<meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wwigr.org/data">
 <meta property="og:site_name" content="Who&#x27;s Who in Goldbach Research">
 <meta name="twitter:card" content="summary">
-<meta name="description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output and OpenAlex citation data.">
+<meta name="description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 </head>
 <body>
 <header class="site-header">
@@ -41,18 +41,18 @@
 <p class="callout"><a href="data/wwigr_top100.csv"><strong>Download wwigr_top100.csv</strong></a> &nbsp; 100 researchers, 61 of them matched to Wikidata.</p>
 
 <h2>What is in the file</h2>
-<p>One row per researcher, in rank order. The columns are: rank, name (with diacritics), name_ascii (plain ASCII for spreadsheet compatibility), institution, country, the arXiv and OpenAlex composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (Scholar or OpenAlex, whichever is higher), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. An arXiv or OpenAlex rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
+<p>One row per researcher, in rank order. The columns are: rank, name (with diacritics), name_ascii (plain ASCII for spreadsheet compatibility), institution, country, the arXiv, OpenAlex, and zbMATH composite ranks, arXiv paper count, OpenAlex work and citation counts, overall h-index (Scholar or OpenAlex, whichever is higher), first and last active year, and, for the researchers matched to Wikidata, birth year, doctoral advisor, ORCID, and Wikidata identifier. A pipeline rank is left blank when the researcher did not appear in that pipeline; the overall ranking used an interpolated estimate in its place (see <a href="methodology.html">Methodology</a>).</p>
 
 <h2>How to cite</h2>
 <blockquote>Hubbard, S. (2026). Who's Who in Goldbach Research. Zenodo. <a href="https://doi.org/10.5281/zenodo.20355375">https://doi.org/10.5281/zenodo.20355375</a></blockquote>
 <p>The DOI <a href="https://doi.org/10.5281/zenodo.20355375">10.5281/zenodo.20355375</a> always resolves to the current version. Every release is also archived on <a href="https://zenodo.org/records/20355376">Zenodo</a> with its own version DOI.</p>
 
 <h2>How the ranking is built</h2>
-<p>The full pipeline, arXiv preprint output, OpenAlex topical citations, and the Mathematics Genealogy Project combined into a composite score, is documented on the <a href="methodology.html">Methodology</a> page.</p>
+<p>The full pipeline, arXiv preprint output, OpenAlex topical citations, zbMATH MSC classifications, and the Mathematics Genealogy Project combined into a composite score, is documented on the <a href="methodology.html">Methodology</a> page.</p>
 
 </main>
 <footer>
-<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigr.org">admin@wwigr.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigr.org">admin@wwigr.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
 <p>Last built May 2026.</p>
 </footer>
 </body>
