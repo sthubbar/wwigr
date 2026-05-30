@@ -4,3 +4,5 @@ node_modules/
 .wrangler/
 *.zip
 zi*
+.deploy-token
+.deploy-token.*

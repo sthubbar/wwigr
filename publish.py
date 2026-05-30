@@ -452,11 +452,16 @@ $(document).ready(function() {{
 
 <p class="muted">Ranks shown in [square brackets] are interpolated estimates, not measured values. <a href="methodology.html">How interpolation works</a>.</p>
 
-<h2>Provenance breakdown</h2>
+<h2>Source column legend</h2>
+<p>The <strong>Source</strong> column records which of the three pipelines ranked each researcher directly. Where a pipeline did not rank someone, the rank shown for that pipeline is an interpolated estimate (in [square brackets]).</p>
 <ul>
-<li><code>both</code>: in arXiv 155 AND OpenAlex top pool. The unanimous core.</li>
-<li><code>oa_only</code>: discovered by OpenAlex but not arXiv-active. These are senior figures who publish in journals and don't post preprints.</li>
-<li><code>arxiv_only</code>: present only if at least one arXiv-only entry made the sum_rank cutoff.</li>
+<li><code>all_three</code>: ranked directly by arXiv, OpenAlex, and zbMATH. The unanimous core.</li>
+<li><code>arx+oa</code>: ranked by arXiv and OpenAlex, but not zbMATH.</li>
+<li><code>arx+zb</code>: ranked by arXiv and zbMATH, but not OpenAlex.</li>
+<li><code>oa+zb</code>: ranked by OpenAlex and zbMATH, but not arXiv.</li>
+<li><code>arxiv_only</code>: ranked only by the arXiv pipeline.</li>
+<li><code>oa_only</code>: ranked only by OpenAlex. Often senior figures who publish in journals and do not post preprints.</li>
+<li><code>zb_only</code>: ranked only by zbMATH. Often pre-1995 Russian and Chinese number theorists that arXiv and OpenAlex under-index.</li>
 <li><code>manual_add</code>: manually inserted via <code>gb_manual_additions.csv</code>.</li>
 </ul>
 

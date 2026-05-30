@@ -98,4 +98,4 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 97,Bryce Kerr,Bryce Kerr,UNSW Sydney,AU,22,,,7,8,7,,10,scholar,2017,2025,,,0000-0002-8829-372X,
 98,Priyamvad Srivastav,Priyamvad Srivastav,University of Göttingen,DE,96,,,3,4,1,,3,openalex,2015,2025,,,,
 99,Cécile Dartyge,Cecile Dartyge,Université de Lorraine,FR,,,66,,4,16,11,11,openalex,2012,2025,,,,
-100,David Lowry-Duda,David Lowry-Duda,Brown University,US,84,,,3,9,4,,,,2014,2026,,,0000-0002-8543-4558,Q60057147
+100,David Lowry-Duda,David Lowry-Duda,Brown University,US,84,,,3,9,4,,5,openalex,2014,2026,,,0000-0002-8543-4558,Q60057147
