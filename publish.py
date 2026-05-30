@@ -76,7 +76,6 @@ NAV_ITEMS = [
     ("regions/north-america.html",  "North America"),
     ("regions/europe.html",         "Europe"),
     ("regions/asia.html",           "Asia & Pacific"),
-    ("regions/other.html",          "Other regions"),
     ("in-memoriam.html",            "In Memoriam"),
     ("genealogy.html",              "Genealogy"),
     ("reading-list.html",           "Reading List"),
@@ -244,7 +243,8 @@ def load_overrides():
             for o in csv.DictReader(f):
                 ov[o["name"]] = {k: o[k].strip() for k in
                                  ("display_name", "institution", "country",
-                                  "birth_date", "death_date")
+                                  "birth_date", "death_date",
+                                  "first_year", "last_year")
                                  if (o.get(k) or "").strip()}
     return ov
 
@@ -400,6 +400,10 @@ def load_pool():
             r["institution"] = o["institution"]
         if "country" in o:
             r["country"] = o["country"]
+        if o.get("first_year"):
+            r["first_year"] = o["first_year"]
+        if o.get("last_year"):
+            r["last_year"] = o["last_year"]
         e = enr.get(r["name"], {})
         r["_enr"] = e
         death = o.get("death_date") or e.get("death_date") or ""
@@ -507,7 +511,92 @@ $(document).ready(function() {{
     _write(active, _page(title, body, active, depth=1))
 
 
-def render_inmemoriam(deceased):
+
+def _full_detail_rows(*, name, orig_name=None, homepage=None, scholar_url=None,
+                      oaid=None, zb=None, born=None, advisor=None,
+                      arx_papers=None, oa_works=None, oa_cites=None,
+                      active_years=None, hindex_entry=None, orcid=None,
+                      extra=None):
+    """Build the standard profile metric rows for any person, the same set of
+    fields the Top 100 pages use. Missing values render as N/A."""
+    orig = orig_name or name
+    out = []
+
+    def add(label, val):
+        out.append(f"<tr><td>{label}</td>"
+                   f"<td>{val if val not in (None, '', 'NA') else 'N/A'}</td></tr>")
+
+    if homepage:
+        host = homepage.split("//", 1)[-1].split("/", 1)[0]
+        if host.startswith("www."):
+            host = host[4:]
+        add("Homepage", f'<a href="{esc(homepage)}">{esc(host)}</a>')
+    else:
+        add("Homepage", "N/A")
+    add("arXiv", f'<a href="{esc(arxiv_search_url(orig))}">Author search</a>')
+    if scholar_url:
+        add("Google Scholar", f'<a href="{esc(scholar_url)}">View profile</a>')
+    else:
+        add("Google Scholar",
+            f'<a href="{esc(scholar_search_url(name))}">Search results</a>')
+    if oaid:
+        add("OpenAlex", f'<a href="https://openalex.org/{oaid}">Author page</a>')
+    else:
+        add("OpenAlex",
+            f'<a href="https://openalex.org/works?search='
+            f'{urllib.parse.quote_plus(name)}">Search works</a>')
+    if zb:
+        add("zbMATH", f'<a href="{esc(zb["url"])}">Author page</a>')
+    else:
+        add("zbMATH", f'<a href="{esc(zbmath_search_url(orig))}">Author search</a>')
+    add("Born", (born or "")[:4] if born else "N/A")
+    add("Doctoral advisor", esc(advisor) if advisor else "N/A")
+    add("arXiv Goldbach-topical papers",
+        arx_papers if arx_papers not in (None, "") else "N/A")
+    add("OpenAlex topical works", oa_works if oa_works not in (None, "") else "N/A")
+    add("OpenAlex topical citations",
+        oa_cites if oa_cites not in (None, "") else "N/A")
+    add("Active years", active_years or "N/A")
+    if hindex_entry:
+        src = "OpenAlex" if hindex_entry["source"] == "openalex" else "Google Scholar"
+        add("Overall h-index",
+            f'{hindex_entry["h"]} <span class="muted">({src})</span>')
+    else:
+        add("Overall h-index", "N/A")
+    if orcid:
+        add("ORCID", f'<a href="https://orcid.org/{orcid}">{esc(orcid)}</a>')
+    else:
+        add("ORCID", "N/A")
+    for label, val in (extra or []):
+        add(label, val)
+    return "\n".join(out)
+
+
+def _write_detail(slug, name, subtitle, back_href, back_label,
+                  intro_html, rows_html, bottom_html):
+    body = f"""<p class="subtitle"><a href="../{back_href}">&larr; {back_label}</a></p>
+<h1>{esc(name)}</h1>
+<p class="subtitle">{subtitle}</p>
+{intro_html}
+<table class="profile-table">
+<tbody>
+{rows_html}
+</tbody>
+</table>
+{bottom_html}
+<p class="callout">Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
+"""
+    rel = f"people/{slug}.html"
+    _write(rel, _page(name, body, rel, depth=1))
+
+
+def _oaid_for(name, orig_name, oa_by_name, oa_by_surname):
+    return (oa_by_name.get(name)
+            or oa_by_name.get(orig_name or "")
+            or oa_by_surname.get(_oa_last_token(orig_name or name)))
+
+
+def render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath, used_slugs):
     rows = sorted(deceased, key=lambda r: r.get("death_date") or "")
 
     def years(r):
@@ -515,8 +604,38 @@ def render_inmemoriam(deceased):
         d = (r.get("death_date") or "")[:4]
         return f"{b}-{d}" if b and d else (f"d. {d}" if d else "")
 
+    # Detail pages for the ranked-pool deceased.
+    for r in rows:
+        sl = slugify(r["name"])
+        while sl in used_slugs:
+            sl += "-x"
+        used_slugs.add(sl)
+        r["slug"] = sl
+        e = r.get("_enr", {})
+        fy, ly = r.get("first_year", ""), r.get("last_year", "")
+        active = f"{fy} to {ly}" if fy and ly else ""
+        rows_html = _full_detail_rows(
+            name=r["name"], orig_name=r.get("_orig_name"),
+            homepage=homepages.get(r["name"]),
+            scholar_url=scholar.get(r["name"]),
+            oaid=_oaid_for(r["name"], r.get("_orig_name"), oa_by_name, oa_by_surname),
+            zb=zbmath.get(r["name"]) or zbmath.get(r.get("_orig_name", "")),
+            born=r.get("birth_date"), advisor=e.get("advisor"),
+            arx_papers=r.get("arx_papers"), oa_works=r.get("oa_works"),
+            oa_cites=r.get("oa_cites"), active_years=active,
+            hindex_entry=hindex.get(r["name"]), orcid=e.get("orcid"))
+        life = years(r)
+        sub = f"{esc(r['institution'])} ({esc(r['country'])})" + (f" &middot; {life}" if life else "")
+        intro = ('<p>A researcher from the ranked pool of this directory who has '
+                 'since passed away. The Top 100 and the regional pages list '
+                 'living researchers only, so this profile preserves the record '
+                 'of their place in the field.</p>')
+        _write_detail(r["slug"], r["name"], sub, "in-memoriam.html",
+                      "Back to In Memoriam", intro, rows_html, "")
+
     body_rows = "\n".join(
-        f"<tr><td>{esc(r['name'])}</td><td>{esc(r['institution'])}</td>"
+        f'<tr><td><a href="people/{esc(r["slug"])}.html">{esc(r["name"])}</a></td>'
+        f"<td>{esc(r['institution'])}</td>"
         f"<td>{esc(r['country'])}</td><td>{years(r)}</td></tr>"
         for r in rows)
 
@@ -531,15 +650,43 @@ def render_inmemoriam(deceased):
             for r in csv.DictReader(f):
                 extras.append(r)
     extras.sort(key=lambda r: int(r.get("birth") or 0))
+
+    # Detail pages for the foundational figures (sparse; mostly N/A).
+    for r in extras:
+        sl = slugify(r["name"])
+        while sl in used_slugs:
+            sl += "-x"
+        used_slugs.add(sl)
+        r["slug"] = sl
+        rows_html = _full_detail_rows(
+            name=r["name"],
+            homepage=homepages.get(r["name"]),
+            scholar_url=scholar.get(r["name"]),
+            oaid=_oaid_for(r["name"], None, oa_by_name, oa_by_surname),
+            zb=zbmath.get(r["name"]),
+            born=r.get("birth"), advisor=None,
+            arx_papers=None, oa_works=None, oa_cites=None, active_years=None,
+            hindex_entry=hindex.get(r["name"]), orcid=None)
+        life = f"{esc(r.get('birth',''))}-{esc(r.get('death',''))}"
+        sub = f"{esc(r['institution'])} ({esc(r['country'])}) &middot; {life}"
+        intro = ('<p>A foundational figure in Goldbach and additive prime number '
+                 'theory whose career predates the arXiv and OpenAlex digital '
+                 'record this directory is built from. Listed here so the lineage '
+                 'behind the modern field stays visible.</p>')
+        bottom = f"<p>{esc(r.get('note',''))}</p>" if r.get("note") else ""
+        _write_detail(r["slug"], r["name"], sub, "in-memoriam.html",
+                      "Back to In Memoriam", intro, rows_html, bottom)
+
     extras_rows = "\n".join(
-        f"<tr><td>{esc(r['name'])}</td><td>{esc(r['institution'])}</td>"
+        f'<tr><td><a href="people/{esc(r["slug"])}.html">{esc(r["name"])}</a></td>'
+        f"<td>{esc(r['institution'])}</td>"
         f"<td>{esc(r['country'])}</td><td>{esc(r.get('birth',''))}-{esc(r.get('death',''))}</td>"
         f"<td>{esc(r.get('note',''))}</td></tr>"
         for r in extras)
     extras_section = (f"""
 <h2>Foundational figures</h2>
 
-<p>The pipeline behind this site ranks researchers whose work appears on arXiv or in OpenAlex, which mostly means careers active from the mid-1990s onward. The names below predate that coverage. Their work is the bedrock on which modern Goldbach research is built; every modern paper in this directory ultimately rests on the circle method (Hardy-Littlewood, Vinogradov, van der Corput), the sieve toolkit (Halberstam-Richert, Linnik), and the breakthroughs of Chen Jingrun, Wang Yuan, and Hua Loo-Keng. They are listed in birth order.</p>
+<p>The pipeline behind this site ranks researchers whose work appears on arXiv or in OpenAlex, which mostly means careers active from the mid-1990s onward. The names below predate that coverage. Their work is the bedrock on which modern Goldbach research is built; every modern paper in this directory ultimately rests on the circle method (Hardy-Littlewood, Vinogradov, van der Corput), the sieve toolkit (Halberstam-Richert, Linnik), and the breakthroughs of Chen Jingrun, Wang Yuan, and Hua Loo-Keng. They are listed in birth order. Click any name for a full profile.</p>
 
 <table class="display compact stripe" style="width:100%">
 <thead><tr><th>Name</th><th>Institution</th><th>Country</th><th>Years</th><th>Contribution</th></tr></thead>
@@ -552,7 +699,7 @@ def render_inmemoriam(deceased):
     body = f"""<h1>In Memoriam</h1>
 <p class="subtitle">Researchers in this directory who are no longer with us</p>
 
-<p>The Top 100 and the regional pages list living researchers only, so the directory stays accurate for anyone using it to make contact. This page remembers the {len(rows)} researchers from the ranked pool who have passed away, plus a separate listing of foundational figures whose careers predate the digital publication record our pipeline reads from.</p>
+<p>The Top 100 and the regional pages list living researchers only, so the directory stays accurate for anyone using it to make contact. This page remembers the {len(rows)} researchers from the ranked pool who have passed away, plus a separate listing of foundational figures whose careers predate the digital publication record our pipeline reads from. Each name links to a full profile.</p>
 
 <h2>From the ranked pool</h2>
 
@@ -656,49 +803,44 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
           f"({n_hp} with a homepage, {n_sc} with a Scholar profile)")
 
 
-def render_genealogy_profiles(people, top_slugs):
+def render_genealogy_profiles(people, top_slugs, oa_by_name, oa_by_surname,
+                              homepages, scholar, hindex, zbmath, used_slugs):
     if not people:
         return
     made = 0
     for r in people:
         if r["slug"] in top_slugs:
             continue  # now a Top 100 member; their profile owns the slug
-        meta = []
-
-        def add(label, val):
-            if val not in (None, "", "NA"):
-                meta.append(f"<tr><td>{label}</td><td>{val}</td></tr>")
-
-        sch = (r.get("scholar_url") or "").strip()
-        if sch:
-            add("Google Scholar", f'<a href="{esc(sch)}">View profile</a>')
-        else:
-            add("Google Scholar",
-                f'<a href="{esc(scholar_search_url(r["name"]))}">Search results</a>')
-        add("Close-relation rank", f'{r.get("rank", "")} of {len(people)}')
-        add("PhD year", r.get("phd_year"))
-        add("University", esc(r.get("university") or ""))
-        add("Lifespan", r.get("lifespan"))
-        add("Network proximity (PPR score)", r.get("ppr"))
-
+        used_slugs.add(r["slug"])
+        lifespan = (r.get("lifespan") or "").strip()
+        born = lifespan[:4] if lifespan else None
+        extra = []
+        if r.get("phd_year"):
+            extra.append(("PhD year", r.get("phd_year")))
+        if lifespan:
+            extra.append(("Lifespan", lifespan))
+        if r.get("rank"):
+            extra.append(("Close-relation rank", f'{r.get("rank")} of {len(people)}'))
+        if r.get("ppr"):
+            extra.append(("Network proximity (PPR score)", r.get("ppr")))
+        rows_html = _full_detail_rows(
+            name=r["name"],
+            homepage=homepages.get(r["name"]),
+            scholar_url=(r.get("scholar_url") or "").strip() or scholar.get(r["name"]),
+            oaid=_oaid_for(r["name"], None, oa_by_name, oa_by_surname),
+            zb=zbmath.get(r["name"]),
+            born=born, advisor=None,
+            arx_papers=None, oa_works=None, oa_cites=None, active_years=None,
+            hindex_entry=hindex.get(r["name"]), orcid=None, extra=extra)
+        sub = esc(r.get("university") or "")
+        intro = ('<p>A <strong>close relation</strong> of the Top 100: not in the '
+                 'algorithmic ranking by publication count, but placed in the '
+                 'immediate orbit of canonical Goldbach researchers by the '
+                 "Mathematics Genealogy Project's advisor-student network.</p>")
         note = esc(r.get("note") or "")
-        body = f"""<p class="subtitle"><a href="../genealogy.html">&larr; Back to Genealogy</a></p>
-<h1>{esc(r['name'])}</h1>
-<p class="subtitle">{esc(r.get('university') or '')}</p>
-
-<p>A <strong>close relation</strong> of the Top 100: not in the algorithmic ranking by publication count, but placed in the immediate orbit of canonical Goldbach researchers by the Mathematics Genealogy Project's advisor-student network.</p>
-
-<table class="profile-table">
-<tbody>
-{chr(10).join(meta)}
-</tbody>
-</table>
-
-<p>{note}</p>
-<p class="callout">Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
-"""
-        rel = f"people/{r['slug']}.html"
-        _write(rel, _page(r["name"], body, rel, depth=1))
+        bottom = f"<p>{note}</p>" if note else ""
+        _write_detail(r["slug"], r["name"], sub, "genealogy.html",
+                      "Back to Genealogy", intro, rows_html, bottom)
         made += 1
     skipped = len(people) - made
     print(f"  {made} genealogy close-relation profile pages"
@@ -752,7 +894,9 @@ $(document).ready(function() {{
     _write("reading-list.html", _page("Reading List", body, "reading-list.html"))
 
 
-def render_index(rows):
+def render_index(rows, has_other=False):
+    other_link = (', <a href="regions/other.html">Other regions</a>'
+                  if has_other else "")
     by_country = Counter(r["country"] for r in rows)
     cc_rows = "".join(
         f"<tr><td>{esc(cc)}</td><td style='text-align:right'>{n}</td></tr>"
@@ -786,7 +930,7 @@ def render_index(rows):
 <h2>Where to start</h2>
 <ul>
 <li><a href="top100.html"><strong>The Top 100</strong></a> is the canonical ranked list, sortable in your browser.</li>
-<li>Regional listings: <a href="regions/north-america.html">North America</a>, <a href="regions/europe.html">Europe</a>, <a href="regions/asia.html">Asia &amp; Pacific</a>, <a href="regions/other.html">Other regions</a>.</li>
+<li>Regional listings: <a href="regions/north-america.html">North America</a>, <a href="regions/europe.html">Europe</a>, <a href="regions/asia.html">Asia &amp; Pacific</a>{other_link}.</li>
 <li><a href="reading-list.html"><strong>Reading list</strong></a>: 2,000+ short Goldbach papers from 2018 onward, with clickable links.</li>
 <li><a href="data.html"><strong>Data</strong></a>: the ranked list as an open CC-BY dataset, with a citable DOI.</li>
 <li><a href="methodology.html"><strong>Methodology</strong></a>: how the data is built, audit decisions, and limitations.</li>
@@ -888,7 +1032,12 @@ def main():
         seen[s] = seen.get(s, 0) + 1
         r["slug"] = s if seen[s] == 1 else f"{s}-{seen[s]}"
     print(f"  pool {len(pool)}, living {len(living)}, deceased {len(deceased)}")
-    render_index(top100)
+    other_set = ({r["country"] for r in top100}
+                 - NA_COUNTRIES - EU_COUNTRIES - AS_COUNTRIES)
+    other_rows = [r for r in top100 if r["country"] in other_set]
+    if other_rows:
+        NAV_ITEMS.insert(5, ("regions/other.html", "Other regions"))
+    render_index(top100, bool(other_rows))
     render_top100(top100, hindex)
     render_region(top100, "north-america", "North America", NA_COUNTRIES,
                   "11_top100_north_america.png",
@@ -899,19 +1048,23 @@ def main():
     render_region(top100, "asia", "Asia and the Pacific",
                   AS_COUNTRIES, "13_top100_asia.png",
                   "Top 100 researchers are based in Asia or the Pacific.")
-    # Catch-all: everyone not in the three named regions (Africa, South
-    # America, anything else). Computed from the rows themselves so we
-    # never accidentally orphan a country.
-    other_set = {r["country"] for r in top100} - NA_COUNTRIES - EU_COUNTRIES - AS_COUNTRIES
-    render_region(top100, "other", "Other regions", other_set,
-                  "14_top100_other.png",
-                  "Top 100 researchers are based outside the three named "
-                  "regions.")
-    render_inmemoriam(deceased)
+    # Catch-all region: only rendered when someone actually lands outside
+    # the three named regions. Left out entirely when empty.
+    if other_rows:
+        render_region(top100, "other", "Other regions", other_set,
+                      "14_top100_other.png",
+                      "Top 100 researchers are based outside the three "
+                      "named regions.")
+    top_slugs = {r["slug"] for r in top100}
+    used_slugs = set(top_slugs)
+    render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages,
+                      scholar, hindex, zbmath, used_slugs)
     render_reading_list()
     render_data(top100, enr, hindex)
     render_profiles(top100, oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath)
-    render_genealogy_profiles(gen_people, {r["slug"] for r in top100})
+    render_genealogy_profiles(gen_people, top_slugs, oa_by_name,
+                              oa_by_surname, homepages, scholar, hindex,
+                              zbmath, used_slugs)
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
 

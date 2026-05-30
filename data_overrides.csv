@@ -1,37 +1,42 @@
-name,display_name,institution,country,birth_date,death_date,note
-Jared Duker Lichtman,,Stanford University,US,,,Moved from Oxford to Stanford; OA cache is stale. Override 2026-05.
-Jean Bourgain,,,,,,Death already supplied by the Wikidata enrichment stage; row kept as documentation.
-Daniel Shanks,,University of Maryland,,1917,1996-09-06,Deceased; OpenAlex institution wrong. AMS Notices obituary 1997. 2026-05-23.
-Vladimir Shevelev,,,,1945-03-09,2018-05-03,Deceased; no Wikidata entry. OEIS memorial page. 2026-05-23.
-G. H. Hardy,,University of Cambridge,,1877,1947-12-01,Deceased; classical figure surfaced by citations. MacTutor. 2026-05-23.
-J. E. Littlewood,,University of Cambridge,,1885,1977-09-06,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
-L. Carlitz,,Duke University,,1907,1999-09-17,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
-C. Hooley,,,,1928,2018-12-13,Deceased. Royal Society biographical memoir. 2026-05-23.
-Paul T. Bateman,,,,1919,2012-12-26,Deceased. University of Illinois faculty memoriam. 2026-05-23.
-Solomon W. Golomb,,University of Southern California,,1932,2016-05-01,Deceased; OpenAlex institution wrong. USC In Memoriam. 2026-05-23.
-Christian Mauduit,,Aix-Marseille University,,1954,2019-08-13,Deceased; OpenAlex listed CNRS. Aix-Marseille tribute. 2026-05-23.
-Albert A. Mullin,,U.S. Army,,1933,2017-05-16,Deceased; career U.S. Army mathematician. 2026-05-23.
-Lawrence S. Levy,,,,1934,2014-03-22,Deceased. Obituary 2014. 2026-05-23.
-Hiroshi Mikawa,,University of Tsukuba,JP,,,Institution and country missing from OpenAlex; University of Tsukuba per his page. 2026-05-24.
-Jinjiang Li,,China University of Mining and Technology (Beijing),,,,Affiliation correction; OpenAlex listed Shanghai Jiao Tong University. 2026-05-24.
-Akshat Mudgal,,University of Warwick,,,,Affiliation correction; moved from University of Bristol. 2026-05-24.
-З. Х. Рахмонов,Z. Kh. Rakhmonov,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)
-Владимир Николаевич Чубариков,V. N. Chubarikov,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)
-Tianze Wang,,"Institute of Mathematics, Henan Academy of Sciences",CN,,,"Affiliation update: now Director of Institute of Mathematics, Henan Academy of Sciences (founded 2021). 2026-05-28."
-Pál Erdős,,Hungarian Academy of Sciences,HU,1913,1996-09-20,Foundational figure; entered Top 200 via zbMATH ranking; deceased.
-Heini Halberstam,,University of Illinois Urbana-Champaign,US,1926,2014-01-25,Sieve methods author; entered Top 200 via zbMATH ranking; deceased.
-Hans Riesel,,Royal Institute of Technology,SE,1929,2014-12-21,Computational number theorist; entered Top 200 via zbMATH ranking; deceased.
-Ming-Chit Liu,,Hong Kong Baptist University,HK,,,Active living researcher; surface from zbMATH MSC ranking.
-Maurizio B. S. Laporta,,University of Naples Federico II,IT,,,Institution from researcher's faculty page; 2026-05.
-Danilo Bazzanella,,Politecnico di Torino,IT,,,DISMA; from polito.it staff page. 2026-05.
-Gérald Tenenbaum,,Université de Lorraine,FR,,,"Institut Élie Cartan, Nancy. Professor Emeritus. 2026-05."
-Michael A. Bennett,,University of British Columbia,CA,,,Confirmed from math.ubc.ca/~bennett/. 2026-05.
-Cameron L. Stewart,,University of Waterloo,CA,,,Pure Math Department. 2026-05.
-Brian Cook,,Kent State University,US,,,Per kent.edu/math/profile/brian-cook. Was previously listed Oxford which is stale. 2026-05.
-Ramachandran Balasubramanian,,Institute of Mathematical Sciences,IN,,,IMSc Chennai. Emeritus. Previously listed Arizona State which was wrong. 2026-05.
-Jan Moser,,Comenius University Bratislava,SK,,,Department of Mathematical Analysis. Previously listed Myanmar Geosciences which was a different Jan Moser. 2026-05.
-Régis de la Bretèche,,Université Paris Cité,FR,,,IMJ-PRG. Previously listed CNRS which is the funding body. 2026-05.
-Sary Drappeau,,Aix-Marseille Université,FR,,,Institut de Mathématiques de Marseille (I2M). Previously listed CNRS which is the funding body. 2026-05.
-Marek Wolf,,Cardinal Stefan Wyszyński University,PL,,,UKSW Warsaw. Previously listed Charles University Prague which was wrong. 2026-05.
-Jiseong Kim,,University of Mississippi,US,,,Visiting Assistant Professor. Previously listed KAIST which was outdated. 2026-05.
-Jori Merikoski,,University of Helsinki,FI,,,Moved from Oxford to Helsinki as Assistant Professor 2025. 2026-05.
+name,display_name,institution,country,birth_date,death_date,first_year,last_year,note
+Jared Duker Lichtman,,Stanford University,US,,,,,Moved from Oxford to Stanford; OA cache is stale. Override 2026-05.
+Jean Bourgain,,,,,,,,Death already supplied by the Wikidata enrichment stage; row kept as documentation.
+Daniel Shanks,,University of Maryland,,1917,1996-09-06,,,Deceased; OpenAlex institution wrong. AMS Notices obituary 1997. 2026-05-23.
+Vladimir Shevelev,,,,1945-03-09,2018-05-03,,,Deceased; no Wikidata entry. OEIS memorial page. 2026-05-23.
+G. H. Hardy,,University of Cambridge,,1877,1947-12-01,,,Deceased; classical figure surfaced by citations. MacTutor. 2026-05-23.
+J. E. Littlewood,,University of Cambridge,,1885,1977-09-06,,,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
+L. Carlitz,,Duke University,,1907,1999-09-17,,,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
+C. Hooley,,,,1928,2018-12-13,,,Deceased. Royal Society biographical memoir. 2026-05-23.
+Paul T. Bateman,,,,1919,2012-12-26,,,Deceased. University of Illinois faculty memoriam. 2026-05-23.
+Solomon W. Golomb,,University of Southern California,,1932,2016-05-01,,,Deceased; OpenAlex institution wrong. USC In Memoriam. 2026-05-23.
+Christian Mauduit,,Aix-Marseille University,,1954,2019-08-13,,,Deceased; OpenAlex listed CNRS. Aix-Marseille tribute. 2026-05-23.
+Albert A. Mullin,,U.S. Army,,1933,2017-05-16,,,Deceased; career U.S. Army mathematician. 2026-05-23.
+Lawrence S. Levy,,,,1934,2014-03-22,,,Deceased. Obituary 2014. 2026-05-23.
+Hiroshi Mikawa,,University of Tsukuba,JP,,,,,Institution and country missing from OpenAlex; University of Tsukuba per his page. 2026-05-24.
+Jinjiang Li,,China University of Mining and Technology (Beijing),,,,,,Affiliation correction; OpenAlex listed Shanghai Jiao Tong University. 2026-05-24.
+Akshat Mudgal,,University of Warwick,,,,,,Affiliation correction; moved from University of Bristol. 2026-05-24.
+З. Х. Рахмонов,Z. Kh. Rakhmonov,,,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)
+Владимир Николаевич Чубариков,V. N. Chubarikov,,,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)
+Tianze Wang,,"Institute of Mathematics, Henan Academy of Sciences",CN,,,,,"Affiliation update: now Director of Institute of Mathematics, Henan Academy of Sciences (founded 2021). 2026-05-28."
+Pál Erdős,,Hungarian Academy of Sciences,HU,1913,1996-09-20,,,Foundational figure; entered Top 200 via zbMATH ranking; deceased.
+Heini Halberstam,,University of Illinois Urbana-Champaign,US,1926,2014-01-25,,,Sieve methods author; entered Top 200 via zbMATH ranking; deceased.
+Hans Riesel,,Royal Institute of Technology,SE,1929,2014-12-21,,,Computational number theorist; entered Top 200 via zbMATH ranking; deceased.
+Ming-Chit Liu,,Hong Kong Baptist University,HK,,,,,Active living researcher; surface from zbMATH MSC ranking.
+Maurizio B. S. Laporta,,University of Naples Federico II,IT,,,,,Institution from researcher's faculty page; 2026-05.
+Danilo Bazzanella,,Politecnico di Torino,IT,,,2000,2023,DISMA; from polito.it staff page. 2026-05.
+Gérald Tenenbaum,,Université de Lorraine,FR,,,1976,2026,"Institut Élie Cartan, Nancy. Professor Emeritus. 2026-05."
+Michael A. Bennett,,University of British Columbia,CA,,,1991,2025,Confirmed from math.ubc.ca/~bennett/. 2026-05.
+Cameron L. Stewart,,University of Waterloo,CA,,,1976,2025,Pure Math Department. 2026-05.
+Brian Cook,,Kent State University,US,,,,,Per kent.edu/math/profile/brian-cook. Was previously listed Oxford which is stale. 2026-05.
+Ramachandran Balasubramanian,,Institute of Mathematical Sciences,IN,,,,,IMSc Chennai. Emeritus. Previously listed Arizona State which was wrong. 2026-05.
+Jan Moser,,Comenius University Bratislava,SK,,,,,Department of Mathematical Analysis. Previously listed Myanmar Geosciences which was a different Jan Moser. 2026-05.
+Régis de la Bretèche,,Université Paris Cité,FR,,,,,IMJ-PRG. Previously listed CNRS which is the funding body. 2026-05.
+Sary Drappeau,,Aix-Marseille Université,FR,,,,,Institut de Mathématiques de Marseille (I2M). Previously listed CNRS which is the funding body. 2026-05.
+Marek Wolf,,Cardinal Stefan Wyszyński University,PL,,,,,UKSW Warsaw. Previously listed Charles University Prague which was wrong. 2026-05.
+Jiseong Kim,,University of Mississippi,US,,,,,Visiting Assistant Professor. Previously listed KAIST which was outdated. 2026-05.
+Jori Merikoski,,University of Helsinki,FI,,,,,Moved from Oxford to Helsinki as Assistant Professor 2025. 2026-05.
+Roger Baker,,Brigham Young University,US,,,,,Number theorist at BYU; OpenAlex mis-tagged a health system. 2026-05-30.
+Antal Balog,,Alfréd Rényi Institute of Mathematics,HU,,,,,Hungarian Academy of Sciences; OpenAlex mis-tagged a music academy. 2026-05-30.
+C. Y. Yıldırım,,Boğaziçi University,TR,,,,,Istanbul; OpenAlex mis-tagged a Hungarian funding agency. 2026-05-30.
+S. W. Graham,,Central Michigan University,US,,,,,Sidney W. Graham; OpenAlex mis-tagged a Hungarian funding agency. 2026-05-30.
+S. I. Dimitrov,,Technical University of Sofia,BG,,,,,Faculty of Applied Mathematics and Informatics; OpenAlex mis-tagged a French biosciences institute. 2026-05-30.

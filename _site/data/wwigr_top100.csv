@@ -15,7 +15,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 14,Richard P. Brent,Richard P. Brent,University of Oxford,GB,,28,,,16,198,3,59,scholar,1969,2012,,,0000-0002-8495-7437,Q93042
 15,Alberto Perelli,Alberto Perelli,University of Genoa,IT,,34,6,,16,167,40,20,openalex,1985,2019,,,,Q102253510
 16,Maksym Radziwiłł,Maksym Radziwill,Northwestern University,US,,15,,,21,341,7,17,openalex,2015,2024,,,,Q27061958
-17,Roger Baker,Roger Baker,WellSpan Health,US,57,29,8,4,18,127,44,34,openalex,2006,2022,,,,Q102115286
+17,Roger Baker,Roger Baker,Brigham Young University,US,57,29,8,4,18,127,44,34,openalex,2006,2022,,,,Q102115286
 18,James Maynard,James Maynard,Mathematical Institute of the Slovak Academy of Sciences,SK,9,20,65,10,16,385,30,16,scholar,2012,2025,1987,Roger Heath-Brown,0000-0001-5782-7082,Q19655060
 19,Koichi Kawada,Koichi Kawada,Iwate University,JP,,38,9,,15,164,29,9,openalex,1993,2019,,,,
 20,András Sárközy,Andras Sarkozy,Eötvös Loránd University,HU,,,28,,5,55,40,31,openalex,1988,2023,,,,
@@ -28,14 +28,14 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 27,Kaisa Matomäki,Kaisa Matomaki,University of Turku,FI,6,7,98,10,31,400,27,21,scholar,2007,2025,1985,Glyn Harman,,Q27061623
 28,Maurizio B. S. Laporta,Maurizio B. S. Laporta,University of Naples Federico II,IT,,,48,,6,5,13,5,openalex,1999,2024,,,,
 29,Xuancheng Shao,Xuancheng Shao,University of Kentucky,US,3,30,,14,18,124,11,10,openalex,2013,2025,,,0009-0006-2950-8387,Q102424735
-30,Antal Balog,Antal Balog,Franz Liszt Academy of Music,HU,,36,15,,14,230,26,18,openalex,1985,2013,,,,
+30,Antal Balog,Antal Balog,Alfréd Rényi Institute of Mathematics,HU,,36,15,,14,230,26,18,openalex,1985,2013,,,,
 31,Angel Kumchev,Angel Kumchev,Towson University,US,89,14,17,3,23,328,28,16,scholar,1997,2022,,,0000-0001-8543-1659,Q102251427
 32,Saverio Salerno,Saverio Salerno,University of Salerno,IT,,,31,,5,31,16,18,openalex,1976,2013,,,,
-33,Danilo Bazzanella,Danilo Bazzanella,Politecnico di Torino,IT,,,45,,,,18,4,openalex,,,,,,
+33,Danilo Bazzanella,Danilo Bazzanella,Politecnico di Torino,IT,,,45,,,,18,4,openalex,2000,2023,,,,
 34,Florian Luca,Florian Luca,Johannes Gutenberg University Mainz,DE,85,13,30,3,31,219,58,42,scholar,2000,2025,1969,Robert John Piacenza,0000-0003-1321-4422,Q20885652
 35,Yoichi Motohashi,Yoichi Motohashi,Nihon University,JP,,35,,,16,158,27,19,openalex,1974,2014,,,,Q16915573
 36,Scott T. Parsell,Scott T. Parsell,West Chester University,US,,,24,,4,25,20,8,openalex,2002,2020,,,,
-37,Gérald Tenenbaum,Gerald Tenenbaum,Université de Lorraine,FR,,,34,,,,37,30,openalex,,,,,,
+37,Gérald Tenenbaum,Gerald Tenenbaum,Université de Lorraine,FR,,,34,,,,37,30,openalex,1976,2026,,,,
 38,Paul Pollack,Paul Pollack,University of Georgia,US,37,53,44,5,16,82,31,13,openalex,2008,2025,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
 39,Henryk Iwaniec,Henryk Iwaniec,"Rutgers, The State University of New Jersey",US,106,9,22,4,26,374,54,50,openalex,1977,2023,1947,Andrzej Schinzel,,Q370944
 40,Ben Green,Ben Green,Mathematical Institute of the Slovak Academy of Sciences,SK,4,43,91,12,12,426,16,47,scholar,2004,2025,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
@@ -44,7 +44,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 43,Tao Zhan,Tao Zhan,Shandong University,CN,,65,29,,9,185,22,17,openalex,1993,2006,,,,Q8070120
 44,Hugh L. Montgomery,Hugh L. Montgomery,University of Michigan,US,,52,41,,10,806,20,32,openalex,1971,2026,,,,Q740818
 45,Jinjiang Li,Jinjiang Li,China University of Mining and Technology (Beijing),CN,41,54,63,15,15,91,30,7,scholar,2000,2024,,,0000-0002-3204-4046,
-46,C. Y. Yıldırım,C. Y. Yildirim,"National Research, Development and Innovation Office",HU,,46,42,,12,360,16,15,scholar,1998,2020,,,,Q472787
+46,C. Y. Yıldırım,C. Y. Yildirim,Boğaziçi University,TR,,46,42,,12,360,16,15,scholar,1998,2020,,,,Q472787
 47,Sergeĭ Vladimirovich Konyagin,Sergei Vladimirovich Konyagin,Lomonosov Moscow State University,RU,,,43,,4,24,21,28,openalex,2008,2023,,,,
 48,Olivier Ramaré,Olivier Ramare,Centre National de la Recherche Scientifique,FR,56,32,76,4,24,98,31,20,scholar,1999,2025,1965,Jean-Marc Deshouillers,0000-0002-8765-0465,Q3292746
 49,Jean‐Marc Deshouillers,JeanMarc Deshouillers,Centre National de la Recherche Scientifique,FR,,92,16,,8,110,35,16,openalex,1993,2025,,,,Q1323950
@@ -68,23 +68,23 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 67,Étienne Fouvry,Etienne Fouvry,Laboratoire de Mathématiques d'Orsay,FR,94,47,46,3,12,308,31,28,openalex,1984,2025,2000,Jean-Marc Deshouillers; Henryk Iwaniec,0000-0002-1840-9467,Q289615
 68,Steven J. Miller,Steven J. Miller,Williams College,US,74,33,,5,16,174,9,52,scholar,2004,2025,1974,Peter Sarnak; Henryk Iwaniec,0000-0003-4904-4605,Q20657339
 69,Joël Rivat,Joel Rivat,Institut de Mathématiques de Marseille,FR,,49,56,,11,420,21,19,openalex,1995,2025,,,,Q102402368
-70,Michael A. Bennett,Michael A. Bennett,University of British Columbia,CA,,,99,,,,5,26,openalex,,,,,,
+70,Michael A. Bennett,Michael A. Bennett,University of British Columbia,CA,,,99,,,,5,26,openalex,1991,2025,,,,
 71,Gautami Bhowmik,Gautami Bhowmik,Université de Lille,FR,18,83,,10,11,52,9,9,openalex,2008,2024,,,,
 72,Julia Brandes,Julia Brandes,Chalmers University of Technology,SE,52,111,39,4,13,18,14,7,scholar,2012,2024,,,0000-0002-1602-1768,Q102618198
 73,Hiroshi Mikawa,Hiroshi Mikawa,University of Tsukuba,JP,,68,,,11,84,17,7,openalex,1987,2007,,,,
 74,Liangyi Zhao,Liangyi Zhao,Nanjing Agricultural University,CN,101,64,37,4,10,116,23,13,scholar,2013,2022,,,0000-0002-4407-9238,
 75,Jori Merikoski,Jori Merikoski,University of Helsinki,FI,19,,,6,7,5,12,2,openalex,2020,2024,,,0000-0001-7686-1657,
 76,Alex Kontorovich,Alex Kontorovich,"Rutgers, The State University of New Jersey",US,88,50,,3,15,114,13,20,scholar,2005,2025,1980,Dorian M. Goldfeld; Peter Sarnak,0000-0001-7626-8319,Q18616099
-77,Cameron L. Stewart,Cameron L. Stewart,University of Waterloo,CA,,,92,,,,19,24,openalex,,,,,,
+77,Cameron L. Stewart,Cameron L. Stewart,University of Waterloo,CA,,,92,,,,19,24,openalex,1976,2025,,,,
 78,Helmut Maier,Helmut Maier,Universität Ulm,DE,105,45,62,4,14,138,24,18,openalex,1981,2025,1953,J. Ian (Jonathan) Richards,,Q5709706
 79,Alina Carmen Cojocaru,Alina Carmen Cojocaru,University of Illinois Chicago,US,,80,75,,8,151,16,14,openalex,2004,2023,,,,
 80,Leo Goldmakher,Leo Goldmakher,Williams College,US,102,,,4,,,,5,openalex,2007,2017,,,,Q102355457
 81,Kyle Pratt,Kyle Pratt,Brigham Young University,US,,90,,,12,39,5,11,scholar,2019,2024,,,,
 82,Ahmet M. Güloğlu,Ahmet M. Guloglu,Bilkent University,TR,,93,,,12,37,8,9,scholar,2005,2023,,,,
 83,Jan Moser,Jan Moser,Comenius University Bratislava,SK,50,,,9,,,,10,openalex,2023,2026,,,,
-84,S. W. Graham,S. W. Graham,"National Research, Development and Innovation Office",HU,,85,59,,7,577,11,15,openalex,1984,2020,,,,Q289450
+84,S. W. Graham,S. W. Graham,Central Michigan University,US,,85,59,,7,577,11,15,openalex,1984,2020,,,,Q289450
 85,Pär Kurlberg,Par Kurlberg,KTH Royal Institute of Technology,SE,,94,,,12,36,3,20,scholar,2008,2025,,,,
-86,S. I. Dimitrov,S. I. Dimitrov,Institut pour l'avancée des biosciences,FR,45,79,,11,15,34,21,9,scholar,2017,2025,,,0009-0009-8773-6910,
+86,S. I. Dimitrov,S. I. Dimitrov,Technical University of Sofia,BG,45,79,,11,15,34,21,9,scholar,2017,2025,,,0009-0009-8773-6910,
 87,Hung M. Bui,Hung M. Bui,University of Manchester,GB,,86,,,12,42,,16,scholar,2006,2024,,,,Q102348915
 88,Alexander Dunn,Alexander Dunn,Stanford University,US,32,,,5,6,1,,44,openalex,2018,2026,,,,
 89,Matteo Bordignon,Matteo Bordignon,KTH Royal Institute of Technology,SE,33,,,6,,,4,13,openalex,2019,2023,,,,
