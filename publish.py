@@ -910,13 +910,14 @@ def render_index(rows, has_other=False):
 </div>
 
 <h2>How the list is built</h2>
-<p>Three independent signals are combined:</p>
+<p>Three independent signals are combined into one composite ranking:</p>
 <ol>
 <li><strong>arXiv preprint output</strong> since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.</li>
 <li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
-<li><strong>The Mathematics Genealogy Project</strong>, which provides advisor-student trees for the people identified in the first two steps.</li>
+<li><strong>zbMATH Open</strong>, the curated mathematics review database, using the MSC subject classes for additive prime number theory (11P32, 11N05, 11N13, 11N36, 11P55).</li>
 </ol>
-<p>The final ranking is the sum of a researcher's arXiv rank and OpenAlex rank, sorted low to high. People who score well in both pipelines rise. A researcher who appears in only one pipeline gets an interpolated estimate for the other, drawn from their nearest-ranked neighbours, rather than a flat penalty. False positives and off-topic authors are explicitly excluded by hand; the approach is described in the <a href="methodology.html">methodology</a>.</p>
+<p>The final ranking is the sum of a researcher's arXiv, OpenAlex, and zbMATH ranks, sorted low to high. People who score well across the pipelines rise. A researcher who appears in only one or two pipelines gets an interpolated estimate for the rest, drawn from their nearest-ranked neighbours, rather than a flat penalty. False positives and off-topic authors are explicitly excluded by hand; the approach is described in the <a href="methodology.html">methodology</a>.</p>
+<p>The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> supplies advisor-student relationships for the separate <a href="genealogy.html">genealogy</a> view. It does not feed the ranking.</p>
 
 <h2>Top 100 at a glance</h2>
 <p>100 researchers, drawn from {len(by_country)} countries.</p>
