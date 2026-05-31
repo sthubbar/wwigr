@@ -635,13 +635,29 @@ def render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages, scholar, h
         d = (r.get("death_date") or "")[:4]
         return f"{b}-{d}" if b and d else (f"d. {d}" if d else "")
 
-    # Detail pages for the ranked-pool deceased.
-    for r in rows:
+    # Load foundational figures up front so their slugs can be reserved and
+    # registered for advisor-linking before any detail page is written.
+    extras = []
+    ex_path = ROOT / "inmemoriam_extras.csv"
+    if ex_path.exists():
+        with open(ex_path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                extras.append(r)
+    extras.sort(key=lambda r: int(r.get("birth") or 0))
+
+    # Reserve a slug for every In Memoriam profile (deceased + foundational)
+    # and register it in ADV_SLUG so doctoral-advisor lines on any page can
+    # link to those who have a profile here.
+    for r in list(rows) + extras:
         sl = slugify(r["name"])
         while sl in used_slugs:
             sl += "-x"
         used_slugs.add(sl)
         r["slug"] = sl
+        ADV_SLUG.setdefault(slugify(r["name"]), sl)
+
+    # Detail pages for the ranked-pool deceased.
+    for r in rows:
         e = r.get("_enr", {})
         fy, ly = r.get("first_year", ""), r.get("last_year", "")
         active = f"{fy} to {ly}" if fy and ly else ""
@@ -670,25 +686,8 @@ def render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages, scholar, h
         f"<td>{esc(r['country'])}</td><td>{years(r)}</td></tr>"
         for r in rows)
 
-    # Foundational figures from before our pipeline coverage. Read from
-    # inmemoriam_extras.csv. These are mathematicians whose contributions
-    # are central to Goldbach research but whose careers predate the
-    # arXiv / OpenAlex digital trail.
-    extras = []
-    ex_path = ROOT / "inmemoriam_extras.csv"
-    if ex_path.exists():
-        with open(ex_path, encoding="utf-8") as f:
-            for r in csv.DictReader(f):
-                extras.append(r)
-    extras.sort(key=lambda r: int(r.get("birth") or 0))
-
     # Detail pages for the foundational figures (sparse; mostly N/A).
     for r in extras:
-        sl = slugify(r["name"])
-        while sl in used_slugs:
-            sl += "-x"
-        used_slugs.add(sl)
-        r["slug"] = sl
         rows_html = _full_detail_rows(
             name=r["name"],
             homepage=homepages.get(r["name"]),
