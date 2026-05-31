@@ -803,6 +803,34 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
           f"({n_hp} with a homepage, {n_sc} with a Scholar profile)")
 
 
+def render_acknowledged(oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath):
+    """Full detail pages for people acknowledged on the About page who are not
+    in the current Top 100, so the acknowledgement can link to a real profile.
+    The pages are kept (linked from about.html) but not listed in the ranking."""
+    people = [
+        {"name": "Steven J. Miller", "slug": "steven-j-miller",
+         "institution": "Williams College", "country": "US",
+         "arx_papers": 5},
+    ]
+    for r in people:
+        rows_html = _full_detail_rows(
+            name=r["name"],
+            homepage=homepages.get(r["name"]),
+            scholar_url=scholar.get(r["name"]),
+            oaid=_oaid_for(r["name"], None, oa_by_name, oa_by_surname),
+            zb=zbmath.get(r["name"]),
+            born=None, advisor=None,
+            arx_papers=r.get("arx_papers"), oa_works=None, oa_cites=None,
+            active_years=None, hindex_entry=hindex.get(r["name"]), orcid=None)
+        sub = f"{esc(r['institution'])} ({esc(r['country'])})"
+        intro = ('<p>Referenced from the <a href="../about.html">Acknowledgements</a>. '
+                 'This researcher is not in the current Top 100 ranking; the profile '
+                 'is kept because of their contribution to the project.</p>')
+        _write_detail(r["slug"], r["name"], sub, "about.html",
+                      "Back to About", intro, rows_html, "")
+    print(f"  {len(people)} acknowledged profile page(s)")
+
+
 def render_genealogy_profiles(people, top_slugs, oa_by_name, oa_by_surname,
                               homepages, scholar, hindex, zbmath, used_slugs):
     if not people:
@@ -1066,6 +1094,7 @@ def main():
     render_genealogy_profiles(gen_people, top_slugs, oa_by_name,
                               oa_by_surname, homepages, scholar, hindex,
                               zbmath, used_slugs)
+    render_acknowledged(oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath)
     write_sitemap_robots()
     print("done. static pages (genealogy, about, methodology) left untouched.")
 

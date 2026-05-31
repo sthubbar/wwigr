@@ -4,12 +4,12 @@ Jean Bourgain,,,,,,,,Death already supplied by the Wikidata enrichment stage; ro
 Daniel Shanks,,University of Maryland,,1917,1996-09-06,,,Deceased; OpenAlex institution wrong. AMS Notices obituary 1997. 2026-05-23.
 Vladimir Shevelev,,,,1945-03-09,2018-05-03,,,Deceased; no Wikidata entry. OEIS memorial page. 2026-05-23.
 G. H. Hardy,,University of Cambridge,,1877,1947-12-01,,,Deceased; classical figure surfaced by citations. MacTutor. 2026-05-23.
-J. E. Littlewood,,University of Cambridge,,1885,1977-09-06,,,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
+J. E. Littlewood,,University of Cambridge,,1885,1977-09-06,1907,2024,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
 L. Carlitz,,Duke University,,1907,1999-09-17,,,Deceased; OpenAlex institution wrong. MacTutor. 2026-05-23.
 C. Hooley,,,,1928,2018-12-13,,,Deceased. Royal Society biographical memoir. 2026-05-23.
 Paul T. Bateman,,,,1919,2012-12-26,,,Deceased. University of Illinois faculty memoriam. 2026-05-23.
 Solomon W. Golomb,,University of Southern California,,1932,2016-05-01,,,Deceased; OpenAlex institution wrong. USC In Memoriam. 2026-05-23.
-Christian Mauduit,,Aix-Marseille University,,1954,2019-08-13,,,Deceased; OpenAlex listed CNRS. Aix-Marseille tribute. 2026-05-23.
+Christian Mauduit,,Aix-Marseille University,FR,1954,2019-08-13,1984,2025,Deceased; OpenAlex listed CNRS. Aix-Marseille tribute. 2026-05-23.
 Albert A. Mullin,,U.S. Army,,1933,2017-05-16,,,Deceased; career U.S. Army mathematician. 2026-05-23.
 Lawrence S. Levy,,,,1934,2014-03-22,,,Deceased. Obituary 2014. 2026-05-23.
 Hiroshi Mikawa,,University of Tsukuba,JP,,,,,Institution and country missing from OpenAlex; University of Tsukuba per his page. 2026-05-24.
@@ -19,7 +19,7 @@ Akshat Mudgal,,University of Warwick,,,,,,Affiliation correction; moved from Uni
 Владимир Николаевич Чубариков,V. N. Chubarikov,,,,,,,Cyrillic display name replaced with standard transliteration (2026-05-28)
 Tianze Wang,,"Institute of Mathematics, Henan Academy of Sciences",CN,,,,,"Affiliation update: now Director of Institute of Mathematics, Henan Academy of Sciences (founded 2021). 2026-05-28."
 Pál Erdős,,Hungarian Academy of Sciences,HU,1913,1996-09-20,,,Foundational figure; entered Top 200 via zbMATH ranking; deceased.
-Heini Halberstam,,University of Illinois Urbana-Champaign,US,1926,2014-01-25,,,Sieve methods author; entered Top 200 via zbMATH ranking; deceased.
+Heini Halberstam,,University of Illinois Urbana-Champaign,US,1926,2014-01-25,1949,2009,Sieve methods author; entered Top 200 via zbMATH ranking; deceased.
 Hans Riesel,,Royal Institute of Technology,SE,1929,2014-12-21,,,Computational number theorist; entered Top 200 via zbMATH ranking; deceased.
 Ming-Chit Liu,,Hong Kong Baptist University,HK,,,,,Active living researcher; surface from zbMATH MSC ranking.
 Maurizio B. S. Laporta,,University of Naples Federico II,IT,,,,,Institution from researcher's faculty page; 2026-05.
@@ -40,10 +40,10 @@ Antal Balog,,Alfréd Rényi Institute of Mathematics,HU,,,,,Hungarian Academy of
 C. Y. Yıldırım,,Boğaziçi University,TR,,,,,Istanbul; OpenAlex mis-tagged a Hungarian funding agency. 2026-05-30.
 S. W. Graham,,Central Michigan University,US,,,,,Sidney W. Graham; OpenAlex mis-tagged a Hungarian funding agency. 2026-05-30.
 S. I. Dimitrov,,Technical University of Sofia,BG,,,,,Faculty of Applied Mathematics and Informatics; OpenAlex mis-tagged a French biosciences institute. 2026-05-30.
-Harold Davenport,,,,1907,1969-06-09,,,Cambridge/UCL; analytic number theorist.
-Eckford Cohen,,,,1920,2005,,,Arithmetic functions; deceased.
+Harold Davenport,,,,1907,1969-06-09,1908,2019,Cambridge/UCL; analytic number theorist.
+Eckford Cohen,,,,1920,2005,1947,2022,Arithmetic functions; deceased.
 G. I. Arkhipov,,,,1945,2013,,,Trigonometric sums; deceased.
-Saburô Uchiyama,,,,1929,2007,,,Analytic number theorist; deceased.
+Saburô Uchiyama,,,,1929,2007,1954,2014,Analytic number theorist; deceased.
 Paul Erdős,,,,1913,1996-09-20,,,Deceased; name-form alias for In Memoriam routing.
 H. Halberstam,,,,1926,2014-01-25,,,Deceased; name-form alias for In Memoriam routing.
 Chengdong Pan,,,,1934,1997,,,Founder of Chinese Goldbach school; deceased.
@@ -53,3 +53,17 @@ pan.chengdong,Chengdong Pan,,,1934,1997,,,Founder of the Chinese Goldbach school
 pan.chengbiao,Chengbiao Pan,,,,,,,Analytic number theorist (Peking University).
 lu.xiaodong,Xiaodong Lu,,,,,,,Analytic number theorist.
 Gang Yu,,Kent State University,US,,,,,
+Rainer Dietmann,,"Royal Holloway, University of London",GB,,,2000,2026,
+Scott T. Parsell,,West Chester University,US,,,1999,2023,
+Maksym Radziwiłł,,Northwestern University,US,,,2009,2025,
+Kai-Man Tsang,,University of Hong Kong,HK,,,1982,2017,
+Christian Elsholtz,,Graz University of Technology,AT,,,2001,2026,
+Cécile Dartyge,,Université de Lorraine,FR,,,1994,2025,
+Glyn Harman,,Royal Holloway University of London,GB,,,1981,2024,
+Peter D. T. A. Elliott,,University of Colorado Boulder,US,,,1965,2021,
+Sergeĭ Vladimirovich Konyagin,,Steklov Mathematical Institute,RU,,,1977,2025,
+Yuchen Ding,,Yangzhou University,CN,,,2013,2026,
+Guangshi Lu,,Shandong University,CN,,,2004,2026,
+András Sárközy,,Eötvös Loránd University,HU,,,1962,2023,
+Alessandro Gambini,,University of Bologna,IT,,,1984,2026,
+Kevin Hughes,,University of Bristol,GB,,,,,
