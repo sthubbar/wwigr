@@ -78,6 +78,7 @@ NAV_ITEMS = [
     ("regions/asia.html",           "Asia & Pacific"),
     ("in-memoriam.html",            "In Memoriam"),
     ("genealogy.html",              "Genealogy"),
+    ("network.html",                "Network"),
     ("reading-list.html",           "Reading List"),
     ("data.html",                   "Data"),
     ("methodology.html",            "Methodology"),
