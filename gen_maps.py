@@ -1,40 +1,103 @@
 #!/usr/bin/env python3
-"""gen_maps.py - regenerate the four region map PNGs for wwigr.org.
+"""gen_maps.py - regenerate the region map PNGs for wwigr.org.
 
-Plots the living Top 100 as numbered bubbles (the number is the Top 100
-rank) on a tiled CartoDB basemap. A faint connector ties each bubble to
-the researcher's true institution location when declutter moved it.
+Plots the living Top 100 as numbered red bubbles (the number is the Top
+100 rank) on a tiled CartoDB Voyager basemap. The basemap carries crisp
+coastlines, country borders, and country/city name labels. A faint
+connector ties each bubble back to its true institution location when the
+declutter step had to move the bubble.
 
-Usage:  python gen_maps.py          generate all four maps
-        python gen_maps.py 0|1|2|3  generate one map (world/NA/EU/Asia)
+The basemap tiles are fetched from CartoDB (public, no key) and cached on
+disk under out/cache/tiles/. The Web Mercator projection of the tiles is
+preserved exactly: bubbles are placed in the same global-pixel coordinate
+system as the stitched tiles, and the axis uses equal aspect, so there is
+no horizontal/vertical skew.
+
+Usage:  python gen_maps.py            generate all maps
+        python gen_maps.py 0|1|2|3    generate one map (world/NA/EU/Asia)
 
 Output: _site/img/10_top100_overview.png and 11/12/13 regional PNGs.
 """
-import csv, glob, math, sys
+import csv, glob, io, math, os, sys, time, urllib.request
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
 from pathlib import Path
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
-SITE = ROOT / "_site"
+SITE = Path(os.environ.get("WWIGR_SITE", ROOT / "_site"))
 UP = ROOT.parent
 DOT = "#b2243a"
-MANUAL_GEO = {"university of waikato": (-37.788, 175.317)}
-R_EARTH = 6378137.0
+MANUAL_GEO = {"university of waikato": (-37.788, 175.317),
+              "kennesaw state university": (33.9396, -84.5197)}
+TILE = 256
+TILE_CACHE = UP / "out" / "cache" / "tiles"
+TILE_STYLE = "rastertiles/voyager"       # CartoDB Voyager: borders + labels
+TILE_SUBDOMAINS = ("a", "b", "c", "d")
+USER_AGENT = "wwigr-map-builder/1.0 (admin@wwigr.org)"
 
 
 def norm(s):
     return " ".join((s or "").strip().lower().split())
 
 
-def merc(lat, lon):
-    lat = max(min(lat, 85.0), -85.0)
-    return (math.radians(lon) * R_EARTH,
-            math.log(math.tan(math.pi / 4 + math.radians(lat) / 2)) * R_EARTH)
+# ---- Web Mercator global-pixel helpers (slippy-tile convention) -------------
+def lonlat_to_px(lon, lat, z):
+    """Global pixel coords at zoom z. y increases southward (tile convention)."""
+    n = float(2 ** z)
+    lat = max(min(lat, 85.05112878), -85.05112878)
+    latr = math.radians(lat)
+    x = (lon + 180.0) / 360.0 * n * TILE
+    y = (1.0 - math.log(math.tan(latr) + 1.0 / math.cos(latr)) / math.pi) / 2.0 * n * TILE
+    return x, y
 
 
+def _fetch_tile(z, x, y):
+    n = 2 ** z
+    if not (0 <= x < n and 0 <= y < n):
+        return Image.new("RGB", (TILE, TILE), (255, 255, 255))
+    TILE_CACHE.mkdir(parents=True, exist_ok=True)
+    cache = TILE_CACHE / f"{TILE_STYLE.replace('/', '_')}_{z}_{x}_{y}.png"
+    if cache.exists():
+        return Image.open(cache).convert("RGB")
+    sub = TILE_SUBDOMAINS[(x + y) % len(TILE_SUBDOMAINS)]
+    url = f"https://{sub}.basemaps.cartocdn.com/{TILE_STYLE}/{z}/{x}/{y}.png"
+    last = None
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            data = urllib.request.urlopen(req, timeout=20).read()
+            cache.write_bytes(data)
+            return Image.open(io.BytesIO(data)).convert("RGB")
+        except Exception as e:                       # noqa: BLE001
+            last = e
+            time.sleep(0.6 * (attempt + 1))
+    print(f"    tile {z}/{x}/{y} failed: {last}")
+    return Image.new("RGB", (TILE, TILE), (255, 255, 255))
+
+
+def basemap(lon0, lon1, lat0, lat1, z):
+    """Return (PIL image, (px_left, px_top, px_right, px_bottom)) for the bbox."""
+    x_left, y_top = lonlat_to_px(lon0, lat1, z)      # NW corner
+    x_right, y_bot = lonlat_to_px(lon1, lat0, z)     # SE corner
+    tx0, tx1 = int(x_left // TILE), int(x_right // TILE)
+    ty0, ty1 = int(y_top // TILE), int(y_bot // TILE)
+    W = (tx1 - tx0 + 1) * TILE
+    H = (ty1 - ty0 + 1) * TILE
+    canvas = Image.new("RGB", (W, H), (255, 255, 255))
+    for tx in range(tx0, tx1 + 1):
+        for ty in range(ty0, ty1 + 1):
+            canvas.paste(_fetch_tile(z, tx, ty), ((tx - tx0) * TILE, (ty - ty0) * TILE))
+    ox, oy = tx0 * TILE, ty0 * TILE
+    crop = (int(round(x_left - ox)), int(round(y_top - oy)),
+            int(round(x_right - ox)), int(round(y_bot - oy)))
+    img = canvas.crop(crop)
+    return img, (x_left, y_top, x_right, y_bot)
+
+
+# ---- data loading -----------------------------------------------------------
 def load_living():
     rows = []
     for pat in ("out/gb_top100_*.csv", "out/gb_next100_*.csv"):
@@ -78,7 +141,7 @@ def load_geo():
     return geo
 
 
-def declutter(pos, min_sep, iters=110):
+def declutter(pos, min_sep, iters=140):
     n = len(pos)
     for _ in range(iters):
         for i in range(n):
@@ -98,54 +161,34 @@ def declutter(pos, min_sep, iters=110):
                 pos[j][1] += uy * push
 
 
-import json as _json
-_WORLD=None
-def _world_rings():
-    global _WORLD
-    if _WORLD is None:
-        d=_json.load(open(ROOT/"world_110m.geojson",encoding="utf-8"))
-        rings=[]
-        for ft in d.get("features",[]):
-            g=ft.get("geometry") or {}; t=g.get("type"); co=g.get("coordinates")
-            if t=="Polygon": polys=[co]
-            elif t=="MultiPolygon": polys=co
-            else: continue
-            for poly in polys:
-                if poly: rings.append(poly[0])
-        _WORLD=rings
-    return _WORLD
-def _draw_borders(ax):
-    from matplotlib.patches import Polygon as _MplPoly
-    for ring in _world_rings():
-        xy=[merc(lat,lon) for lon,lat in ring]
-        ax.add_patch(_MplPoly(xy,closed=True,facecolor="#eef2f5",
-                     edgecolor="#aab7c0",linewidth=0.4,zorder=0))
-
-
+# ---- drawing ----------------------------------------------------------------
 def draw(pts, extent, title, outpath, figsize, zoom):
     lon0, lon1, lat0, lat1 = extent
-    x0, y0 = merc(lat0, lon0)
-    x1, y1 = merc(lat1, lon1)
+    img, (px_l, px_t, px_r, px_b) = basemap(lon0, lon1, lat0, lat1, zoom)
+
     fig, ax = plt.subplots(figsize=figsize)
-    ax.set_xlim(x0, x1)
-    ax.set_ylim(y0, y1)
+    # data coords == global pixel coords; y inverted so north is up.
+    ax.imshow(img, extent=[px_l, px_r, px_b, px_t], origin="upper",
+              interpolation="bilinear", zorder=0)
+    ax.set_xlim(px_l, px_r)
+    ax.set_ylim(px_b, px_t)            # inverted (px_b > px_t): south at bottom
+    ax.set_aspect("equal")            # no skew
 
     inside = []
     for rank, lat, lon in pts:
-        x, y = merc(lat, lon)
-        if x0 <= x <= x1 and y0 <= y <= y1:
+        x, y = lonlat_to_px(lon, lat, zoom)
+        if px_l <= x <= px_r and px_t <= y <= px_b:
             inside.append((rank, x, y))
 
-    _draw_borders(ax)
-
+    span = px_r - px_l
     true_xy = [(x, y) for _, x, y in inside]
     label_xy = [[x, y] for _, x, y in inside]
-    declutter(label_xy, min_sep=(x1 - x0) * 0.040)
+    declutter(label_xy, min_sep=span * 0.038)
 
     for (tx, ty), (lx, ly) in zip(true_xy, label_xy):
-        if math.hypot(lx - tx, ly - ty) > (x1 - x0) * 0.012:
-            ax.plot([tx, lx], [ty, ly], color="#6b6b6b", lw=0.5, zorder=4)
-            ax.scatter([tx], [ty], s=9, c="#6b6b6b", zorder=4)
+        if math.hypot(lx - tx, ly - ty) > span * 0.012:
+            ax.plot([tx, lx], [ty, ly], color="#444444", lw=0.6, zorder=4)
+            ax.scatter([tx], [ty], s=8, c="#444444", zorder=4)
     ax.scatter([p[0] for p in label_xy], [p[1] for p in label_xy],
                s=150, c=DOT, edgecolors="white", linewidths=1.0, zorder=6)
     for (rank, _, _), (lx, ly) in zip(inside, label_xy):
@@ -154,8 +197,6 @@ def draw(pts, extent, title, outpath, figsize, zoom):
                     color="white", zorder=7)
         t.set_path_effects([pe.withStroke(linewidth=0.6, foreground="#7a0f1e")])
 
-    ax.set_xlim(x0, x1)
-    ax.set_ylim(y0, y1)
     ax.set_axis_off()
     ax.set_title(title, fontsize=15, color="#003366", fontweight="bold", pad=8)
     fig.savefig(outpath, dpi=145, bbox_inches="tight", facecolor="white")
@@ -163,6 +204,7 @@ def draw(pts, extent, title, outpath, figsize, zoom):
     print(f"  wrote {outpath.name}  ({len(inside)} numbered dots)")
 
 
+# ---- region definitions -----------------------------------------------------
 NA_COUNTRIES = {"US", "CA", "MX"}
 EU_COUNTRIES = {
     "AD","AL","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES",
@@ -175,17 +217,16 @@ AS_COUNTRIES = {
     "KH","KP","KR","KZ","LA","LK","MM","MN","MO","MV","MY","NP","NZ","PG",
     "PH","PK","SG","TH","TJ","TL","TM","TW","UZ","VN","FJ",
 }
-# 5th tuple slot is the country filter set (None = no filter / world view).
+# (extent lon0,lon1,lat0,lat1), title, filename, figsize, tile-zoom, country set
 MAPS = [
-    ((-165, 185, -50, 74), "Top 100 Goldbach researchers worldwide",
-     "10_top100_overview.png", (13, 6.6), 2, None),
+    ((-170, 180, -48, 72), "Top 100 Goldbach researchers worldwide",
+     "10_top100_overview.png", (13, 6.6), 3, None),
     ((-126, -62, 25, 52), "Top 100 researchers in North America",
      "11_top100_north_america.png", (11, 5.6), 4, NA_COUNTRIES),
-    ((-11, 38, 31, 63), "Top 100 researchers in Europe",
-     "12_top100_europe.png", (10, 7.0), 4, EU_COUNTRIES),
-    ((60, 182, -48, 47),
-     "Top 100 researchers in Asia and the Pacific",
-     "13_top100_asia.png", (13, 6.6), 3, AS_COUNTRIES),
+    ((-11, 38, 34, 62), "Top 100 researchers in Europe",
+     "12_top100_europe.png", (10, 7.0), 5, EU_COUNTRIES),
+    ((58, 180, -45, 56), "Top 100 researchers in Asia and the Pacific",
+     "13_top100_asia.png", (13, 6.6), 4, AS_COUNTRIES),
 ]
 
 
@@ -202,15 +243,11 @@ def main():
             missed.append(f"#{i} {r['name']}")
     print(f"living {len(living)}; geocoded {len(pts)}; missing {missed}")
     (SITE / "img").mkdir(parents=True, exist_ok=True)
-    which = ([int(sys.argv[1])] if len(sys.argv) > 1
-             else range(len(MAPS)))
-    named = NA_COUNTRIES | EU_COUNTRIES | AS_COUNTRIES
+    which = ([int(sys.argv[1])] if len(sys.argv) > 1 else range(len(MAPS)))
     for idx in which:
         extent, title, fn, figsize, zoom, cset = MAPS[idx]
         if cset is None:
             sub = [(r, lat, lon) for r, lat, lon, c in pts]
-        elif cset == "OTHER":
-            sub = [(r, lat, lon) for r, lat, lon, c in pts if c not in named]
         else:
             sub = [(r, lat, lon) for r, lat, lon, c in pts if c in cset]
         draw(sub, extent, title, SITE / "img" / fn, figsize, zoom)
