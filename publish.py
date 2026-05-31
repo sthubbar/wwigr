@@ -472,6 +472,10 @@ def render_top100(rows, hindex):
 
 <p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em>, <em>OA rank</em>, and <em>zbMATH rank</em> are the researcher's position in the full composite score for each of three pipelines. For arXiv and OpenAlex a keyword match in a paper title counts at full weight and an abstract-only mention at half (A=0.5), so papers that only cite Goldbach in passing are discounted; each composite is then 60% weighted paper count + 40% network or citation signal, over arXiv (137 qualifying authors across 17 search terms) and OpenAlex (572 authors across 13 phrase queries). zbMATH (495 authors) uses the three Goldbach-core MSC classes 11P32, 11P55 and 11N36. The overall rank combines the three with a weighted order statistic, 70/20/10 on each researcher's best, middle and worst of the three ranks, so lower is better in every column and a single dominant Goldbach pipeline can carry a researcher (the top weight only ever lands on a measured rank). A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from their position in the others. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
 
+<div class="tablefilters" style="margin:0 0 12px;display:flex;gap:22px;flex-wrap:wrap;align-items:center">
+  <label>Country <select id="fltCountry"><option value="">All</option></select></label>
+  <label>Source <select id="fltSource"><option value="">All</option></select></label>
+</div>
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
 <thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>zbMATH rank</th><th>h-index</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
 <tbody>
@@ -480,7 +484,23 @@ def render_top100(rows, hindex):
 </table>
 <script>
 $(document).ready(function() {{
-  $('#top100tbl').DataTable({{ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']] }});
+  var table = $('#top100tbl').DataTable({{ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']] }});
+  function strip(d) {{ return $('<div>').html(d == null ? '' : d).text().trim(); }}
+  function fill(colIdx, sel) {{
+    var seen = {{}};
+    table.column(colIdx).data().each(function (d) {{ var t = strip(d); if (t) seen[t] = 1; }});
+    Object.keys(seen).sort().forEach(function (v) {{ $(sel).append('<option value="' + v + '">' + v + '</option>'); }});
+  }}
+  fill(3, '#fltCountry');
+  fill(8, '#fltSource');
+  $.fn.dataTable.ext.search.push(function (settings, data) {{
+    if (settings.nTable.id !== 'top100tbl') return true;
+    var c = $('#fltCountry').val(), so = $('#fltSource').val();
+    if (c && strip(data[3]) !== c) return false;
+    if (so && strip(data[8]) !== so) return false;
+    return true;
+  }});
+  $('#fltCountry, #fltSource').on('change', function () {{ table.draw(); }});
 }});
 </script>
 
