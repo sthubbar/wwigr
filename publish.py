@@ -715,6 +715,12 @@ def render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages, scholar, h
     _write("in-memoriam.html", _page("In Memoriam", body, "in-memoriam.html"))
 
 
+def _inst_country(r):
+    i=esc(r.get("institution","")); c=esc(r.get("country",""))
+    if i and c: return f"{i} ({c})"
+    return i or c or ""
+
+
 def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath):
     for r in people:
         e = r.get("_enr", {})
@@ -772,7 +778,10 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
         add("arXiv Goldbach-topical papers", r.get("arx_papers"))
         add("OpenAlex topical works", r.get("oa_works"))
         add("OpenAlex topical citations", r.get("oa_cites"))
-        add("Active years", f"{r['first_year']} to {r['last_year']}")
+        if r.get("first_year") and r.get("last_year"):
+            add("Active years", f"{r['first_year']} to {r['last_year']}")
+        else:
+            add("Active years", "N/A")
         h = hindex.get(r["name"])
         if h:
             src_label = "OpenAlex" if h["source"] == "openalex" else "Google Scholar"
@@ -785,7 +794,7 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
 
         body = f"""<p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
 <h1>{esc(r['name'])} (#{r['display_rank']})</h1>
-<p class="subtitle">{esc(r['institution'])} ({esc(r['country'])})</p>
+<p class="subtitle">{_inst_country(r)}</p>
 
 <table class="profile-table">
 <tbody>
@@ -942,7 +951,7 @@ def render_index(rows, has_other=False):
 <ol>
 <li><strong>arXiv preprint output</strong> since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.</li>
 <li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
-<li><strong>zbMATH Open</strong>, the curated mathematics review database, using the MSC subject classes for additive prime number theory (11P32, 11N05, 11N13, 11N36, 11P55).</li>
+<li><strong>zbMATH Open</strong>, the curated mathematics review database, using the three Goldbach-core MSC subject classes (11P32 additive/Goldbach problems, 11P55 circle method, 11N36 sieve methods).</li>
 </ol>
 <p>The final ranking is the sum of a researcher's arXiv, OpenAlex, and zbMATH ranks, sorted low to high. People who score well across the pipelines rise. A researcher who appears in only one or two pipelines gets an interpolated estimate for the rest, drawn from their nearest-ranked neighbours, rather than a flat penalty. False positives and off-topic authors are explicitly excluded by hand; the approach is described in the <a href="methodology.html">methodology</a>.</p>
 <p>The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> supplies advisor-student relationships for the separate <a href="genealogy.html">genealogy</a> view. It does not feed the ranking.</p>

@@ -66,7 +66,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 65,Cameron L. Stewart,Cameron L. Stewart,University of Waterloo,CA,,,65,,,,16,24,openalex,1976,2025,,,,
 66,Sergeĭ Vladimirovich Konyagin,Sergei Vladimirovich Konyagin,Steklov Mathematical Institute,RU,,,78,,,,10,28,openalex,1977,2025,,,,
 67,Yuchen Ding,Yuchen Ding,Yangzhou University,CN,,,74,,,,16,8,openalex,2013,2026,,,,
-68,Hongze Li,Hongze Li,,,,,79,,,,36,10,openalex,,,,,0000-0002-3985-6805,
+68,Hongze Li,Hongze Li,Shanghai Jiao Tong University,CN,,,79,,,,36,10,openalex,1996,2018,,,0000-0002-3985-6805,
 69,Xiumin Ren,Xiumin Ren,Shandong University,CN,,45,80,,6,77,16,11,openalex,2000,2024,,,,
 70,C. Y. Yıldırım,C. Y. Yildirim,Boğaziçi University,TR,,80,46,,5,67,15,15,scholar,1998,2020,,,,Q472787
 71,Liangyi Zhao,Liangyi Zhao,Nanjing Agricultural University,CN,104,41,24,4,7,114,24,13,scholar,2013,2022,,,0000-0002-4407-9238,
@@ -91,11 +91,11 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 90,Robert J. Lemke Oliver,Robert J. Lemke Oliver,Tufts University,US,55,,,3,3,15,4,14,scholar,2011,2024,,,0000-0002-7170-051X,Q102407198
 91,Roger Baker,Roger Baker,Brigham Young University,US,67,124,7,4,5,38,38,34,openalex,2006,2022,,,,Q102115286
 92,Gautami Bhowmik,Gautami Bhowmik,Université de Lille,FR,17,39,143,9,7,49,8,9,openalex,2008,2024,,,,
-93,Craig V. Spencer,Craig V. Spencer,,,,,108,,,,7,8,openalex,,,,,,
-94,Ritabrata Munshi,Ritabrata Munshi,,,,,106,,,,9,12,openalex,,,,,,
-95,Chengbiao Pan,Chengbiao Pan,,,,,147,,,,10,,,,,,,,
-96,Chaohua Jia,Chaohua Jia,,,,,50,,,,26,11,openalex,,,,,,Q102383246
+93,Craig V. Spencer,Craig V. Spencer,Kansas State University,US,,,108,,,,7,8,openalex,2008,2024,,,,
+94,Ritabrata Munshi,Ritabrata Munshi,Indian Statistical Institute,IN,,,106,,,,9,12,openalex,2007,2025,,,,
+95,Chengbiao Pan,Chengbiao Pan,Peking University,CN,,,147,,,,10,,,1980,2010,,,,
+96,Chaohua Jia,Chaohua Jia,Chinese Academy of Sciences,CN,,,50,,,,26,11,openalex,1990,2020,,,,Q102383246
 97,Xiaodong Lu,Xiaodong Lu,,,,,148,,,,12,,,,,,,,
 98,Hao Pan,Hao Pan,Nanchang University,CN,44,59,103,8,10,4,22,17,openalex,2007,2025,,,0000-0003-4307-5953,Q102307482
 99,Haiwei Sun,Haiwei Sun,University of Bristol,GB,,,149,,3,,7,,,2017,2025,,,,
-100,bredikhin.boris-maksimovich,bredikhin.boris-maksimovich,,,,,150,,,,20,,,,,,,,
+100,Boris Maksimovich Bredikhin,Boris Maksimovich Bredikhin,Steklov Institute of Mathematics,RU,,,150,,,,20,,,,,,,,
