@@ -90,7 +90,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 89,Robert J. Lemke Oliver,Robert J. Lemke Oliver,Tufts University,US,55,,,3,3,15,4,14,scholar,2011,2024,,,0000-0002-7170-051X,Q102407198
 90,Chaohua Jia,Chaohua Jia,Chinese Academy of Sciences,CN,,,50,,,,26,11,openalex,1990,2020,,,,Q102383246
 91,Sary Drappeau,Sary Drappeau,Aix-Marseille Université,FR,58,,,4,,,,6,openalex,2015,2024,1956,Nikolay Korobov,0000-0002-5246-9391,Q15436834
-92,Hugh Lowell Montgomery,Hugh Lowell Montgomery,University of Michigan,US,,,52,,3,24,12,,,1971,2024,,,,
+92,Hugh Lowell Montgomery,Hugh Lowell Montgomery,University of Michigan,US,,,52,,3,24,12,32,openalex,1971,2024,,,,
 93,Wenxu Ge,Wenxu Ge,North China University of Water Resources and Electric Power,CN,,,53,,,,17,5,openalex,2008,2025,,,,
 94,Cécile Dartyge,Cecile Dartyge,Université de Lorraine,FR,,,70,,,,10,11,openalex,1994,2025,,,,
 95,Cameron L. Stewart,Cameron L. Stewart,University of Waterloo,CA,,,65,,,,16,24,openalex,1976,2025,,,,

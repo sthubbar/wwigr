@@ -15,7 +15,6 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
-import contextily as cx
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -24,7 +23,6 @@ UP = ROOT.parent
 DOT = "#b2243a"
 MANUAL_GEO = {"university of waikato": (-37.788, 175.317)}
 R_EARTH = 6378137.0
-cx.set_cache_dir("/tmp/cxcache")
 
 
 def norm(s):
@@ -100,6 +98,30 @@ def declutter(pos, min_sep, iters=110):
                 pos[j][1] += uy * push
 
 
+import json as _json
+_WORLD=None
+def _world_rings():
+    global _WORLD
+    if _WORLD is None:
+        d=_json.load(open(ROOT/"world_110m.geojson",encoding="utf-8"))
+        rings=[]
+        for ft in d.get("features",[]):
+            g=ft.get("geometry") or {}; t=g.get("type"); co=g.get("coordinates")
+            if t=="Polygon": polys=[co]
+            elif t=="MultiPolygon": polys=co
+            else: continue
+            for poly in polys:
+                if poly: rings.append(poly[0])
+        _WORLD=rings
+    return _WORLD
+def _draw_borders(ax):
+    from matplotlib.patches import Polygon as _MplPoly
+    for ring in _world_rings():
+        xy=[merc(lat,lon) for lon,lat in ring]
+        ax.add_patch(_MplPoly(xy,closed=True,facecolor="#eef2f5",
+                     edgecolor="#aab7c0",linewidth=0.4,zorder=0))
+
+
 def draw(pts, extent, title, outpath, figsize, zoom):
     lon0, lon1, lat0, lat1 = extent
     x0, y0 = merc(lat0, lon0)
@@ -114,8 +136,7 @@ def draw(pts, extent, title, outpath, figsize, zoom):
         if x0 <= x <= x1 and y0 <= y <= y1:
             inside.append((rank, x, y))
 
-    cx.add_basemap(ax, source=cx.providers.CartoDB.Voyager,
-                   zoom=zoom, crs="EPSG:3857", attribution_size=6)
+    _draw_borders(ax)
 
     true_xy = [(x, y) for _, x, y in inside]
     label_xy = [[x, y] for _, x, y in inside]
@@ -165,8 +186,6 @@ MAPS = [
     ((60, 182, -48, 47),
      "Top 100 researchers in Asia and the Pacific",
      "13_top100_asia.png", (13, 6.6), 3, AS_COUNTRIES),
-    ((-165, 185, -50, 74), "Top 100 researchers in other regions",
-     "14_top100_other.png", (13, 6.6), 2, "OTHER"),
 ]
 
 
