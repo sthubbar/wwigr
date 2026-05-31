@@ -64,7 +64,7 @@
 
 <li><strong>Merge</strong>: the three rankings are surname-deduplicated and joined. Each researcher has a <code>sum_rank = arx_rank + oa_rank + zb_rank</code>, sorted ascending. A researcher absent from one or two pipelines has missing ranks. Rather than a flat penalty, we interpolate: for someone ranked by OpenAlex but not arXiv, we order the pool by OpenAlex rank, walk to the nearest two researchers above and below who carry a real arXiv rank, and take the rounded mean. When the researcher also has a real zbMATH rank we repeat the procedure ordered by zbMATH and average the two estimates. The logic is symmetric across all three pipelines. Interpolated ranks appear in [square brackets] on the Top 100 table; measured ranks appear plain.</li>
 
-<li><strong>Hand-curated edits</strong>: an exclusions file removes researchers the automated pipeline surfaced in error (see Audit decisions). A short additions file places a small number of canonical figures whose work is central to additive prime number theory but who the keyword method under-ranks (because their relevance is not keyword-visible), at an editorial rank; these are tagged <code>manual_add</code> on the Top 100 table for transparency.</li>
+<li><strong>Hand-curated edits</strong>: an exclusions file removes researchers the automated pipeline surfaced in error (see Audit decisions). The merge no longer hand-places any researcher: an earlier version floored a few canonical figures editorially, but the scoring below now lets them earn their rank on their own.</li>
 
 <li><strong>Genealogy reseeded</strong>: the Top 100 becomes the seed list for the Mathematics Genealogy Project graph, and close-relations surface from the network analysis.</li>
 </ol>
