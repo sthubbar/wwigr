@@ -361,9 +361,15 @@ def scholar_search_url(name):
     return "https://scholar.google.com/scholar?q=" + q
 
 
+# Per-person arXiv author-search query overrides (display name -> exact query).
+ARXIV_QUERY_OVERRIDE = {"H. J. Weber": "Weber, H J"}
 def arxiv_search_url(name):
     import re
-    base = re.sub(r"\s*\([^)]*\)", "", name or "").strip()
+    key = (name or "").strip()
+    if key in ARXIV_QUERY_OVERRIDE:
+        base = ARXIV_QUERY_OVERRIDE[key]
+    else:
+        base = re.sub(r"\s*\([^)]*\)", "", name or "").strip()
     q = urllib.parse.quote_plus(base)
     return f"https://arxiv.org/search/?searchtype=author&query={q}"
 
@@ -818,11 +824,7 @@ def render_acknowledged(oa_by_name, oa_by_surname, homepages, scholar, hindex, z
     """Full detail pages for people acknowledged on the About page who are not
     in the current Top 100, so the acknowledgement can link to a real profile.
     The pages are kept (linked from about.html) but not listed in the ranking."""
-    people = [
-        {"name": "Steven J. Miller", "slug": "steven-j-miller",
-         "institution": "Williams College", "country": "US",
-         "arx_papers": 5},
-    ]
+    people = []  # Steven J. Miller removed 2026-05-31 at his request (not on list, no acknowledgment).
     for r in people:
         rows_html = _full_detail_rows(
             name=r["name"],
