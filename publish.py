@@ -98,6 +98,29 @@ def slugify(name):
     return s or "researcher"
 
 
+# Map of slugified advisor name -> profile slug, for people who have a detail
+# page. Populated in main() before any detail page is rendered. Used to turn
+# the "Doctoral advisor" line into links when the advisor is in our directory.
+ADV_SLUG = {}
+
+
+def linkify_advisors(advisor):
+    """Render the advisor string, linking any advisor who has a profile page.
+    Advisors are semicolon-separated in the source data. Returns "" when empty
+    so callers can decide whether to show an N/A row."""
+    if not advisor:
+        return ""
+    import re as _re
+    parts = [x.strip() for x in _re.split(r"\s*;\s*", advisor) if x.strip()]
+    if not parts:
+        return ""
+    out = []
+    for nm in parts:
+        sl = ADV_SLUG.get(slugify(nm))
+        out.append(f'<a href="{sl}.html">{esc(nm)}</a>' if sl else esc(nm))
+    return ", ".join(out)
+
+
 def ascii_name(name):
     """Plain-ASCII version of the name. Strips diacritics and any
     non-ASCII characters. Used for the dataset CSV's name_ascii column
@@ -558,7 +581,7 @@ def _full_detail_rows(*, name, orig_name=None, homepage=None, scholar_url=None,
     else:
         add("zbMATH", f'<a href="{esc(zbmath_search_url(orig))}">Author search</a>')
     add("Born", (born or "")[:4] if born else "N/A")
-    add("Doctoral advisor", esc(advisor) if advisor else "N/A")
+    add("Doctoral advisor", linkify_advisors(advisor) or "N/A")
     add("arXiv Goldbach-topical papers",
         arx_papers if arx_papers not in (None, "") else "N/A")
     add("OpenAlex topical works", oa_works if oa_works not in (None, "") else "N/A")
@@ -782,7 +805,7 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
 
         # Bio + metrics rows
         add("Born", (r.get("birth_date") or "")[:4])
-        add("Doctoral advisor", esc(e.get("advisor") or ""))
+        add("Doctoral advisor", linkify_advisors(e.get("advisor")))
         add("arXiv Goldbach-topical papers", r.get("arx_papers"))
         add("OpenAlex topical works", r.get("oa_works"))
         add("OpenAlex topical citations", r.get("oa_cites"))
@@ -1099,6 +1122,11 @@ def main():
                       "named regions.")
     top_slugs = {r["slug"] for r in top100}
     used_slugs = set(top_slugs)
+    ADV_SLUG.clear()
+    for _p in top100:
+        ADV_SLUG[slugify(_p["name"])] = _p["slug"]
+    for _p in gen_people:
+        ADV_SLUG.setdefault(slugify(_p["name"]), _p["slug"])
     render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages,
                       scholar, hindex, zbmath, used_slugs)
     render_reading_list()
