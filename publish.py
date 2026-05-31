@@ -485,15 +485,18 @@ def render_region(rows, slug, title, countries, png, blurb):
         f"<td><a href=\"../people/{r['slug']}.html\">{esc(r['name'])}</a></td>"
         f"<td>{esc(r['institution'])}</td><td>{esc(r['country'])}</td></tr>"
         for r in rs)
+    verb = "researcher is" if len(rs) == 1 else "researchers are"
+    map_html = ""
+    if slug != "other" and png and (SITE / "img" / png).exists():
+        map_html = (f'<div class="figure-page">\n'
+                    f'<img src="../img/{png}" alt="Map of {esc(title)} '
+                    f'Top 100 researchers">\n</div>\n')
     body = f"""<h1>{esc(title)}</h1>
 <p class="subtitle">Top 100 researchers based in {esc(title)}</p>
 
-<p>{len(rs)} {blurb}</p>
+<p>{len(rs)} of the Top 100 {verb} based in {esc(title)}.</p>
 
-<div class="figure-page">
-<img src="../img/{png}" alt="Map of {esc(title)} Top 100 researchers">
-</div>
-
+{map_html}
 <h2>Listing</h2>
 <table id="rtbl" class="display compact stripe hover" style="width:100%">
 <thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th></tr></thead>
