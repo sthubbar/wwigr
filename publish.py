@@ -861,7 +861,7 @@ def render_genealogy_profiles(people, top_slugs, oa_by_name, oa_by_surname,
         if r.get("rank"):
             extra.append(("Close-relation rank", f'{r.get("rank")} of {len(people)}'))
         if r.get("ppr"):
-            extra.append(("Network proximity (PPR score)", r.get("ppr")))
+            extra.append(("Network proximity (connectivity score)", r.get("ppr")))
         rows_html = _full_detail_rows(
             name=r["name"],
             homepage=homepages.get(r["name"]),
