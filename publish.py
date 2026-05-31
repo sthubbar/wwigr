@@ -440,7 +440,7 @@ def render_top100(rows, hindex):
 
 <p>This page shows the 100 highest-ranked living researchers, renumbered 1 to 100. Researchers in the ranked pool who have passed away are remembered on the <a href="in-memoriam.html">In Memoriam</a> page.</p>
 
-<p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em>, <em>OA rank</em>, and <em>zbMATH rank</em> are the researcher's position in the full composite score for each of three pipelines. Each composite is 60% paper count + 40% eigenvector centrality on the co-authorship graph, computed over: arXiv (155 qualifying authors across 17 search terms), OpenAlex (1,113 authors across 13 phrase queries), and zbMATH (790 authors across MSC classes 11P32, 11N05, 11N13, 11N36, 11P55, the additive-prime-number-theory subfield). The overall rank is the sum of the three (sum_rank), so lower is better in every column. A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from their position in the others. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
+<p class="callout"><strong>Reading the columns.</strong> <em>arXiv rank</em>, <em>OA rank</em>, and <em>zbMATH rank</em> are the researcher's position in the full composite score for each of three pipelines. For arXiv and OpenAlex a keyword match in a paper title counts at full weight and an abstract-only mention at half (A=0.5), so papers that only cite Goldbach in passing are discounted; each composite is then 60% weighted paper count + 40% network or citation signal, over arXiv (137 qualifying authors across 17 search terms) and OpenAlex (572 authors across 13 phrase queries). zbMATH (495 authors) uses the three Goldbach-core MSC classes 11P32, 11P55 and 11N36. A small number of canonical figures the keyword method under-ranks are placed editorially and tagged manual_add. The overall rank is the sum of the three (sum_rank), so lower is better in every column. A value in [square brackets] is interpolated: the researcher did not appear in that pipeline directly, so their rank there is estimated from their position in the others. See the <a href="methodology.html">methodology</a> for how. A dash means no estimate was possible.</p>
 
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
 <thead><tr><th>Rank</th><th>Name</th><th>Institution</th><th>Country</th><th>arXiv rank</th><th>OA rank</th><th>zbMATH rank</th><th>h-index</th><th>Source</th><th>First year</th><th>Last year</th></tr></thead>
@@ -1033,7 +1033,7 @@ def main():
         seen[s] = seen.get(s, 0) + 1
         r["slug"] = s if seen[s] == 1 else f"{s}-{seen[s]}"
     print(f"  pool {len(pool)}, living {len(living)}, deceased {len(deceased)}")
-    other_set = ({r["country"] for r in top100}
+    other_set = ({r["country"] for r in top100 if r["country"] not in ("", "NA")}
                  - NA_COUNTRIES - EU_COUNTRIES - AS_COUNTRIES)
     other_rows = [r for r in top100 if r["country"] in other_set]
     if other_rows:
