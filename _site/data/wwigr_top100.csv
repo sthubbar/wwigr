@@ -8,7 +8,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 7,Jianya Liu,Jianya Liu,Shandong University,CN,,20,5,,10,100,39,21,openalex,1996,2025,,,,Q102350017
 8,Koichi Kawada,Koichi Kawada,Iwate University,JP,,17,6,,9,138,34,9,openalex,1993,2019,,,,
 9,Alessandro Languasco,Alessandro Languasco,University of Padua,IT,49,18,8,6,9,75,44,18,scholar,1994,2024,,,0000-0003-2723-554X,Q102253573
-10,Joni Teräväinen,Joni Teravainen,University of Turku,FI,2,11,107,14,18,66,10,13,scholar,2016,2026,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
+10,Joni Teräväinen,Joni Teravainen,University of Cambridge,GB,2,11,107,14,18,66,10,13,scholar,2016,2026,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
 11,Jinjiang Li,Jinjiang Li,China University of Mining and Technology (Beijing),CN,36,10,25,12,31,38,30,7,scholar,2016,2026,,,0000-0002-3204-4046,
 12,Jared Duker Lichtman,Jared Duker Lichtman,Stanford University,US,4,25,,13,12,23,4,11,scholar,2019,2024,1996,Joni Teräväinen; James Maynard,0000-0002-8303-5051,Q123240478
 13,Xuancheng Shao,Xuancheng Shao,University of Kentucky,US,1,8,137,14,14,113,9,10,openalex,2013,2025,,,0009-0006-2950-8387,Q102424735
