@@ -82,6 +82,7 @@ NAV_ITEMS = [
     ("data.html",                   "Data"),
     ("methodology.html",            "Methodology"),
     ("about.html",                  "About"),
+    ("corrections.html",            "Corrections"),
 ]
 
 
@@ -832,7 +833,7 @@ def render_profiles(people, oa_by_name, oa_by_surname, homepages, scholar, hinde
 </tbody>
 </table>
 {links_html}
-<p class="callout">Profile data is compiled from arXiv, OpenAlex, zbMATH, Wikidata, and Google Scholar, with the homepage link from a web search. Spotted an error or an omission? Email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
+<p class="callout">Profile data is compiled from arXiv, OpenAlex, zbMATH, Wikidata, and Google Scholar, with the homepage link from a web search. Spotted an error, or would you prefer not to be listed? See <a href="../corrections.html">Corrections and removal</a> or email <a href="mailto:admin@wwigr.org">admin@wwigr.org</a>.</p>
 """
         rel = f"people/{r['slug']}.html"
         _write(rel, _page(r["name"], body, rel, depth=1))
@@ -908,6 +909,26 @@ def render_genealogy_profiles(people, top_slugs, oa_by_name, oa_by_surname,
     skipped = len(people) - made
     print(f"  {made} genealogy close-relation profile pages"
           + (f" ({skipped} now in the Top 100, skipped)" if skipped else ""))
+
+
+def render_corrections():
+    body = """<h1>Corrections and removal</h1>
+<p class="subtitle">How to fix your profile, or ask not to be listed</p>
+
+<p>This is an independent, non-commercial directory. The data is compiled automatically from public sources (arXiv, OpenAlex, zbMATH, the Mathematics Genealogy Project, and Wikidata), so some entries carry errors: a wrong affiliation, an out-of-date institution, a confused identity where two researchers share a surname, or an inclusion that does not reflect a researcher's own sense of their work. We want the record to be accurate and respectful, and we act on every message.</p>
+
+<h2>Suggest a correction</h2>
+<p>If anything on your profile is wrong, for example your institution, country, active years, doctoral advisor, external links, or the way your name is shown, email <a href="mailto:admin@wwigr.org?subject=Correction">admin@wwigr.org</a> with the detail and it will be fixed, usually within a few days. Corrections to the underlying data carry through on the next rebuild.</p>
+
+<h2>Request removal</h2>
+<p>Inclusion here is based on a public-data heuristic, not on any claim about how you see your own work. Any researcher who would prefer not to be listed can email <a href="mailto:admin@wwigr.org?subject=Removal%20request">admin@wwigr.org</a> and will be removed promptly, no explanation required. Removal takes that researcher out of the ranking and deletes their profile page.</p>
+
+<h2>Question the method</h2>
+<p>If you think the list includes the wrong people, or misses someone, that feedback is welcome too. The ranking method, and its known limitations, are described on the <a href="methodology.html">Methodology</a> page. Reasoned disagreement about who counts as working on the Goldbach conjecture is exactly the kind of input that improves the directory.</p>
+
+<p class="callout">Every message to <a href="mailto:admin@wwigr.org">admin@wwigr.org</a> is read and acted on by a person.</p>
+"""
+    _write("corrections.html", _page("Corrections and removal", body, "corrections.html"))
 
 
 def render_reading_list():
@@ -1129,6 +1150,7 @@ def main():
     render_inmemoriam(deceased, oa_by_name, oa_by_surname, homepages,
                       scholar, hindex, zbmath, used_slugs)
     render_reading_list()
+    render_corrections()
     render_data(top100, enr, hindex)
     render_profiles(top100, oa_by_name, oa_by_surname, homepages, scholar, hindex, zbmath)
     render_genealogy_profiles(gen_people, top_slugs, oa_by_name,
