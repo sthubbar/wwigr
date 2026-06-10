@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mathematical Genealogy - Who's Who in Goldbach Research</title>
 <link rel="stylesheet" href="./styles.css">
-<meta name="description" content="Close relations of the Top 100 Goldbach researchers, grouped by proximity level in the Mathematics Genealogy Project advisor-student network.">
+<meta name="description" content="Close relations of the Top 100 Goldbach researchers, ranked by a rank-weighted proximity score over the Mathematics Genealogy Project advisor-student network.">
 </head>
 <body>
 <header class="site-header">
@@ -14,8 +14,7 @@
 <a href="./top100.html" class="">Top 100</a>
 <a href="./regions/north-america.html" class="">North America</a>
 <a href="./regions/europe.html" class="">Europe</a>
-<a href="./regions/asia.html" class="">Asia &amp; Pacific</a>
-<a href="./regions/other.html" class="">Other regions</a>
+<a href="./regions/asia.html" class="">Asia & Pacific</a>
 <a href="./in-memoriam.html" class="">In Memoriam</a>
 <a href="./genealogy.html" class="nav-active">Genealogy</a>
 <a href="./network.html" class="">Network</a>
@@ -23,64 +22,61 @@
 <a href="./data.html" class="">Data</a>
 <a href="./methodology.html" class="">Methodology</a>
 <a href="./about.html" class="">About</a>
-<a href="./corrections.html" class="">Corrections</a>
-</nav>
+<a href="./corrections.html" class="">Corrections</a></nav>
 </header>
 <main>
 <h1>Mathematical Genealogy</h1>
-<p class="subtitle">Close relations of the Top 100, by proximity level</p>
+<p class="subtitle">Close relations of the Top 100, by proximity score</p>
 
-<p>Every PhD mathematician has an advisor, and every advisor has an advisor. The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> catalogs this lineage. We use it to surface <strong>close relations</strong>: researchers who are not in the algorithmic Top 100 by publication count, but who sit in its immediate orbit through advisor-student relationships.</p>
+<p>Every PhD mathematician has an advisor, and every advisor has an advisor. The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> catalogs this lineage. We use it to surface <strong>close relations</strong>: researchers not in the Top 100 by publication count, but who sit in its immediate orbit through advisor-student relationships.</p>
 
-<h2>How proximity levels work</h2>
-<p>We build one graph from the advisor and descendant trees of all Top 100 researchers (the <em>seeds</em>), then look at everyone who is not already in the directory. Each outsider is graded by how many distinct Top 100 researchers they are <strong>directly</strong> connected to as advisor or student:</p>
-<ul>
-<li><strong>Level 1</strong>: directly connected to three or more Top 100 researchers. The most central figures. (1 researcher.)</li>
-<li><strong>Level 2</strong>: directly connected to exactly two. (11 researchers.)</li>
-<li><strong>Level 3</strong>: directly connected to one. This is the broad one-hop neighbourhood (several hundred people), so it is not listed here.</li>
-</ul>
-<p>This page shows the complete Level 1 and Level 2 groups. People already in the directory (Top 100, next 100, or In Memoriam) and deceased mathematicians are excluded, the latter belong on the <a href="in-memoriam.html">In Memoriam</a> page. Click any name for a detail page.</p>
+<h2>How the proximity score works</h2>
+<p>We build one graph from the advisor and student trees of all Top 100 researchers. A <strong>close relation</strong> is an outsider who is <strong>directly</strong> tied (as advisor or student) to at least two Top 100 researchers. Each one gets a <strong>proximity score</strong> that sums, over those direct ties, <code>101 minus the connected researcher's rank</code>, so a tie to #1 is worth 100 and a tie to #100 is worth 1. Being tied to the top of the list counts for much more than being tied to the bottom.</p>
+<p>We deliberately keep this simple: only <em>direct</em> ties count (in the academic family tree, anyone two or more steps away has usually left number theory), and advisor and student ties count equally. People already in the directory and deceased mathematicians are excluded, the latter belong on the <a href="in-memoriam.html">In Memoriam</a> page. The 12 close relations are sorted by score and split into three levels (L1 strongest).</p>
 
 <h2>Level 1</h2>
 <table class="display compact stripe" style="width:100%">
-<thead><tr><th>Researcher</th><th>University</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity</th></tr></thead>
+<thead><tr><th>Researcher</th><th>University</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/peter-sarnak.html">Peter Sarnak</a></td><td>Stanford University</td><td>1980</td><td style="text-align:center">3</td><td style="text-align:center">3.75</td></tr>
+<tr><td><a href="people/olli-jarviniemi.html">Olli Järviniemi</a></td><td>Turun yliopisto</td><td>2023</td><td style="text-align:center">2</td><td style="text-align:center">186.0</td></tr>
+<tr><td><a href="people/stefan-neumann.html">Stefan Neumann</a></td><td>Universität Stuttgart</td><td>2006</td><td style="text-align:center">2</td><td style="text-align:center">182.0</td></tr>
+<tr><td><a href="people/taiyu-li.html">Taiyu Li</a></td><td>Shandong University</td><td>2012</td><td style="text-align:center">2</td><td style="text-align:center">182.0</td></tr>
+<tr><td><a href="people/mattia-cafferata.html">Mattia Cafferata</a></td><td>Università degli Studi di Ferrara</td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">147.0</td></tr>
 </tbody></table>
-
 <h2>Level 2</h2>
 <table class="display compact stripe" style="width:100%">
-<thead><tr><th>Researcher</th><th>University</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity</th></tr></thead>
+<thead><tr><th>Researcher</th><th>University</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/olli-jarviniemi.html">Olli Järviniemi</a></td><td>Turun yliopisto</td><td>2023</td><td style="text-align:center">2</td><td style="text-align:center">3.25</td></tr>
-<tr><td><a href="people/mattia-cafferata.html">Mattia Cafferata</a></td><td>Università degli Studi di Ferrara</td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">2.75</td></tr>
-<tr><td><a href="people/stefan-neumann.html">Stefan Neumann</a></td><td>Universität Stuttgart</td><td>2006</td><td style="text-align:center">2</td><td style="text-align:center">2.75</td></tr>
-<tr><td><a href="people/kam-hung-yau.html">Kam Hung Yau</a></td><td>University of New South Wales</td><td>2020</td><td style="text-align:center">2</td><td style="text-align:center">2.5</td></tr>
-<tr><td><a href="people/christian-bagshaw.html">Christian Bagshaw</a></td><td>University of New South Wales</td><td>2025</td><td style="text-align:center">2</td><td style="text-align:center">2.5</td></tr>
-<tr><td><a href="people/taiyu-li.html">Taiyu Li</a></td><td>Shandong University</td><td>2012</td><td style="text-align:center">2</td><td style="text-align:center">2.5</td></tr>
-<tr><td><a href="people/sofia-lindqvist.html">Sofia Lindqvist</a></td><td>University of Oxford</td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">2.5</td></tr>
-<tr><td><a href="people/timothy-trudgian.html">Timothy Trudgian</a></td><td>University of Oxford</td><td>2010</td><td style="text-align:center">2</td><td style="text-align:center">2.5</td></tr>
-<tr><td><a href="people/douglas-woodall.html">Douglas Woodall</a></td><td>University of Nottingham</td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">2.25</td></tr>
-<tr><td><a href="people/dorian-goldfeld.html">Dorian Goldfeld</a></td><td>Columbia University</td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">2.25</td></tr>
-<tr><td><a href="people/michael-filaseta.html">Michael Filaseta</a></td><td>University of Illinois at Urbana-Champaign</td><td>1984</td><td style="text-align:center">2</td><td style="text-align:center">2.25</td></tr>
+<tr><td><a href="people/kam-hung-yau.html">Kam Hung Yau</a></td><td>University of New South Wales</td><td>2020</td><td style="text-align:center">2</td><td style="text-align:center">128.0</td></tr>
+<tr><td><a href="people/christian-bagshaw.html">Christian Bagshaw</a></td><td>University of New South Wales</td><td>2025</td><td style="text-align:center">2</td><td style="text-align:center">126.0</td></tr>
+<tr><td><a href="people/sofia-lindqvist.html">Sofia Lindqvist</a></td><td>University of Oxford</td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">105.0</td></tr>
+<tr><td><a href="people/peter-sarnak.html">Peter Sarnak</a></td><td>Stanford University</td><td>1980</td><td style="text-align:center">3</td><td style="text-align:center">104.0</td></tr>
+</tbody></table>
+<h2>Level 3</h2>
+<table class="display compact stripe" style="width:100%">
+<thead><tr><th>Researcher</th><th>University</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity score</th></tr></thead>
+<tbody>
+<tr><td><a href="people/michael-filaseta.html">Michael Filaseta</a></td><td>University of Illinois at Urbana-Champaign</td><td>1984</td><td style="text-align:center">2</td><td style="text-align:center">89.0</td></tr>
+<tr><td><a href="people/dorian-goldfeld.html">Dorian Goldfeld</a></td><td>Columbia University</td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">89.0</td></tr>
+<tr><td><a href="people/timothy-trudgian.html">Timothy Trudgian</a></td><td>University of Oxford</td><td>2010</td><td style="text-align:center">2</td><td style="text-align:center">85.0</td></tr>
+<tr><td><a href="people/douglas-woodall.html">Douglas Woodall</a></td><td>University of Nottingham</td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">28.0</td></tr>
 </tbody></table>
 
 <h2>Notes</h2>
 <ul>
-<li><strong>Peter Sarnak</strong> (Stanford University, 1980): A leading analytic number theorist at Princeton and the Institute for Advanced Study. His advisor-student network reaches three Top 100 researchers, the strongest single genealogy tie to the directory.</li>
-<li><strong>Olli Järviniemi</strong> (Turun yliopisto, 2023): A young Finnish number theorist (PhD Turku 2023), connected through close advisor-student ties to Kaisa Matomäki and the Turku school.</li>
-<li><strong>Mattia Cafferata</strong> (Università degli Studi di Ferrara, 2019): An Italian number theorist (PhD Ferrara 2019) in the analytic prime-number tradition, linked to the directory through shared advisors.</li>
-<li><strong>Stefan Neumann</strong> (Universität Stuttgart, 2006): A number theorist (PhD Stuttgart 2006) tied to the German analytic number theory lineage that runs through the directory.</li>
-<li><strong>Kam Hung Yau</strong> (University of New South Wales, 2020): A number theorist (PhD UNSW 2020) working on exponential sums, connected to the Sydney analytic number theory group.</li>
-<li><strong>Christian Bagshaw</strong> (University of New South Wales, 2025): A recent number theory PhD (UNSW 2025), connected to the directory through the Sydney analytic number theory school.</li>
-<li><strong>Taiyu Li</strong> (Shandong University, 2012): A number theorist (PhD Shandong 2012) from the Shandong analytic number theory school that anchors much of the Chinese Goldbach work.</li>
-<li><strong>Sofia Lindqvist</strong> (University of Oxford, 2019): A number theorist (PhD Oxford 2019) working on additive combinatorics and the distribution of primes, reaching the directory through the Oxford lineage.</li>
-<li><strong>Timothy Trudgian</strong> (University of Oxford, 2010): An analytic number theorist (PhD Oxford 2010) known for explicit estimates related to the zeros of the zeta function, tied to the Oxford and Australian schools.</li>
-<li><strong>Douglas Woodall</strong> (University of Nottingham, 1969): A combinatorialist and number theorist (PhD Nottingham 1969) connected to the directory through advisor-student ties.</li>
-<li><strong>Dorian Goldfeld</strong> (Columbia University, 1969): An analytic number theorist at Columbia (PhD 1969), known for work on L-functions and the Gauss class number problem, linked to the directory&#x27;s lineage.</li>
-<li><strong>Michael Filaseta</strong> (University of Illinois at Urbana-Champaign, 1984): A number theorist (PhD Illinois 1984) working on polynomials and primes, connected through shared advisors with the directory.</li>
+<li><strong>Olli Järviniemi</strong> (Turun yliopisto, 2023): A young Finnish number theorist (PhD Turku 2023), tied to two highly-ranked Top 100 researchers, Kaisa Matomäki and Joni Teräväinen of the Turku school.</li>
+<li><strong>Stefan Neumann</strong> (Universität Stuttgart, 2006): A number theorist (PhD Stuttgart 2006) directly connected to two top-ranked members of the directory through the German analytic number theory lineage.</li>
+<li><strong>Taiyu Li</strong> (Shandong University, 2012): A number theorist (PhD Shandong 2012) from the Shandong analytic number theory school, tied to two highly-ranked Top 100 researchers.</li>
+<li><strong>Mattia Cafferata</strong> (Università degli Studi di Ferrara, 2019): An Italian number theorist (PhD Ferrara 2019) in the analytic prime-number tradition, directly tied to two Top 100 researchers.</li>
+<li><strong>Kam Hung Yau</strong> (University of New South Wales, 2020): A number theorist (PhD UNSW 2020) working on exponential sums, connected to two Top 100 researchers in the Sydney analytic number theory group.</li>
+<li><strong>Christian Bagshaw</strong> (University of New South Wales, 2025): A recent number theory PhD (UNSW 2025) directly tied to two Top 100 researchers through the Sydney analytic number theory school.</li>
+<li><strong>Sofia Lindqvist</strong> (University of Oxford, 2019): A number theorist (PhD Oxford 2019) working on additive combinatorics and the distribution of primes, tied to two Top 100 researchers via the Oxford lineage.</li>
+<li><strong>Peter Sarnak</strong> (Stanford University, 1980): A leading analytic number theorist at Princeton and the Institute for Advanced Study, directly tied to three Top 100 researchers through his advisor-student network.</li>
+<li><strong>Michael Filaseta</strong> (University of Illinois at Urbana-Champaign, 1984): A number theorist (PhD Illinois 1984) working on polynomials and primes, directly tied to two Top 100 researchers.</li>
+<li><strong>Dorian Goldfeld</strong> (Columbia University, 1969): An analytic number theorist at Columbia (PhD 1969), known for work on L-functions and the Gauss class number problem, tied to two Top 100 researchers.</li>
+<li><strong>Timothy Trudgian</strong> (University of Oxford, 2010): An analytic number theorist (PhD Oxford 2010) known for explicit estimates on the zeros of the zeta function, tied to two Top 100 researchers.</li>
+<li><strong>Douglas Woodall</strong> (University of Nottingham, 1969): A combinatorialist and number theorist (PhD Nottingham 1969) directly tied to two Top 100 researchers.</li>
 </ul>
-
 </main>
 <footer>
 <p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigr.org">admin@wwigr.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
