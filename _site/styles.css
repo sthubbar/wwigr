@@ -109,3 +109,80 @@ footer.page-footer {
   font-size: 0.85rem;
   padding: 1rem 0;
 }
+
+
+/* Static site header/nav additions */
+.site-header {
+  border-bottom: 1px solid var(--wwigr-rule);
+  padding: 1rem 0 0.5rem 0;
+  margin-bottom: 1.5rem;
+}
+.site-header .brand a {
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--wwigr-accent);
+  text-decoration: none;
+}
+.site-header nav {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+}
+.site-header nav a {
+  color: var(--wwigr-text);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.site-header nav a:hover {
+  color: var(--wwigr-link);
+  border-bottom-color: var(--wwigr-link);
+}
+.site-header nav a.nav-active {
+  color: var(--wwigr-accent);
+  border-bottom-color: var(--wwigr-accent);
+  font-weight: 600;
+}
+main {
+  padding: 0 1rem 2rem 1rem;
+}
+.subtitle {
+  color: var(--wwigr-muted);
+  font-size: 1.1rem;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}
+footer {
+  border-top: 1px solid var(--wwigr-rule);
+  margin-top: 3rem;
+  padding: 1rem;
+  color: var(--wwigr-muted);
+  font-size: 0.85rem;
+}
+.figure-page {
+  margin: 1.5rem -1rem;
+}
+.figure-page img {
+  width: 100%;
+  height: auto;
+}
+.dataTables_wrapper {
+  margin-top: 1rem;
+}
+
+/* Callout box: explanatory asides on Top 100 and In Memoriam */
+.callout {
+  background: #f0f5fb;
+  border-left: 3px solid var(--wwigr-link);
+  padding: 0.8rem 1rem;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+}
+
+/* Researcher profile pages */
+.profile-table { max-width: 560px; }
+.profile-table td:first-child { color: var(--wwigr-muted); width: 42%; }
