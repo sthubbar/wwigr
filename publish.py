@@ -921,7 +921,7 @@ def render_genealogy_profiles(people, top_slugs, oa_by_name, oa_by_surname,
             born=born, advisor=None,
             arx_papers=None, oa_works=None, oa_cites=None, active_years=None,
             hindex_entry=hindex.get(r["name"]), orcid=None, extra=extra)
-        sub = esc(r.get("university") or "")
+        sub = ("PhD: " + esc(r.get("university"))) if r.get("university") else ""
         intro = ('<p>A <strong>close relation</strong> of the Top 100: not in the '
                  'algorithmic ranking by publication count, but placed in the '
                  'immediate orbit of canonical Goldbach researchers by the '
