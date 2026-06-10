@@ -904,6 +904,10 @@ def render_genealogy_profiles(people, top_slugs, oa_by_name, oa_by_surname,
             extra.append(("PhD year", r.get("phd_year")))
         if lifespan:
             extra.append(("Lifespan", lifespan))
+        if r.get("level"):
+            extra.append(("Proximity level", r.get("level")))
+        if r.get("ties"):
+            extra.append(("Direct Top 100 ties", r.get("ties")))
         if r.get("rank"):
             extra.append(("Close-relation rank", f'{r.get("rank")} of {len(people)}'))
         if r.get("ppr"):
