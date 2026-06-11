@@ -25,7 +25,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 24,Ben Green,Ben Green,University of Oxford,GB,5,46,105,12,7,189,8,32,openalex,2004,2025,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
 25,William D. Banks,William D. Banks,University of Missouri,US,24,16,73,6,12,99,12,21,openalex,2002,2025,,,0000-0002-3595-6331,Q102194638
 26,Carl Pomerance,Carl Pomerance,Dartmouth College,US,14,,37,6,,,22,39,openalex,2009,2020,1944,John Tate,0000-0002-0960-1692,Q761544
-27,Ming-Chit Liu,Ming-Chit Liu,Hong Kong Baptist University,HK,,,14,,,,41,,,2016,2016,,,,
+27,Ming-Chit Liu,Ming-Chit Liu,Hong Kong Baptist University,HK,,,14,,,,41,,,,,,,,
 28,Doychin Tolev,Doychin Tolev,"Sofia University ""St. Kliment Ohridski""",BG,38,22,29,4,10,37,28,10,openalex,1998,2017,,,,
 29,Roger Heath-Brown,Roger Heath-Brown,University of Oxford,GB,,,15,,,,42,,,,,,,,
 30,Glyn Harman,Glyn Harman,Royal Holloway University of London,GB,,,11,,,,37,19,openalex,1991,1991,,,,Q5572848
@@ -78,7 +78,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 77,Will Sawin,Will Sawin,Princeton University,US,29,,156,7,4,32,6,10,openalex,2018,2025,1993,Nick Katz,0000-0003-0344-5438,Q61677722
 78,Jie Wu,Jie Wu,Hunan Agricultural Products (China),CN,54,,35,3,3,19,32,21,openalex,2007,2019,,,0000-0002-6893-7938,Q102382580
 79,Alex Kontorovich,Alex Kontorovich,"Rutgers, The State University of New Jersey",US,66,28,122,3,9,79,12,13,openalex,2005,2025,1980,Dorian M. Goldfeld; Peter Sarnak,0000-0001-7626-8319,Q18616099
-80,Jingrun Chen,Jingrun Chen,Chinese Academy of Sciences,CN,,,47,,,,21,,,2019,2019,,,,
+80,Jingrun Chen,Jingrun Chen,Chinese Academy of Sciences,CN,,,47,,,,21,,,,,,,,
 81,Helmut Maier,Helmut Maier,Universität Ulm,DE,75,34,75,4,10,22,12,18,openalex,1981,2025,1953,J. Ian (Jonathan) Richards,,Q5709706
 82,Xiumin Ren,Xiumin Ren,Shandong University,CN,,45,80,,6,77,16,,,2000,2024,,,,
 83,Stephan Baier,Stephan Baier,Ramakrishna Mission Vivekananda Educational and Research Institute,IN,41,53,90,15,10,17,16,14,openalex,2004,2024,,,0000-0001-9159-3152,Q102232439
