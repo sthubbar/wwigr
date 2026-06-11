@@ -87,7 +87,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 86,Chaohua Jia,Chaohua Jia,Sericultural Research Institute,CN,,,50,,,,26,11,openalex,1995,2020,,,,Q102383246
 87,Jan Moser,Jan Moser,Comenius University Bratislava,SK,43,,,9,,,,10,openalex,2023,2026,,,,
 88,Hugh Lowell Montgomery,Hugh Lowell Montgomery,University of Michigan,US,,,52,,3,24,12,32,openalex,1971,2026,,,,
-89,H. J. Weber,H. J. Weber,University of Bern,CH,62,47,,7,10,16,,,,2011,2013,,,,
+89,H. J. Weber,H. J. Weber,,,62,47,,7,10,16,,,,,,,,,
 90,Wenxu Ge,Wenxu Ge,North China University of Water Resources and Electric Power,CN,,,53,,,,17,5,openalex,2016,2020,,,,
 91,S. W. Graham,S. W. Graham,Central Michigan University,US,,44,152,,6,568,5,15,openalex,1984,2020,,,,Q289450
 92,Hao Pan,Hao Pan,Nanjing University of Finance and Economics,CN,44,59,103,8,10,4,22,17,openalex,2007,2025,,,0000-0003-4307-5953,Q102307482
