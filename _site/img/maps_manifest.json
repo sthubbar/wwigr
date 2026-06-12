@@ -1,14 +1,12 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "unplaced": [
-    "#89 H. J. Weber"
-  ],
+  "unplaced": [],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 99,
-      "drawn_count": 99,
+      "stated_count": 100,
+      "drawn_count": 100,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -37,7 +35,6 @@
         "Ben Green",
         "William D. Banks",
         "Carl Pomerance",
-        "Ming-Chit Liu",
         "Doychin Tolev",
         "Roger Heath-Brown",
         "Glyn Harman",
@@ -90,7 +87,6 @@
         "Will Sawin",
         "Jie Wu",
         "Alex Kontorovich",
-        "Jingrun Chen",
         "Helmut Maier",
         "Xiumin Ren",
         "Stephan Baier",
@@ -107,9 +103,12 @@
         "Tao Zhan",
         "Ofir Gorodetsky",
         "Daniel R. Johnston",
-        "Yuan Wang",
         "Ade Irma Suriajaya",
-        "Theresa C. Anderson"
+        "Theresa C. Anderson",
+        "Robert J. Lemke Oliver",
+        "Wenguang Zhai",
+        "Valentin Blomer",
+        "Liqun Hu"
       ]
     },
     {
@@ -131,7 +130,6 @@
         "Andrew Granville",
         "William D. Banks",
         "Carl Pomerance",
-        "Ming-Chit Liu",
         "M. Ram Murty",
         "Paul Pollack",
         "Greg Martin",
@@ -147,13 +145,14 @@
         "Hugh Lowell Montgomery",
         "S. W. Graham",
         "Brian Cook",
-        "Theresa C. Anderson"
+        "Theresa C. Anderson",
+        "Robert J. Lemke Oliver"
       ]
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 39,
-      "drawn_count": 39,
+      "stated_count": 40,
+      "drawn_count": 40,
       "match": true,
       "names": [
         "Jörg Brüdern",
@@ -194,7 +193,8 @@
         "Michael Th. Rassias",
         "C. Y. Yıldırım",
         "Jan Moser",
-        "Gérald Tenenbaum"
+        "Gérald Tenenbaum",
+        "Valentin Blomer"
       ]
     },
     {
@@ -221,7 +221,6 @@
         "Victor Z. Guo",
         "Kai-Man Tsang",
         "Jie Wu",
-        "Jingrun Chen",
         "Xiumin Ren",
         "Stephan Baier",
         "Chaohua Jia",
@@ -229,8 +228,19 @@
         "Hao Pan",
         "Tao Zhan",
         "Daniel R. Johnston",
-        "Yuan Wang",
-        "Ade Irma Suriajaya"
+        "Ade Irma Suriajaya",
+        "Wenguang Zhai",
+        "Liqun Hu"
+      ]
+    },
+    {
+      "file": "14_top100_other.png",
+      "stated_count": 2,
+      "drawn_count": 2,
+      "match": true,
+      "names": [
+        "Florian Luca",
+        "Ofir Gorodetsky"
       ]
     }
   ]
