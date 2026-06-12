@@ -93,9 +93,9 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 92,Tao Zhan,Tao Zhan,Southwest University,CN,,189,32,,3,48,20,17,openalex,1993,2006,,,,Q8070120
 93,Ofir Gorodetsky,Ofir Gorodetsky,Technion - Israel Institute of Technology,IL,39,104,,4,7,4,,5,openalex,2018,2024,,,0000-0002-1435-9650,
 94,Daniel R. Johnston,Daniel R. Johnston,Australian National University,AU,51,127,,6,5,3,,4,openalex,2021,2026,,,0000-0001-6507-034X,
-95,Yuan Wang,Yuan Wang,Chinese Academy of Sciences,CN,,,57,,3,16,23,,,1984,2005,,,,
-96,Ade Irma Suriajaya,Ade Irma Suriajaya,Kyushu University,JP,46,54,131,7,8,9,6,4,openalex,2021,2025,,Kohji Matsumoto,0000-0003-3386-0990,Q103091670
-97,Theresa C. Anderson,Theresa C. Anderson,Carnegie Mellon University,US,53,125,,3,4,33,3,9,openalex,2018,2026,,,,
-98,Robert J. Lemke Oliver,Robert J. Lemke Oliver,Tufts University,US,55,,,3,3,15,4,11,openalex,2011,2024,,,0000-0002-7170-051X,Q102407198
-99,Wenguang Zhai,Wenguang Zhai,China University of Mining and Technology (Beijing),CN,,,62,,3,12,22,13,openalex,1999,2025,,,,Q102350020
-100,Valentin Blomer,Valentin Blomer,Gesellschaft Fur Mathematik Und Datenverarbeitung,DE,,,59,,3,23,10,25,openalex,2005,2024,,,,Q2508239
+95,Ade Irma Suriajaya,Ade Irma Suriajaya,Kyushu University,JP,46,54,131,7,8,9,6,4,openalex,2021,2025,,Kohji Matsumoto,0000-0003-3386-0990,Q103091670
+96,Theresa C. Anderson,Theresa C. Anderson,Carnegie Mellon University,US,53,125,,3,4,33,3,9,openalex,2018,2026,,,,
+97,Robert J. Lemke Oliver,Robert J. Lemke Oliver,Tufts University,US,55,,,3,3,15,4,11,openalex,2011,2024,,,0000-0002-7170-051X,Q102407198
+98,Wenguang Zhai,Wenguang Zhai,China University of Mining and Technology (Beijing),CN,,,62,,3,12,22,13,openalex,1999,2025,,,,Q102350020
+99,Valentin Blomer,Valentin Blomer,Gesellschaft Fur Mathematik Und Datenverarbeitung,DE,,,59,,3,23,10,25,openalex,2005,2024,,,,Q2508239
+100,Liqun Hu,Liqun Hu,Nanchang University,CN,,,60,,3,1,26,5,openalex,2011,2024,,,,

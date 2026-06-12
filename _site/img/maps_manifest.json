@@ -1,12 +1,16 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "unplaced": [],
+  "unplaced": [
+    "#67 Kai-Man Tsang",
+    "#80 Jingrun Chen",
+    "#89 H. J. Weber"
+  ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 100,
-      "drawn_count": 100,
+      "stated_count": 97,
+      "drawn_count": 97,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -35,6 +39,7 @@
         "Ben Green",
         "William D. Banks",
         "Carl Pomerance",
+        "Ming-Chit Liu",
         "Doychin Tolev",
         "Roger Heath-Brown",
         "Glyn Harman",
@@ -74,7 +79,6 @@
         "Christian Elsholtz",
         "Victor Z. Guo",
         "James Maynard",
-        "Kai-Man Tsang",
         "Henryk Iwaniec",
         "Huafeng Liu",
         "S. I. Dimitrov",
@@ -103,18 +107,15 @@
         "Tao Zhan",
         "Ofir Gorodetsky",
         "Daniel R. Johnston",
+        "Yuan Wang",
         "Ade Irma Suriajaya",
-        "Theresa C. Anderson",
-        "Robert J. Lemke Oliver",
-        "Wenguang Zhai",
-        "Valentin Blomer",
-        "Liqun Hu"
+        "Theresa C. Anderson"
       ]
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 30,
-      "drawn_count": 30,
+      "stated_count": 32,
+      "drawn_count": 32,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -130,10 +131,13 @@
         "Andrew Granville",
         "William D. Banks",
         "Carl Pomerance",
+        "Ming-Chit Liu",
         "M. Ram Murty",
         "Paul Pollack",
         "Greg Martin",
         "Roger Baker",
+        "Alexandru Zaharescu",
+        "Wei Ping Li",
         "Scott T. Parsell",
         "Ciprian Demeter",
         "Ayla Gafni",
@@ -145,14 +149,13 @@
         "Hugh Lowell Montgomery",
         "S. W. Graham",
         "Brian Cook",
-        "Theresa C. Anderson",
-        "Robert J. Lemke Oliver"
+        "Theresa C. Anderson"
       ]
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 40,
-      "drawn_count": 40,
+      "stated_count": 38,
+      "drawn_count": 38,
       "match": true,
       "names": [
         "Jörg Brüdern",
@@ -168,7 +171,6 @@
         "Glyn Harman",
         "Tim Browning",
         "Alessandro Zaccagnini",
-        "Alexandru Zaharescu",
         "Matteo Bordignon",
         "Rainer Dietmann",
         "Etienne Fouvry",
@@ -193,14 +195,13 @@
         "Michael Th. Rassias",
         "C. Y. Yıldırım",
         "Jan Moser",
-        "Gérald Tenenbaum",
-        "Valentin Blomer"
+        "Gérald Tenenbaum"
       ]
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 28,
-      "drawn_count": 28,
+      "stated_count": 25,
+      "drawn_count": 25,
       "match": true,
       "names": [
         "Koichi Kawada",
@@ -211,7 +212,6 @@
         "Richard P. Brent",
         "Tianze Wang",
         "Tsz Ho Chan",
-        "Wei Ping Li",
         "Guangshi Lu",
         "Roger J. Cook",
         "Zhixin Liu",
@@ -219,7 +219,6 @@
         "Liangyi Zhao",
         "Bryce Kerr",
         "Victor Z. Guo",
-        "Kai-Man Tsang",
         "Jie Wu",
         "Xiumin Ren",
         "Stephan Baier",
@@ -228,9 +227,8 @@
         "Hao Pan",
         "Tao Zhan",
         "Daniel R. Johnston",
-        "Ade Irma Suriajaya",
-        "Wenguang Zhai",
-        "Liqun Hu"
+        "Yuan Wang",
+        "Ade Irma Suriajaya"
       ]
     },
     {
