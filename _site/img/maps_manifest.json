@@ -1,11 +1,18 @@
 {
   "site": "goldbach",
   "n_top": 100,
+  "n_placed": 97,
+  "n_unplaced_no_geocode": 0,
+  "n_unplaced_no_institution": 3,
   "unplaced": [
     "#67 Kai-Man Tsang",
     "#80 Jingrun Chen",
     "#89 H. J. Weber"
   ],
+  "geocode_sources": {
+    "legacy_gb_cache": 77,
+    "openalex": 20
+  },
   "maps": [
     {
       "file": "10_top100_overview.png",
