@@ -64,7 +64,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 63,Christian Elsholtz,Christian Elsholtz,Graz University of Technology,AT,,,34,,,,21,13,openalex,2001,2026,,,0000-0002-2960-4030,Q100725715
 64,Victor Z. Guo,Victor Z. Guo,Xi'an Jiaotong University,CN,35,35,,4,10,13,,4,openalex,2017,2026,,,0000-0002-5624-5870,
 65,James Maynard,James Maynard,University of Oxford,GB,13,107,87,7,5,45,14,11,openalex,2012,2025,1987,Roger Heath-Brown,0000-0001-5782-7082,Q19655060
-66,Kai-Man Tsang,Kai-Man Tsang,,,,,38,,,,21,,,,,,,,
+66,Kai-Man Tsang,Kai-Man Tsang,University of Hong Kong,HK,,,38,,,,21,,,1982,2017,,,,
 67,Henryk Iwaniec,Henryk Iwaniec,Polish Academy of Sciences,PL,123,48,22,3,9,43,30,50,openalex,1977,2023,1947,Andrzej Schinzel,,Q370944
 68,Huafeng Liu,Huafeng Liu,Oregon State University,US,,,42,,,,23,55,openalex,2019,2019,,,,
 69,S. I. Dimitrov,S. I. Dimitrov,"Sofia University ""St. Kliment Ohridski""",BG,42,26,117,11,12,24,20,6,openalex,2017,2025,,,0009-0009-8773-6910,

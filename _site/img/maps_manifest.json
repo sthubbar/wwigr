@@ -1,23 +1,21 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 97,
+  "n_placed": 99,
   "n_unplaced_no_geocode": 0,
-  "n_unplaced_no_institution": 3,
+  "n_unplaced_no_institution": 1,
   "unplaced": [
-    "#67 Kai-Man Tsang",
-    "#80 Jingrun Chen",
-    "#89 H. J. Weber"
+    "#86 H. J. Weber"
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 77,
+    "legacy_gb_cache": 79,
     "openalex": 20
   },
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 97,
-      "drawn_count": 97,
+      "stated_count": 99,
+      "drawn_count": 99,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -46,7 +44,6 @@
         "Ben Green",
         "William D. Banks",
         "Carl Pomerance",
-        "Ming-Chit Liu",
         "Doychin Tolev",
         "Roger Heath-Brown",
         "Glyn Harman",
@@ -86,11 +83,11 @@
         "Christian Elsholtz",
         "Victor Z. Guo",
         "James Maynard",
+        "Kai-Man Tsang",
         "Henryk Iwaniec",
         "Huafeng Liu",
         "S. I. Dimitrov",
         "Stephan Ramon Garcia",
-        "D. R. Heath-Brown",
         "Peter D. T. A. Elliott",
         "Lasse Grimmelt",
         "Kevin Hughes",
@@ -114,10 +111,14 @@
         "Tao Zhan",
         "Ofir Gorodetsky",
         "Daniel R. Johnston",
-        "Yuan Wang",
         "Ade Irma Suriajaya",
-        "Theresa C. Anderson"
-      ]
+        "Theresa C. Anderson",
+        "Robert J. Lemke Oliver",
+        "Wenguang Zhai",
+        "Valentin Blomer",
+        "Liqun Hu"
+      ],
+      "unplaced_no_geocode_in_region": 0
     },
     {
       "file": "11_top100_north_america.png",
@@ -138,7 +139,6 @@
         "Andrew Granville",
         "William D. Banks",
         "Carl Pomerance",
-        "Ming-Chit Liu",
         "M. Ram Murty",
         "Paul Pollack",
         "Greg Martin",
@@ -156,8 +156,10 @@
         "Hugh Lowell Montgomery",
         "S. W. Graham",
         "Brian Cook",
-        "Theresa C. Anderson"
-      ]
+        "Theresa C. Anderson",
+        "Robert J. Lemke Oliver"
+      ],
+      "unplaced_no_geocode_in_region": 0
     },
     {
       "file": "12_top100_europe.png",
@@ -194,7 +196,6 @@
         "James Maynard",
         "Henryk Iwaniec",
         "S. I. Dimitrov",
-        "D. R. Heath-Brown",
         "Lasse Grimmelt",
         "Kevin Hughes",
         "H. A. Helfgott",
@@ -202,13 +203,15 @@
         "Michael Th. Rassias",
         "C. Y. Yıldırım",
         "Jan Moser",
-        "Gérald Tenenbaum"
-      ]
+        "Gérald Tenenbaum",
+        "Valentin Blomer"
+      ],
+      "unplaced_no_geocode_in_region": 0
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 25,
-      "drawn_count": 25,
+      "stated_count": 27,
+      "drawn_count": 27,
       "match": true,
       "names": [
         "Koichi Kawada",
@@ -226,6 +229,7 @@
         "Liangyi Zhao",
         "Bryce Kerr",
         "Victor Z. Guo",
+        "Kai-Man Tsang",
         "Jie Wu",
         "Xiumin Ren",
         "Stephan Baier",
@@ -234,9 +238,11 @@
         "Hao Pan",
         "Tao Zhan",
         "Daniel R. Johnston",
-        "Yuan Wang",
-        "Ade Irma Suriajaya"
-      ]
+        "Ade Irma Suriajaya",
+        "Wenguang Zhai",
+        "Liqun Hu"
+      ],
+      "unplaced_no_geocode_in_region": 0
     },
     {
       "file": "14_top100_other.png",
