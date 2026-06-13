@@ -1,14 +1,14 @@
 rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,arxiv_papers,openalex_works,openalex_citations,zbmath_papers,overall_h_index,h_index_source,first_active_year,last_active_year,birth_year,doctoral_advisor,orcid,wikidata_id
 1,Trevor D. Wooley,Trevor D. Wooley,Purdue University West Lafayette,US,7,5,1,21,19,563,110,28,openalex,1990,2026,1964,Bob Vaughan,0000-0002-8781-4706,Q451701
-2,Jörg Brüdern,Jorg Brudern,University of Göttingen,DE,,2,2,,23,325,109,19,openalex,1991,2024,,,,Q1122696
+2,Jörg Brüdern,Jorg Brudern,University of Göttingen,DE,,2,2,,23,325,109,,,1991,2024,,,,Q1122696
 3,Janos Pintz,Janos Pintz,Alfréd Rényi Institute of Mathematics,HU,34,1,4,15,33,271,47,26,openalex,1992,2025,,,,Q963230
 4,Terence Tao,Terence Tao,"University of California, Los Angeles",US,3,3,44,18,23,1587,18,101,openalex,2004,2025,1975,Elias M. Stein,0000-0002-0140-7641,Q295981
 5,D. A. Goldston,D. A. Goldston,San Jose State University,US,40,4,17,14,24,159,33,21,openalex,1990,2023,,,0000-0002-6319-2367,Q607250
-6,Kaisa Matomäki,Kaisa Matomaki,University of Turku,FI,6,7,48,9,16,121,25,16,openalex,2007,2025,1985,Glyn Harman,,Q27061623
+6,Kaisa Matomäki,Kaisa Matomaki,University of Turku,FI,6,7,48,9,16,121,25,,,2007,2025,1985,Glyn Harman,,Q27061623
 7,Jianya Liu,Jianya Liu,Microsoft (United States),US,,20,5,,10,100,39,14,openalex,1996,2025,,,,Q102350017
 8,Koichi Kawada,Koichi Kawada,Iwate University,JP,,17,6,,9,138,34,9,openalex,1993,2019,,,,
 9,Alessandro Languasco,Alessandro Languasco,University of Padua,IT,49,18,8,6,9,75,44,12,openalex,1994,2024,,,0000-0003-2723-554X,Q102253573
-10,Joni Teräväinen,Joni Teravainen,University of Cambridge,GB,2,11,107,14,18,66,10,9,openalex,2016,2026,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
+10,Joni Teräväinen,Joni Teravainen,University of Cambridge,GB,2,11,107,14,18,66,10,,,2016,2026,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
 11,Jared Duker Lichtman,Jared Duker Lichtman,Stanford University,US,4,25,,13,12,23,4,4,openalex,2019,2024,1996,Joni Teräväinen; James Maynard,0000-0002-8303-5051,Q123240478
 12,Xuancheng Shao,Xuancheng Shao,University of Kentucky,US,1,8,137,14,14,113,9,10,openalex,2013,2025,,,0009-0006-2950-8387,Q102424735
 13,Angel Kumchev,Angel Kumchev,Towson University,US,85,9,10,3,12,205,32,12,openalex,1997,2022,,,0000-0001-8543-1659,Q102251427
@@ -45,7 +45,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 44,Etienne Fouvry,Etienne Fouvry,Centre National de la Recherche Scientifique,FR,,,20,,,,23,28,openalex,2012,2012,,,,
 45,Jean‐Marc Deshouillers,JeanMarc Deshouillers,Centre National de la Recherche Scientifique,FR,,68,19,,5,98,27,16,openalex,1993,2025,,,,Q1323950
 46,Scott T. Parsell,Scott T. Parsell,Butler University,US,,,27,,,,20,8,openalex,2006,2006,,,,
-47,András Sárközy,Andras Sarkozy,Eötvös Loránd University,HU,,,21,,,,30,31,openalex,1988,2023,,,,
+47,András Sárközy,Andras Sarkozy,Eötvös Loránd University,HU,,,21,,,,30,,,1988,2023,,,,
 48,Guangshi Lu,Guangshi Lu,Shandong University,CN,,,23,,,,33,17,openalex,2004,2011,,,,
 49,Roger J. Cook,Roger J. Cook,Queensland University of Technology,AU,,,28,,,,18,15,openalex,1991,2006,,,,
 50,Gautami Bhowmik,Gautami Bhowmik,Université de Lille,FR,17,39,143,9,7,49,8,9,openalex,2008,2024,,,,
@@ -80,7 +80,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 79,Xiumin Ren,Xiumin Ren,Tencent (China),CN,,45,80,,6,77,16,8,openalex,2000,2024,,,,
 80,Stephan Baier,Stephan Baier,Ramakrishna Mission Vivekananda Educational and Research Institute,IN,41,53,90,15,10,17,16,14,openalex,2004,2024,,,0000-0001-9159-3152,Q102232439
 81,Michael Th. Rassias,Michael Th. Rassias,Hellenic Military Academy,GR,76,27,142,4,12,19,5,24,openalex,2016,2025,,,0000-0001-8395-8748,Q50104145
-82,C. Y. Yıldırım,C. Y. Yildirim,Boğaziçi University,TR,,80,46,,5,67,15,11,openalex,1998,2020,,,,Q472787
+82,C. Y. Yıldırım,C. Y. Yildirim,Boğaziçi University,TR,,80,46,,5,67,15,,,1998,2020,,,,Q472787
 83,Chaohua Jia,Chaohua Jia,"Academy of Mathematics and Systems Science, Chinese Academy of Sciences",CN,,,50,,,,26,11,openalex,1995,2020,,,,Q102383246
 84,Jan Moser,Jan Moser,Comenius University Bratislava,SK,43,,,9,,,,10,openalex,2023,2026,,,,
 85,Hugh Lowell Montgomery,Hugh Lowell Montgomery,University of Michigan,US,,,52,,3,24,12,32,openalex,1971,2026,,,,
