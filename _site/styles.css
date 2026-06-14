@@ -115,7 +115,7 @@ footer.page-footer {
 .site-header {
   border-bottom: 1px solid var(--wwigr-rule);
   padding: 1rem 0 0.5rem 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.35rem;
 }
 .site-header .brand a {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
