@@ -186,3 +186,54 @@ footer {
 /* Researcher profile pages */
 .profile-table { max-width: 560px; }
 .profile-table td:first-child { color: var(--wwigr-muted); width: 42%; }
+
+/* Sister-sites secondary navigation bar (NAV-02) */
+.sister-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.35rem 1rem 0.4rem 1rem;
+  border-bottom: 1px solid var(--wwigr-rule);
+  background: transparent;
+  font-size: 0.8rem;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  color: var(--wwigr-muted);
+  margin-bottom: 1rem;
+}
+.sister-bar a.sister-link {
+  color: var(--wwigr-link);
+  text-decoration: none;
+  font-weight: 500;
+}
+.sister-bar a.sister-link:hover {
+  color: var(--wwigr-link-hover);
+  text-decoration: underline;
+}
+.sister-bar .sister-current {
+  font-weight: 700;
+  color: var(--wwigr-accent);
+}
+.sister-bar .sister-sep {
+  color: var(--wwigr-muted);
+  opacity: 0.5;
+  margin: 0 0.15rem;
+}
+.sister-bar .sister-landau-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--wwigr-rule);
+  border-radius: 3px;
+  padding: 0.1rem 0.45rem;
+  position: relative;
+}
+.sister-bar .sister-landau-label {
+  font-size: 0.7rem;
+  color: var(--wwigr-muted);
+  opacity: 0.75;
+  white-space: nowrap;
+  margin-right: 0.2rem;
+  font-style: italic;
+}
+
