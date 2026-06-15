@@ -2,14 +2,15 @@
   "site": "goldbach",
   "n_top": 100,
   "n_placed": 99,
-  "n_unplaced_no_geocode": 0,
-  "n_unplaced_no_institution": 1,
+  "n_unplaced_no_geocode": 1,
+  "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#86 H. J. Weber"
+    "#61 Claus Bauer [-]"
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 79,
-    "openalex": 20
+    "legacy_gb_cache": 85,
+    "verified:2026-06-15(Claude,web; main campus)": 5,
+    "openalex": 9
   },
   "maps": [
     {
@@ -78,7 +79,6 @@
         "Liangyi Zhao",
         "Akshat Mudgal",
         "Bryce Kerr",
-        "Claus Bauer",
         "Ayla Gafni",
         "Christian Elsholtz",
         "Victor Z. Guo",
@@ -103,6 +103,7 @@
         "Chaohua Jia",
         "Jan Moser",
         "Hugh Lowell Montgomery",
+        "H. J. Weber",
         "Wenxu Ge",
         "S. W. Graham",
         "Hao Pan",
@@ -118,18 +119,17 @@
         "Valentin Blomer",
         "Liqun Hu"
       ],
-      "unplaced_no_geocode_in_region": 0
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 32,
-      "drawn_count": 32,
+      "stated_count": 33,
+      "drawn_count": 33,
       "match": true,
       "names": [
         "Trevor D. Wooley",
         "Terence Tao",
         "D. A. Goldston",
-        "Jianya Liu",
         "Jared Duker Lichtman",
         "Xuancheng Shao",
         "Angel Kumchev",
@@ -143,28 +143,30 @@
         "Paul Pollack",
         "Greg Martin",
         "Roger Baker",
+        "Tsz Ho Chan",
         "Alexandru Zaharescu",
         "Wei Ping Li",
         "Scott T. Parsell",
         "Ciprian Demeter",
         "Ayla Gafni",
-        "Huafeng Liu",
+        "Henryk Iwaniec",
         "Stephan Ramon Garcia",
         "Peter D. T. A. Elliott",
         "Will Sawin",
         "Alex Kontorovich",
         "Hugh Lowell Montgomery",
+        "H. J. Weber",
         "S. W. Graham",
         "Brian Cook",
         "Theresa C. Anderson",
         "Robert J. Lemke Oliver"
       ],
-      "unplaced_no_geocode_in_region": 0
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 38,
-      "drawn_count": 38,
+      "stated_count": 37,
+      "drawn_count": 37,
       "match": true,
       "names": [
         "Jörg Brüdern",
@@ -191,14 +193,13 @@
         "Antal Balog",
         "Karin Halupczok",
         "Akshat Mudgal",
-        "Claus Bauer",
         "Christian Elsholtz",
         "James Maynard",
-        "Henryk Iwaniec",
         "S. I. Dimitrov",
         "Lasse Grimmelt",
         "Kevin Hughes",
         "H. A. Helfgott",
+        "Jie Wu",
         "Helmut Maier",
         "Michael Th. Rassias",
         "C. Y. Yıldırım",
@@ -214,6 +215,7 @@
       "drawn_count": 27,
       "match": true,
       "names": [
+        "Jianya Liu",
         "Koichi Kawada",
         "Igor E. Shparlinski",
         "Jinjiang Li",
@@ -221,7 +223,6 @@
         "Yingchun Cai",
         "Richard P. Brent",
         "Tianze Wang",
-        "Tsz Ho Chan",
         "Guangshi Lu",
         "Roger J. Cook",
         "Zhixin Liu",
@@ -230,7 +231,7 @@
         "Bryce Kerr",
         "Victor Z. Guo",
         "Kai-Man Tsang",
-        "Jie Wu",
+        "Huafeng Liu",
         "Xiumin Ren",
         "Stephan Baier",
         "Chaohua Jia",
