@@ -184,8 +184,12 @@ footer {
 }
 
 /* Researcher profile pages */
-.profile-table { max-width: 560px; }
-.profile-table td:first-child { color: var(--wwigr-muted); width: 42%; }
+/* C1: full-width detail table so long values (e.g. the Status line)
+   flow on one line instead of wrapping in a narrow value column. */
+.profile-table { width: 100%; max-width: 100%; table-layout: auto; }
+.profile-table td { white-space: normal; }
+.profile-table td:first-child { color: var(--wwigr-muted); width: 12rem;
+  white-space: nowrap; vertical-align: top; }
 
 /* Sister-sites secondary navigation bar (NAV-02) */
 .sister-bar {
