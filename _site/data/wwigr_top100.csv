@@ -21,7 +21,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 20,John Friedlander,John Friedlander,University of Toronto,CA,,19,39,,11,117,21,34,openalex,1978,2023,1941,Sarvadaman Chowla,0000-0001-9011-0972,Q470462
 21,Andrew Granville,Andrew Granville,Université de Montréal,CA,19,24,41,5,8,251,14,32,openalex,1988,2023,1962,Paulo Ribenboim,0000-0001-8088-1247,Q504907
 22,Min Zhang,Min Zhang,,,37,12,69,12,23,36,29,44,openalex,2016,2025,,,0000-0002-2203-7088,
-23,Yingchun Cai,Yingchun Cai,Jiangsu Academy of Agricultural Sciences,CN,,13,66,,14,59,42,27,openalex,1989,2022,,,,
+23,Yingchun Cai,Yingchun Cai,,,,13,66,,14,59,42,27,openalex,1989,2022,,,,
 24,Ben Green,Ben Green,University of Oxford,GB,5,46,105,12,7,189,8,32,openalex,2004,2025,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
 25,William D. Banks,William D. Banks,University of Missouri,US,24,16,73,6,12,99,12,21,openalex,2002,2025,,,0000-0002-3595-6331,Q102194638
 26,Carl Pomerance,Carl Pomerance,Dartmouth College,US,14,,37,6,,,22,39,openalex,2009,2020,1944,John Tate,0000-0002-0960-1692,Q761544
@@ -32,7 +32,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 31,M. Ram Murty,M. Ram Murty,Queen's University,CA,,23,30,,9,83,28,25,openalex,1987,2025,,,,Q470508
 32,Tim Browning,Tim Browning,Institute of Science and Technology Austria,AT,52,72,13,6,8,41,45,19,openalex,2005,2025,,,,Q7807081
 33,Richard P. Brent,Richard P. Brent,Australian National University,AU,,15,,,9,127,,45,openalex,1969,2012,,,0000-0002-8495-7437,Q93042
-34,Tianze Wang,Tianze Wang,Luoyang Normal University,CN,,77,12,,5,96,46,2,openalex,1991,2019,,,,
+34,Tianze Wang,Tianze Wang,"Institute of Mathematics, Henan Academy of Sciences",CN,,77,12,,5,96,46,2,openalex,1991,2019,,,,
 35,Alessandro Zaccagnini,Alessandro Zaccagnini,University of Parma,IT,47,122,9,7,4,31,39,14,openalex,2007,2026,,Alberto Perelli,0000-0001-6092-2355,Q102299670
 36,Paul Pollack,Paul Pollack,University of Georgia,US,20,63,40,5,6,49,26,13,openalex,2008,2025,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
 37,Greg Martin,Greg Martin,Emory University,US,18,,,5,3,1,3,,,1997,2025,,,0000-0002-8476-9495,Q102166232
@@ -54,7 +54,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 53,Antal Balog,Antal Balog,Baltazar Zaprešić University of Applied Sciences,HR,,40,31,,8,144,17,18,openalex,1985,2013,,,,
 54,Ciprian Demeter,Ciprian Demeter,Indiana University Bloomington,US,25,,,5,,,,15,openalex,2014,2016,1976,Joseph Max Rosenblatt,,Q29652517
 55,Karin Halupczok,Karin Halupczok,Heinrich Heine University Düsseldorf,DE,16,43,153,9,8,23,12,5,openalex,2005,2021,,,,
-56,Zhixin Liu,Zhixin Liu,Tianjin University,CN,,29,58,,8,56,29,,,2010,2021,,,,
+56,Zhixin Liu,Zhixin Liu,,,,29,58,,8,56,29,,,2010,2021,,,,
 57,Kohji Matsumoto,Kohji Matsumoto,Nara Institute of Science and Technology,JP,26,,,5,,,3,38,openalex,2011,2024,1957,Akio Fujii,0000-0001-6716-8316,Q6426011
 58,Liangyi Zhao,Liangyi Zhao,UNSW Sydney,AU,104,41,24,4,7,114,24,14,openalex,2013,2022,,,0000-0002-4407-9238,
 59,Akshat Mudgal,Akshat Mudgal,University of Bristol,GB,30,,,4,,,,3,openalex,2020,2023,,,,
@@ -66,7 +66,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 65,James Maynard,James Maynard,University of Oxford,GB,13,107,87,7,5,45,14,11,openalex,2012,2025,1987,Roger Heath-Brown,0000-0001-5782-7082,Q19655060
 66,Kai-Man Tsang,Kai-Man Tsang,University of Hong Kong,HK,,,38,,,,21,,,1982,2017,,,,
 67,Henryk Iwaniec,Henryk Iwaniec,Polish Academy of Sciences,PL,123,48,22,3,9,43,30,50,openalex,1977,2023,1947,Andrzej Schinzel,,Q370944
-68,Huafeng Liu,Huafeng Liu,Oregon State University,US,,,42,,,,23,55,openalex,2019,2019,,,,
+68,Huafeng Liu,Huafeng Liu,,,,,42,,,,23,55,openalex,,,,,,
 69,S. I. Dimitrov,S. I. Dimitrov,"Sofia University ""St. Kliment Ohridski""",BG,42,26,117,11,12,24,20,6,openalex,2017,2025,,,0009-0009-8773-6910,
 70,Stephan Ramon Garcia,Stephan Ramon Garcia,Pomona College,US,32,71,,4,8,8,,27,openalex,2011,2024,1974,Donald Sarason,0000-0001-8971-5448,Q85851977
 71,Peter D. T. A. Elliott,Peter D. T. A. Elliott,University of Colorado Boulder,US,,,45,,,,19,19,openalex,1966,1999,,,,
