@@ -5,7 +5,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 4,Terence Tao,Terence Tao,"University of California, Los Angeles",US,3,3,44,18,23,1587,18,101,openalex,2004,2025,1975,Elias M. Stein,0000-0002-0140-7641,Q295981
 5,D. A. Goldston,D. A. Goldston,San Jose State University,US,40,4,17,14,24,159,33,21,openalex,1990,2023,,,0000-0002-6319-2367,Q607250
 6,Kaisa Matomäki,Kaisa Matomaki,University of Turku,FI,6,7,48,9,16,121,25,,,2007,2025,1985,Glyn Harman,,Q27061623
-7,Jianya Liu,Jianya Liu,Microsoft (United States),US,,20,5,,10,100,39,14,openalex,1996,2025,,,,Q102350017
+7,Jianya Liu,Jianya Liu,Shandong University,CN,,20,5,,10,100,39,14,openalex,1996,2025,,,,Q102350017
 8,Koichi Kawada,Koichi Kawada,Iwate University,JP,,17,6,,9,138,34,9,openalex,1993,2019,,,,
 9,Alessandro Languasco,Alessandro Languasco,University of Padua,IT,49,18,8,6,9,75,44,12,openalex,1994,2024,,,0000-0003-2723-554X,Q102253573
 10,Joni Teräväinen,Joni Teravainen,University of Cambridge,GB,2,11,107,14,18,66,10,,,2016,2026,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
@@ -20,7 +20,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 19,Jinjiang Li,Jinjiang Li,China University of Mining and Technology (Beijing),CN,36,10,68,12,31,38,30,6,openalex,2016,2026,,,0000-0002-3204-4046,
 20,John Friedlander,John Friedlander,University of Toronto,CA,,19,39,,11,117,21,34,openalex,1978,2023,1941,Sarvadaman Chowla,0000-0001-9011-0972,Q470462
 21,Andrew Granville,Andrew Granville,Université de Montréal,CA,19,24,41,5,8,251,14,32,openalex,1988,2023,1962,Paulo Ribenboim,0000-0001-8088-1247,Q504907
-22,Min Zhang,Min Zhang,Tsinghua University,CN,37,12,69,12,23,36,29,44,openalex,2016,2025,,,0000-0002-2203-7088,
+22,Min Zhang,Min Zhang,,,37,12,69,12,23,36,29,44,openalex,2016,2025,,,0000-0002-2203-7088,
 23,Yingchun Cai,Yingchun Cai,Jiangsu Academy of Agricultural Sciences,CN,,13,66,,14,59,42,27,openalex,1989,2022,,,,
 24,Ben Green,Ben Green,University of Oxford,GB,5,46,105,12,7,189,8,32,openalex,2004,2025,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
 25,William D. Banks,William D. Banks,University of Missouri,US,24,16,73,6,12,99,12,21,openalex,2002,2025,,,0000-0002-3595-6331,Q102194638
