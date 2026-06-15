@@ -37,7 +37,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 36,Paul Pollack,Paul Pollack,University of Georgia,US,20,63,40,5,6,49,26,13,openalex,2008,2025,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
 37,Greg Martin,Greg Martin,Emory University,US,18,,,5,3,1,3,,,1997,2025,,,0000-0002-8476-9495,Q102166232
 38,Roger Baker,Roger Baker,Brigham Young University,US,67,124,7,4,5,38,38,34,openalex,2006,2022,,,,Q102115286
-39,Tsz Ho Chan,Tsz Ho Chan,Pok Oi Hospital,HK,22,,,6,4,4,,8,openalex,2002,2023,,,0000-0001-8553-1633,Q102247662
+39,Tsz Ho Chan,Tsz Ho Chan,Kennesaw State University,US,22,,,6,4,4,,8,openalex,2002,2023,,,0000-0001-8553-1633,Q102247662
 40,Alexandru Zaharescu,Alexandru Zaharescu,University of Illinois Urbana-Champaign,US,21,,67,7,5,2,15,24,openalex,2006,2025,1961,Nicolae Popescu; Peter Sarnak,0000-0001-5587-9938,Q53704105
 41,Wei Ping Li,Wei Ping Li,Harvard University,US,,,25,,,,30,,,2008,2024,,,,
 42,Matteo Bordignon,Matteo Bordignon,KTH Royal Institute of Technology,SE,23,,,6,,,4,13,openalex,2019,2023,,,,
@@ -59,7 +59,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 58,Liangyi Zhao,Liangyi Zhao,UNSW Sydney,AU,104,41,24,4,7,114,24,14,openalex,2013,2022,,,0000-0002-4407-9238,
 59,Akshat Mudgal,Akshat Mudgal,University of Bristol,GB,30,,,4,,,,3,openalex,2020,2023,,,,
 60,Bryce Kerr,Bryce Kerr,UNSW Sydney,AU,28,,,6,,,,7,openalex,2012,2019,,,0000-0002-8829-372X,
-61,Claus Bauer,Claus Bauer,University Hospital Bonn,DE,,30,61,,7,57,19,7,openalex,1998,2020,,,,
+61,Claus Bauer,Claus Bauer,Dolby (Netherlands),NL,,30,61,,7,57,19,7,openalex,1998,2020,,,,
 62,Ayla Gafni,Ayla Gafni,University of Mississippi,US,31,,,5,4,11,5,,,2021,2025,,,0000-0003-4226-2175,
 63,Christian Elsholtz,Christian Elsholtz,Graz University of Technology,AT,,,34,,,,21,13,openalex,2001,2026,,,0000-0002-2960-4030,Q100725715
 64,Victor Z. Guo,Victor Z. Guo,Xi'an Jiaotong University,CN,35,35,,4,10,13,,4,openalex,2017,2026,,,0000-0002-5624-5870,
