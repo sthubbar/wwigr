@@ -148,7 +148,7 @@ footer.page-footer {
   font-weight: 600;
 }
 main {
-  padding: 0 1rem 2rem 1rem;
+  padding: 0 1rem 1rem 1rem;
 }
 .subtitle {
   color: var(--wwigr-muted);
@@ -158,7 +158,7 @@ main {
 }
 footer {
   border-top: 1px solid var(--wwigr-rule);
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding: 1rem;
   color: var(--wwigr-muted);
   font-size: 0.85rem;
