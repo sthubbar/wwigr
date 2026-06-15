@@ -59,7 +59,7 @@
 </table>
 <script>
 $(document).ready(function() {
-  $('#rl').DataTable({ pageLength: 25, lengthMenu: [15, 25, 50], order: [[0, 'asc']] });
+  $('#rl').DataTable({ paging: false, info: false, lengthChange: false, searching: false, order: [[0, 'asc']] });
 });
 </script>
 
@@ -70,21 +70,21 @@ Results are filtered to the Mathematics field (OpenAlex field 26) and ranked by 
 <table id="mc" class="display compact stripe hover" style="width:100%">
 <thead><tr><th>#</th><th>Title</th><th>Authors</th><th>Year</th><th>Citations</th></tr></thead>
 <tbody>
-<tr><td style='text-align:center' data-order='1'>1</td><td><a href="https://doi.org/10.1360/ya1973-16-2-157">ON THE REPRESENTATION OF A LARGER EVEN INTEGER AS THE SUM OF A PRIME AND THE PRODUCT OF AT MOST TWO PRIMES</a></td><td>Chen Jing-Run</td><td>1973</td><td style='text-align:right' data-order='337'>337 citations</td></tr>
-<tr><td style='text-align:center' data-order='2'>2</td><td><a href="https://doi.org/10.4171/rmi/2">The Ternary Goldbach Problem</a></td><td><a href="people/d-r-heath-brown.html"><strong>D. R. Heath‐Brown</strong></a></td><td>1985</td><td style='text-align:right' data-order='267'>267 citations</td></tr>
-<tr><td style='text-align:center' data-order='3'>3</td><td><a href="https://doi.org/10.1007/978-3-642-15086-9_13">Representation of an Odd Number as the Sum of Three Primes</a></td><td>Ivan Matveevič Vinogradov</td><td>1985</td><td style='text-align:right' data-order='222'>222 citations</td></tr>
-<tr><td style='text-align:center' data-order='4'>4</td><td><a href="https://doi.org/10.1090/s0025-5718-2013-02787-1">Empirical verification of the even Goldbach conjecture and computation of prime gaps up to 4⋅10¹⁸</a></td><td>Tomás Oliveira e Silva; Siegfried Herzog; Silvio Pardi</td><td>2013</td><td style='text-align:right' data-order='165'>165 citations</td></tr>
-<tr><td style='text-align:center' data-order='5'>5</td><td><a href="https://doi.org/10.48550/arxiv.1312.7748">The ternary Goldbach conjecture is true</a></td><td><a href="people/h-a-helfgott.html"><strong>H. A. Helfgott</strong></a></td><td>2013</td><td style='text-align:right' data-order='99'>99 citations</td></tr>
-<tr><td style='text-align:center' data-order='6'>6</td><td><a href="https://doi.org/10.1112/plms/s2-44.4.307">On Goldbach&#x27;s Problem : Proof that Almost all Even Positive Integers are Sums of Two Primes</a></td><td>T. Estermann</td><td>1938</td><td style='text-align:right' data-order='99'>99 citations</td></tr>
-<tr><td style='text-align:center' data-order='7'>7</td><td><a href="https://doi.org/10.2140/pjm.1971.36.103">On the sum of a prime and of two powers of two</a></td><td>Roger Crocker</td><td>1971</td><td style='text-align:right' data-order='83'>83 citations</td></tr>
-<tr><td style='text-align:center' data-order='8'>8</td><td><a href="https://doi.org/10.4310/ajm.2002.v6.n3.a7">Integers represented as a sum of primes and powers of two</a></td><td><a href="people/d-r-heath-brown.html"><strong>D. R. Heath‐Brown</strong></a>; J.-C. Puchta</td><td>2002</td><td style='text-align:right' data-order='80'>80 citations</td></tr>
-<tr><td style='text-align:center' data-order='9'>9</td><td><a href="https://doi.org/10.1112/plms/83.1.1">On the Waring-Goldbach Problem for Fourth and Fifth Powers</a></td><td><a href="people/koichi-kawada.html"><strong>Koichi Kawada</strong></a>; <a href="people/trevor-d-wooley.html"><strong>Trevor D. Wooley</strong></a></td><td>2001</td><td style='text-align:right' data-order='75'>75 citations</td></tr>
-<tr><td style='text-align:center' data-order='10'>10</td><td><a href="https://doi.org/10.1112/plms/pdt072">On the Waring-Goldbach problem for fourth and sixth powers</a></td><td><a href="people/liangyi-zhao.html"><strong>Lilu Zhao</strong></a></td><td>2014</td><td style='text-align:right' data-order='74'>74 citations</td></tr>
+<tr><td style='text-align:center' data-order='1'>1</td><td><a href="https://doi.org/10.1360/ya1973-16-2-157">ON THE REPRESENTATION OF A LARGER EVEN INTEGER AS THE SUM OF A PRIME AND THE PRODUCT OF AT MOST TWO PRIMES</a></td><td>Chen Jing-Run</td><td>1973</td><td style='text-align:right' data-order='337'>337</td></tr>
+<tr><td style='text-align:center' data-order='2'>2</td><td><a href="https://doi.org/10.4171/rmi/2">The Ternary Goldbach Problem</a></td><td><a href="people/d-r-heath-brown.html"><strong>D. R. Heath‐Brown</strong></a></td><td>1985</td><td style='text-align:right' data-order='267'>267</td></tr>
+<tr><td style='text-align:center' data-order='3'>3</td><td><a href="https://doi.org/10.1007/978-3-642-15086-9_13">Representation of an Odd Number as the Sum of Three Primes</a></td><td>Ivan Matveevič Vinogradov</td><td>1985</td><td style='text-align:right' data-order='222'>222</td></tr>
+<tr><td style='text-align:center' data-order='4'>4</td><td><a href="https://doi.org/10.1090/s0025-5718-2013-02787-1">Empirical verification of the even Goldbach conjecture and computation of prime gaps up to 4⋅10¹⁸</a></td><td>Tomás Oliveira e Silva; Siegfried Herzog; Silvio Pardi</td><td>2013</td><td style='text-align:right' data-order='165'>165</td></tr>
+<tr><td style='text-align:center' data-order='5'>5</td><td><a href="https://doi.org/10.48550/arxiv.1312.7748">The ternary Goldbach conjecture is true</a></td><td><a href="people/h-a-helfgott.html"><strong>H. A. Helfgott</strong></a></td><td>2013</td><td style='text-align:right' data-order='99'>99</td></tr>
+<tr><td style='text-align:center' data-order='6'>6</td><td><a href="https://doi.org/10.1112/plms/s2-44.4.307">On Goldbach&#x27;s Problem : Proof that Almost all Even Positive Integers are Sums of Two Primes</a></td><td>T. Estermann</td><td>1938</td><td style='text-align:right' data-order='99'>99</td></tr>
+<tr><td style='text-align:center' data-order='7'>7</td><td><a href="https://doi.org/10.2140/pjm.1971.36.103">On the sum of a prime and of two powers of two</a></td><td>Roger Crocker</td><td>1971</td><td style='text-align:right' data-order='83'>83</td></tr>
+<tr><td style='text-align:center' data-order='8'>8</td><td><a href="https://doi.org/10.4310/ajm.2002.v6.n3.a7">Integers represented as a sum of primes and powers of two</a></td><td><a href="people/d-r-heath-brown.html"><strong>D. R. Heath‐Brown</strong></a>; J.-C. Puchta</td><td>2002</td><td style='text-align:right' data-order='80'>80</td></tr>
+<tr><td style='text-align:center' data-order='9'>9</td><td><a href="https://doi.org/10.1112/plms/83.1.1">On the Waring-Goldbach Problem for Fourth and Fifth Powers</a></td><td><a href="people/koichi-kawada.html"><strong>Koichi Kawada</strong></a>; <a href="people/trevor-d-wooley.html"><strong>Trevor D. Wooley</strong></a></td><td>2001</td><td style='text-align:right' data-order='75'>75</td></tr>
+<tr><td style='text-align:center' data-order='10'>10</td><td><a href="https://doi.org/10.1112/plms/pdt072">On the Waring-Goldbach problem for fourth and sixth powers</a></td><td><a href="people/liangyi-zhao.html"><strong>Lilu Zhao</strong></a></td><td>2014</td><td style='text-align:right' data-order='74'>74</td></tr>
 </tbody>
 </table>
 <script>
 $(document).ready(function() {
-  $('#mc').DataTable({ pageLength: 10, lengthMenu: [10, 25], order: [[0, 'asc']] });
+  $('#mc').DataTable({ paging: false, info: false, lengthChange: false, searching: false, order: [[0, 'asc']] });
 });
 </script>
 
