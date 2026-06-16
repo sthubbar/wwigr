@@ -35,7 +35,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 34,Tianze Wang,Tianze Wang,Henan Academy of Sciences,CN,,77,12,,5,96,46,2,openalex,1991,2019,,,,
 35,Alessandro Zaccagnini,Alessandro Zaccagnini,University of Parma,IT,47,122,9,7,4,31,39,14,openalex,2007,2026,,Alberto Perelli,0000-0001-6092-2355,Q102299670
 36,Paul Pollack,Paul Pollack,University of Georgia,US,20,63,40,5,6,49,26,13,openalex,2008,2025,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
-37,Greg Martin,Greg Martin,University of British Columbia,CA,18,,,5,3,1,3,,,1997,2025,,,0000-0002-8476-9495,Q102166232
+37,Greg Martin,Greg Martin,University of British Columbia,CA,18,,,5,3,1,3,16,openalex,1997,2025,,,0000-0002-8476-9495,Q102166232
 38,Roger Baker,Roger Baker,Brigham Young University,US,67,124,7,4,5,38,38,34,openalex,2006,2022,,,,Q102115286
 39,Tsz Ho Chan,Tsz Ho Chan,Kennesaw State University,US,22,,,6,4,4,,8,openalex,2002,2023,,,0000-0001-8553-1633,Q102247662
 40,Alexandru Zaharescu,Alexandru Zaharescu,University of Illinois Urbana-Champaign,US,21,,67,7,5,2,15,24,openalex,2006,2025,1961,Nicolae Popescu; Peter Sarnak,0000-0001-5587-9938,Q53704105
@@ -55,7 +55,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 54,Ciprian Demeter,Ciprian Demeter,Indiana University Bloomington,US,25,,,5,,,,15,openalex,2014,2016,1976,Joseph Max Rosenblatt,,Q29652517
 55,Karin Halupczok,Karin Halupczok,Heinrich Heine University Düsseldorf,DE,16,43,153,9,8,23,12,5,openalex,2005,2021,,,,
 56,Zhixin Liu,Zhixin Liu,Tianjin University,CN,,29,58,,8,56,29,,,2010,2021,,,,
-57,Kohji Matsumoto,Kohji Matsumoto,Nagoya University,JP,26,,,5,,,3,,,2011,2024,1957,Akio Fujii,0000-0001-6716-8316,Q6426011
+57,Kohji Matsumoto,Kohji Matsumoto,Nagoya University,JP,26,,,5,,,3,26,openalex,2011,2024,1957,Akio Fujii,0000-0001-6716-8316,Q6426011
 58,Liangyi Zhao,Liangyi Zhao,UNSW Sydney,AU,104,41,24,4,7,114,24,14,openalex,2013,2022,,,0000-0002-4407-9238,
 59,Akshat Mudgal,Akshat Mudgal,University of Bristol,GB,30,,,4,,,,3,openalex,2020,2023,,,,
 60,Bryce Kerr,Bryce Kerr,UNSW Sydney,AU,28,,,6,,,,7,openalex,2012,2019,,,0000-0002-8829-372X,
@@ -77,7 +77,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 76,Jie Wu,Jie Wu,"Institut Elie Cartan de Lorraine, CNRS",FR,54,,35,3,3,19,32,,,2007,2019,,,0000-0002-6893-7938,Q102382580
 77,Alex Kontorovich,Alex Kontorovich,"Rutgers, The State University of New Jersey",US,66,28,122,3,9,79,12,13,openalex,2005,2025,1980,Dorian M. Goldfeld; Peter Sarnak,0000-0001-7626-8319,Q18616099
 78,Helmut Maier,Helmut Maier,Universität Ulm,DE,75,34,75,4,10,22,12,18,openalex,1981,2025,1953,J. Ian (Jonathan) Richards,,Q5709706
-79,Xiumin Ren,Xiumin Ren,Shandong University,CN,,45,80,,6,77,16,,,2000,2024,,,,
+79,Xiumin Ren,Xiumin Ren,Shandong University,CN,,45,80,,6,77,16,11,openalex,2000,2024,,,,
 80,Stephan Baier,Stephan Baier,Ramakrishna Mission Vivekananda Educational and Research Institute,IN,41,53,90,15,10,17,16,14,openalex,2004,2024,,,0000-0001-9159-3152,Q102232439
 81,Michael Th. Rassias,Michael Th. Rassias,Hellenic Military Academy,GR,76,27,142,4,12,19,5,24,openalex,2016,2025,,,0000-0001-8395-8748,Q50104145
 82,C. Y. Yıldırım,C. Y. Yildirim,Boğaziçi University,TR,,80,46,,5,67,15,11,openalex,1998,2020,,,,Q472787
