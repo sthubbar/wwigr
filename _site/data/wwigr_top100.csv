@@ -18,7 +18,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 17,Alexander P. Mangerel,Alexander P. Mangerel,Durham University,GB,9,,,9,3,15,4,6,openalex,2014,2025,,,0000-0003-4055-4078,
 18,Alberto Perelli,Alberto Perelli,University of Genoa,IT,,21,16,,8,94,24,20,openalex,1985,2019,,,,Q102253510
 19,Jinjiang Li,Jinjiang Li,China University of Mining and Technology (Beijing),CN,36,10,68,12,31,38,30,6,openalex,2016,2026,,,0000-0002-3204-4046,
-20,John Friedlander,John Friedlander,University of Toronto,CA,,19,39,,11,117,21,34,openalex,1978,2023,1941,Sarvadaman Chowla,0000-0001-9011-0972,Q470462
+20,John B. Friedlander,John B. Friedlander,University of Toronto,CA,,19,39,,11,117,21,34,openalex,1978,2023,,,,
 21,Andrew Granville,Andrew Granville,Université de Montréal,CA,19,24,41,5,8,251,14,32,openalex,1988,2023,1962,Paulo Ribenboim,0000-0001-8088-1247,Q504907
 22,Min Zhang,Min Zhang,Beijing Information Science and Technology University,CN,37,12,69,12,23,36,29,44,openalex,2016,2025,,,0000-0002-2203-7088,
 23,Yingchun Cai,Yingchun Cai,Tongji University,CN,,13,66,,14,59,42,27,openalex,1989,2022,,,,
@@ -36,7 +36,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 35,Alessandro Zaccagnini,Alessandro Zaccagnini,University of Parma,IT,47,122,9,7,4,31,39,14,openalex,2007,2026,,Alberto Perelli,0000-0001-6092-2355,Q102299670
 36,Paul Pollack,Paul Pollack,University of Georgia,US,20,63,40,5,6,49,26,13,openalex,2008,2025,1980,Carl Pomerance,0000-0002-4327-5560,Q102345493
 37,Greg Martin,Greg Martin,University of British Columbia,CA,18,,,5,3,1,3,16,openalex,1997,2025,,,0000-0002-8476-9495,Q102166232
-38,Roger Baker,Roger Baker,Brigham Young University,US,67,124,7,4,5,38,38,34,openalex,2006,2022,,,,Q102115286
+38,Roger C. Baker,Roger C. Baker,Brigham Young University,US,67,124,7,4,5,38,38,34,openalex,2006,2022,,,,
 39,Tsz Ho Chan,Tsz Ho Chan,Kennesaw State University,US,22,,,6,4,4,,8,openalex,2002,2023,,,0000-0001-8553-1633,Q102247662
 40,Alexandru Zaharescu,Alexandru Zaharescu,University of Illinois Urbana-Champaign,US,21,,67,7,5,2,15,24,openalex,2006,2025,1961,Nicolae Popescu; Peter Sarnak,0000-0001-5587-9938,Q53704105
 41,Wei Ping Li,Wei Ping Li,Harvard University,US,,,25,,,,30,,,2008,2024,,,,
