@@ -41,15 +41,6 @@
 <p>This site is a reference directory of those people. It catalogs the <strong>Top 100</strong> researchers most active on Goldbach and adjacent problems in additive prime number theory, gives their institutions, and provides a <a href="reading-list.html">curated reading list</a> of recent short papers for newcomers.</p>
 </div>
 
-<h2>How the list is built</h2>
-<p>Three independent signals are combined into one composite ranking:</p>
-<ol>
-<li><strong>arXiv preprint output</strong> since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.</li>
-<li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
-<li><strong>zbMATH Open</strong>, the curated mathematics review database, using the three Goldbach-core MSC subject classes (11P32 additive/Goldbach problems, 11P55 circle method, 11N36 sieve methods).</li>
-</ol>
-<p>The three pipeline ranks are combined with a weighted order statistic. For each researcher the three ranks are sorted and weighted 70% on the best, 20% on the middle, and 10% on the worst, so being excellent in one Goldbach pipeline counts most, while strength across all three still wins overall. Lower is better. A researcher who appears in only one or two pipelines is not penalised; the missing rank is estimated from their nearest-ranked neighbours (the 70% weight only ever falls on a real, measured rank, never an estimate). False positives and off-topic authors are explicitly excluded by hand; the approach is described in the <a href="methodology.html">methodology</a>.</p>
-<p>The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> supplies advisor-student relationships for the separate <a href="genealogy.html">genealogy</a> view. It does not feed the ranking.</p>
 
 <div class="figure-page">
 <a href="location.html"><img src="img/10_top100_overview.png" alt="World overview map of Top 100 Goldbach researchers"></a>
@@ -67,6 +58,16 @@
 <li><a href="overlap.html"><strong>Overlap</strong></a>: the researchers who also appear across the related conjecture sites.</li>
 <li><a href="about.html"><strong>About</strong></a>: what this site is, who built it, and where to find the methodology, the open dataset, and how to request a correction.</li>
 </ul>
+
+<h2>How the list is built</h2>
+<p>Three independent signals are combined into one composite ranking:</p>
+<ol>
+<li><strong>arXiv preprint output</strong> since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.</li>
+<li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
+<li><strong>zbMATH Open</strong>, the curated mathematics review database, using the three Goldbach-core MSC subject classes (11P32 additive/Goldbach problems, 11P55 circle method, 11N36 sieve methods).</li>
+</ol>
+<p>The three pipeline ranks are combined with a weighted order statistic. For each researcher the three ranks are sorted and weighted 70% on the best, 20% on the middle, and 10% on the worst, so being excellent in one Goldbach pipeline counts most, while strength across all three still wins overall. Lower is better. A researcher who appears in only one or two pipelines is not penalised; the missing rank is estimated from their nearest-ranked neighbours (the 70% weight only ever falls on a real, measured rank, never an estimate). False positives and off-topic authors are explicitly excluded by hand; the approach is described in the <a href="methodology.html">methodology</a>.</p>
+<p>The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> supplies advisor-student relationships for the separate <a href="genealogy.html">genealogy</a> view. It does not feed the ranking.</p>
 
 <h2>Citing this site</h2>
 <blockquote>Hubbard, S. (2026). <em>Who's Who in Goldbach Research</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.20355375">https://doi.org/10.5281/zenodo.20355375</a></blockquote>
