@@ -19,10 +19,11 @@
 <style id="site-search-css">
 .nav-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:0.6rem 1.2rem;margin-top:0.6rem;}
 .nav-row nav{margin-top:0;}
-.site-search{margin-left:auto;align-self:flex-end;display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;font-family:"Source Sans Pro",Helvetica,Arial,sans-serif;}
-.site-search-input{font:inherit;font-size:1rem;padding:5px;border:1px solid #aaa;border-radius:3px;width:12rem;color:#222;background:#fff;}
+.sister-bar .site-search{margin-left:auto;display:flex;gap:0.3rem;align-items:center;font-family:"Source Sans Pro",Helvetica,Arial,sans-serif;}
+.site-search-input{font:inherit;font-size:1rem;line-height:normal;min-height:0;padding:5px;border:1px solid #aaa;border-radius:3px;width:8rem;color:#222;background:#fff;-webkit-appearance:none;appearance:none;box-sizing:border-box;}
+.site-search-input::-webkit-search-decoration,.site-search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
 .site-search-input:focus{outline:2px solid #888;outline-offset:0;}
-.site-search-btn{font:inherit;font-size:1rem;padding:5px 12px;border:1px solid #888;border-radius:3px;background:#f3f3f3;color:#222;cursor:pointer;}
+.site-search-btn{font:inherit;font-size:1rem;line-height:normal;padding:5px 6px;border:1px solid #888;border-radius:3px;background:#f3f3f3;color:#222;cursor:pointer;box-sizing:border-box;}
 .site-search-btn:hover{background:#e6e6e6;}
 .search-results{margin-top:1rem;}
 .search-result{margin:0 0 1.1rem 0;padding-bottom:0.8rem;border-bottom:1px solid #e2e2e2;}
@@ -46,13 +47,9 @@
 <a href="../reading-list.html" class="">Reading List</a>
 <a href="../overlap.html" class="">Overlap</a>
 <a href="../about.html" class="">About</a></nav>
-  <form class="site-search" action="../search.html" method="get" role="search">
-    <input type="search" name="q" class="site-search-input" placeholder="Search names" aria-label="Search names across all sites" autocomplete="off">
-    <button type="submit" class="site-search-btn">Search</button>
-  </form>
   </div>
 </header>
-<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigr</span><a class="sister-link" href="https://wwileg.org/">wwileg</a><a class="sister-link" href="https://wwin2p1.org/">wwin2p1</a><a class="sister-link" href="https://wwitp.org/">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/">wwirh</a></div>
+<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigr</span><a class="sister-link" href="https://wwileg.org/">wwileg</a><a class="sister-link" href="https://wwin2p1.org/">wwin2p1</a><a class="sister-link" href="https://wwitp.org/">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/">wwirh</a><form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search names" aria-label="Search names across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
 <main>
 <p class="subtitle"><a href="../top100.html">&larr; Back to the Top 100</a></p>
 <h1>Michael Th. Rassias (#81)</h1>
