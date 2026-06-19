@@ -183,6 +183,33 @@ footer {
   font-size: 0.95rem;
 }
 
+/* Collapsible "Table Details" box on the Top 100 page (added 2026-06-19).
+   The summary is a tidy one-line clickable box; opening reveals the explanation
+   styled like the callout. No JavaScript; native <details>/<summary>. */
+details.table-details {
+  margin: 1.2rem 0;
+}
+details.table-details > summary {
+  cursor: pointer;
+  display: block;
+  background: #f0f5fb;
+  border-left: 3px solid var(--wwigr-link);
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  list-style: none;
+}
+details.table-details > summary::-webkit-details-marker { display: none; }
+details.table-details > summary::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--wwigr-link);
+}
+details.table-details[open] > summary::before { content: "\25BE"; }
+details.table-details > summary:hover { background: #e6eef9; }
+details.table-details .callout { margin-top: 0; }
+
 /* Researcher profile pages */
 /* C1: full-width detail table so long values (e.g. the Status line)
    flow on one line instead of wrapping in a narrow value column. */
