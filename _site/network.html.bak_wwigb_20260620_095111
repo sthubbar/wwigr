@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coauthorship network - Who's Who in Goldbach Research</title>
-<link rel="canonical" href="https://wwigb.org/network">
+<link rel="canonical" href="https://wwigr.org/network">
 <link rel="stylesheet" href="./styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/standalone/umd/vis-network.min.js"></script>
 <meta name="description" content="Interactive coauthorship network of the Top 100 Goldbach researchers, from arXiv co-authored papers.">
@@ -34,7 +34,7 @@
 <a href="./about.html" class="">About</a></nav>
   </div>
 </header>
-<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/network.html">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigb</span><a class="sister-link" href="https://wwileg.org/network.html">wwileg</a><a class="sister-link" href="https://wwin2p1.org/network.html">wwin2p1</a><a class="sister-link" href="https://wwitp.org/network.html">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/network.html">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/network.html">wwirh</a><form class="site-search" action="search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search names across sites" aria-label="Search names across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
+<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/network.html">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigr</span><a class="sister-link" href="https://wwileg.org/network.html">wwileg</a><a class="sister-link" href="https://wwin2p1.org/network.html">wwin2p1</a><a class="sister-link" href="https://wwitp.org/network.html">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/network.html">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/network.html">wwirh</a><form class="site-search" action="search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search names across sites" aria-label="Search names across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
 <main>
 <h1>Coauthorship network</h1>
 <p class="subtitle">Who has written papers with whom, among the Top 100</p>
