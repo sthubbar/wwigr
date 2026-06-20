@@ -1,19 +1,18 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 97,
-  "n_unplaced_no_geocode": 3,
+  "n_placed": 98,
+  "n_unplaced_no_geocode": 2,
   "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#95 Tikao Tatuzawa [-]",
     "#99 Terry Pilling [NA]",
     "#100 Weiping Li [-]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 97,
-      "drawn_count": 97,
+      "stated_count": 98,
+      "drawn_count": 98,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -110,11 +109,12 @@
         "H. J. J. te Riele",
         "Antal Balog",
         "Imre Z. Ruzsa",
+        "Tikao Tatuzawa",
         "Alexei Kourbatov",
         "Dieter Wolke",
         "P. F. Kelly"
       ],
-      "unplaced_no_geocode_in_region": 3
+      "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "11_top100_north_america.png",
@@ -205,8 +205,8 @@
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 27,
-      "drawn_count": 27,
+      "stated_count": 28,
+      "drawn_count": 28,
       "match": true,
       "names": [
         "Igor E. Shparlinski",
@@ -235,9 +235,10 @@
         "Akio Fujii",
         "Xiumin Ren",
         "Ping Xi",
-        "Jiseong Kim"
+        "Jiseong Kim",
+        "Tikao Tatuzawa"
       ],
-      "unplaced_no_geocode_in_region": 2
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "14_top100_other.png",
@@ -254,6 +255,7 @@
     "legacy_gb_cache": 80,
     "verified:2026-06-15(Claude,web; main campus)": 3,
     "openalex": 11,
-    "manual:wikipedia-coords 2026-06-19": 3
+    "manual:wikipedia-coords 2026-06-19": 3,
+    "verified:2026-06-20(Claude,web)": 1
   }
 }
