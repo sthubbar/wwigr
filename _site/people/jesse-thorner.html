@@ -30,6 +30,14 @@
 .search-result .sr-name{font-weight:700;font-size:1.05rem;}
 .search-result .sr-apps{margin:0.35rem 0 0 0;padding:0;list-style:none;}
 .search-result .sr-apps li{display:block;margin:0.2rem 0 0 0;}
+/* Top 100: tighten the DataTables sort arrow and align numeric cells under it
+   (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
+   gap, and give numeric headers and cells the same right padding so the numbers
+   line up directly beneath the indicator instead of overshooting it. */
+#top100tbl thead th span.dt-column-order{right:3px;}
+#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric{text-align:right;padding-right:18px;}
+.col-glossary{margin:0.2rem 0 0.7rem 0;}
+.col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
 .search-empty{color:#555;margin-top:1rem;}
 </style>
