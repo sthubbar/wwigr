@@ -34,18 +34,16 @@
    (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
    gap, and give numeric headers and cells the same right padding so the numbers
    line up directly beneath the indicator instead of overshooting it. */
-#top100tbl thead th span.dt-column-order{right:1px;}
-/* Tight numeric columns (Steve 2026-06-30): the base stylesheet puts 0.8rem of
-   padding on every side; for numeric columns we cut that to 2px on the left and
-   on the data right edge so the numbers hug the column, aligned under the sort
-   arrow. The header keeps just enough right padding for the arrow glyph. */
-#top100tbl th.dt-type-numeric{text-align:right;padding-left:2px;padding-right:14px;}
-#top100tbl td.dt-type-numeric{text-align:right;padding-left:2px;padding-right:2px;}
-/* Stop the numeric columns absorbing the table's leftover width: shrink each to
-   its content (width:1px + nowrap is the standard shrink-to-fit trick) so the
-   slack flows into Name and Institution instead of becoming left whitespace
-   (Steve 2026-06-30). Paired with autoWidth:false on the DataTable. */
-#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric{width:1px;white-space:nowrap;}
+#top100tbl thead th span.dt-column-order{right:3px;}
+/* Tight right-aligned columns: the numeric columns (auto-classed dt-type-numeric
+   by DataTables) plus Ctry and Source (server-tagged .rtcol). Each shrinks to its
+   content (width:1px + nowrap) so the table's leftover width flows into Name and
+   Institution, and each is right-aligned. Padding is 4px both sides (header keeps
+   16px on the right for the sort arrow) so the tightened columns are not cramped
+   against each other (Steve 2026-06-30). */
+#top100tbl th.dt-type-numeric,#top100tbl th.rtcol{text-align:right;padding-left:4px;padding-right:16px;}
+#top100tbl td.dt-type-numeric,#top100tbl td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.rtcol,#top100tbl td.rtcol{width:1px;white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
