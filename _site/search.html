@@ -34,11 +34,13 @@
    (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
    gap, and give numeric headers and cells the same right padding so the numbers
    line up directly beneath the indicator instead of overshooting it. */
-#top100tbl thead th span.dt-column-order{right:3px;}
-/* header keeps room for the arrow; data cells hug the right edge so the numbers
-   right-align directly under the sort indicator (Steve 2026-06-30). */
-#top100tbl th.dt-type-numeric{text-align:right;padding-right:18px;}
-#top100tbl td.dt-type-numeric{text-align:right;padding-right:4px;}
+#top100tbl thead th span.dt-column-order{right:1px;}
+/* Tight numeric columns (Steve 2026-06-30): the base stylesheet puts 0.8rem of
+   padding on every side; for numeric columns we cut that to 2px on the left and
+   on the data right edge so the numbers hug the column, aligned under the sort
+   arrow. The header keeps just enough right padding for the arrow glyph. */
+#top100tbl th.dt-type-numeric{text-align:right;padding-left:2px;padding-right:14px;}
+#top100tbl td.dt-type-numeric{text-align:right;padding-left:2px;padding-right:2px;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
