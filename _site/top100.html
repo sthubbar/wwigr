@@ -41,6 +41,11 @@
    arrow. The header keeps just enough right padding for the arrow glyph. */
 #top100tbl th.dt-type-numeric{text-align:right;padding-left:2px;padding-right:14px;}
 #top100tbl td.dt-type-numeric{text-align:right;padding-left:2px;padding-right:2px;}
+/* Stop the numeric columns absorbing the table's leftover width: shrink each to
+   its content (width:1px + nowrap is the standard shrink-to-fit trick) so the
+   slack flows into Name and Institution instead of becoming left whitespace
+   (Steve 2026-06-30). Paired with autoWidth:false on the DataTable. */
+#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric{width:1px;white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
@@ -185,7 +190,7 @@
 </table>
 <script>
 $(document).ready(function() {
-  var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']] });
+  var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']], autoWidth: false });
   function strip(d) { return $('<div>').html(d == null ? '' : d).text().trim(); }
   function fill(colIdx, sel) {
     var seen = {};
