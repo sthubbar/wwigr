@@ -78,52 +78,48 @@
 <p>Every PhD mathematician has an advisor, and every advisor has an advisor. The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> catalogs this lineage. We use it to surface <strong>close relations</strong>: researchers not in the Top 100 by publication count, but who sit in its immediate orbit through advisor-student relationships.</p>
 
 <h2>How the proximity score works</h2>
-<p>We build one graph from the advisor and student trees of all Top 100 researchers. A <strong>close relation</strong> is an outsider who is <strong>directly</strong> tied (as advisor or student) to at least two Top 100 researchers. Each one gets a <strong>proximity score</strong> that sums, over those direct ties, <code>101 minus the connected researcher's rank</code>, so a tie to #1 is worth 100 and a tie to #100 is worth 1. Being tied to the top of the list counts for much more than being tied to the bottom.</p>
-<p>We deliberately keep this simple: only <em>direct</em> ties count (in the academic family tree, anyone two or more steps away has usually left number theory), and advisor and student ties count equally. People already in the directory and deceased mathematicians are excluded, the latter belong on the <a href="in-memoriam.html">In Memoriam</a> page. The university shown is each researcher's doctoral institution (from the genealogy record), not necessarily their current post. The 12 close relations are sorted by score and split into three levels (L1 strongest).</p>
+<p>We build one graph from the advisor and student trees of all Top 100 researchers. A close relation is an outsider directly tied (as advisor or student) to at least two Top 100 researchers. Each gets a proximity score that sums, over those direct ties, <code>101 minus the connected researcher's rank</code>. Being tied to the top of the list counts for much more than being tied to the bottom. Only direct ties count; people already in the directory and deceased mathematicians are excluded.</p>
 
-<h2>Level 1</h2>
+
+<h2>Level L1</h2>
 <table class="display compact stripe" style="width:100%">
 <thead><tr><th>Researcher</th><th>PhD university</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/olli-jarviniemi.html">Olli Järviniemi</a></td><td>Turun yliopisto</td><td>2023</td><td style="text-align:center">2</td><td style="text-align:center">186.0</td></tr>
-<tr><td><a href="people/stefan-neumann.html">Stefan Neumann</a></td><td>Universität Stuttgart</td><td>2006</td><td style="text-align:center">2</td><td style="text-align:center">182.0</td></tr>
-<tr><td><a href="people/taiyu-li.html">Taiyu Li</a></td><td>Shandong University</td><td>2012</td><td style="text-align:center">2</td><td style="text-align:center">182.0</td></tr>
-<tr><td><a href="people/mattia-cafferata.html">Mattia Cafferata</a></td><td>Università degli Studi di Ferrara</td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">147.0</td></tr>
+<tr><td><a href="people/olli-jarviniemi.html">Olli Järviniemi</a></td><td>Turun yliopisto</td><td>2023</td><td style="text-align:center">2</td><td style="text-align:center">170.0</td></tr>
+<tr><td><a href="people/alberto-perelli.html">Alberto Perelli</a></td><td></td><td></td><td style="text-align:center">2</td><td style="text-align:center">159.0</td></tr>
+<tr><td><a href="people/huafeng-liu.html">Huafeng Liu</a></td><td>Shandong University</td><td>2017</td><td style="text-align:center">2</td><td style="text-align:center">158.0</td></tr>
 </tbody></table>
-<h2>Level 2</h2>
+
+<h2>Level L2</h2>
 <table class="display compact stripe" style="width:100%">
 <thead><tr><th>Researcher</th><th>PhD university</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/kam-hung-yau.html">Kam Hung Yau</a></td><td>University of New South Wales</td><td>2020</td><td style="text-align:center">2</td><td style="text-align:center">128.0</td></tr>
-<tr><td><a href="people/christian-bagshaw.html">Christian Bagshaw</a></td><td>University of New South Wales</td><td>2025</td><td style="text-align:center">2</td><td style="text-align:center">126.0</td></tr>
-<tr><td><a href="people/sofia-lindqvist.html">Sofia Lindqvist</a></td><td>University of Oxford</td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">105.0</td></tr>
-<tr><td><a href="people/peter-sarnak.html">Peter Sarnak</a></td><td>Stanford University</td><td>1980</td><td style="text-align:center">3</td><td style="text-align:center">104.0</td></tr>
+<tr><td><a href="people/taiyu-li.html">Taiyu Li</a></td><td>Shandong University</td><td>2012</td><td style="text-align:center">2</td><td style="text-align:center">158.0</td></tr>
+<tr><td><a href="people/guangshi-lu.html">Guangshi Lu</a></td><td>Shandong University</td><td>2004</td><td style="text-align:center">2</td><td style="text-align:center">117.0</td></tr>
+<tr><td><a href="people/james-maynard.html">James Maynard</a></td><td>University of Oxford</td><td>2013</td><td style="text-align:center">2</td><td style="text-align:center">92.0</td></tr>
 </tbody></table>
-<h2>Level 3</h2>
+
+<h2>Level L3</h2>
 <table class="display compact stripe" style="width:100%">
 <thead><tr><th>Researcher</th><th>PhD university</th><th>PhD year</th><th>Direct Top 100 ties</th><th>Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/michael-filaseta.html">Michael Filaseta</a></td><td>University of Illinois at Urbana-Champaign</td><td>1984</td><td style="text-align:center">2</td><td style="text-align:center">89.0</td></tr>
-<tr><td><a href="people/dorian-goldfeld.html">Dorian Goldfeld</a></td><td>Columbia University</td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">89.0</td></tr>
-<tr><td><a href="people/timothy-trudgian.html">Timothy Trudgian</a></td><td>University of Oxford</td><td>2010</td><td style="text-align:center">2</td><td style="text-align:center">85.0</td></tr>
-<tr><td><a href="people/douglas-woodall.html">Douglas Woodall</a></td><td>University of Nottingham</td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">28.0</td></tr>
+<tr><td><a href="people/glyn-harman.html">Glyn Harman</a></td><td>University of London</td><td>1982</td><td style="text-align:center">2</td><td style="text-align:center">81.0</td></tr>
+<tr><td><a href="people/timothy-scott-trudgian.html">Tim Trudgian</a></td><td>University of Oxford</td><td>2010</td><td style="text-align:center">2</td><td style="text-align:center">65.0</td></tr>
 </tbody></table>
+
 
 <h2>Notes</h2>
 <ul>
-<li><strong>Olli Järviniemi</strong> (Turun yliopisto, 2023): A young Finnish number theorist (PhD Turku 2023), tied to two highly-ranked Top 100 researchers, Kaisa Matomäki and Joni Teräväinen of the Turku school.</li>
-<li><strong>Stefan Neumann</strong> (Universität Stuttgart, 2006): A number theorist (PhD Stuttgart 2006) directly connected to two top-ranked members of the directory through the German analytic number theory lineage.</li>
-<li><strong>Taiyu Li</strong> (Shandong University, 2012): A number theorist (PhD Shandong 2012) from the Shandong analytic number theory school, tied to two highly-ranked Top 100 researchers.</li>
-<li><strong>Mattia Cafferata</strong> (Università degli Studi di Ferrara, 2019): An Italian number theorist (PhD Ferrara 2019) in the analytic prime-number tradition, directly tied to two Top 100 researchers.</li>
-<li><strong>Kam Hung Yau</strong> (University of New South Wales, 2020): A number theorist (PhD UNSW 2020) working on exponential sums, connected to two Top 100 researchers in the Sydney analytic number theory group.</li>
-<li><strong>Christian Bagshaw</strong> (University of New South Wales, 2025): A recent number theory PhD (UNSW 2025) directly tied to two Top 100 researchers through the Sydney analytic number theory school.</li>
-<li><strong>Sofia Lindqvist</strong> (University of Oxford, 2019): A number theorist (PhD Oxford 2019) working on additive combinatorics and the distribution of primes, tied to two Top 100 researchers via the Oxford lineage.</li>
-<li><strong>Peter Sarnak</strong> (Stanford University, 1980): A leading analytic number theorist at Princeton and the Institute for Advanced Study, directly tied to three Top 100 researchers through his advisor-student network.</li>
-<li><strong>Michael Filaseta</strong> (University of Illinois at Urbana-Champaign, 1984): A number theorist (PhD Illinois 1984) working on polynomials and primes, directly tied to two Top 100 researchers.</li>
-<li><strong>Dorian Goldfeld</strong> (Columbia University, 1969): An analytic number theorist at Columbia (PhD 1969), known for work on L-functions and the Gauss class number problem, tied to two Top 100 researchers.</li>
-<li><strong>Timothy Trudgian</strong> (University of Oxford, 2010): An analytic number theorist (PhD Oxford 2010) known for explicit estimates on the zeros of the zeta function, tied to two Top 100 researchers.</li>
-<li><strong>Douglas Woodall</strong> (University of Nottingham, 1969): A combinatorialist and number theorist (PhD Nottingham 1969) directly tied to two Top 100 researchers.</li>
+<li><strong>Olli Järviniemi</strong> (Turun yliopisto, 2023): A mathematician (PhD Turun yliopisto, 2023) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Alberto Perelli</strong> (, ): A mathematician directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Huafeng Liu</strong> (Shandong University, 2017): A mathematician (PhD Shandong University, 2017) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Taiyu Li</strong> (Shandong University, 2012): A mathematician (PhD Shandong University, 2012) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Guangshi Lu</strong> (Shandong University, 2004): A mathematician (PhD Shandong University, 2004) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>James Maynard</strong> (University of Oxford, 2013): A mathematician (PhD University of Oxford, 2013) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Glyn Harman</strong> (University of London, 1982): A mathematician (PhD University of London, 1982) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Tim Trudgian</strong> (University of Oxford, 2010): A mathematician (PhD University of Oxford, 2010) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 </ul>
+
 
 </main>
 <footer>
