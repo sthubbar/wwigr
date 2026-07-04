@@ -34,21 +34,21 @@
    (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
    gap, and give numeric headers and cells the same right padding so the numbers
    line up directly beneath the indicator instead of overshooting it. */
-#top100tbl thead th span.dt-column-order{right:3px;}
+#top100tbl thead th span.dt-column-order,#institutions thead th span.dt-column-order{right:3px;}
 /* Tight right-aligned columns: the numeric columns (auto-classed dt-type-numeric
    by DataTables) plus Ctry and Source (server-tagged .rtcol). Each shrinks to its
    content (width:1px + nowrap) so the table's leftover width flows into Name and
    Institution, and each is right-aligned. Padding is 4px both sides (header keeps
    16px on the right for the sort arrow) so the tightened columns are not cramped
    against each other (Steve 2026-06-30). */
-#top100tbl th.dt-type-numeric,#top100tbl th.rtcol{text-align:right;padding-left:4px;padding-right:16px;}
-#top100tbl td.dt-type-numeric,#top100tbl td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+#top100tbl th.dt-type-numeric,#top100tbl th.rtcol,#institutions th.dt-type-numeric,#institutions th.rtcol{text-align:right;padding-left:4px;padding-right:16px;}
+#top100tbl td.dt-type-numeric,#top100tbl td.rtcol,#institutions td.dt-type-numeric,#institutions td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
 /* No width:1px shrink-pin here: with autoWidth:false the browser's native table
    layout gives each column its true content-width minimum (collapses when the
    table is narrow) and shares any surplus proportionally across all columns when
    the table is wide. nowrap only, so short values stay on one line. (Steve test
    2026-06-30.) */
-#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.rtcol,#top100tbl td.rtcol{white-space:nowrap;}
+#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
