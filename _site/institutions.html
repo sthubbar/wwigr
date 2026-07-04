@@ -92,9 +92,10 @@
 <h1>Institutions</h1>
 <p class="subtitle">Where the Goldbach conjecture research concentrates, three ways</p>
 
-<details class="table-details"><summary><strong>Reading the columns</strong></summary>
+<details class="table-details"><summary>Table Details</summary>
 <div>
-<ul>
+<p class="td-lead"><strong>Columns</strong></p>
+<ul class="col-glossary">
 <li><strong>#</strong> the headline rank: the average of the Training and Environment scores shown in the next two columns. Average the two numbers on any row and the rows sort by exactly that average, so the # position is always explainable from what you see.</li>
 <li><strong>Training</strong> score from 0.00 to 1.00: where today's Top 100 earned their PhDs (verified Mathematics Genealogy records; 81 of 100 researchers covered), rank-weighted and scaled so the strongest training ground is 1.00. A dash means no recorded Top 100 alumni and counts as 0 in the average.</li>
 <li><strong>Environment</strong> score from 0.00 to 1.00: the research gravity around the institution today; every Top 100 researcher contributes by rank and by distance (exponential decay, 100 km scale), scaled so the strongest environment is 1.00. A dash means no verified coordinates yet and counts as 0.</li>
@@ -105,6 +106,7 @@
 </div>
 </details>
 
+<span id="ctryFilterWrapI" style="display:none;margin-right:14px"><label>Country <select id="fltCountryI"><option value="">All</option></select></label></span>
 <table id="institutions" class="display compact stripe hover" style="width:100%">
 <thead><tr><th class="rtcol">#</th><th>Institution</th><th class="rtcol">Ctry</th><th class="rtcol">Top 100</th><th class="rtcol">Training</th><th class="rtcol">Environment</th></tr></thead>
 <tbody>
@@ -234,12 +236,30 @@
 </table>
 
 <script>
-new DataTable('#institutions', {
-  pageLength: 25,
-  lengthMenu: [25, 50, 100],
-  order: [[0, 'asc']],
-  autoWidth: false,
-  columnDefs: [{ targets: [3, 4, 5], orderSequence: ['desc', 'asc'] }]
+$(document).ready(function() {
+  var itable = $('#institutions').DataTable({
+    pageLength: 25,
+    lengthMenu: [25, 50, 100],
+    order: [[0, 'asc']],
+    autoWidth: false,
+    columnDefs: [{ targets: [3, 4, 5], orderSequence: ['desc', 'asc'] }]
+  });
+  // Country filter in the toolbar row, same level as the length selector
+  // and the search box (Steve 2026-07-04).
+  $('#ctryFilterWrapI').css('display','inline-flex').insertBefore(
+    $('#institutions').closest('.dt-container').find('div.dt-search').first());
+  function istrip(d) { return $('<div>').html(d == null ? '' : d).text().trim(); }
+  var seen = {};
+  itable.column(2).data().each(function (d) { var t = istrip(d); if (t) seen[t] = 1; });
+  Object.keys(seen).sort().forEach(function (v) {
+    $('#fltCountryI').append('<option value="' + v + '">' + v + '</option>'); });
+  $.fn.dataTable.ext.search.push(function (settings, data) {
+    if (settings.nTable.id !== 'institutions') return true;
+    var c = $('#fltCountryI').val();
+    if (c && istrip(data[2]) !== c) return false;
+    return true;
+  });
+  $('#fltCountryI').on('change', function () { itable.draw(); });
 });
 </script>
 
