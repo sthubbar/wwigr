@@ -40,6 +40,12 @@
    at right:3px, so text never touches the indicator. Data cells keep their
    own tighter padding below. */
 #top100tbl thead th,#institutions thead th{padding-right:24px;}
+/* Institutions: only 6 columns, so the browser's proportional surplus
+   sharing fattened the # and numeric columns and pushed the names right
+   (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
+   Institution column absorbs the surplus, matching the Top 100 look where
+   Name/Institution dominate the width. */
+#institutions th.rtcol,#institutions td.rtcol{width:1px;}
 /* Tight right-aligned columns: the numeric columns (auto-classed dt-type-numeric
    by DataTables) plus Ctry and Source (server-tagged .rtcol). Each shrinks to its
    content (width:1px + nowrap) so the table's leftover width flows into Name and
