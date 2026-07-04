@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Institutions - Who&#x27;s Who in Goldbach Research</title>
+<link rel="canonical" href="https://wwigb.org/institutions">
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<meta property="og:title" content="Institutions - Who&#x27;s Who in Goldbach Research">
+<meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wwigb.org/institutions">
+<meta property="og:site_name" content="Who&#x27;s Who in Goldbach Research">
+<meta name="twitter:card" content="summary">
+<meta name="description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
+<style id="site-search-css">
+.nav-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:0.6rem 1.2rem;margin-top:0.6rem;}
+.nav-row nav{margin-top:0;}
+.sister-bar .site-search{margin-left:auto;display:flex;gap:0.3rem;align-items:center;font-family:Arial,Helvetica,sans-serif;}
+.site-search-input{font-family:Arial,Helvetica,sans-serif;font-size:13.3333px;line-height:normal;min-height:0;padding:5px;border:1px solid #aaa;border-radius:3px;width:189px;color:#222;background:#fff;box-sizing:border-box;}
+.site-search-input::-webkit-search-decoration,.site-search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.site-search-input:focus{outline:2px solid #888;outline-offset:0;}
+.site-search-btn{font-family:Arial,Helvetica,sans-serif;font-size:13.3333px;line-height:normal;padding:5px 6px;border:1px solid #888;border-radius:3px;background:#f3f3f3;color:#222;cursor:pointer;box-sizing:border-box;}
+.site-search-btn:hover{background:#e6e6e6;}
+.search-results{margin-top:1rem;}
+.search-result{margin:0 0 1.1rem 0;padding-bottom:0.8rem;border-bottom:1px solid #e2e2e2;}
+.search-result .sr-name{font-weight:700;font-size:1.05rem;}
+.search-result .sr-apps{margin:0.35rem 0 0 0;padding:0;list-style:none;}
+.search-result .sr-apps li{display:block;margin:0.2rem 0 0 0;}
+/* Top 100: tighten the DataTables sort arrow and align numeric cells under it
+   (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
+   gap, and give numeric headers and cells the same right padding so the numbers
+   line up directly beneath the indicator instead of overshooting it. */
+#top100tbl thead th span.dt-column-order{right:3px;}
+/* Tight right-aligned columns: the numeric columns (auto-classed dt-type-numeric
+   by DataTables) plus Ctry and Source (server-tagged .rtcol). Each shrinks to its
+   content (width:1px + nowrap) so the table's leftover width flows into Name and
+   Institution, and each is right-aligned. Padding is 4px both sides (header keeps
+   16px on the right for the sort arrow) so the tightened columns are not cramped
+   against each other (Steve 2026-06-30). */
+#top100tbl th.dt-type-numeric,#top100tbl th.rtcol{text-align:right;padding-left:4px;padding-right:16px;}
+#top100tbl td.dt-type-numeric,#top100tbl td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+/* No width:1px shrink-pin here: with autoWidth:false the browser's native table
+   layout gives each column its true content-width minimum (collapses when the
+   table is narrow) and shares any surplus proportionally across all columns when
+   the table is wide. nowrap only, so short values stay on one line. (Steve test
+   2026-06-30.) */
+#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.rtcol,#top100tbl td.rtcol{white-space:nowrap;}
+.col-glossary{margin:0.2rem 0 0.7rem 0;}
+.col-glossary li{margin:0.12rem 0;}
+.search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
+.search-empty{color:#555;margin-top:1rem;}
+</style>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="./index.html">Who&#x27;s Who in Goldbach Research</a></div>
+  <div class="nav-row">
+  <nav><a href="./index.html" class="">Home</a>
+<a href="./top100.html" class="">Top 100</a>
+<a href="./location.html" class="">Locations</a>
+<a href="./institutions.html" class="nav-active">Institutions</a>
+<a href="./in-memoriam.html" class="">In Memoriam</a>
+<a href="./genealogy.html" class="">Genealogy</a>
+<a href="./network.html" class="">Network</a>
+<a href="./reading-list.html" class="">Reading List</a>
+<a href="./overlap.html" class="">Overlap</a>
+<a href="./about.html" class="">About</a></nav>
+  </div>
+</header>
+<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/institutions.html">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigb</span><a class="sister-link" href="https://wwileg.org/institutions.html">wwileg</a><a class="sister-link" href="https://wwin2p1.org/institutions.html">wwin2p1</a><a class="sister-link" href="https://wwitp.org/institutions.html">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/institutions.html">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/institutions.html">wwirh</a><form class="site-search" action="search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search names across sites" aria-label="Search names across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
+<main>
+
+<h1>Institutions</h1>
+<p class="subtitle">Where the Goldbach conjecture research concentrates, three ways</p>
+
+<details class="table-details"><summary><strong>Reading the columns</strong></summary>
+<div>
+<ul>
+<li><strong>Canonical</strong> the headline rank: half current environment, half training record.</li>
+<li><strong>Training</strong> where today's Top 100 earned their PhDs (verified Mathematics Genealogy records; 81 of 100 researchers covered). A dash means no recorded Top 100 alumni.</li>
+<li><strong>Environment</strong> the research gravity around the institution today: every Top 100 researcher contributes by rank and by distance (exponential decay, 100 km scale). A dash means the institution has no verified coordinates yet.</li>
+<li><strong>Top 100</strong> how many of the current Top 100 work there. Hover a row for names.</li>
+</ul>
+<p>All columns are integer ranks; 1 is best. Click any header to sort. Candidates are the union of the Top 100's current institutions and their PhD schools, so pure training grounds appear even when nobody on the list works there today.</p>
+</div>
+</details>
+
+<table id="institutions" class="display">
+<thead><tr><th>Institution</th><th>Ctry</th><th>Top 100</th><th>Canonical</th><th>Training</th><th>Environment</th></tr></thead>
+<tbody>
+<tr><td title="Ranked researchers here: Jianya Liu (#6), Pan, Chengdong (#23), Xiumin Ren (#58); Top 100 PhD alumni: Jianya Liu (#6), Tao Zhan (#20), Hongze Li (#44), Xiumin Ren (#58)">Shandong University</td><td>CN</td><td data-order="3">3</td><td>1</td><td data-order="2">2</td><td data-order="3">3</td></tr>
+<tr><td title="Top 100 PhD alumni: Trevor D. Wooley (#2), Kaisa Matomäki (#18), Glyn Harman (#19), Roger C. Baker (#71)">University of London</td><td></td><td data-order="0"></td><td>2</td><td data-order="1">1</td><td data-order="8">8</td></tr>
+<tr><td title="Ranked researchers here: Will Sawin (#26); Top 100 PhD alumni: Terence Tao (#12), Will Sawin (#26), Kevin Hughes (#45), H. A. Helfgott (#54)">Princeton University</td><td>US</td><td data-order="1">1</td><td>3</td><td data-order="3">3</td><td data-order="38">38</td></tr>
+<tr><td title="Ranked researchers here: Lasse Grimmelt (#27), Jori Merikoski (#29), J. P. Keating (#81); Top 100 PhD alumni: Jared Duker Lichtman (#17)">University of Oxford</td><td>GB</td><td data-order="3">3</td><td>4</td><td data-order="16">16</td><td data-order="1">1</td></tr>
+<tr><td title="Ranked researchers here: András Sárközy (#24); Top 100 PhD alumni: Janos Pintz (#1), Antal Balog (#66), Imre Kátai (#91)">Eötvös Loránd University</td><td>HU</td><td data-order="1">1</td><td>5</td><td data-order="8">8</td><td data-order="5">5</td></tr>
+<tr><td title="Ranked researchers here: Joni Teräväinen (#5); Top 100 PhD alumni: Hugh Lowell Montgomery (#35), Cameron L. Stewart (#51)">University of Cambridge</td><td>GB</td><td data-order="1">1</td><td>6</td><td data-order="11">11</td><td data-order="7">7</td></tr>
+<tr><td title="Ranked researchers here: Jared Duker Lichtman (#17); Top 100 PhD alumni: Xuancheng Shao (#13), William D. Banks (#22), Vivian Kuperberg (#89)">Stanford University</td><td>US</td><td data-order="1">1</td><td>7</td><td data-order="4">4</td><td data-order="20">20</td></tr>
+<tr><td title="Ranked researchers here: Akshat Mudgal (#40); Top 100 PhD alumni: Akshat Mudgal (#40), Julia Brandes (#62), J. P. Keating (#81)">University of Bristol</td><td>GB</td><td data-order="1">1</td><td>8</td><td data-order="10">10</td><td data-order="18">18</td></tr>
+<tr><td title="Top 100 PhD alumni: Tianze Wang (#8)">Chinese Academy of Sciences</td><td></td><td data-order="0"></td><td>9</td><td data-order="13">13</td><td data-order="15">15</td></tr>
+<tr><td title="Top 100 PhD alumni: Matt Visser (#37), Daniel A. Goldston (#39), Stephan Ramon Garcia (#64)">University of California, Berkeley</td><td></td><td data-order="0"></td><td>10</td><td data-order="7">7</td><td data-order="44">44</td></tr>
+<tr><td title="Ranked researchers here: Kaisa Matomäki (#18); Top 100 PhD alumni: Joni Teräväinen (#5), Jori Merikoski (#29)">University of Turku</td><td>FI</td><td data-order="1">1</td><td>11</td><td data-order="6">6</td><td data-order="51">51</td></tr>
+<tr><td title="Top 100 PhD alumni: Pan, Chengdong (#23)">Peking University</td><td></td><td data-order="0"></td><td>12</td><td data-order="18">18</td><td data-order="16">16</td></tr>
+<tr><td title="Ranked researchers here: Glyn Harman (#19)">Royal Holloway University of London</td><td>GB</td><td data-order="1">1</td><td>13</td><td data-order="9999">-</td><td data-order="2">2</td></tr>
+<tr><td title="Top 100 PhD alumni: Imre Z. Ruzsa (#84)">Hungarian Academy of Sciences</td><td></td><td data-order="0"></td><td>14</td><td data-order="51">51</td><td data-order="6">6</td></tr>
+<tr><td title="Ranked researchers here: V. N. Chubarikov (#11); Top 100 PhD alumni: V. N. Chubarikov (#11), Doychin Tolev (#50)">Lomonosov Moscow State University</td><td>RU</td><td data-order="1">1</td><td>15</td><td data-order="9">9</td><td data-order="50">50</td></tr>
+<tr><td title="Ranked researchers here: Janos Pintz (#1), Imre Z. Ruzsa (#84)">Alfréd Rényi Institute of Mathematics</td><td>HU</td><td data-order="2">2</td><td>16</td><td data-order="9999">-</td><td data-order="4">4</td></tr>
+<tr><td title="Top 100 PhD alumni: Chantal David (#61)">McGill University</td><td></td><td data-order="0"></td><td>17</td><td data-order="36">36</td><td data-order="11">11</td></tr>
+<tr><td title="Ranked researchers here: Jörg Brüdern (#3); Top 100 PhD alumni: Jörg Brüdern (#3)">University of Göttingen</td><td>DE</td><td data-order="1">1</td><td>18</td><td data-order="12">12</td><td data-order="32">32</td></tr>
+<tr><td title="Ranked researchers here: Kevin Ford (#34), Jesse Thorner (#69); Top 100 PhD alumni: Kevin Ford (#34), Ciprian Demeter (#93)">University of Illinois Urbana-Champaign</td><td>US</td><td data-order="2">2</td><td>19</td><td data-order="20">20</td><td data-order="24">24</td></tr>
+<tr><td title="Top 100 PhD alumni: Alessandro Languasco (#14), Alessandro Zaccagnini (#15)">University of Genoa</td><td></td><td data-order="0"></td><td>20</td><td data-order="5">5</td><td data-order="83">83</td></tr>
+<tr><td title="Ranked researchers here: Jinjiang Li (#4)">China University of Mining and Technology (Beijing)</td><td>CN</td><td data-order="1">1</td><td>21</td><td data-order="9999">-</td><td data-order="9">9</td></tr>
+<tr><td title="Ranked researchers here: Min Zhang (#16)">Beijing Information Science and Technology University</td><td>CN</td><td data-order="1">1</td><td>22</td><td data-order="9999">-</td><td data-order="10">10</td></tr>
+<tr><td title="Ranked researchers here: Fei Xue (#42)">Université du Québec à Montréal</td><td>CA</td><td data-order="1">1</td><td>23</td><td data-order="9999">-</td><td data-order="12">12</td></tr>
+<tr><td title="Ranked researchers here: Andrew Granville (#31), Vivian Kuperberg (#89)">Université de Montréal</td><td>CA</td><td data-order="2">2</td><td>24</td><td data-order="9999">-</td><td data-order="13">13</td></tr>
+<tr><td title="Ranked researchers here: Chantal David (#61)">Concordia University</td><td>CA</td><td data-order="1">1</td><td>25</td><td data-order="9999">-</td><td data-order="14">14</td></tr>
+<tr><td title="Top 100 PhD alumni: Igor E. Shparlinski (#10)">Moscow State Pedagogical Institute</td><td></td><td data-order="0"></td><td>26</td><td data-order="15">15</td><td data-order="54">54</td></tr>
+<tr><td title="Ranked researchers here: Ján Mózer (#7)">Comenius University Bratislava</td><td>SK</td><td data-order="1">1</td><td>27</td><td data-order="9999">-</td><td data-order="17">17</td></tr>
+<tr><td title="Top 100 PhD alumni: Matteo Bordignon (#36)">University of New South Wales</td><td></td><td data-order="0"></td><td>28</td><td data-order="25">25</td><td data-order="49">49</td></tr>
+<tr><td title="Ranked researchers here: Zhi-Wei Sun (#63); Top 100 PhD alumni: Zhi-Wei Sun (#63)">Nanjing University</td><td>CN</td><td data-order="1">1</td><td>29</td><td data-order="37">37</td><td data-order="36">36</td></tr>
+<tr><td title="Ranked researchers here: Jean‐Marc Deshouillers (#47), Sary Drappeau (#74)">Centre National de la Recherche Scientifique</td><td>FR</td><td data-order="2">2</td><td>30</td><td data-order="9999">-</td><td data-order="19">19</td></tr>
+<tr><td title="Ranked researchers here: John B. Friedlander (#57); Top 100 PhD alumni: Alexander P. Mangerel (#21)">University of Toronto</td><td>CA</td><td data-order="1">1</td><td>31</td><td data-order="17">17</td><td data-order="67">67</td></tr>
+<tr><td title="Ranked researchers here: H. A. Helfgott (#54)">Université Paris Cité</td><td>FR</td><td data-order="1">1</td><td>32</td><td data-order="9999">-</td><td data-order="21">21</td></tr>
+<tr><td title="Ranked researchers here: Daniel A. Goldston (#39), Jordan Schettler (#92)">San Jose State University</td><td>US</td><td data-order="2">2</td><td>33</td><td data-order="9999">-</td><td data-order="22">22</td></tr>
+<tr><td title="Ranked researchers here: Trevor D. Wooley (#2)">Purdue University West Lafayette</td><td>US</td><td data-order="1">1</td><td>34</td><td data-order="9999">-</td><td data-order="23">23</td></tr>
+<tr><td title="Ranked researchers here: Hugh Lowell Montgomery (#35), Runbo Li (#60); Top 100 PhD alumni: Greg Martin (#86), Leo Goldmakher (#95)">University of Michigan</td><td>US</td><td data-order="2">2</td><td>35</td><td data-order="47">47</td><td data-order="33">33</td></tr>
+<tr><td title="Ranked researchers here: Terence Tao (#12)">University of California, Los Angeles</td><td>US</td><td data-order="1">1</td><td>36</td><td data-order="9999">-</td><td data-order="25">25</td></tr>
+<tr><td title="Ranked researchers here: G. I. Arkhipov (#33); Top 100 PhD alumni: G. I. Arkhipov (#33)">Steklov Institute of Mathematics</td><td>RU</td><td data-order="1">1</td><td>37</td><td data-order="24">24</td><td data-order="66">66</td></tr>
+<tr><td title="Ranked researchers here: Nicolas Robles (#75)">RAND Corporation</td><td>US</td><td data-order="1">1</td><td>38</td><td data-order="9999">-</td><td data-order="26">26</td></tr>
+<tr><td title="Ranked researchers here: Kathrin Bringmann (#41)">University of Cologne</td><td>DE</td><td data-order="1">1</td><td>39</td><td data-order="9999">-</td><td data-order="27">27</td></tr>
+<tr><td title="Ranked researchers here: Karin Halupczok (#48)">Heinrich Heine University Düsseldorf</td><td>DE</td><td data-order="1">1</td><td>40</td><td data-order="9999">-</td><td data-order="28">28</td></tr>
+<tr><td title="Ranked researchers here: Gautami Bhowmik (#28)">Université de Lille</td><td>FR</td><td data-order="1">1</td><td>41</td><td data-order="9999">-</td><td data-order="29">29</td></tr>
+<tr><td title="Ranked researchers here: S. I. Dimitrov (#32), Doychin Tolev (#50)">Sofia University &quot;St. Kliment Ohridski&quot;</td><td>BG</td><td data-order="2">2</td><td>42</td><td data-order="9999">-</td><td data-order="30">30</td></tr>
+<tr><td title="Ranked researchers here: Shuntaro Yamagishi (#67)">Institute of Science and Technology Austria</td><td>AT</td><td data-order="1">1</td><td>43</td><td data-order="9999">-</td><td data-order="31">31</td></tr>
+<tr><td title="Ranked researchers here: Alessandro Languasco (#14)">University of Padua</td><td>IT</td><td data-order="1">1</td><td>44</td><td data-order="9999">-</td><td data-order="34">34</td></tr>
+<tr><td title="Ranked researchers here: Yong-Gao Chen (#30)">Nanjing Normal University</td><td>CN</td><td data-order="1">1</td><td>45</td><td data-order="9999">-</td><td data-order="35">35</td></tr>
+<tr><td title="Ranked researchers here: Alessandro Zaccagnini (#15)">University of Parma</td><td>IT</td><td data-order="1">1</td><td>46</td><td data-order="9999">-</td><td data-order="37">37</td></tr>
+<tr><td title="Ranked researchers here: Cameron L. Stewart (#51); Top 100 PhD alumni: Shuntaro Yamagishi (#67)">University of Waterloo</td><td>CA</td><td data-order="1">1</td><td>47</td><td data-order="39">39</td><td data-order="59">59</td></tr>
+<tr><td title="Top 100 PhD alumni: Stephan Baier (#9)">Freie Universität Berlin</td><td></td><td data-order="0"></td><td>48</td><td data-order="14">14</td><td data-order="94">94</td></tr>
+<tr><td title="Ranked researchers here: Alexander P. Mangerel (#21)">Durham University</td><td>GB</td><td data-order="1">1</td><td>49</td><td data-order="9999">-</td><td data-order="39">39</td></tr>
+<tr><td title="Ranked researchers here: Tianze Wang (#8)">Henan Academy of Sciences</td><td>CN</td><td data-order="1">1</td><td>50</td><td data-order="9999">-</td><td data-order="40">40</td></tr>
+<tr><td title="Top 100 PhD alumni: Akio Fujii (#55)">Columbia University</td><td></td><td data-order="0"></td><td>51</td><td data-order="33">33</td><td data-order="74">74</td></tr>
+<tr><td title="Ranked researchers here: Xuancheng Shao (#13)">University of Kentucky</td><td>US</td><td data-order="1">1</td><td>52</td><td data-order="9999">-</td><td data-order="41">41</td></tr>
+<tr><td title="Ranked researchers here: Christian Elsholtz (#56)">Graz University of Technology</td><td>AT</td><td data-order="1">1</td><td>53</td><td data-order="9999">-</td><td data-order="42">42</td></tr>
+<tr><td title="Ranked researchers here: Stephan Ramon Garcia (#64)">Pomona College</td><td>US</td><td data-order="1">1</td><td>54</td><td data-order="9999">-</td><td data-order="43">43</td></tr>
+<tr><td title="Ranked researchers here: Angel Kumchev (#25)">Towson University</td><td>US</td><td data-order="1">1</td><td>55</td><td data-order="9999">-</td><td data-order="45">45</td></tr>
+<tr><td title="Ranked researchers here: Henryk Iwaniec (#80); Top 100 PhD alumni: Emmanuel Kowalski (#99)">Rutgers University</td><td>US</td><td data-order="1">1</td><td>56</td><td data-order="58">58</td><td data-order="47">47</td></tr>
+<tr><td title="Ranked researchers here: Stephan Baier (#9)">Ramakrishna Mission Vivekananda Educational and Research Institute</td><td>IN</td><td data-order="1">1</td><td>57</td><td data-order="9999">-</td><td data-order="46">46</td></tr>
+<tr><td title="Ranked researchers here: Igor E. Shparlinski (#10)">UNSW Sydney</td><td>AU</td><td data-order="1">1</td><td>58</td><td data-order="9999">-</td><td data-order="48">48</td></tr>
+<tr><td title="Ranked researchers here: Akio Fujii (#55)">Rikkyo University</td><td>JP</td><td data-order="1">1</td><td>59</td><td data-order="9999">-</td><td data-order="52">52</td></tr>
+<tr><td title="Ranked researchers here: Tikao Tatuzawa (#70)">Saitama University</td><td>JP</td><td data-order="1">1</td><td>60</td><td data-order="9999">-</td><td data-order="53">53</td></tr>
+<tr><td title="Ranked researchers here: Ade Irma Suriajaya (#38)">Kyushu University</td><td>JP</td><td data-order="1">1</td><td>61</td><td data-order="9999">-</td><td data-order="55">55</td></tr>
+<tr><td title="Ranked researchers here: William D. Banks (#22)">University of Missouri</td><td>US</td><td data-order="1">1</td><td>62</td><td data-order="9999">-</td><td data-order="56">56</td></tr>
+<tr><td title="Ranked researchers here: Tao Zhan (#20)">Southwest University</td><td>CN</td><td data-order="1">1</td><td>63</td><td data-order="9999">-</td><td data-order="57">57</td></tr>
+<tr><td title="Ranked researchers here: A. Peretti (#100)">University of Ferrara</td><td>IT</td><td data-order="1">1</td><td>64</td><td data-order="9999">-</td><td data-order="58">58</td></tr>
+<tr><td title="Ranked researchers here: Kevin Hughes (#45)">Edinburgh Napier University</td><td>GB</td><td data-order="1">1</td><td>65</td><td data-order="9999">-</td><td data-order="60">60</td></tr>
+<tr><td title="Ranked researchers here: Helmut Maier (#46)">Universität Ulm</td><td>DE</td><td data-order="1">1</td><td>66</td><td data-order="9999">-</td><td data-order="61">61</td></tr>
+<tr><td title="Ranked researchers here: H. J. J. te Riele (#65)">Centrum Wiskunde &amp; Informatica</td><td>NL</td><td data-order="1">1</td><td>67</td><td data-order="9999">-</td><td data-order="62">62</td></tr>
+<tr><td title="Top 100 PhD alumni: Angel Kumchev (#25)">University of South Carolina</td><td></td><td data-order="0"></td><td>68</td><td data-order="19">19</td><td data-order="102">102</td></tr>
+<tr><td title="Ranked researchers here: Kai-Man Tsang (#49), Ben Kane (#87)">University of Hong Kong</td><td>HK</td><td data-order="2">2</td><td>69</td><td data-order="9999">-</td><td data-order="63">63</td></tr>
+<tr><td title="Ranked researchers here: Matteo Bordignon (#36)">KTH Royal Institute of Technology</td><td>SE</td><td data-order="1">1</td><td>70</td><td data-order="9999">-</td><td data-order="64">64</td></tr>
+<tr><td title="Ranked researchers here: Antal Balog (#66)">Baltazar Zaprešić University of Applied Sciences</td><td>HR</td><td data-order="1">1</td><td>71</td><td data-order="9999">-</td><td data-order="65">65</td></tr>
+<tr><td title="Top 100 PhD alumni: Lasse Grimmelt (#27)">Universiteit Utrecht</td><td></td><td data-order="0"></td><td>72</td><td data-order="21">21</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Gautami Bhowmik (#28)">Université de Lille I</td><td></td><td data-order="0"></td><td>73</td><td data-order="22">22</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Michael Th. Rassias (#68)">ETH Zürich</td><td></td><td data-order="0"></td><td>74</td><td data-order="40">40</td><td data-order="82">82</td></tr>
+<tr><td title="Top 100 PhD alumni: Ofir Gorodetsky (#53)">Tel Aviv University</td><td></td><td data-order="0"></td><td>75</td><td data-order="32">32</td><td data-order="92">92</td></tr>
+<tr><td title="Top 100 PhD alumni: Andrew Granville (#31)">Queen&#x27;s University at Kingston</td><td></td><td data-order="0"></td><td>76</td><td data-order="23">23</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Jan-Christoph Schlage-Puchta (#43)">University of Rostock</td><td>DE</td><td data-order="1">1</td><td>77</td><td data-order="9999">-</td><td data-order="68">68</td></tr>
+<tr><td title="Ranked researchers here: Matt Visser (#37)">Victoria University of Wellington</td><td>NZ</td><td data-order="1">1</td><td>78</td><td data-order="9999">-</td><td data-order="69">69</td></tr>
+<tr><td title="Ranked researchers here: Hongze Li (#44)">Shanghai Jiao Tong University</td><td>CN</td><td data-order="1">1</td><td>79</td><td data-order="9999">-</td><td data-order="70">70</td></tr>
+<tr><td title="Ranked researchers here: Ciprian Demeter (#93)">Indiana University Bloomington</td><td>US</td><td data-order="1">1</td><td>80</td><td data-order="9999">-</td><td data-order="71">71</td></tr>
+<tr><td title="Ranked researchers here: Kiseok Yeon (#83)">University of California, Davis</td><td>US</td><td data-order="1">1</td><td>81</td><td data-order="9999">-</td><td data-order="72">72</td></tr>
+<tr><td title="Ranked researchers here: H. J. Weber (#59)">University of Virginia</td><td>US</td><td data-order="1">1</td><td>82</td><td data-order="9999">-</td><td data-order="73">73</td></tr>
+<tr><td title="Top 100 PhD alumni: Kathrin Bringmann (#41)">Ruprecht-Karls-Universität Heidelberg</td><td></td><td data-order="0"></td><td>83</td><td data-order="26">26</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Fei Xue (#42)">West Virginia University</td><td></td><td data-order="0"></td><td>84</td><td data-order="27">27</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Jan-Christoph Schlage-Puchta (#43)">Albert-Ludwigs-Universität Freiburg im Breisgau</td><td></td><td data-order="0"></td><td>85</td><td data-order="28">28</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Helmut Maier (#46)">University of Minnesota - Twin Cities</td><td></td><td data-order="0"></td><td>86</td><td data-order="29">29</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Dieter Wolke (#73)">University of Freiburg</td><td>DE</td><td data-order="1">1</td><td>87</td><td data-order="9999">-</td><td data-order="75">75</td></tr>
+<tr><td title="Top 100 PhD alumni: Jean‐Marc Deshouillers (#47)">Université Pierre-et-Marie-Curie - Paris VI</td><td></td><td data-order="0"></td><td>88</td><td data-order="30">30</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Karin Halupczok (#48)">Universität Konstanz</td><td></td><td data-order="0"></td><td>89</td><td data-order="31">31</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Jiseong Kim (#52)">Sogang University</td><td>KR</td><td data-order="1">1</td><td>90</td><td data-order="9999">-</td><td data-order="76">76</td></tr>
+<tr><td title="Ranked researchers here: Ofir Gorodetsky (#53)">Technion - Israel Institute of Technology</td><td>IL</td><td data-order="1">1</td><td>91</td><td data-order="9999">-</td><td data-order="77">77</td></tr>
+<tr><td title="Top 100 PhD alumni: Christian Elsholtz (#56)">Technische Universität Darmstadt</td><td></td><td data-order="0"></td><td>92</td><td data-order="34">34</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Julia Brandes (#62)">Chalmers University of Technology</td><td>SE</td><td data-order="1">1</td><td>93</td><td data-order="9999">-</td><td data-order="78">78</td></tr>
+<tr><td title="Top 100 PhD alumni: John B. Friedlander (#57)">The Pennsylvania State University</td><td></td><td data-order="0"></td><td>94</td><td data-order="35">35</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Zhizhong Huang (#79)">South China University of Technology</td><td>CN</td><td data-order="1">1</td><td>95</td><td data-order="9999">-</td><td data-order="79">79</td></tr>
+<tr><td title="Top 100 PhD alumni: Melvyn B. Nathanson (#82)">University of Rochester</td><td></td><td data-order="0"></td><td>96</td><td data-order="49">49</td><td data-order="93">93</td></tr>
+<tr><td title="Ranked researchers here: Apoorva Panidapu (#72)">Massachusetts Institute of Technology</td><td>US</td><td data-order="1">1</td><td>97</td><td data-order="9999">-</td><td data-order="80">80</td></tr>
+<tr><td title="Ranked researchers here: Emmanuel Kowalski (#99)">ETH Zurich</td><td>CH</td><td data-order="1">1</td><td>98</td><td data-order="9999">-</td><td data-order="81">81</td></tr>
+<tr><td title="Ranked researchers here: Greg Martin (#86); Top 100 PhD alumni: Brian Cook (#78)">University of British Columbia</td><td>CA</td><td data-order="1">1</td><td>99</td><td data-order="45">45</td><td data-order="97">97</td></tr>
+<tr><td title="Ranked researchers here: Michael Th. Rassias (#68)">Hellenic Military Academy</td><td>GR</td><td data-order="1">1</td><td>100</td><td data-order="9999">-</td><td data-order="84">84</td></tr>
+<tr><td title="Ranked researchers here: Marek Wolf (#77)">University of Wrocław</td><td>PL</td><td data-order="1">1</td><td>101</td><td data-order="9999">-</td><td data-order="85">85</td></tr>
+<tr><td title="Top 100 PhD alumni: H. J. J. te Riele (#65)">Universiteit van Amsterdam</td><td></td><td data-order="0"></td><td>102</td><td data-order="38">38</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Brian Cook (#78)">Virginia Tech</td><td>US</td><td data-order="1">1</td><td>103</td><td data-order="9999">-</td><td data-order="86">86</td></tr>
+<tr><td title="Ranked researchers here: Ping Xi (#85); Top 100 PhD alumni: Ping Xi (#85)">Xi&#x27;an Jiaotong University</td><td>CN</td><td data-order="1">1</td><td>104</td><td data-order="52">52</td><td data-order="95">95</td></tr>
+<tr><td title="Ranked researchers here: Gove Effinger (#94)">Skidmore College</td><td>US</td><td data-order="1">1</td><td>105</td><td data-order="9999">-</td><td data-order="87">87</td></tr>
+<tr><td title="Top 100 PhD alumni: Jesse Thorner (#69)">Emory University</td><td></td><td data-order="0"></td><td>106</td><td data-order="41">41</td><td data-order="103">103</td></tr>
+<tr><td title="Ranked researchers here: Roger C. Baker (#71)">Brigham Young University</td><td>US</td><td data-order="1">1</td><td>107</td><td data-order="9999">-</td><td data-order="88">88</td></tr>
+<tr><td title="Ranked researchers here: Leo Goldmakher (#95)">Williams College</td><td>US</td><td data-order="1">1</td><td>108</td><td data-order="9999">-</td><td data-order="89">89</td></tr>
+<tr><td title="Ranked researchers here: Imre Kátai (#91)">Université Laval</td><td>CA</td><td data-order="1">1</td><td>109</td><td data-order="9999">-</td><td data-order="90">90</td></tr>
+<tr><td title="Ranked researchers here: K. Thanigasalam (#88)">Pennsylvania State University, Beaver</td><td>US</td><td data-order="1">1</td><td>110</td><td data-order="9999">-</td><td data-order="91">91</td></tr>
+<tr><td title="Top 100 PhD alumni: Dieter Wolke (#73)">Philipps-Universität Marburg</td><td></td><td data-order="0"></td><td>111</td><td data-order="42">42</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Sary Drappeau (#74)">Université Paris Diderot - Paris 7</td><td></td><td data-order="0"></td><td>112</td><td data-order="43">43</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Nicolas Robles (#75)">Universität Zürich</td><td></td><td data-order="0"></td><td>113</td><td data-order="44">44</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Ben Kane (#87)">University of Wisconsin-Madison</td><td></td><td data-order="0"></td><td>114</td><td data-order="53">53</td><td data-order="99">99</td></tr>
+<tr><td title="Top 100 PhD alumni: Zhizhong Huang (#79)">Université Grenoble Alpes</td><td></td><td data-order="0"></td><td>115</td><td data-order="46">46</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Henryk Iwaniec (#80)">Uniwersytet Warszawski</td><td></td><td data-order="0"></td><td>116</td><td data-order="48">48</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Kiseok Yeon (#83)">Purdue University</td><td></td><td data-order="0"></td><td>117</td><td data-order="50">50</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Malvina Baica (#97)">University of Wisconsin-Whitewater</td><td>US</td><td data-order="1">1</td><td>118</td><td data-order="9999">-</td><td data-order="96">96</td></tr>
+<tr><td title="Ranked researchers here: Olivier Ramaré (#90)">Château Gombert</td><td>FR</td><td data-order="1">1</td><td>119</td><td data-order="9999">-</td><td data-order="98">98</td></tr>
+<tr><td title="Top 100 PhD alumni: Olivier Ramaré (#90)">Université Bordeaux 1</td><td></td><td data-order="0"></td><td>120</td><td data-order="54">54</td><td data-order="9999">-</td></tr>
+<tr><td title="Top 100 PhD alumni: Jordan Schettler (#92)">University of Arizona</td><td></td><td data-order="0"></td><td>121</td><td data-order="55">55</td><td data-order="104">104</td></tr>
+<tr><td title="Top 100 PhD alumni: Gove Effinger (#94)">University of Massachusetts Amherst</td><td></td><td data-order="0"></td><td>122</td><td data-order="56">56</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: M. I. Tulyaganova (#96)">Tashkent State University</td><td>UZ</td><td data-order="1">1</td><td>123</td><td data-order="9999">-</td><td data-order="100">100</td></tr>
+<tr><td title="Ranked researchers here: Florian Luca (#98)">Stellenbosch University</td><td>ZA</td><td data-order="1">1</td><td>124</td><td data-order="9999">-</td><td data-order="101">101</td></tr>
+<tr><td title="Top 100 PhD alumni: Florian Luca (#98)">University of Alaska, Fairbanks</td><td></td><td data-order="0"></td><td>125</td><td data-order="57">57</td><td data-order="9999">-</td></tr>
+<tr><td title="Ranked researchers here: Melvyn B. Nathanson (#82)">Lehman College, CUNY</td><td>US</td><td data-order="1">1</td><td>126</td><td data-order="9999">-</td><td data-order="9999">-</td></tr>
+</tbody>
+</table>
+
+<script>
+new DataTable('#institutions', {
+  order: [[3, 'asc']],
+  paging: false,
+  info: false
+});
+</script>
+
+</main>
+<footer>
+<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigb.org">admin@wwigb.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Last built July 2026.</p>
+</footer>
+</body>
+</html>

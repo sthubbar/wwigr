@@ -1,22 +1,18 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 94,
-  "n_unplaced_no_geocode": 6,
+  "n_placed": 98,
+  "n_unplaced_no_geocode": 2,
   "n_unplaced_no_institution": 0,
   "unplaced": [
     "#76 Weiping Li [-]",
-    "#82 Melvyn B. Nathanson [Lehman College, CUNY]",
-    "#83 Kiseok Yeon [University of California, Davis]",
-    "#88 K. Thanigasalam [Pennsylvania State University, Beaver]",
-    "#97 Malvina Baica [University of Wisconsin-Whitewater]",
-    "#100 A. Peretti [University of Ferrara]"
+    "#82 Melvyn B. Nathanson [Lehman College, CUNY]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 94,
-      "drawn_count": 94,
+      "stated_count": 98,
+      "drawn_count": 98,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -99,10 +95,12 @@
         "Zhizhong Huang",
         "Henryk Iwaniec",
         "J. P. Keating",
+        "Kiseok Yeon",
         "Imre Z. Ruzsa",
         "Ping Xi",
         "Greg Martin",
         "Ben Kane",
+        "K. Thanigasalam",
         "Vivian Kuperberg",
         "Olivier Ramaré",
         "Imre Kátai",
@@ -111,15 +109,17 @@
         "Gove Effinger",
         "Leo Goldmakher",
         "M. I. Tulyaganova",
+        "Malvina Baica",
         "Florian Luca",
-        "Emmanuel Kowalski"
+        "Emmanuel Kowalski",
+        "A. Peretti"
       ],
-      "unplaced_no_geocode_in_region": 6
+      "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 32,
-      "drawn_count": 32,
+      "stated_count": 34,
+      "drawn_count": 34,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -146,21 +146,23 @@
         "Nicolas Robles",
         "Brian Cook",
         "Henryk Iwaniec",
+        "Kiseok Yeon",
         "Greg Martin",
+        "K. Thanigasalam",
         "Vivian Kuperberg",
         "Imre Kátai",
         "Jordan Schettler",
         "Ciprian Demeter",
         "Gove Effinger",
         "Leo Goldmakher",
-        "Emmanuel Kowalski"
+        "Malvina Baica"
       ],
-      "unplaced_no_geocode_in_region": 4
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 38,
-      "drawn_count": 38,
+      "stated_count": 40,
+      "drawn_count": 40,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -200,9 +202,11 @@
         "Marek Wolf",
         "J. P. Keating",
         "Imre Z. Ruzsa",
-        "Olivier Ramaré"
+        "Olivier Ramaré",
+        "Emmanuel Kowalski",
+        "A. Peretti"
       ],
-      "unplaced_no_geocode_in_region": 1
+      "unplaced_no_geocode_in_region": 0
     },
     {
       "file": "13_top100_asia.png",
@@ -248,10 +252,11 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 74,
+    "legacy_gb_cache": 75,
     "verified:2026-06-15(Claude,web; main campus)": 3,
-    "openalex": 13,
+    "openalex": 15,
     "manual:wikipedia-coords 2026-06-19": 2,
-    "verified:2026-06-20(Claude,web)": 2
+    "verified:2026-06-20(Claude,web)": 2,
+    "wikidata:proxmerge2026-07-04": 1
   }
 }
