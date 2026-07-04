@@ -94,7 +94,7 @@
 <ul class="col-glossary"><li><strong>#</strong> overall rank (lower is better)</li><li><strong>Name</strong> the researcher</li><li><strong>Institution</strong> current affiliation</li><li><strong>Ctry</strong> country</li><li><strong>aX</strong> arXiv rank</li><li><strong>OA</strong> OpenAlex rank</li><li><strong>zM</strong> zbMATH rank</li><li><strong>h</strong> h-index (citation impact)</li><li><strong>Source</strong> databases that list them</li><li><strong>Frm / To</strong> first and last active year</li></ul>
 <p><strong>How it works.</strong> arXiv, OpenAlex and zbMATH each rank a researcher; the three ranks merge into one, weighted toward each person's strongest. Recent work counts more. Lower is better. Click any header to sort. A rank in [brackets] is an estimate, not measured. <a href="methodology.html">Full method</a>.</p></details>
 
-<span id="ctryFilterWrap" style="display:none;margin-right:14px"><label>Country <select id="fltCountry"><option value="">All</option></select></label></span>
+<span id="ctryFilterWrap" style="display:none;margin-left:14px"><select id="fltCountry"><option value="">Country</option></select></span>
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
 <thead><tr><th title="Overall rank">#</th><th>Name</th><th>Institution</th><th class="rtcol" title="Country">Ctry</th><th title="arXiv pipeline rank">aX</th><th title="OpenAlex pipeline rank">OA</th><th title="zbMATH pipeline rank">zM</th><th title="h-index">h</th><th class="rtcol">Source</th><th title="First active year">Frm</th><th title="Last active year">To</th></tr></thead>
 <tbody>
@@ -202,14 +202,14 @@
 </table>
 <script>
 $(document).ready(function() {
-  var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']], autoWidth: false });
+  var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']], autoWidth: false });
   function strip(d) { return $('<div>').html(d == null ? '' : d).text().trim(); }
   function fill(colIdx, sel) {
     var seen = {};
     table.column(colIdx).data().each(function (d) { var t = strip(d); if (t) seen[t] = 1; });
     Object.keys(seen).sort().forEach(function (v) { $(sel).append('<option value="' + v + '">' + v + '</option>'); });
   }
-  $('#ctryFilterWrap').css('display','inline-flex').insertBefore($('#top100tbl').closest('.dt-container').find('div.dt-search').first());
+  $('#ctryFilterWrap').css('display','inline-flex').insertAfter($('#top100tbl').closest('.dt-container').find('div.dt-length').first());
   fill(3, '#fltCountry');
   $.fn.dataTable.ext.search.push(function (settings, data) {
     if (settings.nTable.id !== 'top100tbl') return true;

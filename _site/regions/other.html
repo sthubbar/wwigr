@@ -94,7 +94,7 @@
 </table>
 <script>
 $(document).ready(function() {
-  $('#rtbl').DataTable({ pageLength: 25, lengthMenu: [25, 50, 100], order: [[0, 'asc']] });
+  $('#rtbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']] });
 });
 </script>
 
