@@ -117,27 +117,15 @@
 <li><strong>Home</strong>: This page.</li>
 <li><a href="top100.html"><strong>The Top 100</strong></a>: the canonical ranked list, sortable and filterable in your browser.</li>
 <li><a href="location.html"><strong>Locations</strong></a>: where the Top 100 are based, shown by world region with maps.</li>
-<li><a href="institutions.html"><strong>Institutions</strong></a>: see this section.</li>
+<li><a href="institutions.html"><strong>Institutions</strong></a>: the institutions ranked three ways: where the Top 100 work today, where they earned their PhDs, and a canonical blend of the two.</li>
 <li><a href="in-memoriam.html"><strong>In Memoriam</strong></a>: researchers in this directory who are no longer with us.</li>
 <li><a href="genealogy.html"><strong>Genealogy</strong></a>: close relations of the Top 100 through advisor-student lineage in the Mathematics Genealogy Project.</li>
 <li><a href="network.html"><strong>Network</strong></a>: the coauthorship graph among the Top 100: who has written papers with whom.</li>
 <li><a href="reading-list.html"><strong>Reading List</strong></a>: the recent topical papers ranked by the prominence of their authors in this directory, plus the most-cited papers of all time.</li>
 <li><a href="overlap.html"><strong>Overlap</strong></a>: the researchers who also appear across the related conjecture sites.</li>
-<li><a href="about.html"><strong>About</strong></a>: what this site is, who built it, and where to find the methodology, the open dataset, and how to request a correction.</li>
+<li><a href="about.html"><strong>About</strong></a>: what this site is, who built it, and where to find the <a href="methodology.html">methodology</a>, the open dataset, and how to request a correction.</li>
 </ul>
 
-<h2>How the list is built</h2>
-<p>Three independent signals are combined into one composite ranking:</p>
-<ol>
-<li><strong>arXiv preprint output</strong> since 2003, filtered to math.NT and math.CO categories, matched against 17 Goldbach-relevant search terms.</li>
-<li><strong>OpenAlex topical citations</strong> for the Goldbach phrases (<code>Goldbach conjecture</code>, <code>Goldbach problem</code>, <code>Goldbach's conjecture</code>).</li>
-<li><strong>zbMATH Open</strong>, the curated mathematics review database, using the three Goldbach-core MSC subject classes (11P32 additive/Goldbach problems, 11P55 circle method, 11N36 sieve methods).</li>
-</ol>
-<p>The three pipeline ranks are combined with a weighted order statistic. For each researcher the three ranks are sorted and weighted 70% on the best, 20% on the middle, and 10% on the worst, so being excellent in one Goldbach pipeline counts most, while strength across all three still wins overall. Lower is better. A researcher who appears in only one or two pipelines is not penalised; the missing rank is estimated from their nearest-ranked neighbours (the 70% weight only ever falls on a real, measured rank, never an estimate). False positives and off-topic authors are explicitly excluded by hand; the approach is described in the <a href="methodology.html">methodology</a>.</p>
-<p>The <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a> supplies advisor-student relationships for the separate <a href="genealogy.html">genealogy</a> view. It does not feed the ranking.</p>
-
-<h2>Citing this site</h2>
-<blockquote>Hubbard, S. (2026). <em>Who&#x27;s Who in Goldbach Research</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.20355375">https://doi.org/10.5281/zenodo.20355375</a></blockquote>
 
 </main>
 <footer>
