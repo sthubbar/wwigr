@@ -40,15 +40,11 @@
    at right:3px, so text never touches the indicator. Data cells keep their
    own tighter padding below. */
 #top100tbl thead th,#institutions thead th{padding-right:24px;}
-/* Ctry in-header filter whitespace experiments (Steve 2026-07-04, pick one):
-   Top 100 = experiment A: the filter cell drops all reserved padding so the
-   blank space right of the box disappears; the box keeps its natural size.
-   Institutions = experiment B: same padding cut PLUS the select grows to
-   fill the header vertically (larger font + inner padding), so the box
-   hugs the cell on all sides while the header row height is unchanged. */
+/* Ctry in-header filter (Steve 2026-07-04 final): tight cell padding, and
+   the select carries DataTables' own dt-input class so its height exactly
+   matches the search box and the per-page selector above the table. */
 #top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
-#top100tbl thead th.ctry-th select{margin:0;}
-#institutions thead th.ctry-th select{margin:0;font-size:1em;padding:4px 2px;}
+#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;}
 /* Institutions: only 6 columns, so the browser's proportional surplus
    sharing fattened the # and numeric columns and pushed the names right
    (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
@@ -116,7 +112,7 @@
 </details>
 
 <table id="institutions" class="display compact stripe hover" style="width:100%">
-<thead><tr><th class="rtcol">#</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountryI" title="Filter by country"><option value="">Ctry</option></select></th><th class="rtcol">Top 100</th><th class="rtcol">Training</th><th class="rtcol">Environment</th></tr></thead>
+<thead><tr><th class="rtcol">#</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountryI" class="dt-input" title="Filter by country"><option value="">Ctry</option></select></th><th class="rtcol">Top 100</th><th class="rtcol">Training</th><th class="rtcol">Environment</th></tr></thead>
 <tbody>
 <tr><td class="rtcol">1</td><td title="Ranked researchers here: Jianya Liu (#6), Pan, Chengdong (#23), Xiumin Ren (#58); Top 100 PhD alumni: Jianya Liu (#6), Tao Zhan (#20), Hongze Li (#44), Xiumin Ren (#58)"><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="rtcol">CN</td><td class="rtcol" data-order="3">3</td><td class="rtcol" data-order="1.0">1.00</td><td class="rtcol" data-order="0.8091244365011351">0.81</td></tr>
 <tr><td class="rtcol">2</td><td title="Ranked researchers here: Glyn Harman (#19); Top 100 PhD alumni: Kaisa Matomäki (#18), Glyn Harman (#19)"><a href="https://www.royalholloway.ac.uk/home.aspx">Royal Holloway University of London</a></td><td class="rtcol">GB</td><td class="rtcol" data-order="1">1</td><td class="rtcol" data-order="0.5978260869565216">0.60</td><td class="rtcol" data-order="0.8550552803859037">0.86</td></tr>
