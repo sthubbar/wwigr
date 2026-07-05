@@ -42,9 +42,16 @@
 #top100tbl thead th,#institutions thead th{padding-right:24px;}
 /* Ctry in-header filter (Steve 2026-07-04 final): tight cell padding, and
    the select carries DataTables' own dt-input class so its height exactly
-   matches the search box and the per-page selector above the table. */
+   matches the search box and the per-page selector above the table.
+   Weight rules: the closed box shows BOLD "Ctry" (matching the other column
+   headers) while no country is chosen (.ctry-all, toggled on change), and
+   regular weight once a country is selected; in the open list the "Ctry"
+   option is bold, the country options regular. */
 #top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
-#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;}
+#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
+#top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
+#top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
+#top100tbl thead th.ctry-th select option[value=""],#institutions thead th.ctry-th select option[value=""]{font-weight:700;}
 /* Institutions: only 6 columns, so the browser's proportional surplus
    sharing fattened the # and numeric columns and pushed the names right
    (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
@@ -101,7 +108,7 @@
 
 
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Overall rank">#</th><th>Name</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountry" class="dt-input" title="Filter by country"><option value="">Ctry</option></select></th><th title="arXiv pipeline rank">aX</th><th title="OpenAlex pipeline rank">OA</th><th title="zbMATH pipeline rank">zM</th><th title="h-index">h</th><th class="rtcol">Source</th><th title="First active year">Frm</th><th title="Last active year">To</th></tr></thead>
+<thead><tr><th title="Overall rank">#</th><th>Name</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountry" class="dt-input ctry-all" title="Filter by country"><option value="">Ctry</option></select></th><th title="arXiv pipeline rank">aX</th><th title="OpenAlex pipeline rank">OA</th><th title="zbMATH pipeline rank">zM</th><th title="h-index">h</th><th class="rtcol">Source</th><th title="First active year">Frm</th><th title="Last active year">To</th></tr></thead>
 <tbody>
 <tr><td>1</td><td><a href="people/janos-pintz.html">Janos Pintz</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td class="rtcol">HU</td><td data-order="7">7</td><td data-order="11">11</td><td data-order="1">1</td><td data-order="26">26</td><td class="rtcol">all_three</td><td>1985</td><td>1985</td></tr>
 <tr><td>2</td><td><a href="people/trevor-d-wooley.html">Trevor D. Wooley</a></td><td><a href="http://www.purdue.edu/">Purdue University West Lafayette</a></td><td class="rtcol">US</td><td data-order="1">1</td><td data-order="9">9</td><td data-order="10">10</td><td data-order="28">28</td><td class="rtcol">all_three</td><td>1990</td><td>2026</td></tr>
@@ -214,7 +221,7 @@ $(document).ready(function() {
     table.column(colIdx).data().each(function (d) { var t = strip(d); if (t) seen[t] = 1; });
     Object.keys(seen).sort().forEach(function (v) { $(sel).append('<option value="' + v + '">' + v + '</option>'); });
   }
-  $('#fltCountry').on('click', function (e) { e.stopPropagation(); });
+  $('#fltCountry').on('click', function (e) { e.stopPropagation(); }).on('change', function () { $(this).toggleClass('ctry-all', !this.value); });
   fill(3, '#fltCountry');
   $.fn.dataTable.ext.search.push(function (settings, data) {
     if (settings.nTable.id !== 'top100tbl') return true;

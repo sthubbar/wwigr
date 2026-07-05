@@ -42,9 +42,16 @@
 #top100tbl thead th,#institutions thead th{padding-right:24px;}
 /* Ctry in-header filter (Steve 2026-07-04 final): tight cell padding, and
    the select carries DataTables' own dt-input class so its height exactly
-   matches the search box and the per-page selector above the table. */
+   matches the search box and the per-page selector above the table.
+   Weight rules: the closed box shows BOLD "Ctry" (matching the other column
+   headers) while no country is chosen (.ctry-all, toggled on change), and
+   regular weight once a country is selected; in the open list the "Ctry"
+   option is bold, the country options regular. */
 #top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
-#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;}
+#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
+#top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
+#top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
+#top100tbl thead th.ctry-th select option[value=""],#institutions thead th.ctry-th select option[value=""]{font-weight:700;}
 /* Institutions: only 6 columns, so the browser's proportional surplus
    sharing fattened the # and numeric columns and pushed the names right
    (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
