@@ -5,8 +5,8 @@
   "n_unplaced_no_geocode": 2,
   "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#76 Weiping Li [-]",
-    "#82 Melvyn B. Nathanson [Lehman College, CUNY]"
+    "#74 Weiping Li [-]",
+    "#80 Melvyn B. Nathanson [Lehman College, CUNY]"
   ],
   "maps": [
     {
@@ -84,10 +84,8 @@
         "Shuntaro Yamagishi",
         "Michael Th. Rassias",
         "Jesse Thorner",
-        "Tikao Tatuzawa",
         "Roger C. Baker",
         "Apoorva Panidapu",
-        "Dieter Wolke",
         "Sary Drappeau",
         "Nicolas Robles",
         "Marek Wolf",
@@ -100,7 +98,6 @@
         "Ping Xi",
         "Greg Martin",
         "Ben Kane",
-        "K. Thanigasalam",
         "Vivian Kuperberg",
         "Olivier Ramaré",
         "Imre Kátai",
@@ -112,14 +109,17 @@
         "Malvina Baica",
         "Florian Luca",
         "Emmanuel Kowalski",
-        "A. Peretti"
+        "A. Peretti",
+        "Ayla Gafni",
+        "Lillian B. Pierce",
+        "K. Soundararajan"
       ],
       "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 34,
-      "drawn_count": 34,
+      "stated_count": 36,
+      "drawn_count": 36,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -148,21 +148,23 @@
         "Henryk Iwaniec",
         "Kiseok Yeon",
         "Greg Martin",
-        "K. Thanigasalam",
         "Vivian Kuperberg",
         "Imre Kátai",
         "Jordan Schettler",
         "Ciprian Demeter",
         "Gove Effinger",
         "Leo Goldmakher",
-        "Malvina Baica"
+        "Malvina Baica",
+        "Ayla Gafni",
+        "Lillian B. Pierce",
+        "K. Soundararajan"
       ],
       "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 40,
-      "drawn_count": 40,
+      "stated_count": 39,
+      "drawn_count": 39,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -197,7 +199,6 @@
         "Antal Balog",
         "Shuntaro Yamagishi",
         "Michael Th. Rassias",
-        "Dieter Wolke",
         "Sary Drappeau",
         "Marek Wolf",
         "J. P. Keating",
@@ -210,8 +211,8 @@
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 22,
-      "drawn_count": 22,
+      "stated_count": 21,
+      "drawn_count": 21,
       "match": true,
       "names": [
         "Jinjiang Li",
@@ -231,7 +232,6 @@
         "Akio Fujii",
         "Xiumin Ren",
         "Zhi-Wei Sun",
-        "Tikao Tatuzawa",
         "Zhizhong Huang",
         "Ping Xi",
         "Ben Kane",
@@ -252,11 +252,10 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 75,
+    "legacy_gb_cache": 78,
     "verified:2026-06-15(Claude,web; main campus)": 3,
     "openalex": 15,
-    "manual:wikipedia-coords 2026-06-19": 2,
-    "verified:2026-06-20(Claude,web)": 2,
-    "wikidata:proxmerge2026-07-04": 1
+    "manual:wikipedia-coords 2026-06-19": 1,
+    "verified:2026-06-20(Claude,web)": 1
   }
 }
