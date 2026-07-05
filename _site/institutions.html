@@ -48,6 +48,8 @@
    regular weight once a country is selected; in the open list the "Ctry"
    option is bold, the country options regular. */
 #top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+/* subtle in-header nudge, e.g. "(hover rows for details)" (Steve 2026-07-05) */
+#institutions thead th .hdr-hint{font-weight:400;font-size:0.85em;color:#666;white-space:nowrap;}
 #top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
 #top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
 #top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
@@ -119,7 +121,7 @@
 </details>
 
 <table id="institutions" class="display compact stripe hover" style="width:100%">
-<thead><tr><th class="rtcol">#</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountryI" class="dt-input ctry-all" title="Filter by country"><option value="">Ctry</option></select></th><th class="rtcol">Top 100</th><th class="rtcol">Training</th><th class="rtcol">Environment</th></tr></thead>
+<thead><tr><th class="rtcol" title="Canonical rank, 1 is best: half Environment score, half Training score">#</th><th title="Hover any row for the researchers and alumni behind its scores; click a name to visit the institution's website">Institution <span class="hdr-hint">(hover rows for details)</span></th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountryI" class="dt-input ctry-all" title="Filter by country"><option value="">Ctry</option></select></th><th class="rtcol" title="How many of the current Top 100 work here">Top 100</th><th class="rtcol" title="Training score 0.00 to 1.00: where today's Top 100 earned their PhDs, rank-weighted; 1.00 is the strongest training ground">Training</th><th class="rtcol" title="Environment score 0.00 to 1.00: rank-and-distance-weighted research gravity around this institution today; 1.00 is the strongest">Environment</th></tr></thead>
 <tbody>
 <tr><td class="rtcol">1</td><td title="Ranked researchers here: Jianya Liu (#6), Pan, Chengdong (#23), Xiumin Ren (#58); Top 100 PhD alumni: Jianya Liu (#6), Tao Zhan (#20), Hongze Li (#44), Xiumin Ren (#58)"><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="rtcol">CN</td><td class="rtcol" data-order="3">3</td><td class="rtcol" data-order="1.0">1.00</td><td class="rtcol" data-order="0.8091244365011351">0.81</td></tr>
 <tr><td class="rtcol">2</td><td title="Ranked researchers here: Glyn Harman (#19); Top 100 PhD alumni: Kaisa Matomäki (#18), Glyn Harman (#19)"><a href="https://www.royalholloway.ac.uk/home.aspx">Royal Holloway University of London</a></td><td class="rtcol">GB</td><td class="rtcol" data-order="1">1</td><td class="rtcol" data-order="0.5978260869565216">0.60</td><td class="rtcol" data-order="0.8550552803859037">0.86</td></tr>

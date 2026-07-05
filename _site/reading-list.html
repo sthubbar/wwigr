@@ -48,6 +48,8 @@
    regular weight once a country is selected; in the open list the "Ctry"
    option is bold, the country options regular. */
 #top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+/* subtle in-header nudge, e.g. "(hover rows for details)" (Steve 2026-07-05) */
+#institutions thead th .hdr-hint{font-weight:400;font-size:0.85em;color:#666;white-space:nowrap;}
 #top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
 #top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
 #top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
@@ -102,7 +104,7 @@
 <p>Showing 15 papers, ranked by the Top 100 standing of their authors then by recency. Authors who appear in the Top 100 are shown in bold.</p>
 
 <table id="rl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th>#</th><th>Title</th><th>Authors</th><th>Published</th><th>Best rank</th></tr></thead>
+<thead><tr><th title="Position in this list">#</th><th title="The paper; click to read it">Title</th><th title="Authors; ranked Top 100 authors link to their profiles">Authors</th><th title="Publication date">Published</th><th title="The best Top 100 rank among the paper's authors">Best rank</th></tr></thead>
 <tbody>
 <tr><td style='text-align:center' data-order='1'>1</td><td><a href="https://arxiv.org/abs/2603.00660v1">On the quadratic Waring-Goldbach problem with primes in Piatetski-Shapiro sets</a></td><td>Meng Gao, <a href="people/jinjiang-li.html"><strong>Jinjiang Li</strong></a>, Linji Long, <a href="people/min-zhang.html"><strong>Min Zhang</strong></a></td><td>2026-02</td><td style='text-align:center' data-order='4'>#4</td></tr>
 <tr><td style='text-align:center' data-order='2'>2</td><td><a href="https://arxiv.org/abs/2511.07164v1">Cubic Waring-Goldbach problem with Piatetski-Shapiro primes</a></td><td>Linji Long, <a href="people/jinjiang-li.html"><strong>Jinjiang Li</strong></a>, <a href="people/min-zhang.html"><strong>Min Zhang</strong></a>, Yankun Sui</td><td>2025-11</td><td style='text-align:center' data-order='4'>#4</td></tr>
@@ -133,7 +135,7 @@ Results are filtered to the Mathematics field (OpenAlex field 26) and ranked by 
 <p class="muted">The Top 100 ranking is designed to capture prominent, currently active researchers. If an author in this table is not linked to a profile, it is usually because they are deceased or less active than the researchers in the ranking, not because they are less significant to the field.</p>
 
 <table id="mc" class="display compact stripe hover" style="width:100%">
-<thead><tr><th>#</th><th>Title</th><th>Authors</th><th>Year</th><th>Citations</th></tr></thead>
+<thead><tr><th title="Position by citation count">#</th><th title="The paper; click to find it via Google Scholar">Title</th><th title="Authors; ranked Top 100 authors link to their profiles">Authors</th><th title="Publication year">Year</th><th title="Citation count">Citations</th></tr></thead>
 <tbody>
 <tr><td style='text-align:center' data-order='1'>1</td><td><a href="https://scholar.google.com/scholar?q=ON%20THE%20REPRESENTATION%20OF%20A%20LARGER%20EVEN%20INTEGER%20AS%20THE%20SUM%20OF%20A%20PRIME%20AND%20THE%20PRODUCT%20OF%20AT%20MOST%20TWO%20PRIMES">On the Representation of a Larger Even Integer as the Sum of a Prime and the Product of at Most Two Primes</a> <a class="doi-link" href="https://doi.org/10.1360/ya1973-16-2-157">DOI</a></td><td><a href="in-memoriam.html#chen-jingrun"><strong>Chen Jing-Run</strong></a></td><td>1973</td><td style='text-align:right' data-order='337'>337</td></tr>
 <tr><td style='text-align:center' data-order='2'>2</td><td><a href="https://scholar.google.com/scholar?q=The%20Ternary%20Goldbach%20Problem">The Ternary Goldbach Problem</a> <a class="doi-link" href="https://doi.org/10.4171/rmi/2">DOI</a></td><td>D. R. Heath‐Brown</td><td>1985</td><td style='text-align:right' data-order='267'>267</td></tr>

@@ -48,6 +48,8 @@
    regular weight once a country is selected; in the open list the "Ctry"
    option is bold, the country options regular. */
 #top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+/* subtle in-header nudge, e.g. "(hover rows for details)" (Steve 2026-07-05) */
+#institutions thead th .hdr-hint{font-weight:400;font-size:0.85em;color:#666;white-space:nowrap;}
 #top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
 #top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
 #top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
@@ -108,7 +110,7 @@
 
 
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Overall rank">#</th><th>Name</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountry" class="dt-input ctry-all" title="Filter by country"><option value="">Ctry</option></select></th><th title="arXiv pipeline rank">aX</th><th title="OpenAlex pipeline rank">OA</th><th title="zbMATH pipeline rank">zM</th><th title="h-index">h</th><th class="rtcol">Source</th><th title="First active year">Frm</th><th title="Last active year">To</th></tr></thead>
+<thead><tr><th title="Overall rank, 1 is best; merged from the three source pipelines">#</th><th title="The researcher; click for their profile page">Name</th><th title="Current affiliation; click to visit the institution's website">Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountry" class="dt-input ctry-all" title="Filter by country"><option value="">Ctry</option></select></th><th title="arXiv pipeline rank; [brackets] mean an estimate, not measured">aX</th><th title="OpenAlex pipeline rank; [brackets] mean an estimate, not measured">OA</th><th title="zbMATH pipeline rank; [brackets] mean an estimate, not measured">zM</th><th title="h-index, citation impact (max of verified OpenAlex and Google Scholar values)">h</th><th class="rtcol" title="Which pipelines ranked this researcher directly; legend below the table">Source</th><th title="First active year in the topical corpus">Frm</th><th title="Last active year in the topical corpus">To</th></tr></thead>
 <tbody>
 <tr><td>1</td><td><a href="people/janos-pintz.html">Janos Pintz</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td class="rtcol">HU</td><td data-order="7">7</td><td data-order="11">11</td><td data-order="1">1</td><td data-order="26">26</td><td class="rtcol">all_three</td><td>1985</td><td>1985</td></tr>
 <tr><td>2</td><td><a href="people/trevor-d-wooley.html">Trevor D. Wooley</a></td><td><a href="http://www.purdue.edu/">Purdue University West Lafayette</a></td><td class="rtcol">US</td><td data-order="1">1</td><td data-order="9">9</td><td data-order="10">10</td><td data-order="28">28</td><td class="rtcol">all_three</td><td>1990</td><td>2026</td></tr>
@@ -262,7 +264,7 @@ $(document).ready(function() {
 <li><code>zb_only</code>: ranked only by zbMATH. Often pre-1995 Russian and Chinese number theorists that arXiv and OpenAlex under-index.</li>
 </ul>
 
-<table><thead><tr><th>Source</th><th>Count</th></tr></thead><tbody><tr><td><code>zb_only</code></td><td style='text-align:right'>29</td></tr><tr><td><code>arxiv_only</code></td><td style='text-align:right'>26</td></tr><tr><td><code>arx+oa</code></td><td style='text-align:right'>17</td></tr><tr><td><code>arx+zb</code></td><td style='text-align:right'>13</td></tr><tr><td><code>all_three</code></td><td style='text-align:right'>10</td></tr><tr><td><code>oa_only</code></td><td style='text-align:right'>4</td></tr><tr><td><code>oa+zb</code></td><td style='text-align:right'>1</td></tr></tbody></table>
+<table><thead><tr><th title="Provenance code from the Source column">Source</th><th title="How many of the Top 100 carry this code">Count</th></tr></thead><tbody><tr><td><code>zb_only</code></td><td style='text-align:right'>29</td></tr><tr><td><code>arxiv_only</code></td><td style='text-align:right'>26</td></tr><tr><td><code>arx+oa</code></td><td style='text-align:right'>17</td></tr><tr><td><code>arx+zb</code></td><td style='text-align:right'>13</td></tr><tr><td><code>all_three</code></td><td style='text-align:right'>10</td></tr><tr><td><code>oa_only</code></td><td style='text-align:right'>4</td></tr><tr><td><code>oa+zb</code></td><td style='text-align:right'>1</td></tr></tbody></table>
 
 <h2>Limitations</h2>
 <p>This list reflects publication output and citation network density, not subjective importance. A starting point, not a verdict.</p>
