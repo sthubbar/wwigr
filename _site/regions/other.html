@@ -106,7 +106,18 @@
 </table>
 <script>
 $(document).ready(function() {
-  $('#rtbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']] });
+  var rtable = $('#rtbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']] });
+  var rPrev = rtable.page();
+  rtable.on('page', function () {
+    var np = rtable.page();
+    if (np > rPrev) {
+      setTimeout(function () {
+        var el = $('#rtbl').closest('.dt-container')[0] || $('#rtbl')[0];
+        window.scrollTo({ top: $(el).offset().top - 8, behavior: 'smooth' });
+      }, 0);
+    }
+    rPrev = np;
+  });
 });
 </script>
 

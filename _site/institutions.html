@@ -275,6 +275,20 @@ $(document).ready(function() {
     $(this).toggleClass('ctry-all', !this.value);
     itable.draw();
   });
+  // Forward paging scrolls to the table top (Steve 2026-07-05); backward
+  // stays put because the redrawn table keeps its height and the view is
+  // already at the bottom of the earlier page.
+  var iPrev = itable.page();
+  itable.on('page', function () {
+    var np = itable.page();
+    if (np > iPrev) {
+      setTimeout(function () {
+        var el = $('#institutions').closest('.dt-container')[0] || $('#institutions')[0];
+        window.scrollTo({ top: $(el).offset().top - 8, behavior: 'smooth' });
+      }, 0);
+    }
+    iPrev = np;
+  });
 });
 </script>
 

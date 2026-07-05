@@ -215,6 +215,22 @@
 <script>
 $(document).ready(function() {
   var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']], autoWidth: false });
+  // Forward paging scrolls to the table top (Steve 2026-07-05): a
+  // reader at the bottom of page N clicking forward wants the TOP of
+  // page N+1. Backward paging is left alone: the redrawn table keeps
+  // its height, so the view is already at the bottom of the earlier
+  // page, which is where the eye should land.
+  var prevPage = table.page();
+  table.on('page', function () {
+    var newPage = table.page();
+    if (newPage > prevPage) {
+      setTimeout(function () {
+        var el = $('#top100tbl').closest('.dt-container')[0] || $('#top100tbl')[0];
+        window.scrollTo({ top: $(el).offset().top - 8, behavior: 'smooth' });
+      }, 0);
+    }
+    prevPage = newPage;
+  });
   function strip(d) { return $('<div>').html(d == null ? '' : d).text().trim(); }
   function fill(colIdx, sel) {
     var seen = {};
