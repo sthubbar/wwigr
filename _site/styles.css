@@ -28,6 +28,11 @@ body {
   line-height: 1.55;
   max-width: 1100px;
   margin: 0 auto;
+  /* Small equal side margins so content never touches the browser
+     edge on narrow windows (Steve 2026-07-04). */
+  padding-left: 6px;
+  padding-right: 6px;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4 {

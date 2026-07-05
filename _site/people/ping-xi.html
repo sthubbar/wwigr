@@ -40,6 +40,15 @@
    at right:3px, so text never touches the indicator. Data cells keep their
    own tighter padding below. */
 #top100tbl thead th,#institutions thead th{padding-right:24px;}
+/* Ctry in-header filter whitespace experiments (Steve 2026-07-04, pick one):
+   Top 100 = experiment A: the filter cell drops all reserved padding so the
+   blank space right of the box disappears; the box keeps its natural size.
+   Institutions = experiment B: same padding cut PLUS the select grows to
+   fill the header vertically (larger font + inner padding), so the box
+   hugs the cell on all sides while the header row height is unchanged. */
+#top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+#top100tbl thead th.ctry-th select{margin:0;}
+#institutions thead th.ctry-th select{margin:0;font-size:1em;padding:4px 2px;}
 /* Institutions: only 6 columns, so the browser's proportional surplus
    sharing fattened the # and numeric columns and pushed the names right
    (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the

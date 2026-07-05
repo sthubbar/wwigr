@@ -40,6 +40,15 @@
    at right:3px, so text never touches the indicator. Data cells keep their
    own tighter padding below. */
 #top100tbl thead th,#institutions thead th{padding-right:24px;}
+/* Ctry in-header filter whitespace experiments (Steve 2026-07-04, pick one):
+   Top 100 = experiment A: the filter cell drops all reserved padding so the
+   blank space right of the box disappears; the box keeps its natural size.
+   Institutions = experiment B: same padding cut PLUS the select grows to
+   fill the header vertically (larger font + inner padding), so the box
+   hugs the cell on all sides while the header row height is unchanged. */
+#top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+#top100tbl thead th.ctry-th select{margin:0;}
+#institutions thead th.ctry-th select{margin:0;font-size:1em;padding:4px 2px;}
 /* Institutions: only 6 columns, so the browser's proportional surplus
    sharing fattened the # and numeric columns and pushed the names right
    (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
@@ -94,9 +103,9 @@
 <ul class="col-glossary"><li><strong>#</strong> overall rank (lower is better)</li><li><strong>Name</strong> the researcher</li><li><strong>Institution</strong> current affiliation</li><li><strong>Ctry</strong> country</li><li><strong>aX</strong> arXiv rank</li><li><strong>OA</strong> OpenAlex rank</li><li><strong>zM</strong> zbMATH rank</li><li><strong>h</strong> h-index (citation impact)</li><li><strong>Source</strong> databases that list them</li><li><strong>Frm / To</strong> first and last active year</li></ul>
 <p><strong>How it works.</strong> arXiv, OpenAlex and zbMATH each rank a researcher; the three ranks merge into one, weighted toward each person's strongest. Recent work counts more. Lower is better. Click any header to sort. A rank in [brackets] is an estimate, not measured. <a href="methodology.html">Full method</a>.</p></details>
 
-<span id="ctryFilterWrap" style="display:none;margin-left:14px"><select id="fltCountry"><option value="">Country</option></select></span>
+
 <table id="top100tbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Overall rank">#</th><th>Name</th><th>Institution</th><th class="rtcol" title="Country">Ctry</th><th title="arXiv pipeline rank">aX</th><th title="OpenAlex pipeline rank">OA</th><th title="zbMATH pipeline rank">zM</th><th title="h-index">h</th><th class="rtcol">Source</th><th title="First active year">Frm</th><th title="Last active year">To</th></tr></thead>
+<thead><tr><th title="Overall rank">#</th><th>Name</th><th>Institution</th><th class="rtcol ctry-th" data-dt-order="disable"><select id="fltCountry" title="Filter by country"><option value="">Ctry</option></select></th><th title="arXiv pipeline rank">aX</th><th title="OpenAlex pipeline rank">OA</th><th title="zbMATH pipeline rank">zM</th><th title="h-index">h</th><th class="rtcol">Source</th><th title="First active year">Frm</th><th title="Last active year">To</th></tr></thead>
 <tbody>
 <tr><td>1</td><td><a href="people/janos-pintz.html">Janos Pintz</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td class="rtcol">HU</td><td data-order="7">7</td><td data-order="11">11</td><td data-order="1">1</td><td data-order="26">26</td><td class="rtcol">all_three</td><td>1985</td><td>1985</td></tr>
 <tr><td>2</td><td><a href="people/trevor-d-wooley.html">Trevor D. Wooley</a></td><td><a href="http://www.purdue.edu/">Purdue University West Lafayette</a></td><td class="rtcol">US</td><td data-order="1">1</td><td data-order="9">9</td><td data-order="10">10</td><td data-order="28">28</td><td class="rtcol">all_three</td><td>1990</td><td>2026</td></tr>
@@ -209,7 +218,7 @@ $(document).ready(function() {
     table.column(colIdx).data().each(function (d) { var t = strip(d); if (t) seen[t] = 1; });
     Object.keys(seen).sort().forEach(function (v) { $(sel).append('<option value="' + v + '">' + v + '</option>'); });
   }
-  $('#ctryFilterWrap').css('display','inline-flex').insertAfter($('#top100tbl').closest('.dt-container').find('div.dt-length').first());
+  $('#fltCountry').on('click', function (e) { e.stopPropagation(); });
   fill(3, '#fltCountry');
   $.fn.dataTable.ext.search.push(function (settings, data) {
     if (settings.nTable.id !== 'top100tbl') return true;
