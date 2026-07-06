@@ -273,3 +273,9 @@ details.table-details .callout { margin-top: 0; }
   font-style: italic;
 }
 
+/* YSP (years since PhD) is the visible last column on the Top 100 table
+   (Steve 2026-07-06). It is a numeric column: DataTables auto-classes it
+   dt-type-numeric, which right-aligns it in line with the other numeric
+   columns. The ysp-col class is retained on the th and every td for possible
+   future styling, but it no longer hides the column. */
+
