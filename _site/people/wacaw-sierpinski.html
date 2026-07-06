@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wacław Sierpiński - Who&#x27;s Who in Goldbach Research</title>
+<link rel="canonical" href="https://wwigb.org/people/wacaw-sierpinski">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<meta property="og:title" content="Wacław Sierpiński - Who&#x27;s Who in Goldbach Research">
+<meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wwigb.org/people/wacaw-sierpinski">
+<meta property="og:site_name" content="Who&#x27;s Who in Goldbach Research">
+<meta name="twitter:card" content="summary">
+<meta name="description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
+<style id="site-search-css">
+.nav-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:0.6rem 1.2rem;margin-top:0.6rem;}
+.nav-row nav{margin-top:0;}
+.sister-bar .site-search{margin-left:auto;display:flex;gap:0.3rem;align-items:center;font-family:Arial,Helvetica,sans-serif;}
+.site-search-input{font-family:Arial,Helvetica,sans-serif;font-size:13.3333px;line-height:normal;min-height:0;padding:5px;border:1px solid #aaa;border-radius:3px;width:189px;color:#222;background:#fff;box-sizing:border-box;}
+.site-search-input::-webkit-search-decoration,.site-search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.site-search-input:focus{outline:2px solid #888;outline-offset:0;}
+.site-search-btn{font-family:Arial,Helvetica,sans-serif;font-size:13.3333px;line-height:normal;padding:5px 6px;border:1px solid #888;border-radius:3px;background:#f3f3f3;color:#222;cursor:pointer;box-sizing:border-box;}
+.site-search-btn:hover{background:#e6e6e6;}
+.search-results{margin-top:1rem;}
+.search-result{margin:0 0 1.1rem 0;padding-bottom:0.8rem;border-bottom:1px solid #e2e2e2;}
+.search-result .sr-name{font-weight:700;font-size:1.05rem;}
+.search-result .sr-apps{margin:0.35rem 0 0 0;padding:0;list-style:none;}
+.search-result .sr-apps li{display:block;margin:0.2rem 0 0 0;}
+/* Top 100: tighten the DataTables sort arrow and align numeric cells under it
+   (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
+   gap, and give numeric headers and cells the same right padding so the numbers
+   line up directly beneath the indicator instead of overshooting it. */
+#top100tbl thead th span.dt-column-order,#institutions thead th span.dt-column-order{right:3px;}
+/* Breathing room between header text and the sort indicator (Steve
+   2026-07-04): every header cell reserves 24px on the right, the arrow sits
+   at right:3px, so text never touches the indicator. Data cells keep their
+   own tighter padding below. */
+#top100tbl thead th,#institutions thead th{padding-right:24px;}
+/* Ctry in-header filter (Steve 2026-07-04 final): tight cell padding, and
+   the select carries DataTables' own dt-input class so its height exactly
+   matches the search box and the per-page selector above the table.
+   Weight rules: the closed box shows BOLD "Ctry" (matching the other column
+   headers) while no country is chosen (.ctry-all, toggled on change), and
+   regular weight once a country is selected; in the open list the "Ctry"
+   option is bold, the country options regular. */
+#top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+/* subtle in-header nudge, e.g. "(hover rows for details)" (Steve 2026-07-05) */
+#institutions thead th .hdr-hint{font-weight:400;font-size:0.85em;color:#666;white-space:nowrap;}
+#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
+#top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
+#top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
+#top100tbl thead th.ctry-th select option[value=""],#institutions thead th.ctry-th select option[value=""]{font-weight:700;}
+/* Institutions: only 6 columns, so the browser's proportional surplus
+   sharing fattened the # and numeric columns and pushed the names right
+   (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
+   Institution column absorbs the surplus, matching the Top 100 look where
+   Name/Institution dominate the width. */
+#institutions th.rtcol,#institutions td.rtcol{width:1px;}
+/* Tight right-aligned columns: the numeric columns (auto-classed dt-type-numeric
+   by DataTables) plus Ctry and Source (server-tagged .rtcol). Each shrinks to its
+   content (width:1px + nowrap) so the table's leftover width flows into Name and
+   Institution, and each is right-aligned. Padding is 4px both sides (header keeps
+   16px on the right for the sort arrow) so the tightened columns are not cramped
+   against each other (Steve 2026-06-30). */
+#top100tbl th.dt-type-numeric,#top100tbl th.rtcol,#institutions th.dt-type-numeric,#institutions th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+#top100tbl td.dt-type-numeric,#top100tbl td.rtcol,#institutions td.dt-type-numeric,#institutions td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+/* No width:1px shrink-pin here: with autoWidth:false the browser's native table
+   layout gives each column its true content-width minimum (collapses when the
+   table is narrow) and shares any surplus proportionally across all columns when
+   the table is wide. nowrap only, so short values stay on one line. (Steve test
+   2026-06-30.) */
+#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
+.col-glossary{margin:0.2rem 0 0.7rem 0;}
+.col-glossary li{margin:0.12rem 0;}
+.search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
+.search-empty{color:#555;margin-top:1rem;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand"><a href="../">Who&#x27;s Who in Goldbach Research</a></div>
+  <div class="nav-row">
+  <nav><a href="../" class="">Home</a>
+<a href="../top100" class="">Top 100</a>
+<a href="../location" class="">Locations</a>
+<a href="../institutions" class="">Institutions</a>
+<a href="../in-memoriam" class="">In Memoriam</a>
+<a href="../genealogy" class="">Genealogy</a>
+<a href="../network" class="">Network</a>
+<a href="../reading-list" class="">Reading List</a>
+<a href="../overlap" class="">Overlap</a>
+<a href="../about" class="">About</a></nav>
+  </div>
+</header>
+<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/people/wacaw-sierpinski">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigb</span><a class="sister-link" href="https://wwileg.org/people/wacaw-sierpinski">wwileg</a><a class="sister-link" href="https://wwin2p1.org/people/wacaw-sierpinski">wwin2p1</a><a class="sister-link" href="https://wwitp.org/people/wacaw-sierpinski">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/people/wacaw-sierpinski">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/people/wacaw-sierpinski">wwirh</a><form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search names across sites" aria-label="Search names across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
+<main>
+<p class="subtitle"><a href="../in-memoriam">&larr; Back to In Memoriam</a></p>
+<h1>Wacław Sierpiński</h1>
+<p class="subtitle">University of Warsaw (PL) &middot; d. 1969</p>
+<p>A researcher from the ranked pool of this directory who has since passed away. The Top 100 and the regional pages list living researchers only, so this profile preserves the record of their place in the field.</p>
+<table class="profile-table">
+<tbody>
+<tr><td>Homepage</td><td>Not available</td></tr>
+<tr><td>Google Scholar</td><td><a href="https://scholar.google.com/scholar?q=Wac%C5%82aw+Sierpi%C5%84ski+number+theory">Search results</a></td></tr>
+<tr><td>Institution</td><td>University of Warsaw</td></tr>
+<tr><td>Country</td><td>PL</td></tr>
+<tr><td>Active years</td><td>Not available</td></tr>
+<tr><td>h-index</td><td>-</td></tr>
+<tr><td>Status</td><td>In Memoriam (d. 1969)</td></tr>
+<tr><td>Mathematics Genealogy</td><td><a href="https://www.mathgenealogy.org/id.php?id=91456">View advisor-student lineage</a></td></tr>
+<tr><td>Source ranks</td><td>arXiv: [36] (interpolated) | OpenAlex: [55] (interpolated) | zbMATH: 84</td></tr>
+<tr><td>arXiv</td><td><a href="https://arxiv.org/search/?searchtype=author&amp;query=Wac%C5%82aw+Sierpi%C5%84ski">Author search</a></td></tr>
+<tr><td>OpenAlex</td><td><a href="https://openalex.org/authors?search=Wac%C5%82aw+Sierpi%C5%84ski">Search results</a></td></tr>
+<tr><td>zbMATH</td><td><a href="https://zbmath.org/authors/?q=Wac%C5%82aw+Sierpi%C5%84ski">Search results</a></td></tr>
+<tr><td>Also ranked in</td><td>Only ranked on this site</td></tr>
+</tbody>
+</table>
+
+</main>
+<footer>
+<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigb.org">admin@wwigb.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Last built July 2026.</p>
+</footer>
+</body>
+</html>
