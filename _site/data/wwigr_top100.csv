@@ -64,7 +64,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 63,Zhi-Wei Sun,Zhi-Wei Sun,Nanjing University,CN,137,,25,3,4,27,,31,openalex,2012,2014,,,0000-0002-0130-9806,Q896489
 64,Stephan Ramon Garcia,Stephan Ramon Garcia,Pomona College,US,44,,,4,8,29,,27,openalex,2011,2024,1974,Donald Sarason,0000-0001-8971-5448,Q85851977
 65,H. J. J. te Riele,H. J. J. te Riele,Centrum Wiskunde & Informatica,NL,,,57,,,,,,,,,,,,
-66,Antal Balog,Antal Balog,Baltazar Zaprešić University of Applied Sciences,HR,,,58,1,7,156,,18,openalex,1985,2013,,,,
+66,Antal Balog,Antal Balog,Alfréd Rényi Institute of Mathematics,HU,,,58,1,7,156,,18,openalex,1985,2013,,,,
 67,Shuntaro Yamagishi,Shuntaro Yamagishi,Institute of Science and Technology Austria,AT,46,,,7,8,37,,5,openalex,2018,2025,,,0000-0002-2953-1468,
 68,Michael Th. Rassias,Michael Th. Rassias,Hellenic Military Academy,GR,37,144,66,4,11,20,,24,openalex,2016,2025,,,0000-0001-8395-8748,Q50104145
 69,Jesse Thorner,Jesse Thorner,University of Illinois Urbana-Champaign,US,34,198,,6,9,46,,9,openalex,2013,2025,,,,
@@ -86,7 +86,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 85,Ben Kane,Ben Kane,University of Hong Kong,HK,53,146,,4,10,9,,12,openalex,2014,2026,,,,
 86,Vivian Kuperberg,Vivian Kuperberg,Université de Montréal,CA,59,,,5,8,8,,3,openalex,2020,2025,,,0000-0002-6713-0809,
 87,Olivier Ramaré,Olivier Ramare,Château Gombert,FR,58,,72,4,8,35,,15,openalex,1999,2025,1965,Jean-Marc Deshouillers,0000-0002-8765-0465,Q3292746
-88,Imre Kátai,Imre Katai,Université Laval,CA,,,73,,1,0,,15,openalex,2007,2021,,,,Q1123718
+88,Imre Kátai,Imre Katai,Eötvös Loránd University,HU,,,73,,1,0,,15,openalex,2007,2021,,,,Q1123718
 89,Jordan Schettler,Jordan Schettler,San Jose State University,US,61,,,3,3,3,,3,openalex,2020,2023,,,0000-0001-5129-5265,
 90,Ciprian Demeter,Ciprian Demeter,Indiana University Bloomington,US,62,,,5,3,38,,15,openalex,2016,2017,1976,Joseph Max Rosenblatt,,Q29652517
 91,Gove Effinger,Gove Effinger,Skidmore College,US,,,74,,7,132,,8,openalex,2002,2008,,,,

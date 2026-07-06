@@ -118,8 +118,8 @@
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 36,
-      "drawn_count": 36,
+      "stated_count": 35,
+      "drawn_count": 35,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -149,7 +149,6 @@
         "Kiseok Yeon",
         "Greg Martin",
         "Vivian Kuperberg",
-        "Imre Kátai",
         "Jordan Schettler",
         "Ciprian Demeter",
         "Gove Effinger",
@@ -163,8 +162,8 @@
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 39,
-      "drawn_count": 39,
+      "stated_count": 40,
+      "drawn_count": 40,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -204,6 +203,7 @@
         "J. P. Keating",
         "Imre Z. Ruzsa",
         "Olivier Ramaré",
+        "Imre Kátai",
         "Emmanuel Kowalski",
         "A. Peretti"
       ],
@@ -252,9 +252,9 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 78,
+    "legacy_gb_cache": 80,
     "verified:2026-06-15(Claude,web; main campus)": 3,
-    "openalex": 15,
+    "openalex": 13,
     "manual:wikipedia-coords 2026-06-19": 1,
     "verified:2026-06-20(Claude,web)": 1
   }
