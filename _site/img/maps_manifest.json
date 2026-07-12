@@ -6,8 +6,8 @@
   "n_unplaced_no_institution": 0,
   "unplaced": [
     "#45 Kevin Hughes [-]",
-    "#75 Weiping Li [-]",
-    "#81 Melvyn B. Nathanson [Lehman College, CUNY]"
+    "#74 Weiping Li [-]",
+    "#80 Melvyn B. Nathanson [Lehman College, CUNY]"
   ],
   "maps": [
     {
@@ -88,7 +88,6 @@
         "Apoorva Panidapu",
         "Sary Drappeau",
         "Nicolas Robles",
-        "Marek Wolf",
         "Brian Cook",
         "Zhizhong Huang",
         "Henryk Iwaniec",
@@ -112,7 +111,8 @@
         "A. Peretti",
         "Ayla Gafni",
         "Lillian B. Pierce",
-        "K. Soundararajan"
+        "K. Soundararajan",
+        "Roger J. Cook"
       ],
       "unplaced_no_geocode_in_region": 3
     },
@@ -161,8 +161,8 @@
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 40,
-      "drawn_count": 40,
+      "stated_count": 39,
+      "drawn_count": 39,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -197,7 +197,6 @@
         "Antal Balog",
         "Michael Th. Rassias",
         "Sary Drappeau",
-        "Marek Wolf",
         "J. P. Keating",
         "Imre Z. Ruzsa",
         "Vivian Kuperberg",
@@ -210,8 +209,8 @@
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 21,
-      "drawn_count": 21,
+      "stated_count": 22,
+      "drawn_count": 22,
       "match": true,
       "names": [
         "Jinjiang Li",
@@ -234,7 +233,8 @@
         "Zhizhong Huang",
         "Ping Xi",
         "Ben Kane",
-        "M. I. Tulyaganova"
+        "M. I. Tulyaganova",
+        "Roger J. Cook"
       ],
       "unplaced_no_geocode_in_region": 1
     },
