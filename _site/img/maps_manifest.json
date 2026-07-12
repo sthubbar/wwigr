@@ -1,18 +1,19 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 98,
-  "n_unplaced_no_geocode": 2,
+  "n_placed": 97,
+  "n_unplaced_no_geocode": 3,
   "n_unplaced_no_institution": 0,
   "unplaced": [
+    "#45 Kevin Hughes [-]",
     "#75 Weiping Li [-]",
     "#81 Melvyn B. Nathanson [Lehman College, CUNY]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 98,
-      "drawn_count": 98,
+      "stated_count": 97,
+      "drawn_count": 97,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -59,7 +60,6 @@
         "Fei Xue",
         "Jan-Christoph Schlage-Puchta",
         "Hongze Li",
-        "Kevin Hughes",
         "Helmut Maier",
         "Jean‐Marc Deshouillers",
         "Karin Halupczok",
@@ -114,7 +114,7 @@
         "Lillian B. Pierce",
         "K. Soundararajan"
       ],
-      "unplaced_no_geocode_in_region": 2
+      "unplaced_no_geocode_in_region": 3
     },
     {
       "file": "11_top100_north_america.png",
@@ -133,8 +133,8 @@
         "Kevin Ford",
         "Hugh Lowell Montgomery",
         "Daniel A. Goldston",
-        "Fei Xue",
         "Cameron L. Stewart",
+        "Jiseong Kim",
         "John B. Friedlander",
         "H. J. Weber",
         "Runbo Li",
@@ -161,8 +161,8 @@
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 41,
-      "drawn_count": 41,
+      "stated_count": 40,
+      "drawn_count": 40,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -185,7 +185,6 @@
         "Akshat Mudgal",
         "Kathrin Bringmann",
         "Jan-Christoph Schlage-Puchta",
-        "Kevin Hughes",
         "Helmut Maier",
         "Jean‐Marc Deshouillers",
         "Karin Halupczok",
@@ -207,7 +206,7 @@
         "Emmanuel Kowalski",
         "A. Peretti"
       ],
-      "unplaced_no_geocode_in_region": 0
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "13_top100_asia.png",
@@ -226,9 +225,9 @@
         "Yong-Gao Chen",
         "Matt Visser",
         "Ade Irma Suriajaya",
+        "Fei Xue",
         "Hongze Li",
         "Kai-Man Tsang",
-        "Jiseong Kim",
         "Akio Fujii",
         "Xiumin Ren",
         "Zhi-Wei Sun",
@@ -252,10 +251,10 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 80,
+    "legacy_gb_cache": 81,
     "verified:2026-06-15(Claude,web; main campus)": 3,
-    "openalex": 13,
-    "manual:wikipedia-coords 2026-06-19": 1,
-    "verified:2026-06-20(Claude,web)": 1
+    "openalex": 10,
+    "verified:2026-06-20(Claude,web)": 2,
+    "manual:wikipedia-coords 2026-06-19": 1
   }
 }

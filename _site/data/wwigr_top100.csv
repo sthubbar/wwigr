@@ -18,7 +18,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 17,Jared Duker Lichtman,Jared Duker Lichtman,Stanford University,US,8,83,,13,13,21,,4,openalex,2018,2025,1996,Joni Teräväinen; James Maynard,0000-0002-8303-5051,Q123240478
 18,Kaisa Matomäki,Kaisa Matomaki,University of Turku,FI,10,55,54,10,18,146,,16,openalex,2007,2025,1985,Glyn Harman,,Q27061623
 19,Glyn Harman,Glyn Harman,Royal Holloway University of London,GB,,,17,,9,112,,19,openalex,1981,2019,,,,Q5572848
-20,Tao Zhan,Tao Zhan,Southwest University,CN,,,18,,10,147,,17,openalex,1993,2006,,,,Q8070120
+20,Tao Zhan,Tao Zhan,Shandong University,CN,,,18,,10,147,,17,openalex,1993,2006,,,,Q8070120
 21,Alexander P. Mangerel,Alexander P. Mangerel,Durham University,GB,12,76,,10,14,36,,6,openalex,2017,2025,,,0000-0003-4055-4078,
 22,William D. Banks,William D. Banks,University of Missouri,US,14,66,,11,18,94,,21,openalex,2002,2025,,,0000-0002-3595-6331,Q102194638
 23,"Pan, Chengdong","Pan, Chengdong",Shandong University,CN,,,21,,,,,,,,,,,,
@@ -40,17 +40,17 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 39,Daniel A. Goldston,Daniel A. Goldston,San Jose State University,US,,44,,,24,168,,21,openalex,1990,2022,,,,
 40,Akshat Mudgal,Akshat Mudgal,University of Warwick,GB,27,,,4,5,8,,3,openalex,2020,2024,,,,
 41,Kathrin Bringmann,Kathrin Bringmann,University of Cologne,DE,,45,,,21,143,,28,openalex,2011,2025,,,,
-42,Fei Xue,Fei Xue,Université du Québec à Montréal,CA,30,95,,4,12,12,,6,openalex,2020,2024,,,0000-0001-5762-7830,
+42,Fei Xue,Fei Xue,China University of Mining and Technology (Beijing),CN,30,95,,4,12,12,,6,openalex,2020,2024,,,0000-0001-5762-7830,
 43,Jan-Christoph Schlage-Puchta,Jan-Christoph Schlage-Puchta,University of Rostock,DE,,,39,,,,,11,openalex,2008,2019,1973,Dieter Wolke,,Q102218182
 44,Hongze Li,Hongze Li,Shanghai Jiao Tong University,CN,64,,27,5,,,,,,2007,2019,,,0000-0002-3985-6805,
-45,Kevin Hughes,Kevin Hughes,Edinburgh Napier University,GB,29,,,5,9,62,,8,openalex,2015,2022,,,0000-0002-8621-8259,Q92730097
+45,Kevin Hughes,Kevin Hughes,-,GB,29,,,5,9,62,,8,openalex,2015,2022,,,0000-0002-8621-8259,Q92730097
 46,Helmut Maier,Helmut Maier,Universität Ulm,DE,36,,36,4,9,62,,18,openalex,1981,2023,1953,J. Ian (Jonathan) Richards,,Q5709706
-47,Jean‐Marc Deshouillers,JeanMarc Deshouillers,Centre National de la Recherche Scientifique,FR,,,41,,7,111,,16,openalex,1990,2020,,,,Q1323950
+47,Jean‐Marc Deshouillers,JeanMarc Deshouillers,Université de Bordeaux,FR,,,41,,7,111,,16,openalex,1990,2020,,,,Q1323950
 48,Karin Halupczok,Karin Halupczok,Heinrich Heine University Düsseldorf,DE,18,193,,9,11,27,,5,openalex,2005,2021,,,,
 49,Kai-Man Tsang,Kai-Man Tsang,University of Hong Kong,HK,,,42,,3,15,,8,openalex,1982,2020,,,,
 50,Doychin Tolev,Doychin Tolev,"Sofia University ""St. Kliment Ohridski""",BG,35,92,48,7,21,133,,10,openalex,1997,2017,,,,
 51,Cameron L. Stewart,Cameron L. Stewart,University of Waterloo,CA,,,44,,,,,20,openalex,1991,2001,,,,
-52,Jiseong Kim,Jiseong Kim,Sogang University,KR,32,,,7,,,,20,openalex,2020,2025,,,,
+52,Jiseong Kim,Jiseong Kim,University of Mississippi,US,32,,,7,,,,20,openalex,2020,2025,,,,
 53,Ofir Gorodetsky,Ofir Gorodetsky,Technion - Israel Institute of Technology,IL,33,,,5,8,8,,5,openalex,2018,2024,,,0000-0002-1435-9650,
 54,H. A. Helfgott,H. A. Helfgott,Université Paris Cité,FR,38,,49,6,10,223,,19,openalex,2012,2021,1977,Henryk Iwaniec; Peter Sarnak,0000-0002-5686-804X,Q5653809
 55,Akio Fujii,Akio Fujii,Rikkyo University,JP,,,47,,1,7,,,,1968,2018,,,,
