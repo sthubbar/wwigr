@@ -1,19 +1,20 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 97,
-  "n_unplaced_no_geocode": 3,
+  "n_placed": 96,
+  "n_unplaced_no_geocode": 4,
   "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#45 Kevin Hughes [-]",
-    "#74 Weiping Li [-]",
-    "#80 Melvyn B. Nathanson [Lehman College, CUNY]"
+    "#44 Kevin Hughes [-]",
+    "#73 Weiping Li [-]",
+    "#79 Melvyn B. Nathanson [Lehman College, CUNY]",
+    "#100 Stephen Kwok-Kwong Choi [Simon Fraser University]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 97,
-      "drawn_count": 97,
+      "stated_count": 96,
+      "drawn_count": 96,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -38,7 +39,6 @@
         "Tao Zhan",
         "Alexander P. Mangerel",
         "William D. Banks",
-        "Pan, Chengdong",
         "András Sárközy",
         "Angel Kumchev",
         "Will Sawin",
@@ -114,7 +114,7 @@
         "K. Soundararajan",
         "Roger J. Cook"
       ],
-      "unplaced_no_geocode_in_region": 3
+      "unplaced_no_geocode_in_region": 4
     },
     {
       "file": "11_top100_north_america.png",
@@ -157,7 +157,7 @@
         "Lillian B. Pierce",
         "K. Soundararajan"
       ],
-      "unplaced_no_geocode_in_region": 1
+      "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "12_top100_europe.png",
@@ -209,8 +209,8 @@
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 22,
-      "drawn_count": 22,
+      "stated_count": 21,
+      "drawn_count": 21,
       "match": true,
       "names": [
         "Jinjiang Li",
@@ -220,7 +220,6 @@
         "Igor E. Shparlinski",
         "Min Zhang",
         "Tao Zhan",
-        "Pan, Chengdong",
         "Yong-Gao Chen",
         "Matt Visser",
         "Ade Irma Suriajaya",
@@ -251,7 +250,7 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 81,
+    "legacy_gb_cache": 80,
     "verified:2026-06-15(Claude,web; main campus)": 3,
     "openalex": 10,
     "verified:2026-06-20(Claude,web)": 2,
