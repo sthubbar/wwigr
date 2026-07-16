@@ -304,10 +304,18 @@ $(document).ready(function() {
   }
   var iWant = iGetParam('inst');
   if (iWant) {
-    // Exact match on the Institution column (column 1), anchored so only the
-    // one row survives even when other names share words like "University".
-    var iRe = '^' + iWant.replace(/[.*+?^${}()|[\]\]/g, '\$&') + '$';
-    itable.column(1).search(iRe, true, false).draw();
+    // Exact match on the Institution column (column 1) via a custom search
+    // filter, so only the one row survives even when other names share words
+    // like "University". istrip (defined above) strips the cell's link markup
+    // and decodes entities, so the comparison is on the plain institution name.
+    // A plain string compare avoids any regex-escaping of names that contain
+    // periods, parentheses, or apostrophes.
+    var iTarget = iWant.trim();
+    $.fn.dataTable.ext.search.push(function (settings, data) {
+      if (settings.nTable.id !== 'institutions') { return true; }
+      return istrip(data[1]) === iTarget;
+    });
+    itable.draw();
     var iNodes = itable.rows({ filter: 'applied' }).nodes();
     if (iNodes && iNodes.length) {
       $(iNodes).addClass('inst-hl');
