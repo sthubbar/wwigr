@@ -30,6 +30,10 @@
 .search-result .sr-name{font-weight:700;font-size:1.05rem;}
 .search-result .sr-apps{margin:0.35rem 0 0 0;padding:0;list-style:none;}
 .search-result .sr-apps li{display:block;margin:0.2rem 0 0 0;}
+.search-results h2.sr-group{font-size:1rem;text-transform:uppercase;letter-spacing:0.04em;color:#555;margin:1.4rem 0 0.6rem 0;padding-bottom:0.2rem;border-bottom:2px solid #ddd;}
+.search-results h2.sr-group:first-child{margin-top:0.4rem;}
+.search-result.sr-inst .sr-inst-ranks{margin:0.3rem 0 0 0;}
+.search-result.sr-inst .sr-inst-ranks a{white-space:nowrap;}
 /* Top 100: tighten the DataTables sort arrow and align numeric cells under it
    (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
    gap, and give numeric headers and cells the same right padding so the numbers
@@ -96,11 +100,11 @@
 <a href="./about" class="">About</a></nav>
   </div>
 </header>
-<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/search">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigb</span><a class="sister-link" href="https://wwileg.org/search">wwileg</a><a class="sister-link" href="https://wwin2p1.org/search">wwin2p1</a><a class="sister-link" href="https://wwitp.org/search">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/search">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/search">wwirh</a><form class="site-search" action="search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search names across sites" aria-label="Search names across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
+<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/search">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigb</span><a class="sister-link" href="https://wwileg.org/search">wwileg</a><a class="sister-link" href="https://wwin2p1.org/search">wwin2p1</a><a class="sister-link" href="https://wwitp.org/search">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/search">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/search">wwirh</a><form class="site-search" action="search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search people and institutions" aria-label="Search people and institutions across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
 <main>
 
 <h1>Search</h1>
-<p class="subtitle">Find a researcher across all seven Who's Who sites.</p>
+<p class="subtitle">Find a researcher or an institution across all seven Who's Who sites.</p>
 <div id="search-status" class="search-count" aria-live="polite"></div>
 <div id="search-results" class="search-results"></div>
 <noscript><p>Search needs JavaScript. Browse the <a href="top100">Top 100</a> instead.</p></noscript>
@@ -141,33 +145,65 @@
     var out = document.getElementById("search-results");
     var tokens = fold(q).split(/\s+/).filter(function (t) { return t.length > 0; });
     if (tokens.length === 0) {
-      status.textContent = "Type a name in the box above and press Search.";
+      status.textContent = "Type a name or institution in the box above and press Search.";
       out.innerHTML = "";
       return;
     }
-    var hits = [];
+    // Results are grouped by type (INSTITUTION-SEARCH 2026-07-16): people keep
+    // the original per-appearance list; institutions show their per-site
+    // Institutions-tab ranks inline as links (for example "wwigb #5, wwirh #12").
+    var people = [];
+    var insts = [];
     for (var i = 0; i < entries.length; i++) {
-      if (matches(entries[i].name, tokens)) { hits.push(entries[i]); }
+      if (!matches(entries[i].name, tokens)) { continue; }
+      if (entries[i].type === "institution") { insts.push(entries[i]); }
+      else { people.push(entries[i]); }
     }
-    if (hits.length === 0) {
-      status.textContent = "No researcher found for \"" + q + "\".";
-      out.innerHTML = "<p class=\"search-empty\">Try fewer letters, or a surname only.</p>";
+    if (people.length === 0 && insts.length === 0) {
+      status.textContent = "Nothing found for \"" + q + "\".";
+      out.innerHTML = "<p class=\"search-empty\">Try fewer letters, a surname only, or an institution name.</p>";
       return;
     }
-    var noun = hits.length === 1 ? "person" : "people";
-    status.textContent = hits.length + " " + noun + " found for \"" + q + "\".";
+    var parts = [];
+    if (people.length) {
+      parts.push(people.length + " " + (people.length === 1 ? "person" : "people"));
+    }
+    if (insts.length) {
+      parts.push(insts.length + " " + (insts.length === 1 ? "institution" : "institutions"));
+    }
+    status.textContent = parts.join(" and ") + " found for \"" + q + "\".";
     var html = "";
-    for (var h = 0; h < hits.length; h++) {
-      var e = hits[h];
-      html += "<div class=\"search-result\">";
-      html += "<div class=\"sr-name\">" + esc(e.name) + "</div>";
-      html += "<ul class=\"sr-apps\">";
-      var apps = e.appearances || [];
-      for (var a = 0; a < apps.length; a++) {
-        var ap = apps[a];
-        html += "<li><a href=\"" + esc(ap.url) + "\">" + esc(ap.label) + "</a></li>";
+    if (people.length) {
+      html += "<h2 class=\"sr-group\">People</h2>";
+      for (var h = 0; h < people.length; h++) {
+        var e = people[h];
+        html += "<div class=\"search-result\">";
+        html += "<div class=\"sr-name\">" + esc(e.name) + "</div>";
+        html += "<ul class=\"sr-apps\">";
+        var apps = e.appearances || [];
+        for (var a = 0; a < apps.length; a++) {
+          var ap = apps[a];
+          html += "<li><a href=\"" + esc(ap.url) + "\">" + esc(ap.label) + "</a></li>";
+        }
+        html += "</ul></div>";
       }
-      html += "</ul></div>";
+    }
+    if (insts.length) {
+      html += "<h2 class=\"sr-group\">Institutions</h2>";
+      for (var g = 0; g < insts.length; g++) {
+        var ie = insts[g];
+        html += "<div class=\"search-result sr-inst\">";
+        html += "<div class=\"sr-name\">" + esc(ie.name) + "</div>";
+        html += "<div class=\"sr-inst-ranks\">";
+        var iapps = ie.appearances || [];
+        var links = [];
+        for (var b = 0; b < iapps.length; b++) {
+          var ia = iapps[b];
+          links.push("<a href=\"" + esc(ia.url) + "\">" + esc(ia.label) + "</a>");
+        }
+        html += links.join(", ");
+        html += "</div></div>";
+      }
     }
     out.innerHTML = html;
   }
