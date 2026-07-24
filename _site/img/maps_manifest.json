@@ -1,21 +1,20 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 95,
-  "n_unplaced_no_geocode": 5,
+  "n_placed": 96,
+  "n_unplaced_no_geocode": 4,
   "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#37 Kevin Hughes [-]",
-    "#61 Weiping Li [-]",
-    "#66 Melvyn B. Nathanson [Lehman College, CUNY]",
-    "#81 Stephen Kwok-Kwong Choi [Simon Fraser University]",
-    "#86 N. P. Romanov [National University of Uzbekistan]"
+    "#37 Kevin Hughes [Independent]",
+    "#65 Melvyn B. Nathanson [Lehman College, CUNY]",
+    "#80 Stephen Kwok-Kwong Choi [Simon Fraser University]",
+    "#85 N. P. Romanov [National University of Uzbekistan]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 95,
-      "drawn_count": 95,
+      "stated_count": 96,
+      "drawn_count": 96,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -29,8 +28,8 @@
         "Stephan Baier",
         "Igor E. Shparlinski",
         "V. N. Chubarikov",
-        "Terence Tao",
         "Min Zhang",
+        "Terence Tao",
         "Alessandro Zaccagnini",
         "Alessandro Languasco",
         "Xuancheng Shao",
@@ -43,9 +42,9 @@
         "András Sárközy",
         "Angel Kumchev",
         "Lasse Grimmelt",
+        "Will Sawin",
         "Jori Merikoski",
         "Gautami Bhowmik",
-        "Will Sawin",
         "Andrew Granville",
         "Kevin Ford",
         "S. I. Dimitrov",
@@ -74,9 +73,9 @@
         "Michael Th. Rassias",
         "H. J. J. te Riele",
         "Antal Balog",
+        "Nicolas Robles",
         "Roger C. Baker",
         "Brian Cook",
-        "Nicolas Robles",
         "Henryk Iwaniec",
         "Greg Martin",
         "Jan-Christoph Schlage-Puchta",
@@ -112,14 +111,15 @@
         "Yuta Suzuki",
         "Paul Pollack",
         "Ayyadurai Sankaranarayanan",
-        "Etienne Fouvry"
+        "Etienne Fouvry",
+        "C. J. Mozzochi"
       ],
-      "unplaced_no_geocode_in_region": 5
+      "unplaced_no_geocode_in_region": 4
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 34,
-      "drawn_count": 34,
+      "stated_count": 35,
+      "drawn_count": 35,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -138,9 +138,9 @@
         "Cameron L. Stewart",
         "Runbo Li",
         "John B. Friedlander",
+        "Nicolas Robles",
         "Roger C. Baker",
         "Brian Cook",
-        "Nicolas Robles",
         "Henryk Iwaniec",
         "Greg Martin",
         "Jordan Schettler",
@@ -155,7 +155,8 @@
         "M. Ram Murty",
         "James Leng",
         "Peter D. T. A. Elliott",
-        "Paul Pollack"
+        "Paul Pollack",
+        "C. J. Mozzochi"
       ],
       "unplaced_no_geocode_in_region": 2
     },
@@ -234,7 +235,7 @@
         "Yuta Suzuki",
         "Ayyadurai Sankaranarayanan"
       ],
-      "unplaced_no_geocode_in_region": 2
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "14_top100_other.png",
@@ -249,7 +250,7 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 76,
+    "legacy_gb_cache": 77,
     "verified:2026-06-15(Claude,web; main campus)": 3,
     "openalex": 10,
     "verified:2026-06-20(Claude,web)": 5,
