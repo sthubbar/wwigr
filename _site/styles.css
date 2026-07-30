@@ -274,8 +274,13 @@ details.table-details .callout { margin-top: 0; }
 }
 
 /* YSP (years since PhD) is the visible last column on the Top 100 table
-   (Steve 2026-07-06). It is a numeric column: DataTables auto-classes it
-   dt-type-numeric, which right-aligns it in line with the other numeric
-   columns. The ysp-col class is retained on the th and every td for possible
-   future styling, but it no longer hides the column. */
+   (Steve 2026-07-06). It is a numeric column. Right alignment is NOT inherited
+   from DataTables' auto-detected dt-type-numeric class: a column that holds a
+   dash for an unknown PhD year is never auto-detected as numeric, and the
+   explicit ysp-abs sort type suppresses the detection anyway. The engine
+   therefore server-tags every numeric column (aX / OA / zM or the member-rank
+   columns, plus h and YSP) with the num-col class on the th and on every td,
+   and the per-page stylesheet in build_site.py right-aligns .num-col
+   (Steve 2026-07-30). The ysp-col class is retained on the th and every td for
+   possible future styling, but it no longer hides the column. */
 
