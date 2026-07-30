@@ -9,6 +9,34 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script id="wwi-sort-types">
+/* DASH-ABSOLUTE SORT TYPES, REGISTERED SITE-WIDE (Steve 2026-07-30).
+   These two order types were previously registered inside the Top 100 page's
+   own ready() block, so no other page could use them. Every table that now
+   exposes a sortable numeric column holding an honest dash (In Memoriam Rank,
+   Genealogy PhD year, the source-rank columns) needs them, so they are
+   registered once here, immediately after DataTables loads and before any
+   page script runs. Semantics are unchanged: -asc maps a dash to +Infinity and
+   -desc maps it to -Infinity, so a dash sinks to the BOTTOM in BOTH sort
+   directions. This is the existing mechanism, not a new one. */
+(function () {
+  if (!window.jQuery || !jQuery.fn.dataTable) return;
+  function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
+  var ext = jQuery.fn.dataTable.ext.type.order;
+  ext['dash-abs-asc'] = ext['ysp-abs-asc'] = function (a, b) {
+    var na = (a === '-') ? Infinity : num(a);
+    var nb = (b === '-') ? Infinity : num(b);
+    if (na === null) na = Infinity; if (nb === null) nb = Infinity;
+    return na - nb;
+  };
+  ext['dash-abs-desc'] = ext['ysp-abs-desc'] = function (a, b) {
+    var na = (a === '-') ? -Infinity : num(a);
+    var nb = (b === '-') ? -Infinity : num(b);
+    if (na === null) na = -Infinity; if (nb === null) nb = -Infinity;
+    return nb - na;
+  };
+})();
+</script>
 <meta property="og:title" content="Mathematical Genealogy - Who&#x27;s Who in Goldbach Research">
 <meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 <meta property="og:type" content="website">
@@ -89,6 +117,30 @@
    the table is wide. nowrap only, so short values stay on one line. (Steve test
    2026-06-30.) */
 #top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.num-col,#top100tbl td.num-col,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.num-col,#institutions td.num-col,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
+/* TABLE-FORMAT STANDARDIZATION (Steve 2026-07-30). The four Top 100 table
+   conventions above were scoped to #top100tbl and #institutions only, so every
+   other table on the site (location / region listings, In Memoriam, Genealogy,
+   Recent papers, Most cited) rendered without them: numeric columns fell back
+   to left alignment, the sort arrow sat in a pocket of trailing whitespace, the
+   header text could touch the arrow, and the leading Rank / # column carried
+   DataTables' full left gutter. The SAME rules are therefore repeated here for
+   EVERY DataTables table on the site, matched on the shared "display" class the
+   engine puts on all of them.
+     1. sort arrow pulled to the column edge (removes the whitespace to its right)
+     2. 24px reserved on every header cell (breathing room before the arrow)
+     3. numeric / rank-like columns (.num-col, .rtcol, auto .dt-type-numeric)
+        right-aligned on BOTH the th and the td, padding-left 4px (this is what
+        removes the left gutter on a leading Rank / # column), so integers,
+        dashes and [bracketed] values all line up under the header
+     4. nowrap on those columns
+   The overlap matrix is explicitly excluded: its header cells are centred
+   site-name columns inside a drawn bracket, with their own padding, and a 24px
+   right reserve would break that centring. */
+table.display:not(.overlap-table) thead th span.dt-column-order{right:3px;}
+table.display:not(.overlap-table) thead th{padding-right:24px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) th.rtcol,table.display:not(.overlap-table) td.rtcol{white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
@@ -123,33 +175,54 @@
 
 
 <h2>Level L1</h2>
-<table class="display compact stripe" style="width:100%">
-<thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th title="Doctorate year">PhD year</th><th title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
+<table id="gentbl0" class="display compact stripe hover" style="width:100%">
+<thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th class="num-col" title="Doctorate year">PhD year</th><th class="num-col" title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th class="num-col" title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/stefan-neumann">Stefan Neumann</a></td><td><a href="https://www.uni-stuttgart.de/home/index.en.html">Universität Stuttgart</a></td><td>2006</td><td style="text-align:center">2</td><td style="text-align:center">175.0</td></tr>
-<tr><td><a href="people/olli-jarviniemi">Olli Järviniemi</a></td><td><a href="https://www.utu.fi">University of Turku</a></td><td>2023</td><td style="text-align:center">2</td><td style="text-align:center">169.0</td></tr>
-<tr><td><a href="people/mattia-cafferata">Mattia Cafferata</a></td><td><a href="https://www.unife.it">Università degli Studi di Ferrara</a></td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">157.0</td></tr>
-<tr><td><a href="people/damaris-schindler">Damaris Schindler</a></td><td><a href="https://bristol.ac.uk/">University of Bristol</a></td><td>2013</td><td style="text-align:center">2</td><td style="text-align:center">156.0</td></tr>
+<tr><td><a href="people/stefan-neumann">Stefan Neumann</a></td><td><a href="https://www.uni-stuttgart.de/home/index.en.html">Universität Stuttgart</a></td><td class="num-col" data-order="2006">2006</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="175">175</td></tr>
+<tr><td><a href="people/olli-jarviniemi">Olli Järviniemi</a></td><td><a href="https://www.utu.fi">University of Turku</a></td><td class="num-col" data-order="2023">2023</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="169">169</td></tr>
+<tr><td><a href="people/mattia-cafferata">Mattia Cafferata</a></td><td><a href="https://www.unife.it">Università degli Studi di Ferrara</a></td><td class="num-col" data-order="2019">2019</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="157">157</td></tr>
+<tr><td><a href="people/damaris-schindler">Damaris Schindler</a></td><td><a href="https://bristol.ac.uk/">University of Bristol</a></td><td class="num-col" data-order="2013">2013</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="156">156</td></tr>
 </tbody></table>
+<script>
+$(document).ready(function() {
+  $('#gentbl0').DataTable({ paging: false, info: false, lengthChange: false,
+    searching: false, order: [[4, 'desc']], autoWidth: false,
+    columnDefs: [{ targets: [2, 3, 4], type: 'dash-abs' }] });
+});
+</script>
 
 <h2>Level L2</h2>
-<table class="display compact stripe" style="width:100%">
-<thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th title="Doctorate year">PhD year</th><th title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
+<table id="gentbl1" class="display compact stripe hover" style="width:100%">
+<thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th class="num-col" title="Doctorate year">PhD year</th><th class="num-col" title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th class="num-col" title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/huafeng-liu">Huafeng Liu</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td>2017</td><td style="text-align:center">2</td><td style="text-align:center">155.0</td></tr>
-<tr><td><a href="people/taiyu-li">Taiyu Li</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td>2012</td><td style="text-align:center">2</td><td style="text-align:center">155.0</td></tr>
-<tr><td><a href="people/dieter-wolke">Dieter Wolke</a></td><td><a href="https://www.uni-marburg.de/">Philipps-Universität Marburg</a></td><td>1969</td><td style="text-align:center">2</td><td style="text-align:center">92.0</td></tr>
-<tr><td><a href="people/glyn-harman">Glyn Harman</a></td><td><a href="https://london.ac.uk">University of London</a></td><td>1982</td><td style="text-align:center">2</td><td style="text-align:center">81.0</td></tr>
+<tr><td><a href="people/huafeng-liu">Huafeng Liu</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2017">2017</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="155">155</td></tr>
+<tr><td><a href="people/taiyu-li">Taiyu Li</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2012">2012</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="155">155</td></tr>
+<tr><td><a href="people/dieter-wolke">Dieter Wolke</a></td><td><a href="https://www.uni-marburg.de/">Philipps-Universität Marburg</a></td><td class="num-col" data-order="1969">1969</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="92">92</td></tr>
+<tr><td><a href="people/glyn-harman">Glyn Harman</a></td><td><a href="https://london.ac.uk">University of London</a></td><td class="num-col" data-order="1982">1982</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="81">81</td></tr>
 </tbody></table>
+<script>
+$(document).ready(function() {
+  $('#gentbl1').DataTable({ paging: false, info: false, lengthChange: false,
+    searching: false, order: [[4, 'desc']], autoWidth: false,
+    columnDefs: [{ targets: [2, 3, 4], type: 'dash-abs' }] });
+});
+</script>
 
 <h2>Level L3</h2>
-<table class="display compact stripe" style="width:100%">
-<thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th title="Doctorate year">PhD year</th><th title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
+<table id="gentbl2" class="display compact stripe hover" style="width:100%">
+<thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th class="num-col" title="Doctorate year">PhD year</th><th class="num-col" title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th class="num-col" title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
 <tbody>
-<tr><td><a href="people/peter-clive-sarnak">Peter Sarnak</a></td><td><a href="https://www.stanford.edu">Stanford University</a></td><td>1980</td><td style="text-align:center">2</td><td style="text-align:center">74.0</td></tr>
-<tr><td><a href="people/sofia-lindqvist">Sofia Lindqvist</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td>2019</td><td style="text-align:center">2</td><td style="text-align:center">59.0</td></tr>
-<tr><td><a href="people/xiaoqing-li">Xian-Jin Li (李小青)</a></td><td><a href="https://www.math.rutgers.edu">Rutgers University, New Brunswick</a></td><td>2004</td><td style="text-align:center">2</td><td style="text-align:center">31.0</td></tr>
+<tr><td><a href="people/peter-clive-sarnak">Peter Sarnak</a></td><td><a href="https://www.stanford.edu">Stanford University</a></td><td class="num-col" data-order="1980">1980</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="74">74</td></tr>
+<tr><td><a href="people/sofia-lindqvist">Sofia Lindqvist</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td class="num-col" data-order="2019">2019</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="59">59</td></tr>
+<tr><td><a href="people/xiaoqing-li">Xian-Jin Li (李小青)</a></td><td><a href="https://www.math.rutgers.edu">Rutgers University, New Brunswick</a></td><td class="num-col" data-order="2004">2004</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="31">31</td></tr>
 </tbody></table>
+<script>
+$(document).ready(function() {
+  $('#gentbl2').DataTable({ paging: false, info: false, lengthChange: false,
+    searching: false, order: [[4, 'desc']], autoWidth: false,
+    columnDefs: [{ targets: [2, 3, 4], type: 'dash-abs' }] });
+});
+</script>
 
 
 <h2>Notes</h2>

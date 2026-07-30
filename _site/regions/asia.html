@@ -9,6 +9,34 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script id="wwi-sort-types">
+/* DASH-ABSOLUTE SORT TYPES, REGISTERED SITE-WIDE (Steve 2026-07-30).
+   These two order types were previously registered inside the Top 100 page's
+   own ready() block, so no other page could use them. Every table that now
+   exposes a sortable numeric column holding an honest dash (In Memoriam Rank,
+   Genealogy PhD year, the source-rank columns) needs them, so they are
+   registered once here, immediately after DataTables loads and before any
+   page script runs. Semantics are unchanged: -asc maps a dash to +Infinity and
+   -desc maps it to -Infinity, so a dash sinks to the BOTTOM in BOTH sort
+   directions. This is the existing mechanism, not a new one. */
+(function () {
+  if (!window.jQuery || !jQuery.fn.dataTable) return;
+  function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
+  var ext = jQuery.fn.dataTable.ext.type.order;
+  ext['dash-abs-asc'] = ext['ysp-abs-asc'] = function (a, b) {
+    var na = (a === '-') ? Infinity : num(a);
+    var nb = (b === '-') ? Infinity : num(b);
+    if (na === null) na = Infinity; if (nb === null) nb = Infinity;
+    return na - nb;
+  };
+  ext['dash-abs-desc'] = ext['ysp-abs-desc'] = function (a, b) {
+    var na = (a === '-') ? -Infinity : num(a);
+    var nb = (b === '-') ? -Infinity : num(b);
+    if (na === null) na = -Infinity; if (nb === null) nb = -Infinity;
+    return nb - na;
+  };
+})();
+</script>
 <meta property="og:title" content="Asia and the Pacific - Who&#x27;s Who in Goldbach Research">
 <meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 <meta property="og:type" content="website">
@@ -89,6 +117,30 @@
    the table is wide. nowrap only, so short values stay on one line. (Steve test
    2026-06-30.) */
 #top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.num-col,#top100tbl td.num-col,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.num-col,#institutions td.num-col,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
+/* TABLE-FORMAT STANDARDIZATION (Steve 2026-07-30). The four Top 100 table
+   conventions above were scoped to #top100tbl and #institutions only, so every
+   other table on the site (location / region listings, In Memoriam, Genealogy,
+   Recent papers, Most cited) rendered without them: numeric columns fell back
+   to left alignment, the sort arrow sat in a pocket of trailing whitespace, the
+   header text could touch the arrow, and the leading Rank / # column carried
+   DataTables' full left gutter. The SAME rules are therefore repeated here for
+   EVERY DataTables table on the site, matched on the shared "display" class the
+   engine puts on all of them.
+     1. sort arrow pulled to the column edge (removes the whitespace to its right)
+     2. 24px reserved on every header cell (breathing room before the arrow)
+     3. numeric / rank-like columns (.num-col, .rtcol, auto .dt-type-numeric)
+        right-aligned on BOTH the th and the td, padding-left 4px (this is what
+        removes the left gutter on a leading Rank / # column), so integers,
+        dashes and [bracketed] values all line up under the header
+     4. nowrap on those columns
+   The overlap matrix is explicitly excluded: its header cells are centred
+   site-name columns inside a drawn bracket, with their own padding, and a 24px
+   right reserve would break that centring. */
+table.display:not(.overlap-table) thead th span.dt-column-order{right:3px;}
+table.display:not(.overlap-table) thead th{padding-right:24px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) th.rtcol,table.display:not(.overlap-table) td.rtcol{white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
@@ -119,37 +171,37 @@
 <p class="muted">29 researchers are based in Asia and the Pacific; 26 researchers mapped, 3 researchers location not available (institution geocode pending).</p>
 <h2>Listing</h2>
 <table id="rtbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Overall Top 100 rank, 1 is best">Rank</th><th title="The researcher; click for their profile page">Name</th><th title="Current affiliation">Institution</th><th title="Country">Country</th></tr></thead>
+<thead><tr><th class="num-col" title="Overall Top 100 rank, 1 is best">Rank</th><th title="The researcher; click for their profile page">Name</th><th title="Current affiliation">Institution</th><th class="rtcol" title="Country">Country</th></tr></thead>
 <tbody>
-<tr><td>4</td><td><a href="../people/jinjiang-li">Jinjiang Li</a></td><td><a href="https://www.cumtb.edu.cn">China University of Mining and Technology (Beijing)</a></td><td>CN</td></tr>
-<tr><td>7</td><td><a href="../people/igor-e-shparlinski">Igor E. Shparlinski</a></td><td><a href="https://www.unsw.edu.au/">UNSW Sydney</a></td><td>AU</td></tr>
-<tr><td>8</td><td><a href="../people/jianya-liu">Jianya Liu</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td>CN</td></tr>
-<tr><td>9</td><td><a href="../people/tianze-wang">Tianze Wang</a></td><td><a href="https://www.hnskxy.com">Henan Academy of Sciences</a></td><td>CN</td></tr>
-<tr><td>10</td><td><a href="../people/stephan-baier">Stephan Baier</a></td><td><a href="https://rkmvu.ac.in">Ramakrishna Mission Vivekananda Educational and Research Institute</a></td><td>IN</td></tr>
-<tr><td>13</td><td><a href="../people/min-zhang">Min Zhang</a></td><td><a href="https://www.bistu.edu.cn/">Beijing Information Science and Technology University</a></td><td>CN</td></tr>
-<tr><td>24</td><td><a href="../people/tao-zhan">Tao Zhan</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td>CN</td></tr>
-<tr><td>28</td><td><a href="../people/daniel-r-johnston">Daniel R. Johnston</a></td><td><a href="https://www.unsw.edu.au/canberra">University of New South Wales Canberra</a></td><td>AU</td></tr>
-<tr><td>33</td><td><a href="../people/yong-gao-chen">Yong-Gao Chen</a></td><td><a href="https://www.njnu.edu.cn">Nanjing Normal University</a></td><td>CN</td></tr>
-<tr><td>36</td><td><a href="../people/chaohua-jia">Chaohua Jia</a></td><td><a href="https://www.cas.cn">Chinese Academy of Sciences</a></td><td>CN</td></tr>
-<tr><td>41</td><td><a href="../people/hongze-li">Hongze Li</a></td><td><a href="https://www.sjtu.edu.cn">Shanghai Jiao Tong University</a></td><td>CN</td></tr>
-<tr><td>42</td><td><a href="../people/ade-irma-suriajaya">Ade Irma Suriajaya</a></td><td><a href="https://www.kyushu-u.ac.jp/english/">Kyushu University</a></td><td>JP</td></tr>
-<tr><td>43</td><td><a href="../people/victor-zhenyu-guo">Victor Zhenyu Guo</a></td><td><a href="https://www.xjtu.edu.cn">Xi&#x27;an Jiaotong University</a></td><td>CN</td></tr>
-<tr><td>44</td><td><a href="../people/hao-pan">Hao Pan</a></td><td><a href="https://www.nufe.edu.cn">Nanjing University of Finance and Economics</a></td><td>CN</td></tr>
-<tr><td>47</td><td><a href="../people/koichi-kawada">Koichi Kawada</a></td><td><a href="https://www.iwate-u.ac.jp">Iwate University</a></td><td>JP</td></tr>
-<tr><td>50</td><td><a href="../people/fei-xue">Fei Xue</a></td><td><a href="https://www.cumtb.edu.cn">China University of Mining and Technology (Beijing)</a></td><td>CN</td></tr>
-<tr><td>51</td><td><a href="../people/kai-man-tsang">Kai-Man Tsang</a></td><td><a href="https://www.hku.hk">University of Hong Kong</a></td><td>HK</td></tr>
-<tr><td>52</td><td><a href="../people/zhi-wei-sun">Zhi-Wei Sun</a></td><td><a href="https://www.nju.edu.cn/en/">Nanjing University</a></td><td>CN</td></tr>
-<tr><td>53</td><td><a href="../people/adrian-dudek">Adrian Dudek</a></td><td><a href="https://smp.uq.edu.au">University of Queensland</a></td><td>AU</td></tr>
-<tr><td>59</td><td><a href="../people/akio-fujii">Akio Fujii</a></td><td><a href="https://www.rikkyo.ac.jp">Rikkyo University</a></td><td>JP</td></tr>
-<tr><td>61</td><td><a href="../people/xiumin-ren">Xiumin Ren</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td>CN</td></tr>
-<tr><td>77</td><td><a href="../people/ping-xi">Ping Xi</a></td><td><a href="https://www.xjtu.edu.cn">Xi&#x27;an Jiaotong University</a></td><td>CN</td></tr>
-<tr><td>82</td><td><a href="../people/m-i-tulyaganova">M. I. Tulyaganova</a></td><td><a href="https://nuu.uz">Tashkent State University</a></td><td>UZ</td></tr>
-<tr><td>86</td><td><a href="../people/roger-j-cook">Roger J. Cook</a></td><td><a href="https://www.qut.edu.au/">Queensland University of Technology</a></td><td>AU</td></tr>
-<tr><td>89</td><td><a href="../people/wenguang-zhai">Wenguang Zhai</a></td><td><a href="https://www.cumtb.edu.cn">China University of Mining and Technology (Beijing)</a></td><td>CN</td></tr>
-<tr><td>91</td><td><a href="../people/guangshi-lu">Guangshi Lü</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td>CN</td></tr>
-<tr><td>94</td><td><a href="../people/kohji-matsumoto">Kohji Matsumoto</a></td><td><a href="https://en.nagoya-u.ac.jp/">Nagoya University</a></td><td>JP</td></tr>
-<tr><td>96</td><td><a href="../people/n-p-romanov">N. P. Romanov</a></td><td><a href="https://nuu.uz">National University of Uzbekistan</a></td><td>UZ</td></tr>
-<tr><td>100</td><td><a href="../people/timothy-s-trudgian">Timothy S. Trudgian</a></td><td><a href="https://www.anu.edu.au">Australian National University</a></td><td>AU</td></tr>
+<tr><td class="num-col" data-order="4">4</td><td><a href="../people/jinjiang-li">Jinjiang Li</a></td><td><a href="https://www.cumtb.edu.cn">China University of Mining and Technology (Beijing)</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="7">7</td><td><a href="../people/igor-e-shparlinski">Igor E. Shparlinski</a></td><td><a href="https://www.unsw.edu.au/">UNSW Sydney</a></td><td class="rtcol">AU</td></tr>
+<tr><td class="num-col" data-order="8">8</td><td><a href="../people/jianya-liu">Jianya Liu</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="9">9</td><td><a href="../people/tianze-wang">Tianze Wang</a></td><td><a href="https://www.hnskxy.com">Henan Academy of Sciences</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="10">10</td><td><a href="../people/stephan-baier">Stephan Baier</a></td><td><a href="https://rkmvu.ac.in">Ramakrishna Mission Vivekananda Educational and Research Institute</a></td><td class="rtcol">IN</td></tr>
+<tr><td class="num-col" data-order="13">13</td><td><a href="../people/min-zhang">Min Zhang</a></td><td><a href="https://www.bistu.edu.cn/">Beijing Information Science and Technology University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="24">24</td><td><a href="../people/tao-zhan">Tao Zhan</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="28">28</td><td><a href="../people/daniel-r-johnston">Daniel R. Johnston</a></td><td><a href="https://www.unsw.edu.au/canberra">University of New South Wales Canberra</a></td><td class="rtcol">AU</td></tr>
+<tr><td class="num-col" data-order="33">33</td><td><a href="../people/yong-gao-chen">Yong-Gao Chen</a></td><td><a href="https://www.njnu.edu.cn">Nanjing Normal University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="36">36</td><td><a href="../people/chaohua-jia">Chaohua Jia</a></td><td><a href="https://www.cas.cn">Chinese Academy of Sciences</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="41">41</td><td><a href="../people/hongze-li">Hongze Li</a></td><td><a href="https://www.sjtu.edu.cn">Shanghai Jiao Tong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="42">42</td><td><a href="../people/ade-irma-suriajaya">Ade Irma Suriajaya</a></td><td><a href="https://www.kyushu-u.ac.jp/english/">Kyushu University</a></td><td class="rtcol">JP</td></tr>
+<tr><td class="num-col" data-order="43">43</td><td><a href="../people/victor-zhenyu-guo">Victor Zhenyu Guo</a></td><td><a href="https://www.xjtu.edu.cn">Xi&#x27;an Jiaotong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="44">44</td><td><a href="../people/hao-pan">Hao Pan</a></td><td><a href="https://www.nufe.edu.cn">Nanjing University of Finance and Economics</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="47">47</td><td><a href="../people/koichi-kawada">Koichi Kawada</a></td><td><a href="https://www.iwate-u.ac.jp">Iwate University</a></td><td class="rtcol">JP</td></tr>
+<tr><td class="num-col" data-order="50">50</td><td><a href="../people/fei-xue">Fei Xue</a></td><td><a href="https://www.cumtb.edu.cn">China University of Mining and Technology (Beijing)</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="51">51</td><td><a href="../people/kai-man-tsang">Kai-Man Tsang</a></td><td><a href="https://www.hku.hk">University of Hong Kong</a></td><td class="rtcol">HK</td></tr>
+<tr><td class="num-col" data-order="52">52</td><td><a href="../people/zhi-wei-sun">Zhi-Wei Sun</a></td><td><a href="https://www.nju.edu.cn/en/">Nanjing University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="53">53</td><td><a href="../people/adrian-dudek">Adrian Dudek</a></td><td><a href="https://smp.uq.edu.au">University of Queensland</a></td><td class="rtcol">AU</td></tr>
+<tr><td class="num-col" data-order="59">59</td><td><a href="../people/akio-fujii">Akio Fujii</a></td><td><a href="https://www.rikkyo.ac.jp">Rikkyo University</a></td><td class="rtcol">JP</td></tr>
+<tr><td class="num-col" data-order="61">61</td><td><a href="../people/xiumin-ren">Xiumin Ren</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="77">77</td><td><a href="../people/ping-xi">Ping Xi</a></td><td><a href="https://www.xjtu.edu.cn">Xi&#x27;an Jiaotong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="82">82</td><td><a href="../people/m-i-tulyaganova">M. I. Tulyaganova</a></td><td><a href="https://nuu.uz">Tashkent State University</a></td><td class="rtcol">UZ</td></tr>
+<tr><td class="num-col" data-order="86">86</td><td><a href="../people/roger-j-cook">Roger J. Cook</a></td><td><a href="https://www.qut.edu.au/">Queensland University of Technology</a></td><td class="rtcol">AU</td></tr>
+<tr><td class="num-col" data-order="89">89</td><td><a href="../people/wenguang-zhai">Wenguang Zhai</a></td><td><a href="https://www.cumtb.edu.cn">China University of Mining and Technology (Beijing)</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="91">91</td><td><a href="../people/guangshi-lu">Guangshi Lü</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="rtcol">CN</td></tr>
+<tr><td class="num-col" data-order="94">94</td><td><a href="../people/kohji-matsumoto">Kohji Matsumoto</a></td><td><a href="https://en.nagoya-u.ac.jp/">Nagoya University</a></td><td class="rtcol">JP</td></tr>
+<tr><td class="num-col" data-order="96">96</td><td><a href="../people/n-p-romanov">N. P. Romanov</a></td><td><a href="https://nuu.uz">National University of Uzbekistan</a></td><td class="rtcol">UZ</td></tr>
+<tr><td class="num-col" data-order="100">100</td><td><a href="../people/timothy-s-trudgian">Timothy S. Trudgian</a></td><td><a href="https://www.anu.edu.au">Australian National University</a></td><td class="rtcol">AU</td></tr>
 </tbody>
 </table>
 <script>

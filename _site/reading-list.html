@@ -9,6 +9,34 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script id="wwi-sort-types">
+/* DASH-ABSOLUTE SORT TYPES, REGISTERED SITE-WIDE (Steve 2026-07-30).
+   These two order types were previously registered inside the Top 100 page's
+   own ready() block, so no other page could use them. Every table that now
+   exposes a sortable numeric column holding an honest dash (In Memoriam Rank,
+   Genealogy PhD year, the source-rank columns) needs them, so they are
+   registered once here, immediately after DataTables loads and before any
+   page script runs. Semantics are unchanged: -asc maps a dash to +Infinity and
+   -desc maps it to -Infinity, so a dash sinks to the BOTTOM in BOTH sort
+   directions. This is the existing mechanism, not a new one. */
+(function () {
+  if (!window.jQuery || !jQuery.fn.dataTable) return;
+  function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
+  var ext = jQuery.fn.dataTable.ext.type.order;
+  ext['dash-abs-asc'] = ext['ysp-abs-asc'] = function (a, b) {
+    var na = (a === '-') ? Infinity : num(a);
+    var nb = (b === '-') ? Infinity : num(b);
+    if (na === null) na = Infinity; if (nb === null) nb = Infinity;
+    return na - nb;
+  };
+  ext['dash-abs-desc'] = ext['ysp-abs-desc'] = function (a, b) {
+    var na = (a === '-') ? -Infinity : num(a);
+    var nb = (b === '-') ? -Infinity : num(b);
+    if (na === null) na = -Infinity; if (nb === null) nb = -Infinity;
+    return nb - na;
+  };
+})();
+</script>
 <meta property="og:title" content="Recent papers - Who&#x27;s Who in Goldbach Research">
 <meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 <meta property="og:type" content="website">
@@ -89,6 +117,30 @@
    the table is wide. nowrap only, so short values stay on one line. (Steve test
    2026-06-30.) */
 #top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.num-col,#top100tbl td.num-col,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.num-col,#institutions td.num-col,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
+/* TABLE-FORMAT STANDARDIZATION (Steve 2026-07-30). The four Top 100 table
+   conventions above were scoped to #top100tbl and #institutions only, so every
+   other table on the site (location / region listings, In Memoriam, Genealogy,
+   Recent papers, Most cited) rendered without them: numeric columns fell back
+   to left alignment, the sort arrow sat in a pocket of trailing whitespace, the
+   header text could touch the arrow, and the leading Rank / # column carried
+   DataTables' full left gutter. The SAME rules are therefore repeated here for
+   EVERY DataTables table on the site, matched on the shared "display" class the
+   engine puts on all of them.
+     1. sort arrow pulled to the column edge (removes the whitespace to its right)
+     2. 24px reserved on every header cell (breathing room before the arrow)
+     3. numeric / rank-like columns (.num-col, .rtcol, auto .dt-type-numeric)
+        right-aligned on BOTH the th and the td, padding-left 4px (this is what
+        removes the left gutter on a leading Rank / # column), so integers,
+        dashes and [bracketed] values all line up under the header
+     4. nowrap on those columns
+   The overlap matrix is explicitly excluded: its header cells are centred
+   site-name columns inside a drawn bracket, with their own padding, and a 24px
+   right reserve would break that centring. */
+table.display:not(.overlap-table) thead th span.dt-column-order{right:3px;}
+table.display:not(.overlap-table) thead th{padding-right:24px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) th.rtcol,table.display:not(.overlap-table) td.rtcol{white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
@@ -119,28 +171,28 @@
 <p>Showing 15 papers, ranked by the Top 100 standing of their authors then by recency. Authors who appear in the Top 100 are shown in bold.</p>
 
 <table id="rl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Position in this list">#</th><th title="The paper; click to read it">Title</th><th title="Authors; ranked Top 100 authors link to their profiles">Authors</th><th title="Publication date">Published</th><th title="The best Top 100 rank among the paper's authors">Best rank</th></tr></thead>
+<thead><tr><th class="num-col" title="Position in this list">#</th><th title="The paper; click to read it">Title</th><th title="Authors; ranked Top 100 authors link to their profiles">Authors</th><th class="num-col" title="Publication date">Published</th><th class="num-col" title="The best Top 100 rank among the paper's authors">Best rank</th></tr></thead>
 <tbody>
-<tr><td style='text-align:center' data-order='1'>1</td><td><a href="https://arxiv.org/abs/2603.00660v1">On the quadratic Waring-Goldbach problem with primes in Piatetski-Shapiro sets</a></td><td>Meng Gao, <a href="people/jinjiang-li"><strong>Jinjiang Li</strong></a>, Linji Long, <a href="people/min-zhang"><strong>Min Zhang</strong></a></td><td>2026-02</td><td style='text-align:center' data-order='4'>#4</td></tr>
-<tr><td style='text-align:center' data-order='2'>2</td><td><a href="https://arxiv.org/abs/2511.07164v1">Cubic Waring-Goldbach problem with Piatetski-Shapiro primes</a></td><td>Linji Long, <a href="people/jinjiang-li"><strong>Jinjiang Li</strong></a>, <a href="people/min-zhang"><strong>Min Zhang</strong></a>, Yankun Sui</td><td>2025-11</td><td style='text-align:center' data-order='4'>#4</td></tr>
-<tr><td style='text-align:center' data-order='3'>3</td><td><a href="https://arxiv.org/abs/2511.07154v1">Vinogradov&#x27;s three primes theorem in the intersection of multiple Piatetski-Shapiro sets</a></td><td>Xiaotian Li, <a href="people/jinjiang-li"><strong>Jinjiang Li</strong></a>, <a href="people/min-zhang"><strong>Min Zhang</strong></a></td><td>2025-11</td><td style='text-align:center' data-order='4'>#4</td></tr>
-<tr><td style='text-align:center' data-order='4'>4</td><td><a href="https://arxiv.org/abs/2508.16400v1">The Exceptional Set in Goldbach&#x27;s Problem with two Chen Primes</a></td><td><a href="people/lasse-grimmelt"><strong>Lasse Grimmelt</strong></a>, <a href="people/joni-teravainen"><strong>Joni Teräväinen</strong></a></td><td>2025-08</td><td style='text-align:center' data-order='5'>#5</td></tr>
-<tr><td style='text-align:center' data-order='5'>5</td><td><a href="https://arxiv.org/abs/2604.23661v1">Large sieve inequality for sums of Legendre symbols over short intervals</a></td><td><a href="people/igor-e-shparlinski"><strong>Igor Shparlinski</strong></a>, Yixiu Xiao</td><td>2026-04</td><td style='text-align:center' data-order='7'>#7</td></tr>
-<tr><td style='text-align:center' data-order='6'>6</td><td><a href="https://arxiv.org/abs/2604.03347v1">Multiple Gauss sums</a></td><td><a href="people/jianya-liu"><strong>Jianya Liu</strong></a>, Sizhe Xie</td><td>2026-04</td><td style='text-align:center' data-order='8'>#8</td></tr>
-<tr><td style='text-align:center' data-order='7'>7</td><td><a href="https://arxiv.org/abs/2509.03657v1">A Bombieri-Vinogradov theorem for sectors in real quadratic number fields</a></td><td><a href="people/stephan-baier"><strong>Stephan Baier</strong></a>, Esrafil Ali Molla</td><td>2025-09</td><td style='text-align:center' data-order='10'>#10</td></tr>
-<tr><td style='text-align:center' data-order='8'>8</td><td><a href="https://arxiv.org/abs/2508.11231v2">Character sums to prime power moduli evaluated at binary quadratic forms</a></td><td><a href="people/stephan-baier"><strong>Stephan Baier</strong></a>, Aishik Chattopadhyay</td><td>2025-08</td><td style='text-align:center' data-order='10'>#10</td></tr>
-<tr><td style='text-align:center' data-order='9'>9</td><td><a href="https://arxiv.org/abs/2508.06463v1">Rough numbers between consecutive primes</a></td><td><a href="people/ayla-gafni"><strong>Ayla Gafni</strong></a>, <a href="people/terence-tao"><strong>Terence Tao</strong></a></td><td>2025-08</td><td style='text-align:center' data-order='11'>#11</td></tr>
-<tr><td style='text-align:center' data-order='10'>10</td><td><a href="https://arxiv.org/abs/2603.24120v1">The average number of representations of an integer as a sum of two prime powers over multiples of a fixed integer</a></td><td>Alessandra Migliaccio, <a href="people/alessandro-zaccagnini"><strong>Alessandro Zaccagnini</strong></a></td><td>2026-03</td><td style='text-align:center' data-order='16'>#16</td></tr>
-<tr><td style='text-align:center' data-order='11'>11</td><td><a href="https://arxiv.org/abs/2603.10241v1">On the discrete convolution of the Liouville and Möbius functions</a></td><td><a href="people/marco-cantarini"><strong>Marco Cantarini</strong></a>, Alessandro Gambini, <a href="people/alessandro-zaccagnini"><strong>Alessandro Zaccagnini</strong></a></td><td>2026-03</td><td style='text-align:center' data-order='16'>#16</td></tr>
-<tr><td style='text-align:center' data-order='12'>12</td><td><a href="https://arxiv.org/abs/2601.15564v2">Primes and almost primes between cubes</a></td><td><a href="people/daniel-r-johnston"><strong>Daniel R. Johnston</strong></a>, Jonathan P. Sorenson, Simon N. Thomas, Jonathan E. Webster</td><td>2026-01</td><td style='text-align:center' data-order='28'>#28</td></tr>
-<tr><td style='text-align:center' data-order='13'>13</td><td><a href="https://arxiv.org/abs/2510.10853v2">An effective Bombieri-Vinogradov error term for sifting problems</a></td><td><a href="people/daniel-r-johnston"><strong>Daniel R. Johnston</strong></a></td><td>2025-10</td><td style='text-align:center' data-order='28'>#28</td></tr>
-<tr><td style='text-align:center' data-order='14'>14</td><td><a href="https://arxiv.org/abs/2602.20801v1">A Diophantine inequality with five squares of Piatetski-Shapiro primes</a></td><td><a href="people/s-i-dimitrov"><strong>S. I. Dimitrov</strong></a></td><td>2026-02</td><td style='text-align:center' data-order='31'>#31</td></tr>
-<tr><td style='text-align:center' data-order='15'>15</td><td><a href="https://arxiv.org/abs/2512.09771v2">Diophantine approximation with mixed powers of Piatetski-Shapiro primes</a></td><td><a href="people/s-i-dimitrov"><strong>S. I. Dimitrov</strong></a></td><td>2025-12</td><td style='text-align:center' data-order='31'>#31</td></tr>
+<tr><td class='num-col' data-order='1'>1</td><td><a href="https://arxiv.org/abs/2603.00660v1">On the quadratic Waring-Goldbach problem with primes in Piatetski-Shapiro sets</a></td><td>Meng Gao, <a href="people/jinjiang-li"><strong>Jinjiang Li</strong></a>, Linji Long, <a href="people/min-zhang"><strong>Min Zhang</strong></a></td><td class="num-col" data-order="2026-02">2026-02</td><td class="num-col" data-order="4">#4</td></tr>
+<tr><td class='num-col' data-order='2'>2</td><td><a href="https://arxiv.org/abs/2511.07164v1">Cubic Waring-Goldbach problem with Piatetski-Shapiro primes</a></td><td>Linji Long, <a href="people/jinjiang-li"><strong>Jinjiang Li</strong></a>, <a href="people/min-zhang"><strong>Min Zhang</strong></a>, Yankun Sui</td><td class="num-col" data-order="2025-11">2025-11</td><td class="num-col" data-order="4">#4</td></tr>
+<tr><td class='num-col' data-order='3'>3</td><td><a href="https://arxiv.org/abs/2511.07154v1">Vinogradov&#x27;s three primes theorem in the intersection of multiple Piatetski-Shapiro sets</a></td><td>Xiaotian Li, <a href="people/jinjiang-li"><strong>Jinjiang Li</strong></a>, <a href="people/min-zhang"><strong>Min Zhang</strong></a></td><td class="num-col" data-order="2025-11">2025-11</td><td class="num-col" data-order="4">#4</td></tr>
+<tr><td class='num-col' data-order='4'>4</td><td><a href="https://arxiv.org/abs/2508.16400v1">The Exceptional Set in Goldbach&#x27;s Problem with two Chen Primes</a></td><td><a href="people/lasse-grimmelt"><strong>Lasse Grimmelt</strong></a>, <a href="people/joni-teravainen"><strong>Joni Teräväinen</strong></a></td><td class="num-col" data-order="2025-08">2025-08</td><td class="num-col" data-order="5">#5</td></tr>
+<tr><td class='num-col' data-order='5'>5</td><td><a href="https://arxiv.org/abs/2604.23661v1">Large sieve inequality for sums of Legendre symbols over short intervals</a></td><td><a href="people/igor-e-shparlinski"><strong>Igor Shparlinski</strong></a>, Yixiu Xiao</td><td class="num-col" data-order="2026-04">2026-04</td><td class="num-col" data-order="7">#7</td></tr>
+<tr><td class='num-col' data-order='6'>6</td><td><a href="https://arxiv.org/abs/2604.03347v1">Multiple Gauss sums</a></td><td><a href="people/jianya-liu"><strong>Jianya Liu</strong></a>, Sizhe Xie</td><td class="num-col" data-order="2026-04">2026-04</td><td class="num-col" data-order="8">#8</td></tr>
+<tr><td class='num-col' data-order='7'>7</td><td><a href="https://arxiv.org/abs/2509.03657v1">A Bombieri-Vinogradov theorem for sectors in real quadratic number fields</a></td><td><a href="people/stephan-baier"><strong>Stephan Baier</strong></a>, Esrafil Ali Molla</td><td class="num-col" data-order="2025-09">2025-09</td><td class="num-col" data-order="10">#10</td></tr>
+<tr><td class='num-col' data-order='8'>8</td><td><a href="https://arxiv.org/abs/2508.11231v2">Character sums to prime power moduli evaluated at binary quadratic forms</a></td><td><a href="people/stephan-baier"><strong>Stephan Baier</strong></a>, Aishik Chattopadhyay</td><td class="num-col" data-order="2025-08">2025-08</td><td class="num-col" data-order="10">#10</td></tr>
+<tr><td class='num-col' data-order='9'>9</td><td><a href="https://arxiv.org/abs/2508.06463v1">Rough numbers between consecutive primes</a></td><td><a href="people/ayla-gafni"><strong>Ayla Gafni</strong></a>, <a href="people/terence-tao"><strong>Terence Tao</strong></a></td><td class="num-col" data-order="2025-08">2025-08</td><td class="num-col" data-order="11">#11</td></tr>
+<tr><td class='num-col' data-order='10'>10</td><td><a href="https://arxiv.org/abs/2603.24120v1">The average number of representations of an integer as a sum of two prime powers over multiples of a fixed integer</a></td><td>Alessandra Migliaccio, <a href="people/alessandro-zaccagnini"><strong>Alessandro Zaccagnini</strong></a></td><td class="num-col" data-order="2026-03">2026-03</td><td class="num-col" data-order="16">#16</td></tr>
+<tr><td class='num-col' data-order='11'>11</td><td><a href="https://arxiv.org/abs/2603.10241v1">On the discrete convolution of the Liouville and Möbius functions</a></td><td><a href="people/marco-cantarini"><strong>Marco Cantarini</strong></a>, Alessandro Gambini, <a href="people/alessandro-zaccagnini"><strong>Alessandro Zaccagnini</strong></a></td><td class="num-col" data-order="2026-03">2026-03</td><td class="num-col" data-order="16">#16</td></tr>
+<tr><td class='num-col' data-order='12'>12</td><td><a href="https://arxiv.org/abs/2601.15564v2">Primes and almost primes between cubes</a></td><td><a href="people/daniel-r-johnston"><strong>Daniel R. Johnston</strong></a>, Jonathan P. Sorenson, Simon N. Thomas, Jonathan E. Webster</td><td class="num-col" data-order="2026-01">2026-01</td><td class="num-col" data-order="28">#28</td></tr>
+<tr><td class='num-col' data-order='13'>13</td><td><a href="https://arxiv.org/abs/2510.10853v2">An effective Bombieri-Vinogradov error term for sifting problems</a></td><td><a href="people/daniel-r-johnston"><strong>Daniel R. Johnston</strong></a></td><td class="num-col" data-order="2025-10">2025-10</td><td class="num-col" data-order="28">#28</td></tr>
+<tr><td class='num-col' data-order='14'>14</td><td><a href="https://arxiv.org/abs/2602.20801v1">A Diophantine inequality with five squares of Piatetski-Shapiro primes</a></td><td><a href="people/s-i-dimitrov"><strong>S. I. Dimitrov</strong></a></td><td class="num-col" data-order="2026-02">2026-02</td><td class="num-col" data-order="31">#31</td></tr>
+<tr><td class='num-col' data-order='15'>15</td><td><a href="https://arxiv.org/abs/2512.09771v2">Diophantine approximation with mixed powers of Piatetski-Shapiro primes</a></td><td><a href="people/s-i-dimitrov"><strong>S. I. Dimitrov</strong></a></td><td class="num-col" data-order="2025-12">2025-12</td><td class="num-col" data-order="31">#31</td></tr>
 </tbody>
 </table>
 <script>
 $(document).ready(function() {
-  $('#rl').DataTable({ paging: false, info: false, lengthChange: false, searching: false, order: [[0, 'asc']] });
+  $('#rl').DataTable({ paging: false, info: false, lengthChange: false, searching: false, order: [[0, 'asc']], autoWidth: false, columnDefs: [{ targets: [0, 4], type: 'dash-abs' }] });
 });
 </script>
 
@@ -150,23 +202,23 @@ Results are filtered to the Mathematics field (OpenAlex field 26) and ranked by 
 <p class="muted">The Top 100 ranking is designed to capture prominent, currently active researchers. If an author in this table is not linked to a profile, it is usually because they are deceased or less active than the researchers in the ranking, not because they are less significant to the field.</p>
 
 <table id="mc" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Position by citation count">#</th><th title="The paper; click to find it via Google Scholar">Title</th><th title="Authors; ranked Top 100 authors link to their profiles">Authors</th><th title="Publication year">Year</th><th title="Citation count">Citations</th></tr></thead>
+<thead><tr><th class="num-col" title="Position by citation count">#</th><th title="The paper; click to find it via Google Scholar">Title</th><th title="Authors; ranked Top 100 authors link to their profiles">Authors</th><th class="num-col" title="Publication year">Year</th><th class="num-col" title="Citation count">Citations</th></tr></thead>
 <tbody>
-<tr><td style='text-align:center' data-order='1'>1</td><td><a href="https://scholar.google.com/scholar?q=ON%20THE%20REPRESENTATION%20OF%20A%20LARGER%20EVEN%20INTEGER%20AS%20THE%20SUM%20OF%20A%20PRIME%20AND%20THE%20PRODUCT%20OF%20AT%20MOST%20TWO%20PRIMES">On the Representation of a Larger Even Integer as the Sum of a Prime and the Product of at Most Two Primes</a></td><td>Chen Jing-Run</td><td>1973</td><td style='text-align:right' data-order='337'>337</td></tr>
-<tr><td style='text-align:center' data-order='2'>2</td><td><a href="https://scholar.google.com/scholar?q=The%20Ternary%20Goldbach%20Problem">The Ternary Goldbach Problem</a> <a class="doi-link" href="https://doi.org/10.4171/rmi/2">DOI</a></td><td><a href="people/d-r-heath-brown"><strong>D. R. Heath‐Brown</strong></a></td><td>1985</td><td style='text-align:right' data-order='267'>267</td></tr>
-<tr><td style='text-align:center' data-order='3'>3</td><td><a href="https://scholar.google.com/scholar?q=Representation%20of%20an%20Odd%20Number%20as%20the%20Sum%20of%20Three%20Primes">Representation of an Odd Number as the Sum of Three Primes</a></td><td><a href="in-memoriam#ivan-matveyevich-vinogradov"><strong>Ivan Matveevič Vinogradov</strong></a></td><td>1985</td><td style='text-align:right' data-order='222'>222</td></tr>
-<tr><td style='text-align:center' data-order='4'>4</td><td><a href="https://scholar.google.com/scholar?q=Empirical%20verification%20of%20the%20even%20Goldbach%20conjecture%20and%20computation%20of%20prime%20gaps%20up%20to%204%E2%8B%8510%C2%B9%E2%81%B8">Empirical verification of the even Goldbach conjecture and computation of prime gaps up to 4⋅10¹⁸</a> <a class="doi-link" href="https://doi.org/10.1090/s0025-5718-2013-02787-1">DOI</a></td><td>Tomás Oliveira e Silva; Siegfried Herzog; Silvio Pardi</td><td>2013</td><td style='text-align:right' data-order='165'>165</td></tr>
-<tr><td style='text-align:center' data-order='5'>5</td><td><a href="https://scholar.google.com/scholar?q=The%20ternary%20Goldbach%20conjecture%20is%20true">The ternary Goldbach conjecture is true</a> <a class="doi-link" href="https://doi.org/10.48550/arxiv.1312.7748">DOI</a></td><td><a href="people/h-a-helfgott"><strong>H. A. Helfgott</strong></a></td><td>2013</td><td style='text-align:right' data-order='99'>99</td></tr>
-<tr><td style='text-align:center' data-order='6'>6</td><td><a href="https://scholar.google.com/scholar?q=On%20Goldbach%27s%20Problem%20%3A%20Proof%20that%20Almost%20all%20Even%20Positive%20Integers%20are%20Sums%20of%20Two%20Primes">On Goldbach&#x27;s Problem : Proof that Almost all Even Positive Integers are Sums of Two Primes</a> <a class="doi-link" href="https://doi.org/10.1112/plms/s2-44.4.307">DOI</a></td><td><a href="in-memoriam#theodor-estermann"><strong>T. Estermann</strong></a></td><td>1938</td><td style='text-align:right' data-order='99'>99</td></tr>
-<tr><td style='text-align:center' data-order='7'>7</td><td><a href="https://scholar.google.com/scholar?q=On%20the%20sum%20of%20a%20prime%20and%20of%20two%20powers%20of%20two">On the sum of a prime and of two powers of two</a> <a class="doi-link" href="https://doi.org/10.2140/pjm.1971.36.103">DOI</a></td><td>Roger Crocker</td><td>1971</td><td style='text-align:right' data-order='83'>83</td></tr>
-<tr><td style='text-align:center' data-order='8'>8</td><td><a href="https://scholar.google.com/scholar?q=Integers%20represented%20as%20a%20sum%20of%20primes%20and%20powers%20of%20two">Integers represented as a sum of primes and powers of two</a> <a class="doi-link" href="https://doi.org/10.4310/ajm.2002.v6.n3.a7">DOI</a></td><td><a href="people/d-r-heath-brown"><strong>D. R. Heath‐Brown</strong></a>; <a href="people/jan-christoph-schlage-puchta"><strong>J.-C. Puchta</strong></a></td><td>2002</td><td style='text-align:right' data-order='80'>80</td></tr>
-<tr><td style='text-align:center' data-order='9'>9</td><td><a href="https://scholar.google.com/scholar?q=On%20the%20Waring-Goldbach%20Problem%20for%20Fourth%20and%20Fifth%20Powers">On the Waring-Goldbach Problem for Fourth and Fifth Powers</a> <a class="doi-link" href="https://doi.org/10.1112/plms/83.1.1">DOI</a></td><td><a href="people/koichi-kawada"><strong>Koichi Kawada</strong></a>; <a href="people/trevor-d-wooley"><strong>Trevor D. Wooley</strong></a></td><td>2001</td><td style='text-align:right' data-order='75'>75</td></tr>
-<tr><td style='text-align:center' data-order='10'>10</td><td><a href="https://scholar.google.com/scholar?q=On%20the%20Waring-Goldbach%20problem%20for%20fourth%20and%20sixth%20powers">On the Waring-Goldbach problem for fourth and sixth powers</a> <a class="doi-link" href="https://doi.org/10.1112/plms/pdt072">DOI</a></td><td>Lilu Zhao</td><td>2014</td><td style='text-align:right' data-order='74'>74</td></tr>
+<tr><td class='num-col' data-order='1'>1</td><td><a href="https://scholar.google.com/scholar?q=ON%20THE%20REPRESENTATION%20OF%20A%20LARGER%20EVEN%20INTEGER%20AS%20THE%20SUM%20OF%20A%20PRIME%20AND%20THE%20PRODUCT%20OF%20AT%20MOST%20TWO%20PRIMES">On the Representation of a Larger Even Integer as the Sum of a Prime and the Product of at Most Two Primes</a></td><td>Chen Jing-Run</td><td class="num-col" data-order="1973">1973</td><td class='num-col' data-order='337'>337</td></tr>
+<tr><td class='num-col' data-order='2'>2</td><td><a href="https://scholar.google.com/scholar?q=The%20Ternary%20Goldbach%20Problem">The Ternary Goldbach Problem</a> <a class="doi-link" href="https://doi.org/10.4171/rmi/2">DOI</a></td><td><a href="people/d-r-heath-brown"><strong>D. R. Heath‐Brown</strong></a></td><td class="num-col" data-order="1985">1985</td><td class='num-col' data-order='267'>267</td></tr>
+<tr><td class='num-col' data-order='3'>3</td><td><a href="https://scholar.google.com/scholar?q=Representation%20of%20an%20Odd%20Number%20as%20the%20Sum%20of%20Three%20Primes">Representation of an Odd Number as the Sum of Three Primes</a></td><td><a href="in-memoriam#ivan-matveyevich-vinogradov"><strong>Ivan Matveevič Vinogradov</strong></a></td><td class="num-col" data-order="1985">1985</td><td class='num-col' data-order='222'>222</td></tr>
+<tr><td class='num-col' data-order='4'>4</td><td><a href="https://scholar.google.com/scholar?q=Empirical%20verification%20of%20the%20even%20Goldbach%20conjecture%20and%20computation%20of%20prime%20gaps%20up%20to%204%E2%8B%8510%C2%B9%E2%81%B8">Empirical verification of the even Goldbach conjecture and computation of prime gaps up to 4⋅10¹⁸</a> <a class="doi-link" href="https://doi.org/10.1090/s0025-5718-2013-02787-1">DOI</a></td><td>Tomás Oliveira e Silva; Siegfried Herzog; Silvio Pardi</td><td class="num-col" data-order="2013">2013</td><td class='num-col' data-order='165'>165</td></tr>
+<tr><td class='num-col' data-order='5'>5</td><td><a href="https://scholar.google.com/scholar?q=The%20ternary%20Goldbach%20conjecture%20is%20true">The ternary Goldbach conjecture is true</a> <a class="doi-link" href="https://doi.org/10.48550/arxiv.1312.7748">DOI</a></td><td><a href="people/h-a-helfgott"><strong>H. A. Helfgott</strong></a></td><td class="num-col" data-order="2013">2013</td><td class='num-col' data-order='99'>99</td></tr>
+<tr><td class='num-col' data-order='6'>6</td><td><a href="https://scholar.google.com/scholar?q=On%20Goldbach%27s%20Problem%20%3A%20Proof%20that%20Almost%20all%20Even%20Positive%20Integers%20are%20Sums%20of%20Two%20Primes">On Goldbach&#x27;s Problem : Proof that Almost all Even Positive Integers are Sums of Two Primes</a> <a class="doi-link" href="https://doi.org/10.1112/plms/s2-44.4.307">DOI</a></td><td><a href="in-memoriam#theodor-estermann"><strong>T. Estermann</strong></a></td><td class="num-col" data-order="1938">1938</td><td class='num-col' data-order='99'>99</td></tr>
+<tr><td class='num-col' data-order='7'>7</td><td><a href="https://scholar.google.com/scholar?q=On%20the%20sum%20of%20a%20prime%20and%20of%20two%20powers%20of%20two">On the sum of a prime and of two powers of two</a> <a class="doi-link" href="https://doi.org/10.2140/pjm.1971.36.103">DOI</a></td><td>Roger Crocker</td><td class="num-col" data-order="1971">1971</td><td class='num-col' data-order='83'>83</td></tr>
+<tr><td class='num-col' data-order='8'>8</td><td><a href="https://scholar.google.com/scholar?q=Integers%20represented%20as%20a%20sum%20of%20primes%20and%20powers%20of%20two">Integers represented as a sum of primes and powers of two</a> <a class="doi-link" href="https://doi.org/10.4310/ajm.2002.v6.n3.a7">DOI</a></td><td><a href="people/d-r-heath-brown"><strong>D. R. Heath‐Brown</strong></a>; <a href="people/jan-christoph-schlage-puchta"><strong>J.-C. Puchta</strong></a></td><td class="num-col" data-order="2002">2002</td><td class='num-col' data-order='80'>80</td></tr>
+<tr><td class='num-col' data-order='9'>9</td><td><a href="https://scholar.google.com/scholar?q=On%20the%20Waring-Goldbach%20Problem%20for%20Fourth%20and%20Fifth%20Powers">On the Waring-Goldbach Problem for Fourth and Fifth Powers</a> <a class="doi-link" href="https://doi.org/10.1112/plms/83.1.1">DOI</a></td><td><a href="people/koichi-kawada"><strong>Koichi Kawada</strong></a>; <a href="people/trevor-d-wooley"><strong>Trevor D. Wooley</strong></a></td><td class="num-col" data-order="2001">2001</td><td class='num-col' data-order='75'>75</td></tr>
+<tr><td class='num-col' data-order='10'>10</td><td><a href="https://scholar.google.com/scholar?q=On%20the%20Waring-Goldbach%20problem%20for%20fourth%20and%20sixth%20powers">On the Waring-Goldbach problem for fourth and sixth powers</a> <a class="doi-link" href="https://doi.org/10.1112/plms/pdt072">DOI</a></td><td>Lilu Zhao</td><td class="num-col" data-order="2014">2014</td><td class='num-col' data-order='74'>74</td></tr>
 </tbody>
 </table>
 <script>
 $(document).ready(function() {
-  $('#mc').DataTable({ paging: false, info: false, lengthChange: false, searching: false, order: [[0, 'asc']] });
+  $('#mc').DataTable({ paging: false, info: false, lengthChange: false, searching: false, order: [[0, 'asc']], autoWidth: false, columnDefs: [{ targets: [0, 3, 4], type: 'dash-abs' }] });
 });
 </script>
 

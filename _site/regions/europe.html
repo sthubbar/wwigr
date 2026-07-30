@@ -9,6 +9,34 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script id="wwi-sort-types">
+/* DASH-ABSOLUTE SORT TYPES, REGISTERED SITE-WIDE (Steve 2026-07-30).
+   These two order types were previously registered inside the Top 100 page's
+   own ready() block, so no other page could use them. Every table that now
+   exposes a sortable numeric column holding an honest dash (In Memoriam Rank,
+   Genealogy PhD year, the source-rank columns) needs them, so they are
+   registered once here, immediately after DataTables loads and before any
+   page script runs. Semantics are unchanged: -asc maps a dash to +Infinity and
+   -desc maps it to -Infinity, so a dash sinks to the BOTTOM in BOTH sort
+   directions. This is the existing mechanism, not a new one. */
+(function () {
+  if (!window.jQuery || !jQuery.fn.dataTable) return;
+  function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
+  var ext = jQuery.fn.dataTable.ext.type.order;
+  ext['dash-abs-asc'] = ext['ysp-abs-asc'] = function (a, b) {
+    var na = (a === '-') ? Infinity : num(a);
+    var nb = (b === '-') ? Infinity : num(b);
+    if (na === null) na = Infinity; if (nb === null) nb = Infinity;
+    return na - nb;
+  };
+  ext['dash-abs-desc'] = ext['ysp-abs-desc'] = function (a, b) {
+    var na = (a === '-') ? -Infinity : num(a);
+    var nb = (b === '-') ? -Infinity : num(b);
+    if (na === null) na = -Infinity; if (nb === null) nb = -Infinity;
+    return nb - na;
+  };
+})();
+</script>
 <meta property="og:title" content="Europe - Who&#x27;s Who in Goldbach Research">
 <meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 <meta property="og:type" content="website">
@@ -89,6 +117,30 @@
    the table is wide. nowrap only, so short values stay on one line. (Steve test
    2026-06-30.) */
 #top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.num-col,#top100tbl td.num-col,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.num-col,#institutions td.num-col,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
+/* TABLE-FORMAT STANDARDIZATION (Steve 2026-07-30). The four Top 100 table
+   conventions above were scoped to #top100tbl and #institutions only, so every
+   other table on the site (location / region listings, In Memoriam, Genealogy,
+   Recent papers, Most cited) rendered without them: numeric columns fell back
+   to left alignment, the sort arrow sat in a pocket of trailing whitespace, the
+   header text could touch the arrow, and the leading Rank / # column carried
+   DataTables' full left gutter. The SAME rules are therefore repeated here for
+   EVERY DataTables table on the site, matched on the shared "display" class the
+   engine puts on all of them.
+     1. sort arrow pulled to the column edge (removes the whitespace to its right)
+     2. 24px reserved on every header cell (breathing room before the arrow)
+     3. numeric / rank-like columns (.num-col, .rtcol, auto .dt-type-numeric)
+        right-aligned on BOTH the th and the td, padding-left 4px (this is what
+        removes the left gutter on a leading Rank / # column), so integers,
+        dashes and [bracketed] values all line up under the header
+     4. nowrap on those columns
+   The overlap matrix is explicitly excluded: its header cells are centred
+   site-name columns inside a drawn bracket, with their own padding, and a 24px
+   right reserve would break that centring. */
+table.display:not(.overlap-table) thead th span.dt-column-order{right:3px;}
+table.display:not(.overlap-table) thead th{padding-right:24px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) th.rtcol,table.display:not(.overlap-table) td.rtcol{white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
@@ -119,46 +171,46 @@
 <p class="muted">38 researchers are based in Europe; 37 researchers mapped, 1 researcher location not available (institution geocode pending).</p>
 <h2>Listing</h2>
 <table id="rtbl" class="display compact stripe hover" style="width:100%">
-<thead><tr><th title="Overall Top 100 rank, 1 is best">Rank</th><th title="The researcher; click for their profile page">Name</th><th title="Current affiliation">Institution</th><th title="Country">Country</th></tr></thead>
+<thead><tr><th class="num-col" title="Overall Top 100 rank, 1 is best">Rank</th><th title="The researcher; click for their profile page">Name</th><th title="Current affiliation">Institution</th><th class="rtcol" title="Country">Country</th></tr></thead>
 <tbody>
-<tr><td>1</td><td><a href="../people/janos-pintz">Janos Pintz</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td>HU</td></tr>
-<tr><td>3</td><td><a href="../people/jorg-brudern">Jörg Brüdern</a></td><td><a href="https://www.uni-goettingen.de/en/1.html">University of Göttingen</a></td><td>DE</td></tr>
-<tr><td>5</td><td><a href="../people/joni-teravainen">Joni Teräväinen</a></td><td><a href="https://www.cam.ac.uk">University of Cambridge</a></td><td>GB</td></tr>
-<tr><td>14</td><td><a href="../people/v-n-chubarikov">V. N. Chubarikov</a></td><td><a href="https://www.msu.ru/en/">Lomonosov Moscow State University</a></td><td>RU</td></tr>
-<tr><td>16</td><td><a href="../people/alessandro-zaccagnini">Alessandro Zaccagnini</a></td><td><a href="https://www.unipr.it">University of Parma</a></td><td>IT</td></tr>
-<tr><td>17</td><td><a href="../people/alessandro-languasco">Alessandro Languasco</a></td><td><a href="https://www.unipd.it">University of Padua</a></td><td>IT</td></tr>
-<tr><td>18</td><td><a href="../people/alberto-perelli">Alberto Perelli</a></td><td><a href="https://unige.it">University of Genoa</a></td><td>IT</td></tr>
-<tr><td>20</td><td><a href="../people/kaisa-matomaki">Kaisa Matomäki</a></td><td><a href="https://www.utu.fi">University of Turku</a></td><td>FI</td></tr>
-<tr><td>21</td><td><a href="../people/glyn-harman">Glyn Harman</a></td><td><a href="https://www.royalholloway.ac.uk/">Royal Holloway University of London</a></td><td>GB</td></tr>
-<tr><td>22</td><td><a href="../people/alexander-p-mangerel">Alexander P. Mangerel</a></td><td><a href="https://www.dur.ac.uk/">Durham University</a></td><td>GB</td></tr>
-<tr><td>25</td><td><a href="../people/andras-sarkozy">András Sárközy</a></td><td><a href="https://www.elte.hu">Eötvös Loránd University</a></td><td>HU</td></tr>
-<tr><td>27</td><td><a href="../people/james-maynard">James Maynard</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td>GB</td></tr>
-<tr><td>29</td><td><a href="../people/lasse-grimmelt">Lasse Grimmelt</a></td><td><a href="https://www.cam.ac.uk">University of Cambridge</a></td><td>GB</td></tr>
-<tr><td>30</td><td><a href="../people/jori-merikoski">Jori Merikoski</a></td><td><a href="https://www.helsinki.fi">University of Helsinki</a></td><td>FI</td></tr>
-<tr><td>31</td><td><a href="../people/s-i-dimitrov">S. I. Dimitrov</a></td><td><a href="https://www.tu-sofia.bg">Technical University of Sofia</a></td><td>BG</td></tr>
-<tr><td>35</td><td><a href="../people/gautami-bhowmik">Gautami Bhowmik</a></td><td><a href="https://www.univ-lille.fr/home/">Université de Lille</a></td><td>FR</td></tr>
-<tr><td>37</td><td><a href="../people/g-i-arkhipov">G. I. Arkhipov</a></td><td><a href="https://www.mi.ras.ru/">Steklov Institute of Mathematics</a></td><td>RU</td></tr>
-<tr><td>38</td><td><a href="../people/ben-green">Ben Green</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td>GB</td></tr>
-<tr><td>45</td><td><a href="../people/helmut-maier">Helmut Maier</a></td><td><a href="https://www.uni-ulm.de">Universität Ulm</a></td><td>DE</td></tr>
-<tr><td>46</td><td><a href="../people/kevin-hughes">Kevin Hughes</a></td><td>Independent</td><td>GB</td></tr>
-<tr><td>48</td><td><a href="../people/karin-halupczok">Karin Halupczok</a></td><td><a href="https://www.uni-duesseldorf.de/home/en/home.html">Heinrich Heine University Düsseldorf</a></td><td>DE</td></tr>
-<tr><td>49</td><td><a href="../people/jeanmarc-deshouillers">Jean‐Marc Deshouillers</a></td><td><a href="https://www.u-bordeaux.fr">Université de Bordeaux</a></td><td>FR</td></tr>
-<tr><td>57</td><td><a href="../people/h-a-helfgott">H. A. Helfgott</a></td><td><a href="https://u-paris.fr/en">Université Paris Cité</a></td><td>FR</td></tr>
-<tr><td>58</td><td><a href="../people/doychin-tolev">Doychin Tolev</a></td><td><a href="https://www.uni-sofia.bg/">Sofia University &quot;St. Kliment Ohridski&quot;</a></td><td>BG</td></tr>
-<tr><td>60</td><td><a href="../people/christian-elsholtz">Christian Elsholtz</a></td><td><a href="https://www.tugraz.at">Graz University of Technology</a></td><td>AT</td></tr>
-<tr><td>63</td><td><a href="../people/d-r-heath-brown">D. R. Heath-Brown</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td>GB</td></tr>
-<tr><td>64</td><td><a href="../people/h-j-j-te-riele">H. J. J. te Riele</a></td><td><a href="https://www.cwi.nl">Centrum Wiskunde &amp; Informatica</a></td><td>NL</td></tr>
-<tr><td>65</td><td><a href="../people/antal-balog">Antal Balog</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td>HU</td></tr>
-<tr><td>66</td><td><a href="../people/michael-th-rassias">Michael Th. Rassias</a></td><td><a href="https://sse.army.gr/">Hellenic Military Academy</a></td><td>GR</td></tr>
-<tr><td>71</td><td><a href="../people/imre-z-ruzsa">Imre Z. Ruzsa</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td>HU</td></tr>
-<tr><td>72</td><td><a href="../people/jan-christoph-schlage-puchta">Jan-Christoph Schlage-Puchta</a></td><td><a href="https://www.uni-rostock.de/en/">University of Rostock</a></td><td>DE</td></tr>
-<tr><td>76</td><td><a href="../people/olivier-ramare">Olivier Ramaré</a></td><td><a href="https://www.univ-amu.fr/">Aix-Marseille Université</a></td><td>FR</td></tr>
-<tr><td>79</td><td><a href="../people/imre-katai">Imre Kátai</a></td><td><a href="https://www.elte.hu">Eötvös Loránd University</a></td><td>HU</td></tr>
-<tr><td>83</td><td><a href="../people/emmanuel-kowalski">Emmanuel Kowalski</a></td><td><a href="https://ethz.ch">ETH Zurich</a></td><td>CH</td></tr>
-<tr><td>85</td><td><a href="../people/a-peretti">A. Peretti</a></td><td><a href="https://www.unife.it">University of Ferrara</a></td><td>IT</td></tr>
-<tr><td>88</td><td><a href="../people/efthymios-sofos">Efthymios Sofos</a></td><td><a href="https://www.gla.ac.uk/">University of Glasgow</a></td><td>GB</td></tr>
-<tr><td>92</td><td><a href="../people/marco-cantarini">Marco Cantarini</a></td><td><a href="https://www.unipg.it">University of Perugia</a></td><td>IT</td></tr>
-<tr><td>99</td><td><a href="../people/m-b-barban">M. B. Barban</a></td><td><a href="https://spbu.ru/">Leningrad State University</a></td><td>RU</td></tr>
+<tr><td class="num-col" data-order="1">1</td><td><a href="../people/janos-pintz">Janos Pintz</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td class="rtcol">HU</td></tr>
+<tr><td class="num-col" data-order="3">3</td><td><a href="../people/jorg-brudern">Jörg Brüdern</a></td><td><a href="https://www.uni-goettingen.de/en/1.html">University of Göttingen</a></td><td class="rtcol">DE</td></tr>
+<tr><td class="num-col" data-order="5">5</td><td><a href="../people/joni-teravainen">Joni Teräväinen</a></td><td><a href="https://www.cam.ac.uk">University of Cambridge</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="14">14</td><td><a href="../people/v-n-chubarikov">V. N. Chubarikov</a></td><td><a href="https://www.msu.ru/en/">Lomonosov Moscow State University</a></td><td class="rtcol">RU</td></tr>
+<tr><td class="num-col" data-order="16">16</td><td><a href="../people/alessandro-zaccagnini">Alessandro Zaccagnini</a></td><td><a href="https://www.unipr.it">University of Parma</a></td><td class="rtcol">IT</td></tr>
+<tr><td class="num-col" data-order="17">17</td><td><a href="../people/alessandro-languasco">Alessandro Languasco</a></td><td><a href="https://www.unipd.it">University of Padua</a></td><td class="rtcol">IT</td></tr>
+<tr><td class="num-col" data-order="18">18</td><td><a href="../people/alberto-perelli">Alberto Perelli</a></td><td><a href="https://unige.it">University of Genoa</a></td><td class="rtcol">IT</td></tr>
+<tr><td class="num-col" data-order="20">20</td><td><a href="../people/kaisa-matomaki">Kaisa Matomäki</a></td><td><a href="https://www.utu.fi">University of Turku</a></td><td class="rtcol">FI</td></tr>
+<tr><td class="num-col" data-order="21">21</td><td><a href="../people/glyn-harman">Glyn Harman</a></td><td><a href="https://www.royalholloway.ac.uk/">Royal Holloway University of London</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="22">22</td><td><a href="../people/alexander-p-mangerel">Alexander P. Mangerel</a></td><td><a href="https://www.dur.ac.uk/">Durham University</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="25">25</td><td><a href="../people/andras-sarkozy">András Sárközy</a></td><td><a href="https://www.elte.hu">Eötvös Loránd University</a></td><td class="rtcol">HU</td></tr>
+<tr><td class="num-col" data-order="27">27</td><td><a href="../people/james-maynard">James Maynard</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="29">29</td><td><a href="../people/lasse-grimmelt">Lasse Grimmelt</a></td><td><a href="https://www.cam.ac.uk">University of Cambridge</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="30">30</td><td><a href="../people/jori-merikoski">Jori Merikoski</a></td><td><a href="https://www.helsinki.fi">University of Helsinki</a></td><td class="rtcol">FI</td></tr>
+<tr><td class="num-col" data-order="31">31</td><td><a href="../people/s-i-dimitrov">S. I. Dimitrov</a></td><td><a href="https://www.tu-sofia.bg">Technical University of Sofia</a></td><td class="rtcol">BG</td></tr>
+<tr><td class="num-col" data-order="35">35</td><td><a href="../people/gautami-bhowmik">Gautami Bhowmik</a></td><td><a href="https://www.univ-lille.fr/home/">Université de Lille</a></td><td class="rtcol">FR</td></tr>
+<tr><td class="num-col" data-order="37">37</td><td><a href="../people/g-i-arkhipov">G. I. Arkhipov</a></td><td><a href="https://www.mi.ras.ru/">Steklov Institute of Mathematics</a></td><td class="rtcol">RU</td></tr>
+<tr><td class="num-col" data-order="38">38</td><td><a href="../people/ben-green">Ben Green</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="45">45</td><td><a href="../people/helmut-maier">Helmut Maier</a></td><td><a href="https://www.uni-ulm.de">Universität Ulm</a></td><td class="rtcol">DE</td></tr>
+<tr><td class="num-col" data-order="46">46</td><td><a href="../people/kevin-hughes">Kevin Hughes</a></td><td>Independent</td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="48">48</td><td><a href="../people/karin-halupczok">Karin Halupczok</a></td><td><a href="https://www.uni-duesseldorf.de/home/en/home.html">Heinrich Heine University Düsseldorf</a></td><td class="rtcol">DE</td></tr>
+<tr><td class="num-col" data-order="49">49</td><td><a href="../people/jeanmarc-deshouillers">Jean‐Marc Deshouillers</a></td><td><a href="https://www.u-bordeaux.fr">Université de Bordeaux</a></td><td class="rtcol">FR</td></tr>
+<tr><td class="num-col" data-order="57">57</td><td><a href="../people/h-a-helfgott">H. A. Helfgott</a></td><td><a href="https://u-paris.fr/en">Université Paris Cité</a></td><td class="rtcol">FR</td></tr>
+<tr><td class="num-col" data-order="58">58</td><td><a href="../people/doychin-tolev">Doychin Tolev</a></td><td><a href="https://www.uni-sofia.bg/">Sofia University &quot;St. Kliment Ohridski&quot;</a></td><td class="rtcol">BG</td></tr>
+<tr><td class="num-col" data-order="60">60</td><td><a href="../people/christian-elsholtz">Christian Elsholtz</a></td><td><a href="https://www.tugraz.at">Graz University of Technology</a></td><td class="rtcol">AT</td></tr>
+<tr><td class="num-col" data-order="63">63</td><td><a href="../people/d-r-heath-brown">D. R. Heath-Brown</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="64">64</td><td><a href="../people/h-j-j-te-riele">H. J. J. te Riele</a></td><td><a href="https://www.cwi.nl">Centrum Wiskunde &amp; Informatica</a></td><td class="rtcol">NL</td></tr>
+<tr><td class="num-col" data-order="65">65</td><td><a href="../people/antal-balog">Antal Balog</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td class="rtcol">HU</td></tr>
+<tr><td class="num-col" data-order="66">66</td><td><a href="../people/michael-th-rassias">Michael Th. Rassias</a></td><td><a href="https://sse.army.gr/">Hellenic Military Academy</a></td><td class="rtcol">GR</td></tr>
+<tr><td class="num-col" data-order="71">71</td><td><a href="../people/imre-z-ruzsa">Imre Z. Ruzsa</a></td><td><a href="https://renyi.hu">Alfréd Rényi Institute of Mathematics</a></td><td class="rtcol">HU</td></tr>
+<tr><td class="num-col" data-order="72">72</td><td><a href="../people/jan-christoph-schlage-puchta">Jan-Christoph Schlage-Puchta</a></td><td><a href="https://www.uni-rostock.de/en/">University of Rostock</a></td><td class="rtcol">DE</td></tr>
+<tr><td class="num-col" data-order="76">76</td><td><a href="../people/olivier-ramare">Olivier Ramaré</a></td><td><a href="https://www.univ-amu.fr/">Aix-Marseille Université</a></td><td class="rtcol">FR</td></tr>
+<tr><td class="num-col" data-order="79">79</td><td><a href="../people/imre-katai">Imre Kátai</a></td><td><a href="https://www.elte.hu">Eötvös Loránd University</a></td><td class="rtcol">HU</td></tr>
+<tr><td class="num-col" data-order="83">83</td><td><a href="../people/emmanuel-kowalski">Emmanuel Kowalski</a></td><td><a href="https://ethz.ch">ETH Zurich</a></td><td class="rtcol">CH</td></tr>
+<tr><td class="num-col" data-order="85">85</td><td><a href="../people/a-peretti">A. Peretti</a></td><td><a href="https://www.unife.it">University of Ferrara</a></td><td class="rtcol">IT</td></tr>
+<tr><td class="num-col" data-order="88">88</td><td><a href="../people/efthymios-sofos">Efthymios Sofos</a></td><td><a href="https://www.gla.ac.uk/">University of Glasgow</a></td><td class="rtcol">GB</td></tr>
+<tr><td class="num-col" data-order="92">92</td><td><a href="../people/marco-cantarini">Marco Cantarini</a></td><td><a href="https://www.unipg.it">University of Perugia</a></td><td class="rtcol">IT</td></tr>
+<tr><td class="num-col" data-order="99">99</td><td><a href="../people/m-b-barban">M. B. Barban</a></td><td><a href="https://spbu.ru/">Leningrad State University</a></td><td class="rtcol">RU</td></tr>
 </tbody>
 </table>
 <script>

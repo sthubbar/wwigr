@@ -9,6 +9,34 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script id="wwi-sort-types">
+/* DASH-ABSOLUTE SORT TYPES, REGISTERED SITE-WIDE (Steve 2026-07-30).
+   These two order types were previously registered inside the Top 100 page's
+   own ready() block, so no other page could use them. Every table that now
+   exposes a sortable numeric column holding an honest dash (In Memoriam Rank,
+   Genealogy PhD year, the source-rank columns) needs them, so they are
+   registered once here, immediately after DataTables loads and before any
+   page script runs. Semantics are unchanged: -asc maps a dash to +Infinity and
+   -desc maps it to -Infinity, so a dash sinks to the BOTTOM in BOTH sort
+   directions. This is the existing mechanism, not a new one. */
+(function () {
+  if (!window.jQuery || !jQuery.fn.dataTable) return;
+  function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
+  var ext = jQuery.fn.dataTable.ext.type.order;
+  ext['dash-abs-asc'] = ext['ysp-abs-asc'] = function (a, b) {
+    var na = (a === '-') ? Infinity : num(a);
+    var nb = (b === '-') ? Infinity : num(b);
+    if (na === null) na = Infinity; if (nb === null) nb = Infinity;
+    return na - nb;
+  };
+  ext['dash-abs-desc'] = ext['ysp-abs-desc'] = function (a, b) {
+    var na = (a === '-') ? -Infinity : num(a);
+    var nb = (b === '-') ? -Infinity : num(b);
+    if (na === null) na = -Infinity; if (nb === null) nb = -Infinity;
+    return nb - na;
+  };
+})();
+</script>
 <meta property="og:title" content="Theodor Estermann - Who&#x27;s Who in Goldbach Research">
 <meta property="og:description" content="A directory of the researchers most active on the Goldbach conjecture, ranked from arXiv preprint output, OpenAlex citation data, and zbMATH MSC classifications.">
 <meta property="og:type" content="website">
@@ -89,6 +117,30 @@
    the table is wide. nowrap only, so short values stay on one line. (Steve test
    2026-06-30.) */
 #top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.num-col,#top100tbl td.num-col,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.num-col,#institutions td.num-col,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
+/* TABLE-FORMAT STANDARDIZATION (Steve 2026-07-30). The four Top 100 table
+   conventions above were scoped to #top100tbl and #institutions only, so every
+   other table on the site (location / region listings, In Memoriam, Genealogy,
+   Recent papers, Most cited) rendered without them: numeric columns fell back
+   to left alignment, the sort arrow sat in a pocket of trailing whitespace, the
+   header text could touch the arrow, and the leading Rank / # column carried
+   DataTables' full left gutter. The SAME rules are therefore repeated here for
+   EVERY DataTables table on the site, matched on the shared "display" class the
+   engine puts on all of them.
+     1. sort arrow pulled to the column edge (removes the whitespace to its right)
+     2. 24px reserved on every header cell (breathing room before the arrow)
+     3. numeric / rank-like columns (.num-col, .rtcol, auto .dt-type-numeric)
+        right-aligned on BOTH the th and the td, padding-left 4px (this is what
+        removes the left gutter on a leading Rank / # column), so integers,
+        dashes and [bracketed] values all line up under the header
+     4. nowrap on those columns
+   The overlap matrix is explicitly excluded: its header cells are centred
+   site-name columns inside a drawn bracket, with their own padding, and a 24px
+   right reserve would break that centring. */
+table.display:not(.overlap-table) thead th span.dt-column-order{right:3px;}
+table.display:not(.overlap-table) thead th{padding-right:24px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) th.rtcol,table.display:not(.overlap-table) td.rtcol{white-space:nowrap;}
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
@@ -116,7 +168,7 @@
 <p class="subtitle"><a href="../in-memoriam">&larr; Back to In Memoriam</a></p>
 <h1>Theodor Estermann</h1>
 <p class="subtitle">University College London (GB) &middot; 1902-1991</p>
-<p>A foundational figure in Goldbach and additive prime number theory whose career predates the arXiv and OpenAlex digital record this directory is built from. Listed here so the lineage behind the modern field stays visible.</p>
+<p>A figure in this directory who has since passed away, curated onto the In Memoriam listing. The Top 100 and the regional pages list living researchers only, so this profile preserves the record of their place in the field.</p>
 <table class="profile-table">
 <tbody>
 <tr><td>Homepage</td><td>Not available</td></tr>
@@ -126,13 +178,15 @@
 <tr><td>Country</td><td>GB</td></tr>
 <tr><td>Active years</td><td>1937 to 1952</td></tr>
 <tr><td>h-index</td><td>14 <span class="muted">(<a href="https://openalex.org/A5085070182" title="Verify on OpenAlex">OpenAlex</a>)</span></td></tr>
-<tr><td>Status</td><td>Foundational figure (1902-1991)</td></tr>
+<tr><td>Status</td><td>In Memoriam (1902-1991)</td></tr>
 <tr><td>Mathematics Genealogy</td><td><a href="https://www.mathgenealogy.org/id.php?id=27018">View advisor-student lineage</a></td></tr>
-<tr><td>Ranking</td><td>Overall: Not ranked | Not ranked (pre-digital era)</td></tr>
+<tr><td>Ranking</td><td>Overall: #37 | arXiv: [46] (interpolated) | OpenAlex: [49] (interpolated) | zbMATH: 26</td></tr>
 <tr><td>arXiv</td><td><a href="https://arxiv.org/search/?searchtype=author&amp;query=Theodor+Estermann">Author search</a></td></tr>
 <tr><td>OpenAlex</td><td><a href="https://openalex.org/A5085070182">Author page</a></td></tr>
+<tr><td>OpenAlex topical works</td><td>4</td></tr>
+<tr><td>OpenAlex topical citations</td><td>147</td></tr>
 <tr><td>zbMATH</td><td><a href="https://zbmath.org/authors/estermann.theodor">Author page</a></td></tr>
-<tr><td>Also ranked in</td><td>Not in current rankings</td></tr>
+<tr><td>Also ranked in</td><td><a href="https://wwilp.org/">wwilp #134</a></td></tr>
 </tbody>
 </table>
 
