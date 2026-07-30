@@ -62,16 +62,11 @@
 .search-results h2.sr-group:first-child{margin-top:0.4rem;}
 .search-result.sr-inst .sr-inst-ranks{margin:0.3rem 0 0 0;}
 .search-result.sr-inst .sr-inst-ranks a{white-space:nowrap;}
-/* Top 100: tighten the DataTables sort arrow and align numeric cells under it
-   (Steve 2026-06-30). Pull the arrow to the column edge to remove the trailing
-   gap, and give numeric headers and cells the same right padding so the numbers
-   line up directly beneath the indicator instead of overshooting it. */
-#top100tbl thead th span.dt-column-order,#institutions thead th span.dt-column-order{right:3px;}
-/* Breathing room between header text and the sort indicator (Steve
-   2026-07-04): every header cell reserves 24px on the right, the arrow sits
-   at right:3px, so text never touches the indicator. Data cells keep their
-   own tighter padding below. */
-#top100tbl thead th,#institutions thead th{padding-right:24px;}
+/* Conventions 1 to 4 (sort-arrow position, header right reserve, numeric
+   alignment, nowrap) are NOT written here any more. They are generated once
+   per page from the collected DataTable id list, see _table_format_css() and
+   the {table_fmt_css} block at the end of this stylesheet. Only genuinely
+   page-specific extras stay hand-written below. */
 /* Ctry in-header filter (Steve 2026-07-04 final): tight cell padding, and
    the select carries DataTables' own dt-input class so its height exactly
    matches the search box and the per-page selector above the table.
@@ -86,65 +81,31 @@
 #top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
 #top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
 #top100tbl thead th.ctry-th select option[value=""],#institutions thead th.ctry-th select option[value=""]{font-weight:700;}
-/* Institutions: only 6 columns, so the browser's proportional surplus
-   sharing fattened the # and numeric columns and pushed the names right
-   (Steve 2026-07-04). Shrink-pin every rtcol column to its content so the
-   Institution column absorbs the surplus, matching the Top 100 look where
-   Name/Institution dominate the width. */
-#institutions th.rtcol,#institutions td.rtcol{width:1px;}
-/* Tight right-aligned columns: the numeric columns (auto-classed dt-type-numeric
-   by DataTables) plus Ctry and Source (server-tagged .rtcol). Each shrinks to its
-   content (width:1px + nowrap) so the table's leftover width flows into Name and
-   Institution, and each is right-aligned. Padding is 4px both sides (header keeps
-   16px on the right for the sort arrow) so the tightened columns are not cramped
-   against each other (Steve 2026-06-30). */
-/* NUMERIC COLUMNS ARE SERVER-TAGGED .num-col (Steve 2026-07-30). dt-type-numeric
-   alone was not enough: DataTables only auto-classes a column numeric when EVERY
-   value parses as a number, so aX / OA / zM (which hold [bracketed] interpolated
-   estimates and curated dashes), h (dashes and blanks) and YSP (dashes) never
-   earned it, and applying an explicit column 'type' in columnDefs (dash-abs /
-   ysp-abs, needed so dashes sink in both sort directions) suppresses the
-   auto-detection outright. Those columns therefore rendered LEFT-justified. The
-   engine now emits .num-col on the th AND every td of each numeric column, so
-   header and digits align together and a value like [29] lines up with a plain
-   integer. dt-type-numeric is kept in the selector for every other numeric
-   column (# and the institutions table counts). */
-#top100tbl th.dt-type-numeric,#top100tbl th.num-col,#top100tbl th.rtcol,#institutions th.dt-type-numeric,#institutions th.num-col,#institutions th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
-#top100tbl td.dt-type-numeric,#top100tbl td.num-col,#top100tbl td.rtcol,#institutions td.dt-type-numeric,#institutions td.num-col,#institutions td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
-/* No width:1px shrink-pin here: with autoWidth:false the browser's native table
-   layout gives each column its true content-width minimum (collapses when the
-   table is narrow) and shares any surplus proportionally across all columns when
-   the table is wide. nowrap only, so short values stay on one line. (Steve test
-   2026-06-30.) */
-#top100tbl th.dt-type-numeric,#top100tbl td.dt-type-numeric,#top100tbl th.num-col,#top100tbl td.num-col,#top100tbl th.rtcol,#top100tbl td.rtcol,#institutions th.dt-type-numeric,#institutions td.dt-type-numeric,#institutions th.num-col,#institutions td.num-col,#institutions th.rtcol,#institutions td.rtcol{white-space:nowrap;}
-/* TABLE-FORMAT STANDARDIZATION (Steve 2026-07-30). The four Top 100 table
-   conventions above were scoped to #top100tbl and #institutions only, so every
-   other table on the site (location / region listings, In Memoriam, Genealogy,
-   Recent papers, Most cited) rendered without them: numeric columns fell back
-   to left alignment, the sort arrow sat in a pocket of trailing whitespace, the
-   header text could touch the arrow, and the leading Rank / # column carried
-   DataTables' full left gutter. The SAME rules are therefore repeated here for
-   EVERY DataTables table on the site, matched on the shared "display" class the
-   engine puts on all of them.
-     1. sort arrow pulled to the column edge (removes the whitespace to its right)
-     2. 24px reserved on every header cell (breathing room before the arrow)
-     3. numeric / rank-like columns (.num-col, .rtcol, auto .dt-type-numeric)
-        right-aligned on BOTH the th and the td, padding-left 4px (this is what
-        removes the left gutter on a leading Rank / # column), so integers,
-        dashes and [bracketed] values all line up under the header
-     4. nowrap on those columns
-   The overlap matrix is explicitly excluded: its header cells are centred
-   site-name columns inside a drawn bracket, with their own padding, and a 24px
-   right reserve would break that centring. */
-table.display:not(.overlap-table) thead th span.dt-column-order{right:3px;}
-table.display:not(.overlap-table) thead th{padding-right:24px;}
-table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
-table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
-table.display:not(.overlap-table) th.dt-type-numeric,table.display:not(.overlap-table) td.dt-type-numeric,table.display:not(.overlap-table) th.num-col,table.display:not(.overlap-table) td.num-col,table.display:not(.overlap-table) th.rtcol,table.display:not(.overlap-table) td.rtcol{white-space:nowrap;}
+/* The Institutions shrink-pin (Steve 2026-07-04) is no longer hand-written
+   here: it is convention 5 of the generated block at the end of this
+   stylesheet, which now applies it to every narrow table, not just this one. */
 .col-glossary{margin:0.2rem 0 0.7rem 0;}
 .col-glossary li{margin:0.12rem 0;}
 .search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
 .search-empty{color:#555;margin-top:1rem;}
+/* TABLE-FORMAT STANDARDIZATION, generated selector list (Steve 2026-07-30).
+   Built at render time from the ids of the DataTables-backed tables actually
+   on THIS page, so Top 100, Institutions, In Memoriam, Genealogy (gentbl0..N),
+   the reading list, Most cited and every region listing are all styled by the
+   SAME rule at the SAME specificity. See _table_format_css(). */
+/* 1. sort arrow pulled to the column edge (no trailing whitespace pocket) */
+#institutions thead th span.dt-column-order{right:3px;}
+/* 2. 24px reserved on every header cell: breathing room before the arrow */
+#institutions thead th{padding-right:24px;}
+/* 3. numeric / rank-like columns right-aligned on th AND td, 4px on the
+      left, which is what removes the gutter on a leading Rank / # column */
+#institutions th.dt-type-numeric,#institutions th.num-col,#institutions th.rtcol{text-align:right;padding-left:4px;padding-right:24px;}
+#institutions td.dt-type-numeric,#institutions td.num-col,#institutions td.rtcol{text-align:right;padding-left:4px;padding-right:4px;}
+/* 4. nowrap on those columns */
+#institutions th.dt-type-numeric,#institutions th.num-col,#institutions th.rtcol,#institutions td.dt-type-numeric,#institutions td.num-col,#institutions td.rtcol{white-space:nowrap;}
+/* 5. surplus distribution: shrink-pin numeric / rank-like columns to
+      their content so Name and Institution absorb the leftover width */
+#institutions th.dt-type-numeric,#institutions th.num-col,#institutions th.rtcol,#institutions td.dt-type-numeric,#institutions td.num-col,#institutions td.rtcol{width:1px;}
 </style>
 <meta name="google" content="notranslate">
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
