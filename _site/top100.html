@@ -231,12 +231,14 @@ $(document).ready(function() {
   // only via columnDefs; every other column keeps DataTables' default sort.
   (function () {
     function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
+    $.fn.dataTable.ext.type.order['dash-abs-asc'] =
     $.fn.dataTable.ext.type.order['ysp-abs-asc'] = function (a, b) {
       var na = (a === '-') ? Infinity : num(a);
       var nb = (b === '-') ? Infinity : num(b);
       if (na === null) na = Infinity; if (nb === null) nb = Infinity;
       return na - nb;
     };
+    $.fn.dataTable.ext.type.order['dash-abs-desc'] =
     $.fn.dataTable.ext.type.order['ysp-abs-desc'] = function (a, b) {
       var na = (a === '-') ? -Infinity : num(a);
       var nb = (b === '-') ? -Infinity : num(b);
@@ -245,7 +247,10 @@ $(document).ready(function() {
     };
   })();
   var yspColIdx = $('#top100tbl thead th').length - 1;  // YSP is the last column
-  var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']], autoWidth: false, columnDefs: [{ targets: yspColIdx, type: 'ysp-abs' }] });
+  // The three source-rank columns can hold a curated-entry dash, so they use
+  // the same direction-aware dash-absolute sort type (Steve 2026-07-30).
+  var rankColIdxs = [4, 5, 6];
+  var table = $('#top100tbl').DataTable({ pageLength: 25, lengthMenu: [[25, 50, 100], ['25 per page', '50 per page', '100 per page']], language: { lengthMenu: '_MENU_' }, order: [[0, 'asc']], autoWidth: false, columnDefs: [{ targets: yspColIdx, type: 'ysp-abs' }, { targets: rankColIdxs, type: 'dash-abs' }] });
   // Forward paging scrolls to the table top (Steve 2026-07-05): a
   // reader at the bottom of page N clicking forward wants the TOP of
   // page N+1. Backward paging is left alone: the redrawn table keeps
@@ -300,7 +305,7 @@ $(document).ready(function() {
 
 </main>
 <footer>
-<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigb.org">admin@wwigb.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://www.mathgenealogy.org">Mathematics Genealogy Project</a>.</p>
+<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigb.org">admin@wwigb.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://genealogy.math.ndsu.nodak.edu">Mathematics Genealogy Project</a>.</p>
 <p>Last built July 2026.</p>
 </footer>
 </body>
