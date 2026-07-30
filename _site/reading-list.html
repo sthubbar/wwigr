@@ -67,20 +67,12 @@
    per page from the collected DataTable id list, see _table_format_css() and
    the {table_fmt_css} block at the end of this stylesheet. Only genuinely
    page-specific extras stay hand-written below. */
-/* Ctry in-header filter (Steve 2026-07-04 final): tight cell padding, and
-   the select carries DataTables' own dt-input class so its height exactly
-   matches the search box and the per-page selector above the table.
-   Weight rules: the closed box shows BOLD "Ctry" (matching the other column
-   headers) while no country is chosen (.ctry-all, toggled on change), and
-   regular weight once a country is selected; in the open list the "Ctry"
-   option is bold, the country options regular. */
-#top100tbl thead th.ctry-th,#institutions thead th.ctry-th{padding:2px 3px !important;text-align:center;}
+/* The Ctry in-header filter rules (Steve 2026-07-04, revised 2026-07-30) are
+   no longer hand-written here either: they are convention 6 of the generated
+   block at the end of this stylesheet, so the two ids are not spelled out by
+   hand any more and any future table carrying a Ctry filter picks them up. */
 /* subtle in-header nudge, e.g. "(hover rows for details)" (Steve 2026-07-05) */
 #institutions thead th .hdr-hint{font-weight:400;font-size:0.85em;color:#666;white-space:nowrap;}
-#top100tbl thead th.ctry-th select,#institutions thead th.ctry-th select{margin:0;font-weight:400;}
-#top100tbl thead th.ctry-th select.ctry-all,#institutions thead th.ctry-th select.ctry-all{font-weight:700;}
-#top100tbl thead th.ctry-th select option,#institutions thead th.ctry-th select option{font-weight:400;}
-#top100tbl thead th.ctry-th select option[value=""],#institutions thead th.ctry-th select option[value=""]{font-weight:700;}
 /* The Institutions shrink-pin (Steve 2026-07-04) is no longer hand-written
    here: it is convention 5 of the generated block at the end of this
    stylesheet, which now applies it to every narrow table, not just this one. */
@@ -106,6 +98,14 @@
 /* 5. surplus distribution: shrink-pin numeric / rank-like columns to
       their content so Name and Institution absorb the leftover width */
 #rl th.dt-type-numeric,#mc th.dt-type-numeric,#rl th.num-col,#mc th.num-col,#rl th.rtcol,#mc th.rtcol,#rl td.dt-type-numeric,#mc td.dt-type-numeric,#rl td.num-col,#mc td.num-col,#rl td.rtcol,#mc td.rtcol{width:1px;}
+/* 6. Ctry in-header filter: tight padding, and the select RIGHT-aligned
+      in its header cell so its right edge sits over the right-aligned
+      country codes below it whatever width the column ends up with */
+#rl thead th.ctry-th,#mc thead th.ctry-th{padding:2px 3px !important;text-align:right;}
+#rl thead th.ctry-th select,#mc thead th.ctry-th select{margin:0;font-weight:400;}
+#rl thead th.ctry-th select.ctry-all,#mc thead th.ctry-th select.ctry-all{font-weight:700;}
+#rl thead th.ctry-th select option,#mc thead th.ctry-th select option{font-weight:400;}
+#rl thead th.ctry-th select option[value=""],#mc thead th.ctry-th select option[value=""]{font-weight:700;}
 </style>
 </head>
 <body>
