@@ -134,15 +134,21 @@
 <h2>How the proximity score works</h2>
 <p>We build one graph from the advisor and student trees of all Top 100 researchers. A close relation is an outsider directly tied (as advisor or student) to at least two Top 100 researchers. Each gets a proximity score that sums, over those direct ties, <code>101 minus the connected researcher's rank</code>. Being tied to the top of the list counts for much more than being tied to the bottom. Only direct ties count; people already in the directory and deceased mathematicians are excluded.</p>
 
+<h2>What this crawl covered</h2>
+<p>We crawled the advisor and student trees of the 87 Top 100 researchers who have an entry in the Mathematics Genealogy Project, and every node in those trees was fetched. The remaining 13 of the 100 have no entry in that database, so their lineage cannot be traced and this page cannot speak for them.</p>
+
+
 
 <h2>Level L1</h2>
 <table id="gentbl0" class="display compact stripe hover" style="width:100%">
 <thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th class="num-col" title="Doctorate year">PhD year</th><th class="num-col" title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th class="num-col" title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
 <tbody>
+<tr><td><a href="people/taiyu-li">Taiyu Li</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2012">2012</td><td class="num-col" data-order="3">3</td><td class="num-col" data-order="222">222</td></tr>
 <tr><td><a href="people/stefan-neumann">Stefan Neumann</a></td><td><a href="https://www.uni-stuttgart.de/home/index.en.html">Universität Stuttgart</a></td><td class="num-col" data-order="2006">2006</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="175">175</td></tr>
 <tr><td><a href="people/olli-jarviniemi">Olli Järviniemi</a></td><td><a href="https://www.utu.fi">University of Turku</a></td><td class="num-col" data-order="2023">2023</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="169">169</td></tr>
-<tr><td><a href="people/mattia-cafferata">Mattia Cafferata</a></td><td><a href="https://www.unife.it">Università degli Studi di Ferrara</a></td><td class="num-col" data-order="2019">2019</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="157">157</td></tr>
-<tr><td><a href="people/damaris-schindler">Damaris Schindler</a></td><td><a href="https://bristol.ac.uk/">University of Bristol</a></td><td class="num-col" data-order="2013">2013</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="156">156</td></tr>
+<tr><td><a href="people/haiwei-sun">Haiwei Sun</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2010">2010</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="160">160</td></tr>
+<tr><td><a href="people/deyu-zhang">Dexian Zhang</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2006">2006</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="160">160</td></tr>
+<tr><td><a href="people/zhao-xu">Zhefeng Xu</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2011">2011</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="160">160</td></tr>
 </tbody></table>
 <script>
 $(document).ready(function() {
@@ -156,10 +162,11 @@ $(document).ready(function() {
 <table id="gentbl1" class="display compact stripe hover" style="width:100%">
 <thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th class="num-col" title="Doctorate year">PhD year</th><th class="num-col" title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th class="num-col" title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
 <tbody>
+<tr><td><a href="people/zhishan-yang">Zhishan Yang</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2013">2013</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="160">160</td></tr>
+<tr><td><a href="people/mattia-cafferata">Mattia Cafferata</a></td><td><a href="https://www.unife.it">Università degli Studi di Ferrara</a></td><td class="num-col" data-order="2019">2019</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="157">157</td></tr>
+<tr><td><a href="people/damaris-schindler">Damaris Schindler</a></td><td><a href="https://bristol.ac.uk/">University of Bristol</a></td><td class="num-col" data-order="2013">2013</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="156">156</td></tr>
 <tr><td><a href="people/huafeng-liu">Huafeng Liu</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2017">2017</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="155">155</td></tr>
-<tr><td><a href="people/taiyu-li">Taiyu Li</a></td><td><a href="https://www.sdu.edu.cn">Shandong University</a></td><td class="num-col" data-order="2012">2012</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="155">155</td></tr>
-<tr><td><a href="people/dieter-wolke">Dieter Wolke</a></td><td><a href="https://www.uni-marburg.de/">Philipps-Universität Marburg</a></td><td class="num-col" data-order="1969">1969</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="92">92</td></tr>
-<tr><td><a href="people/glyn-harman">Glyn Harman</a></td><td><a href="https://london.ac.uk">University of London</a></td><td class="num-col" data-order="1982">1982</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="81">81</td></tr>
+<tr><td><a href="people/nikolai-mikhailovich-korobov">Nikolai Korobov</a></td><td><a href="https://www.msu.ru/en/">Lomonosov Moscow State University</a></td><td class="num-col" data-order="1948">1948</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="148">148</td></tr>
 </tbody></table>
 <script>
 $(document).ready(function() {
@@ -173,8 +180,10 @@ $(document).ready(function() {
 <table id="gentbl2" class="display compact stripe hover" style="width:100%">
 <thead><tr><th title="An outsider tied to at least two Top 100 researchers by advisor-student links">Name</th><th title="Where they earned the doctorate, per the Mathematics Genealogy Project">Institution</th><th class="num-col" title="Doctorate year">PhD year</th><th class="num-col" title="How many Top 100 researchers they advised or were advised by">Direct Top 100 ties</th><th class="num-col" title="Sum over ties of 101 minus the tied researcher's rank; ties to the top of the list count most">Proximity score</th></tr></thead>
 <tbody>
+<tr><td><a href="people/michael-anthony-filaseta">Michael Filaseta</a></td><td><a href="https://illinois.edu">University of Illinois Urbana-Champaign</a></td><td class="num-col" data-order="1984">1984</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="118">118</td></tr>
 <tr><td><a href="people/peter-clive-sarnak">Peter Sarnak</a></td><td><a href="https://www.stanford.edu">Stanford University</a></td><td class="num-col" data-order="1980">1980</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="74">74</td></tr>
 <tr><td><a href="people/sofia-lindqvist">Sofia Lindqvist</a></td><td><a href="https://www.ox.ac.uk">University of Oxford</a></td><td class="num-col" data-order="2019">2019</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="59">59</td></tr>
+<tr><td><a href="people/alan-baker">Alan Baker</a></td><td><a href="https://www.cam.ac.uk">University of Cambridge</a></td><td class="num-col" data-order="1964">1964</td><td class="num-col" data-order="3">3</td><td class="num-col" data-order="57">57</td></tr>
 <tr><td><a href="people/xiaoqing-li">Xian-Jin Li (李小青)</a></td><td><a href="https://www.math.rutgers.edu">Rutgers University, New Brunswick</a></td><td class="num-col" data-order="2004">2004</td><td class="num-col" data-order="2">2</td><td class="num-col" data-order="31">31</td></tr>
 </tbody></table>
 <script>
@@ -188,16 +197,21 @@ $(document).ready(function() {
 
 <h2>Notes</h2>
 <ul>
+<li><strong>Taiyu Li</strong> (Shandong University, 2012): A mathematician (PhD Shandong University, 2012) directly tied to 3 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Stefan Neumann</strong> (Universität Stuttgart, 2006): A mathematician (PhD Universität Stuttgart, 2006) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Olli Järviniemi</strong> (University of Turku, 2023): A mathematician (PhD Turun yliopisto, 2023) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Haiwei Sun</strong> (Shandong University, 2010): A mathematician (PhD Shandong University, 2010) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Dexian Zhang</strong> (Shandong University, 2006): A mathematician (PhD Shandong University, 2006) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Zhefeng Xu</strong> (Shandong University, 2011): A mathematician (PhD Shandong University, 2011) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Zhishan Yang</strong> (Shandong University, 2013): A mathematician (PhD Shandong University, 2013) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Mattia Cafferata</strong> (Università degli Studi di Ferrara, 2019): A mathematician (PhD Università degli Studi di Ferrara, 2019) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Damaris Schindler</strong> (University of Bristol, 2013): A mathematician (PhD University of Bristol, 2013) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Huafeng Liu</strong> (Shandong University, 2017): A mathematician (PhD Shandong University, 2017) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
-<li><strong>Taiyu Li</strong> (Shandong University, 2012): A mathematician (PhD Shandong University, 2012) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
-<li><strong>Dieter Wolke</strong> (Philipps-Universität Marburg, 1969): A mathematician (PhD Philipps-Universität Marburg, 1969) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
-<li><strong>Glyn Harman</strong> (University of London, 1982): A mathematician (PhD University of London, 1982) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Nikolai Korobov</strong> (Lomonosov Moscow State University, 1948): A mathematician (PhD Lomonosov Moscow State University, 1948) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Michael Filaseta</strong> (University of Illinois Urbana-Champaign, 1984): A mathematician (PhD University of Illinois at Urbana-Champaign, 1984) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Peter Sarnak</strong> (Stanford University, 1980): A mathematician (PhD Stanford University, 1980) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Sofia Lindqvist</strong> (University of Oxford, 2019): A mathematician (PhD University of Oxford, 2019) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
+<li><strong>Alan Baker</strong> (University of Cambridge, 1964): A mathematician (PhD University of Cambridge, 1964) directly tied to 3 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 <li><strong>Xian-Jin Li (李小青)</strong> (Rutgers University, New Brunswick, 2004): A mathematician (PhD Rutgers University, New Brunswick, 2004) directly tied to 2 Top 100 researchers through advisor-student relationships in the genealogy network.</li>
 </ul>
 
