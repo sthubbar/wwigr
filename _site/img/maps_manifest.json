@@ -1,22 +1,21 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 94,
-  "n_unplaced_no_geocode": 6,
+  "n_placed": 95,
+  "n_unplaced_no_geocode": 5,
   "n_unplaced_no_institution": 0,
   "unplaced": [
     "#28 Daniel R. Johnston [University of New South Wales Canberra]",
-    "#46 Kevin Hughes [Independent]",
-    "#53 Adrian Dudek [University of Queensland]",
-    "#74 Melvyn B. Nathanson [Lehman College, CUNY]",
-    "#87 Stephen Kwok-Kwong Choi [Simon Fraser University]",
-    "#96 N. P. Romanov [National University of Uzbekistan]"
+    "#45 Kevin Hughes [Independent]",
+    "#52 Adrian Dudek [University of Queensland]",
+    "#73 Melvyn B. Nathanson [Lehman College, CUNY]",
+    "#86 Stephen Kwok-Kwong Choi [Simon Fraser University]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 94,
-      "drawn_count": 94,
+      "stated_count": 95,
+      "drawn_count": 95,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -54,7 +53,6 @@
         "Kevin Ford",
         "Gautami Bhowmik",
         "Chaohua Jia",
-        "G. I. Arkhipov",
         "Ben Green",
         "Hugh Lowell Montgomery",
         "Andrew Granville",
@@ -111,15 +109,17 @@
         "Carl Pomerance",
         "Anji Dong",
         "Lior Bary-Soroker",
-        "M. B. Barban",
-        "Timothy S. Trudgian"
+        "Timothy S. Trudgian",
+        "James Leng",
+        "Peter D. T. A. Elliott",
+        "Ahmet Muhtar Guloglu"
       ],
-      "unplaced_no_geocode_in_region": 6
+      "unplaced_no_geocode_in_region": 5
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 29,
-      "drawn_count": 29,
+      "stated_count": 31,
+      "drawn_count": 31,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -150,14 +150,16 @@
         "M. Ram Murty",
         "Paulo Ribenboim",
         "Carl Pomerance",
-        "Anji Dong"
+        "Anji Dong",
+        "James Leng",
+        "Peter D. T. A. Elliott"
       ],
       "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 37,
-      "drawn_count": 37,
+      "stated_count": 35,
+      "drawn_count": 35,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -176,7 +178,6 @@
         "Jori Merikoski",
         "S. I. Dimitrov",
         "Gautami Bhowmik",
-        "G. I. Arkhipov",
         "Ben Green",
         "Helmut Maier",
         "Karin Halupczok",
@@ -193,10 +194,9 @@
         "Olivier Ramaré",
         "Imre Kátai",
         "Emmanuel Kowalski",
-        "A. Peretti",
         "Efthymios Sofos",
         "Marco Cantarini",
-        "M. B. Barban"
+        "Ahmet Muhtar Guloglu"
       ],
       "unplaced_no_geocode_in_region": 1
     },
@@ -233,25 +233,26 @@
         "Kohji Matsumoto",
         "Timothy S. Trudgian"
       ],
-      "unplaced_no_geocode_in_region": 3
+      "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "14_top100_other.png",
-      "stated_count": 2,
-      "drawn_count": 2,
+      "stated_count": 3,
+      "drawn_count": 3,
       "match": true,
       "names": [
         "Florian Luca",
+        "A. Peretti",
         "Lior Bary-Soroker"
       ],
       "unplaced_no_geocode_in_region": 0
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 78,
+    "legacy_gb_cache": 81,
     "verified:2026-06-15(Claude,web; main campus)": 3,
-    "openalex": 8,
-    "verified:2026-06-20(Claude,web)": 4,
+    "verified:2026-06-20(Claude,web)": 3,
+    "openalex": 7,
     "manual:wikipedia-coords 2026-06-19": 1
   }
 }
