@@ -9,7 +9,7 @@
     "#45 Kevin Hughes [Independent]",
     "#52 Adrian Dudek [University of Queensland]",
     "#73 Melvyn B. Nathanson [Lehman College, CUNY]",
-    "#86 Stephen Kwok-Kwong Choi [Simon Fraser University]"
+    "#85 Stephen Kwok-Kwong Choi [Simon Fraser University]"
   ],
   "maps": [
     {
@@ -68,7 +68,6 @@
         "Kai-Man Tsang",
         "Zhi-Wei Sun",
         "Jiseong Kim",
-        "Cameron L. Stewart",
         "John B. Friedlander",
         "H. A. Helfgott",
         "Doychin Tolev",
@@ -79,6 +78,7 @@
         "D. R. Heath-Brown",
         "H. J. J. te Riele",
         "Antal Balog",
+        "Dieter Wolke",
         "Michael Th. Rassias",
         "Roger C. Baker",
         "Brian Cook",
@@ -94,7 +94,6 @@
         "Imre Kátai",
         "Gove Effinger",
         "Ayla Gafni",
-        "M. I. Tulyaganova",
         "Emmanuel Kowalski",
         "Malvina Baica",
         "A. Peretti",
@@ -112,14 +111,15 @@
         "Timothy S. Trudgian",
         "James Leng",
         "Peter D. T. A. Elliott",
-        "Ahmet Muhtar Guloglu"
+        "Ahmet Muhtar Guloglu",
+        "Jerzy Kaczorowski"
       ],
       "unplaced_no_geocode_in_region": 5
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 31,
-      "drawn_count": 31,
+      "stated_count": 30,
+      "drawn_count": 30,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -135,7 +135,6 @@
         "Hugh Lowell Montgomery",
         "Andrew Granville",
         "Jiseong Kim",
-        "Cameron L. Stewart",
         "John B. Friedlander",
         "Runbo Li",
         "Roger C. Baker",
@@ -158,8 +157,8 @@
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 35,
-      "drawn_count": 35,
+      "stated_count": 37,
+      "drawn_count": 37,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -188,6 +187,7 @@
         "D. R. Heath-Brown",
         "H. J. J. te Riele",
         "Antal Balog",
+        "Dieter Wolke",
         "Michael Th. Rassias",
         "Imre Z. Ruzsa",
         "Jan-Christoph Schlage-Puchta",
@@ -196,14 +196,15 @@
         "Emmanuel Kowalski",
         "Efthymios Sofos",
         "Marco Cantarini",
-        "Ahmet Muhtar Guloglu"
+        "Ahmet Muhtar Guloglu",
+        "Jerzy Kaczorowski"
       ],
       "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 26,
-      "drawn_count": 26,
+      "stated_count": 25,
+      "drawn_count": 25,
       "match": true,
       "names": [
         "Jinjiang Li",
@@ -226,7 +227,6 @@
         "Akio Fujii",
         "Xiumin Ren",
         "Ping Xi",
-        "M. I. Tulyaganova",
         "Roger J. Cook",
         "Wenguang Zhai",
         "Guangshi Lü",
@@ -249,10 +249,10 @@
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 81,
+    "legacy_gb_cache": 80,
     "verified:2026-06-15(Claude,web; main campus)": 3,
-    "verified:2026-06-20(Claude,web)": 3,
-    "openalex": 7,
-    "manual:wikipedia-coords 2026-06-19": 1
+    "verified:2026-06-20(Claude,web)": 2,
+    "openalex": 8,
+    "manual:wikipedia-coords 2026-06-19": 2
   }
 }
