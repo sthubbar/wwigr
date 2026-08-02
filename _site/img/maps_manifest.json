@@ -103,7 +103,6 @@
         "M. Ram Murty",
         "Guangshi Lü",
         "Marco Cantarini",
-        "Paulo Ribenboim",
         "Kohji Matsumoto",
         "Carl Pomerance",
         "Anji Dong",
@@ -112,14 +111,15 @@
         "James Leng",
         "Peter D. T. A. Elliott",
         "Ahmet Muhtar Guloglu",
-        "Jerzy Kaczorowski"
+        "Jerzy Kaczorowski",
+        "Yuta Suzuki"
       ],
       "unplaced_no_geocode_in_region": 5
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 30,
-      "drawn_count": 30,
+      "stated_count": 29,
+      "drawn_count": 29,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -147,7 +147,6 @@
         "Ayla Gafni",
         "Malvina Baica",
         "M. Ram Murty",
-        "Paulo Ribenboim",
         "Carl Pomerance",
         "Anji Dong",
         "James Leng",
@@ -203,8 +202,8 @@
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 25,
-      "drawn_count": 25,
+      "stated_count": 26,
+      "drawn_count": 26,
       "match": true,
       "names": [
         "Jinjiang Li",
@@ -231,7 +230,8 @@
         "Wenguang Zhai",
         "Guangshi Lü",
         "Kohji Matsumoto",
-        "Timothy S. Trudgian"
+        "Timothy S. Trudgian",
+        "Yuta Suzuki"
       ],
       "unplaced_no_geocode_in_region": 2
     },
@@ -251,8 +251,8 @@
   "geocode_sources": {
     "legacy_gb_cache": 80,
     "verified:2026-06-15(Claude,web; main campus)": 3,
-    "verified:2026-06-20(Claude,web)": 2,
-    "openalex": 8,
+    "verified:2026-06-20(Claude,web)": 1,
+    "openalex": 9,
     "manual:wikipedia-coords 2026-06-19": 2
   }
 }

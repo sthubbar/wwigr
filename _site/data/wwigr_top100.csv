@@ -89,13 +89,13 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 88,M. Ram Murty,M. Ram Murty,Queen's University,CA,,99,,,17,133,,25,openalex,2005,2023,,,,Q470508
 89,Guangshi Lü,Guangshi Lu,Shandong University,CN,,,93,,10,53,,,,2004,2012,,,,Q102399147
 90,Marco Cantarini,Marco Cantarini,University of Perugia,IT,87,,,4,4,0,,8,openalex,2017,2026,,,0000-0003-2310-0939,
-91,Paulo Ribenboim,Paulo Ribenboim,"Queen's University, Kingston, Canada",CA,,,94,,,,,29,openalex,1996,1996,,,,
-92,Kohji Matsumoto,Kohji Matsumoto,Nagoya University,JP,81,,102,5,,,,26,openalex,2011,2026,1957,Akio Fujii,0000-0001-6716-8316,Q6426011
-93,Carl Pomerance,Carl Pomerance,Dartmouth College,US,82,,100,6,5,70,,39,openalex,1993,1993,1944,John Tate,0000-0002-0960-1692,Q761544
-94,Anji Dong,Anji Dong,University of Illinois Urbana-Champaign,US,92,,,3,,,,0,people_csv,2024,2025,,,,
-95,Lior Bary-Soroker,Lior Bary-Soroker,Tel Aviv University,IL,93,,,4,8,43,,10,openalex,2014,2015,,Dan Haran,,Q102347717
-96,Timothy S. Trudgian,Timothy S. Trudgian,Australian National University,AU,88,,106,4,3,7,,,,2014,2022,,,,
-97,James Leng,James Leng,"University of California, Los Angeles",US,96,,,3,1,0,,2,people_csv,2023,2023,,,,
-98,Peter D. T. A. Elliott,Peter D. T. A. Elliott,University of Colorado Boulder,US,,,104,,1,2,,19,openalex,1999,1999,,,,
-99,Ahmet Muhtar Guloglu,Ahmet Muhtar Guloglu,Bilkent University,TR,100,,,4,3,2,,,,2016,2017,,,,
-100,Jerzy Kaczorowski,Jerzy Kaczorowski,Adam Mickiewicz University in Poznań,PL,,,107,1,4,28,,19,openalex,1993,2019,,,,Q24429791
+91,Kohji Matsumoto,Kohji Matsumoto,Nagoya University,JP,81,,102,5,,,,26,openalex,2011,2026,1957,Akio Fujii,0000-0001-6716-8316,Q6426011
+92,Carl Pomerance,Carl Pomerance,Dartmouth College,US,82,,100,6,5,70,,39,openalex,1993,1993,1944,John Tate,0000-0002-0960-1692,Q761544
+93,Anji Dong,Anji Dong,University of Illinois Urbana-Champaign,US,92,,,3,,,,0,people_csv,2024,2025,,,,
+94,Lior Bary-Soroker,Lior Bary-Soroker,Tel Aviv University,IL,93,,,4,8,43,,10,openalex,2014,2015,,Dan Haran,,Q102347717
+95,Timothy S. Trudgian,Timothy S. Trudgian,Australian National University,AU,88,,106,4,3,7,,,,2014,2022,,,,
+96,James Leng,James Leng,"University of California, Los Angeles",US,96,,,3,1,0,,2,people_csv,2023,2023,,,,
+97,Peter D. T. A. Elliott,Peter D. T. A. Elliott,University of Colorado Boulder,US,,,104,,1,2,,19,openalex,1999,1999,,,,
+98,Ahmet Muhtar Guloglu,Ahmet Muhtar Guloglu,Bilkent University,TR,100,,,4,3,2,,,,2016,2017,,,,
+99,Jerzy Kaczorowski,Jerzy Kaczorowski,Adam Mickiewicz University in Poznań,PL,,,107,1,4,28,,19,openalex,1993,2019,,,,Q24429791
+100,Yuta Suzuki,Yuta Suzuki,Rikkyo University,JP,101,,,4,4,11,,18,openalex,2015,2018,,,0000-0002-6535-4200,Q138576848
