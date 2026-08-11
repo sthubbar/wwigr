@@ -1,140 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- wwi-retired-tombstone -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=https://wwigb.org/top100">
 <title>Stephen Kwok-Kwong Choi - Who&#x27;s Who in Goldbach Research</title>
-<link rel="canonical" href="https://wwigb.org/people/stephen-kwok-kwong-choi">
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-<script id="wwi-sort-types">
-/* DASH-ABSOLUTE SORT TYPES, REGISTERED SITE-WIDE (Steve 2026-07-30).
-   These two order types were previously registered inside the Top 100 page's
-   own ready() block, so no other page could use them. Every table that now
-   exposes a sortable numeric column holding an honest dash (In Memoriam Rank,
-   Genealogy PhD year, the source-rank columns) needs them, so they are
-   registered once here, immediately after DataTables loads and before any
-   page script runs. Semantics are unchanged: -asc maps a dash to +Infinity and
-   -desc maps it to -Infinity, so a dash sinks to the BOTTOM in BOTH sort
-   directions. This is the existing mechanism, not a new one. */
-(function () {
-  if (!window.jQuery || !jQuery.fn.dataTable) return;
-  function num(x) { var n = parseFloat(x); return isNaN(n) ? null : n; }
-  var ext = jQuery.fn.dataTable.ext.type.order;
-  ext['dash-abs-asc'] = ext['ysp-abs-asc'] = function (a, b) {
-    var na = (a === '-') ? Infinity : num(a);
-    var nb = (b === '-') ? Infinity : num(b);
-    if (na === null) na = Infinity; if (nb === null) nb = Infinity;
-    return na - nb;
-  };
-  ext['dash-abs-desc'] = ext['ysp-abs-desc'] = function (a, b) {
-    var na = (a === '-') ? -Infinity : num(a);
-    var nb = (b === '-') ? -Infinity : num(b);
-    if (na === null) na = -Infinity; if (nb === null) nb = -Infinity;
-    return nb - na;
-  };
-})();
-</script>
-<meta property="og:title" content="Stephen Kwok-Kwong Choi - Who&#x27;s Who in Goldbach Research">
-<meta property="og:description" content="Stephen Kwok-Kwong Choi is ranked #85 among researchers working on the Goldbach conjecture. Simon Fraser University, CA.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://wwigb.org/people/stephen-kwok-kwong-choi">
-<meta property="og:site_name" content="Who&#x27;s Who in Goldbach Research">
-<meta name="twitter:card" content="summary">
-<meta name="description" content="Stephen Kwok-Kwong Choi is ranked #85 among researchers working on the Goldbach conjecture. Simon Fraser University, CA.">
-<style id="site-search-css">
-.nav-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:0.6rem 1.2rem;margin-top:0.6rem;}
-.nav-row nav{margin-top:0;}
-.sister-bar .site-search{margin-left:auto;display:flex;gap:0.3rem;align-items:center;font-family:Arial,Helvetica,sans-serif;}
-.site-search-input{font-family:Arial,Helvetica,sans-serif;font-size:13.3333px;line-height:normal;min-height:0;padding:5px;border:1px solid #aaa;border-radius:3px;width:189px;color:#222;background:#fff;box-sizing:border-box;}
-.site-search-input::-webkit-search-decoration,.site-search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
-.site-search-input:focus{outline:2px solid #888;outline-offset:0;}
-.site-search-btn{font-family:Arial,Helvetica,sans-serif;font-size:13.3333px;line-height:normal;padding:5px 6px;border:1px solid #888;border-radius:3px;background:#f3f3f3;color:#222;cursor:pointer;box-sizing:border-box;}
-.site-search-btn:hover{background:#e6e6e6;}
-.search-results{margin-top:1rem;}
-.search-result{margin:0 0 1.1rem 0;padding-bottom:0.8rem;border-bottom:1px solid #e2e2e2;}
-.search-result .sr-name{font-weight:700;font-size:1.05rem;}
-.search-result .sr-apps{margin:0.35rem 0 0 0;padding:0;list-style:none;}
-.search-result .sr-apps li{display:block;margin:0.2rem 0 0 0;}
-.search-results h2.sr-group{font-size:1rem;text-transform:uppercase;letter-spacing:0.04em;color:#555;margin:1.4rem 0 0.6rem 0;padding-bottom:0.2rem;border-bottom:2px solid #ddd;}
-.search-results h2.sr-group:first-child{margin-top:0.4rem;}
-.search-result.sr-inst .sr-inst-ranks{margin:0.3rem 0 0 0;}
-.search-result.sr-inst .sr-inst-ranks a{white-space:nowrap;}
-/* Conventions 1 to 4 (sort-arrow position, header right reserve, numeric
-   alignment, nowrap) are NOT written here any more. They are generated once
-   per page from the collected DataTable id list, see _table_format_css() and
-   the {table_fmt_css} block at the end of this stylesheet. Only genuinely
-   page-specific extras stay hand-written below. */
-/* The Ctry in-header filter rules (Steve 2026-07-04, revised 2026-07-30) are
-   no longer hand-written here either: they are convention 6 of the generated
-   block at the end of this stylesheet, so the two ids are not spelled out by
-   hand any more and any future table carrying a Ctry filter picks them up. */
-/* subtle in-header nudge, e.g. "(hover rows for details)" (Steve 2026-07-05) */
-#institutions thead th .hdr-hint{font-weight:400;font-size:0.85em;color:#666;white-space:nowrap;}
-/* The Institutions shrink-pin (Steve 2026-07-04) is no longer hand-written
-   here: it is convention 5 of the generated block at the end of this
-   stylesheet, which now applies it to every narrow table, not just this one. */
-.col-glossary{margin:0.2rem 0 0.7rem 0;}
-.col-glossary li{margin:0.12rem 0;}
-.search-count{color:#555;font-size:0.95rem;margin:0.5rem 0 0.6rem 0;}
-.search-empty{color:#555;margin-top:1rem;}
-/* TABLE-FORMAT STANDARDIZATION, generated selector list (Steve 2026-07-30).
-   Built at render time from the ids of the DataTables-backed tables actually
-   on THIS page, so Top 100, Institutions, In Memoriam, Genealogy (gentbl0..N),
-   the reading list, Most cited and every region listing are all styled by the
-   SAME rule at the SAME specificity. See _table_format_css(). */
-/* no DataTables-backed table on this page */
-</style>
+<link rel="canonical" href="https://wwigb.org/top100">
+<style>body{font-family:Arial,Helvetica,sans-serif;margin:3rem auto;max-width:36rem;padding:0 1rem;color:#222;}a{color:#0645ad;}</style>
+<script>location.replace("https://wwigb.org/top100");</script>
 </head>
 <body>
-<header class="site-header">
-  <div class="brand"><a href="../">Who&#x27;s Who in Goldbach Research</a></div>
-  <div class="nav-row">
-  <nav><a href="../" class="">Home</a>
-<a href="../top100" class="">Top 100</a>
-<a href="../location" class="">Locations</a>
-<a href="../institutions" class="">Institutions</a>
-<a href="../in-memoriam" class="">In Memoriam</a>
-<a href="../genealogy" class="">Genealogy</a>
-<a href="../network" class="">Six Degrees</a>
-<a href="../reading-list" class="">Reading List</a>
-<a href="../overlap" class="">Overlap</a>
-<a href="../about" class="">About</a></nav>
-  </div>
-</header>
-<div class="sister-bar"><a class="sister-link" href="https://wwilp.org/">wwilp</a><span class="sister-sep">|</span><span class="sister-landau-box"><span class="sister-landau-label">Landau's Problems</span><span class="sister-current">wwigb</span><a class="sister-link" href="https://wwileg.org/">wwileg</a><a class="sister-link" href="https://wwin2p1.org/">wwin2p1</a><a class="sister-link" href="https://wwitp.org/">wwitp</a></span><span class="sister-sep">|</span><a class="sister-link" href="https://wwiabc.org/">wwiabc</a><span class="sister-sep">|</span><a class="sister-link" href="https://wwirh.org/">wwirh</a><form class="site-search" action="../search.html" method="get" role="search"><input type="search" name="q" class="site-search-input" placeholder="Search people and institutions" aria-label="Search people and institutions across all sites" autocomplete="off"><button type="submit" class="site-search-btn">Search</button></form></div>
-<main>
-<p class="subtitle"><a href="../top100">&larr; Back to the Top 100</a></p>
-<h1>Stephen Kwok-Kwong Choi (#85)</h1>
-<p class="subtitle">Simon Fraser University (CA)</p>
-
-<table class="profile-table">
-<tbody>
-<tr><td>Homepage</td><td>Not available</td></tr>
-<tr><td>Google Scholar</td><td><a href="https://scholar.google.com/scholar?q=Stephen+Kwok-Kwong+Choi+number+theory">Search results</a></td></tr>
-<tr><td>Institution</td><td><a href="https://www.sfu.ca/math.html">Simon Fraser University</a></td></tr>
-<tr><td>Country</td><td>CA</td></tr>
-<tr><td>Years Since PhD (YSP)</td><td>30</td></tr>
-<tr><td>h-index</td><td>8 <span class="muted">(<a href="https://openalex.org/A5046677225" title="Verify on OpenAlex">OpenAlex</a>)</span></td></tr>
-<tr><td>Status</td><td>Rank #85 on the Goldbach conjecture | composite score 76.4 | source: zb_only</td></tr>
-<tr><td>Mathematics Genealogy</td><td>Not found</td></tr>
-<tr><td>Ranking</td><td>Overall: #85 | arXiv: [46] (interpolated) | OpenAlex: [49] (interpolated) | zbMATH: 89</td></tr>
-<tr><td>arXiv</td><td><a href="https://arxiv.org/search/?searchtype=author&amp;query=Stephen+Kwok-Kwong+Choi">Author search</a></td></tr>
-<tr><td>arXiv topical works</td><td>2</td></tr>
-<tr><td>OpenAlex</td><td><a href="https://openalex.org/A5046677225">Author page</a></td></tr>
-<tr><td>OpenAlex topical works</td><td>1</td></tr>
-<tr><td>OpenAlex topical citations</td><td>0</td></tr>
-<tr><td>zbMATH</td><td><a href="https://zbmath.org/authors/?q=Stephen+Kwok-Kwong+Choi">Search results</a></td></tr>
-<tr><td>Also ranked in</td><td>Only ranked on this site</td></tr>
-</tbody>
-</table>
-
-</main>
-<footer>
-<p>Maintained by Steve Hubbard (<a href="mailto:admin@wwigb.org">admin@wwigb.org</a>). Data sources: <a href="https://arxiv.org">arXiv</a>, <a href="https://openalex.org">OpenAlex</a>, <a href="https://zbmath.org">zbMATH Open</a>, <a href="https://genealogy.math.ndsu.nodak.edu">Mathematics Genealogy Project</a>.</p>
-<p>Last built August 2026.</p>
-</footer>
+<p>Stephen Kwok-Kwong Choi is no longer on this site's top 100. Taking you there now.</p>
+<p>If you are not redirected, follow this <a href="https://wwigb.org/top100">link</a>, or browse the <a href="/top100">top 100</a>.</p>
 </body>
 </html>
