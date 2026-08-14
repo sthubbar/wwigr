@@ -53,7 +53,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 52,Christian Elsholtz,Christian Elsholtz,Graz University of Technology,AT,,,49,1,3,23,,13,openalex,2001,2019,,,0000-0002-2960-4030,Q100725715
 53,V. N. Chubarikov,V. N. Chubarikov,Lomonosov Moscow State University,RU,,,50,,,,,,,1985,2021,,,,
 54,Ben Green,Ben Green,University of Oxford,GB,24,,136,12,2,22,,32,openalex,2006,2025,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
-55,Jie Wu,Jie Wu,Centre National de la Recherche Scientifique,FR,151,,20,3,2,55,,,,1990,2008,,,0000-0002-6893-7938,Q102382580
+55,Jie Wu,Jie Wu,Université Paris-Est Créteil Val-de-Marne,FR,151,,20,3,2,55,,19,openalex,1990,2008,,,0000-0002-6893-7938,Q102382580
 56,Shuntaro Yamagishi,Shuntaro Yamagishi,University of Bonn,DE,31,,124,8,8,37,,5,openalex,2018,2022,,,0000-0002-2953-1468,
 57,Tao Zhan,Tao Zhan,Shandong University,CN,,,54,,10,147,,17,openalex,1991,2007,,,,Q8070120
 58,Adrian Dudek,Adrian Dudek,University of Queensland,AU,40,,,5,5,5,,5,openalex,2016,2024,,,0000-0002-6198-8361,
