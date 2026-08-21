@@ -1,22 +1,21 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 94,
-  "n_unplaced_no_geocode": 6,
+  "n_placed": 95,
+  "n_unplaced_no_geocode": 5,
   "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#36 Daniel R. Johnston [University of New South Wales Canberra]",
-    "#58 Adrian Dudek [University of Queensland]",
-    "#59 Claus Bauer [Dolby Laboratories]",
-    "#70 Kevin Hughes [Independent]",
-    "#90 Z. Kh. Rakhmonov [Institute of Mathematics, National Academy of Sciences of Tajikistan]",
-    "#100 Victor Volfson [-]"
+    "#35 Daniel R. Johnston [University of New South Wales Canberra]",
+    "#57 Adrian Dudek [University of Queensland]",
+    "#58 Claus Bauer [Dolby Laboratories]",
+    "#69 Kevin Hughes [Independent]",
+    "#89 Z. Kh. Rakhmonov [Institute of Mathematics, National Academy of Sciences of Tajikistan]"
   ],
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 94,
-      "drawn_count": 94,
+      "stated_count": 95,
+      "drawn_count": 95,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -46,7 +45,6 @@
         "András Sárközy",
         "Roger C. Baker",
         "Zhixin Liu",
-        "Florian Luca",
         "Andrew Granville",
         "Liqun Hu",
         "Alexander P. Mangerel",
@@ -112,9 +110,11 @@
         "Hiroshi Mikawa",
         "Valeriia Starichkova",
         "Rainer Dietmann",
-        "Jiahai Kan"
+        "Jiahai Kan",
+        "Victor Zhenyu Guo",
+        "Emmanuel Kowalski"
       ],
-      "unplaced_no_geocode_in_region": 6
+      "unplaced_no_geocode_in_region": 5
     },
     {
       "file": "11_top100_north_america.png",
@@ -153,8 +153,8 @@
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 34,
-      "drawn_count": 34,
+      "stated_count": 35,
+      "drawn_count": 35,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -190,14 +190,15 @@
         "Efthymios Sofos",
         "Helmut Maier",
         "Michael Th. Rassias",
-        "Rainer Dietmann"
+        "Rainer Dietmann",
+        "Emmanuel Kowalski"
       ],
-      "unplaced_no_geocode_in_region": 2
+      "unplaced_no_geocode_in_region": 1
     },
     {
       "file": "13_top100_asia.png",
-      "stated_count": 33,
-      "drawn_count": 33,
+      "stated_count": 34,
+      "drawn_count": 34,
       "match": true,
       "names": [
         "Jinjiang Li",
@@ -232,23 +233,14 @@
         "Minggao Lu",
         "Hiroshi Mikawa",
         "Valeriia Starichkova",
-        "Jiahai Kan"
+        "Jiahai Kan",
+        "Victor Zhenyu Guo"
       ],
       "unplaced_no_geocode_in_region": 3
-    },
-    {
-      "file": "14_top100_other.png",
-      "stated_count": 1,
-      "drawn_count": 1,
-      "match": true,
-      "names": [
-        "Florian Luca"
-      ],
-      "unplaced_no_geocode_in_region": 0
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 76,
+    "legacy_gb_cache": 77,
     "verified:2026-06-15(Claude,web; main campus)": 4,
     "openalex": 5,
     "verified:2026-06-20(Claude,web)": 4,
