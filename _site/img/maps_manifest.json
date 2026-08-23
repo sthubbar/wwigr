@@ -5,11 +5,11 @@
   "n_unplaced_no_geocode": 6,
   "n_unplaced_no_institution": 0,
   "unplaced": [
-    "#35 Daniel R. Johnston [University of New South Wales Canberra]",
     "#42 Runbo Li [The High School Affiliated to Renmin University of China]",
     "#57 Adrian Dudek [University of Queensland]",
     "#58 Claus Bauer [Dolby Laboratories]",
     "#69 Kevin Hughes [Independent]",
+    "#88 Brian Cook [-]",
     "#89 Z. Kh. Rakhmonov [Institute of Mathematics, National Academy of Sciences of Tajikistan]"
   ],
   "maps": [
@@ -53,6 +53,7 @@
         "Jean‐Marc Deshouillers",
         "M. Ram Murty",
         "Chaohua Jia",
+        "Daniel R. Johnston",
         "Doychin Tolev",
         "Alberto Perelli",
         "Kevin Ford",
@@ -101,7 +102,6 @@
         "Timothy S. Trudgian",
         "Xiumin Ren",
         "H. A. Helfgott",
-        "Brian Cook",
         "Minggao Lu",
         "Damaris Schindler",
         "Efthymios Sofos",
@@ -118,8 +118,8 @@
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 25,
-      "drawn_count": 25,
+      "stated_count": 24,
+      "drawn_count": 24,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -145,15 +145,14 @@
         "Henryk Iwaniec",
         "John B. Friedlander",
         "Paul Pollack",
-        "Cameron L. Stewart",
-        "Brian Cook"
+        "Cameron L. Stewart"
       ],
-      "unplaced_no_geocode_in_region": 1
+      "unplaced_no_geocode_in_region": 2
     },
     {
       "file": "12_top100_europe.png",
-      "stated_count": 35,
-      "drawn_count": 35,
+      "stated_count": 36,
+      "drawn_count": 36,
       "match": true,
       "names": [
         "Janos Pintz",
@@ -167,6 +166,7 @@
         "András Sárközy",
         "Alexander P. Mangerel",
         "Jean‐Marc Deshouillers",
+        "Daniel R. Johnston",
         "Doychin Tolev",
         "Alberto Perelli",
         "Matteo Bordignon",
@@ -235,13 +235,13 @@
         "Jiahai Kan",
         "Victor Zhenyu Guo"
       ],
-      "unplaced_no_geocode_in_region": 4
+      "unplaced_no_geocode_in_region": 3
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 76,
+    "legacy_gb_cache": 77,
     "verified:2026-06-15(Claude,web; main campus)": 4,
-    "openalex": 5,
+    "openalex": 4,
     "verified:2026-06-20(Claude,web)": 4,
     "https://openalex.org/I197681013:mgpschool2026-07-04": 1,
     "verified:web (Claude,2026-07-12)": 1,

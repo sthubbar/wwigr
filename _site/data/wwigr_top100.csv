@@ -33,7 +33,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 32,Jean‐Marc Deshouillers,JeanMarc Deshouillers,Université de Bordeaux,FR,,,32,,4,78,,16,openalex,1968,1999,,,,Q1323950
 33,M. Ram Murty,M. Ram Murty,Queen's University,CA,,113,31,,17,135,,25,openalex,2005,2023,,,,Q470508
 34,Chaohua Jia,Chaohua Jia,Chinese Academy of Sciences,CN,,,34,1,2,26,,11,openalex,1989,2022,,,,Q102383246
-35,Daniel R. Johnston,Daniel R. Johnston,University of New South Wales Canberra,AU,12,,131,8,5,4,,4,openalex,2022,2026,,,0000-0001-6507-034X,
+35,Daniel R. Johnston,Daniel R. Johnston,Max Planck Institute for Mathematics,DE,12,,131,8,5,4,,4,openalex,2022,2026,,,0000-0001-6507-034X,
 36,Doychin Tolev,Doychin Tolev,"Sofia University ""St. Kliment Ohridski""",BG,47,112,30,7,20,133,,10,openalex,1992,2017,,,,
 37,Alberto Perelli,Alberto Perelli,University of Genoa,IT,,,37,1,17,263,,20,openalex,1989,2019,,,,Q102253510
 38,Kevin Ford,Kevin Ford,University of Illinois Urbana-Champaign,US,32,,60,6,2,9,,,,2000,2000,1967,Heini Halberstam,,Q48969701
@@ -71,10 +71,10 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 70,Quanwu Mu,Quanwu Mu,Xian Polytechnic University,CN,,,64,,5,16,,,,2014,2023,,,,
 71,Henryk Iwaniec,Henryk Iwaniec,Rutgers University,US,130,193,23,3,13,344,,50,openalex,1972,2022,1947,Andrzej Schinzel,,Q370944
 72,Antal Balog,Antal Balog,Alfréd Rényi Institute of Mathematics,HU,,,65,1,7,156,,18,openalex,1984,1992,,,,
-73,Fei Xue,Fei Xue,China University of Mining and Technology (Beijing),CN,37,106,144,4,12,12,,6,openalex,2020,2024,,,0000-0001-5762-7830,
+73,Fei Xue,Fei Xue,China University of Mining and Technology (Beijing),CN,37,106,144,4,12,12,,,,2020,2024,,,0000-0001-5762-7830,
 74,Yong-Gao Chen,Yong-Gao Chen,Nanjing Normal University,CN,,,66,,,,,,,2004,2025,,,,
 75,I. A. Allakov,I. A. Allakov,Termez State University,UZ,,,68,,,,,,,1985,2024,,,,
-76,Wenxu Ge,Wenxu Ge,North China University of Water Resources and Electric Power,CN,,,69,,1,6,,5,openalex,2015,2025,,,,
+76,Wenxu Ge,Wenxu Ge,North China University of Water Resources and Electric Power,CN,,,69,,1,6,,4,people_csv,2015,2025,,,,
 77,Etienne Fouvry,Etienne Fouvry,Université Paris-Saclay,FR,141,,40,4,11,247,,28,openalex,1976,1996,,,,
 78,Lilu Zhao,Lilu Zhao,Jimei University,CN,161,,38,3,10,122,,,,2013,2019,,,,
 79,John B. Friedlander,John B. Friedlander,University of Toronto,CA,91,161,46,4,13,171,,34,openalex,1992,2022,,,,
@@ -86,7 +86,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 85,Timothy S. Trudgian,Timothy S. Trudgian,UNSW Canberra,AU,50,,170,5,3,7,,,,2013,2026,,,,
 86,Xiumin Ren,Xiumin Ren,Shandong University,CN,,,77,1,8,117,,11,openalex,2000,2025,,,,
 87,H. A. Helfgott,H. A. Helfgott,Université Paris Cité,FR,58,,116,6,10,223,,19,openalex,2012,2015,1977,Henryk Iwaniec; Peter Sarnak,0000-0002-5686-804X,Q5653809
-88,Brian Cook,Brian Cook,Virginia Tech,US,72,,,4,4,58,,5,openalex,2012,2022,,,,
+88,Brian Cook,Brian Cook,-,US,72,,,4,4,58,,5,openalex,2012,2022,,,,
 89,Z. Kh. Rakhmonov,Z. Kh. Rakhmonov,"Institute of Mathematics, National Academy of Sciences of Tajikistan",TJ,,,80,1,,,,8,scholar,1986,2023,,,,
 90,Minggao Lu,Minggao Lu,Shanghai University,CN,,,81,,11,53,,3,openalex,1965,2012,,,,
 91,Damaris Schindler,Damaris Schindler,University of Göttingen,DE,64,,132,8,10,91,,7,openalex,2018,2018,,,,Q102423761
