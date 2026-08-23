@@ -40,7 +40,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 39,Matteo Bordignon,Matteo Bordignon,KTH Royal Institute of Technology,SE,15,175,,8,10,9,,13,openalex,2022,2025,,,,
 40,James Maynard,James Maynard,University of Oxford,GB,23,,93,9,11,102,,11,openalex,2016,2017,1987,Roger Heath-Brown,0000-0001-5782-7082,Q19655060
 41,William D. Banks,William D. Banks,University of Missouri,US,28,71,108,8,19,132,,21,openalex,2025,2026,,,0000-0002-3595-6331,Q102194638
-42,Runbo Li,Runbo Li,University of Michigan,US,25,,,5,5,1,,,,2024,2026,,,0009-0002-0292-7451,
+42,Runbo Li,Runbo Li,The High School Affiliated to Renmin University of China,CN,25,,,5,5,1,,,,2024,2026,,,0009-0002-0292-7451,
 43,Huafeng Liu,Huafeng Liu,Shandong Normal University,CN,,,41,,,,,55,openalex,2015,2024,,,,
 44,Carl Pomerance,Carl Pomerance,Dartmouth College,US,,,42,1,4,56,,39,openalex,1993,1993,1944,John Tate,0000-0002-0960-1692,Q761544
 45,Wenguang Zhai,Wenguang Zhai,China University of Mining and Technology (Beijing),CN,,,44,,5,7,,13,openalex,1998,2026,,,,Q102350020

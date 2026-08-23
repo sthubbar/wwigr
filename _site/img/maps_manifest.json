@@ -1,11 +1,12 @@
 {
   "site": "goldbach",
   "n_top": 100,
-  "n_placed": 95,
-  "n_unplaced_no_geocode": 5,
+  "n_placed": 94,
+  "n_unplaced_no_geocode": 6,
   "n_unplaced_no_institution": 0,
   "unplaced": [
     "#35 Daniel R. Johnston [University of New South Wales Canberra]",
+    "#42 Runbo Li [The High School Affiliated to Renmin University of China]",
     "#57 Adrian Dudek [University of Queensland]",
     "#58 Claus Bauer [Dolby Laboratories]",
     "#69 Kevin Hughes [Independent]",
@@ -14,8 +15,8 @@
   "maps": [
     {
       "file": "10_top100_overview.png",
-      "stated_count": 95,
-      "drawn_count": 95,
+      "stated_count": 94,
+      "drawn_count": 94,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -58,7 +59,6 @@
         "Matteo Bordignon",
         "James Maynard",
         "William D. Banks",
-        "Runbo Li",
         "Huafeng Liu",
         "Carl Pomerance",
         "Wenguang Zhai",
@@ -114,12 +114,12 @@
         "Victor Zhenyu Guo",
         "Emmanuel Kowalski"
       ],
-      "unplaced_no_geocode_in_region": 5
+      "unplaced_no_geocode_in_region": 6
     },
     {
       "file": "11_top100_north_america.png",
-      "stated_count": 26,
-      "drawn_count": 26,
+      "stated_count": 25,
+      "drawn_count": 25,
       "match": true,
       "names": [
         "Trevor D. Wooley",
@@ -134,7 +134,6 @@
         "M. Ram Murty",
         "Kevin Ford",
         "William D. Banks",
-        "Runbo Li",
         "Carl Pomerance",
         "Alexandru Zaharescu",
         "Will Sawin",
@@ -236,11 +235,11 @@
         "Jiahai Kan",
         "Victor Zhenyu Guo"
       ],
-      "unplaced_no_geocode_in_region": 3
+      "unplaced_no_geocode_in_region": 4
     }
   ],
   "geocode_sources": {
-    "legacy_gb_cache": 77,
+    "legacy_gb_cache": 76,
     "verified:2026-06-15(Claude,web; main campus)": 4,
     "openalex": 5,
     "verified:2026-06-20(Claude,web)": 4,
