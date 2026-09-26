@@ -123,6 +123,14 @@
 </tbody>
 </table>
 
+<h2>The citation-influence source</h2>
+
+<p>The Top 100 combines <strong>four ranked sources</strong>. Three measure research <em>activity</em>, the papers a person writes on the topic: arXiv, OpenAlex and zbMATH Open. The fourth measures <em>influence</em>: how often the Goldbach literature itself cites a person. The same four sources are used on the sister Riemann hypothesis and abc conjecture sites.</p>
+
+<p>The literature is every work in OpenAlex or zbMATH Open whose title, abstract or review names Goldbach: 7,196 works in the September 2026 build. A person's influence is the number of those works that cite them, counting each work once per person, by a linked reference to a paper they wrote, by an unlinked reference identified from the author names in the reference text, or by naming them as the source of a result. Self-citations never count. A citing work counts only if zbMATH reviewed it, someone has cited it, or it carries a reference list, which keeps out crank proof announcements. A person needs at least 3 citing works to be ranked on this source. Hardy, Vaughan, Vinogradov and Hua lead that count, and it is why Iwaniec, Friedlander, Montgomery and Bombieri now rank alongside the researchers most active today, and why the computational verifiers of the conjecture, Oliveira e Silva, Herzog and Pardi, appear on the list.</p>
+
+<p>The four ranks enter the same weighted order statistic described below: <code>0.70</code> on the best, <code>0.20</code> on the next and <code>0.10</code> on the third. Historical figures the literature cites heavily are listed in In Memoriam rather than the Top 100.</p>
+
 <h2>Pipeline</h2>
 
 <p class="callout"><strong>Title-weighting.</strong> A paper can mention the Goldbach conjecture without being about it, for example a paper that cites Goldbach in its introduction as a famous open problem. To separate genuine work from passing mentions, the arXiv and OpenAlex pipelines weight a keyword match by where it appears: a match in the paper <em>title</em> counts at full weight, and a match only in the <em>abstract</em> counts at half (a factor of 0.5). zbMATH is not title-weighted, because its documents are classified by human editors, so the subject class itself is the relevance signal.</p>
