@@ -4,18 +4,18 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 3,Janos Pintz,Janos Pintz,Alfréd Rényi Institute of Mathematics,HU,8,22,5,17,33,400,,26,openalex,1988,2025,,,,Q963230
 4,Jörg Brüdern,Jorg Brudern,University of Göttingen,DE,134,20,2,5,40,459,,19,openalex,1993,2023,,,,Q1122696
 5,D. R. Heath-Brown,D. R. Heath-Brown,University of Oxford,GB,54,174,8,7,15,926,,45,openalex,1981,2002,,,0000-0002-0842-6087,Q951263
-6,Jianya Liu,Jianya Liu,Shandong University,CN,,,11,2,,,,14,openalex,1996,2026,,,,Q102350017
+6,Jianya Liu,Jianya Liu,Shandong University,CN,,,11,2,,,,19,people_csv,1996,2026,,,,Q102350017
 7,Terence Tao,Terence Tao,"University of California, Los Angeles",US,7,34,62,20,26,2094,,101,openalex,2006,2014,1975,Elias M. Stein,0000-0002-0140-7641,Q295981
 8,Henryk Iwaniec,Henryk Iwaniec,Rutgers University,US,138,111,23,3,15,328,,50,openalex,1972,2022,1947,Andrzej Schinzel,,Q370944
 9,Angel Kumchev,Angel Kumchev,Towson University,US,44,103,19,6,16,279,,12,openalex,1996,2022,,,0000-0001-8543-1659,Q102251427
 10,Glyn Harman,Glyn Harman,Royal Holloway University of London,GB,,,15,1,13,159,,19,openalex,1982,2020,,,,Q5572848
 11,Hugh Lowell Montgomery,Hugh Lowell Montgomery,University of Michigan,US,,,103,,7,1035,,32,openalex,1974,2014,,,,
 12,Daniel A. Goldston,Daniel A. Goldston,San Jose State University,US,10,63,17,15,19,203,,21,openalex,1990,2023,,,,
-13,Roger C. Baker,Roger C. Baker,Brigham Young University,US,42,151,13,6,12,122,,34,openalex,1982,1997,,,,
+13,Roger C. Baker,Roger C. Baker,Brigham Young University,US,42,151,13,6,12,122,,23,people_csv,1982,1997,,,,
 14,Hongze Li,Hongze Li,Shanghai Jiao Tong University,CN,,,14,2,,,,,,1994,2026,,,0000-0002-3985-6805,
 15,Andrew Granville,Andrew Granville,Université de Montréal,CA,23,52,91,8,20,343,,32,openalex,1989,2025,1962,Paulo Ribenboim,0000-0001-8088-1247,Q504907
 16,Jinjiang Li,Jinjiang Li,China University of Mining and Technology (Beijing),CN,3,10,24,14,30,42,,6,openalex,2017,2026,,,0000-0002-3204-4046,
-17,Tao Zhan,Tao Zhan,Shandong University,CN,,,54,,9,144,,17,openalex,1991,2007,,,,Q8070120
+17,Tao Zhan,Tao Zhan,Shandong University,CN,,,54,,9,144,,16,people_csv,1991,2007,,,,Q8070120
 18,Koichi Kawada,Koichi Kawada,Iwate University,JP,,,16,,14,162,,9,openalex,1993,2019,,,,
 19,Alessandro Languasco,Alessandro Languasco,University of Padua,IT,62,,7,5,12,57,,12,openalex,1994,2021,,,0000-0003-2723-554X,Q102253573
 20,Ben Green,Ben Green,University of Oxford,GB,25,,135,12,1,17,,32,openalex,2006,2025,1977,Timothy Gowers,0000-0002-2224-1193,Q792628
@@ -23,13 +23,13 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 22,Enrico Bombieri,Enrico Bombieri,Institute for Advanced Study,US,,,,,1,20,,42,openalex,1974,1974,,,,
 23,John B. Friedlander,John B. Friedlander,University of Toronto,CA,91,113,47,4,13,161,,34,openalex,1992,2022,,,,
 24,Tianze Wang,Tianze Wang,Henan Academy of Sciences,CN,,,6,,,,,2,openalex,1989,2025,,,,
-25,Yingchun Cai,Yingchun Cai,Tongji University,CN,,,9,,,,,27,openalex,1998,2024,,,,
+25,Yingchun Cai,Yingchun Cai,Tongji University,CN,,,9,,,,,11,people_csv,1998,2024,,,,
 26,Kaisa Matomäki,Kaisa Matomaki,University of Turku,FI,15,76,35,9,14,131,,16,openalex,2007,2024,1985,Glyn Harman,,Q27061623
 27,Alberto Perelli,Alberto Perelli,University of Genoa,IT,,180,37,1,17,256,,20,openalex,1989,2019,,,,Q102253510
 28,Guangshi Lü,Guangshi Lu,Shandong University,CN,,169,18,,10,60,,,,2003,2018,,,,Q102399147
 29,Zhixin Liu,Zhixin Liu,Tianjin University,CN,,,27,,,,,,,2010,2021,,,,
 30,Doychin Tolev,Doychin Tolev,Sofia University,BG,50,164,31,7,15,124,,10,openalex,1992,2017,,,,
-31,Min Zhang,Min Zhang,Beijing Information Science and Technology University,CN,4,,28,14,,,,44,openalex,2017,2026,,,0000-0002-2203-7088,
+31,Min Zhang,Min Zhang,Beijing Information Science and Technology University,CN,4,,28,14,,,,6,people_csv,2017,2026,,,0000-0002-2203-7088,
 32,Lilu Zhao,Lilu Zhao,University of Science and Technology of China,CN,171,,38,3,9,120,,,,2013,2019,,,,
 33,M. N. Huxley,M. N. Huxley,Cardiff University,GB,,,,,6,330,,,,,,,,,
 34,Jie Wu,Jie Wu,Université Paris-Est Créteil Val-de-Marne,FR,160,,20,3,7,103,,19,openalex,1990,2023,,,0000-0002-6893-7938,Q102382580
@@ -45,7 +45,7 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 44,Joni Teräväinen,Joni Teravainen,University of Cambridge,GB,2,40,120,16,17,73,,9,openalex,2016,2025,,Kaisa Matomäki,0000-0001-6258-8004,Q102995443
 45,Siegfried Herzog,Siegfried Herzog,Penn State Mont Alto,US,,,,,,,,,,2014,2014,,,,
 46,H. A. Helfgott,H. A. Helfgott,Université Paris Cité,FR,65,,117,6,8,211,,19,openalex,2012,2015,1977,Henryk Iwaniec; Peter Sarnak,0000-0002-5686-804X,Q5653809
-47,Silvio Pardi,Silvio Pardi,INFN Napoli,IT,,,,,1,170,,5,openalex,2013,2014,,,,
+47,Silvio Pardi,Silvio Pardi,INFN Napoli,IT,,,,,1,170,,,,2013,2014,,,,
 48,Kai-Man Tsang,Kai-Man Tsang,University of Hong Kong,HK,,,48,,2,15,,8,openalex,1982,2021,,,,
 49,Imre Z. Ruzsa,Imre Z. Ruzsa,Alfréd Rényi Institute of Mathematics,HU,,,106,2,4,18,,33,openalex,1989,2020,1953,,,Q1251999
 50,Tomás Oliveira e Silva,Tomas Oliveira e Silva,University of Aveiro,PT,,,,,1,170,,,,2013,2013,,,,
@@ -88,9 +88,9 @@ rank,name,name_ascii,institution,country,arxiv_rank,openalex_rank,zbmath_rank,ar
 87,Larry Guth,Larry Guth,Massachusetts Institute of Technology,US,,,,1,2,10,,27,openalex,,,,,,
 88,Patrick Cégielski,Patrick Cegielski,Université Paris-Est Créteil,FR,,,,,,,,10,openalex,,,,,,
 89,Jori Merikoski,Jori Merikoski,University of Helsinki,FI,24,,122,6,7,14,,2,openalex,2016,2023,,,0000-0001-7686-1657,
-90,Huafeng Liu,Huafeng Liu,Shandong Normal University,CN,,,43,,,,,55,openalex,2015,2024,,,,
+90,Huafeng Liu,Huafeng Liu,Shandong Normal University,CN,,,43,,,,,8,people_csv,2015,2024,,,,
 91,Maxim Aleksandrovich Vsemirnov,Maxim Aleksandrovich Vsemirnov,St. Petersburg Department of Steklov Institute of Mathematics,RU,,,,,,,,11,openalex,,,,,,
-92,Xianmeng Meng,Xianmeng Meng,Shandong University of Finance and Economics,CN,,,57,,,,,7,openalex,2002,2009,,,,
+92,Xianmeng Meng,Xianmeng Meng,Shandong University of Finance and Economics,CN,,,57,,,,,5,people_csv,2002,2009,,,,
 93,Dimitrii Zinoviev,Dimitrii Zinoviev,-,-,,,,,3,83,,,,1997,1997,,,,
 94,Ciprian Demeter,Ciprian Demeter,Indiana University Bloomington,US,71,,,6,3,72,,15,openalex,,,1976,Joseph Max Rosenblatt,,Q29652517
 95,Cem Yalçın Yıldırım,Cem Yalcin Yildirim,Boğaziçi University,TR,123,,83,4,6,131,,,,2009,2009,,,,
